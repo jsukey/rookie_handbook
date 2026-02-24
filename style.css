@@ -268,3 +268,33 @@ body {
 .sidebar-overlay.visible {
     display: block;
 }
+
+.audio-control-container {
+    display: flex;
+    align-items: center;
+    background: #e8f0fe;
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+    width: fit-content;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid #c2e7ff;
+}
+
+.audio-control-container:hover {
+    background: #d3e3fd;
+}
+
+.play-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    fill: var(--primary);
+}
+
+.audio-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #041e49;
+}
