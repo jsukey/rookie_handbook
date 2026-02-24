@@ -223,7 +223,12 @@ function renderSidebar() {
             if (unlockedModules.includes(index)) {
                 currentModuleId = index;
                 loadModule(currentModuleId);
-                if(window.innerWidth <= 768) sidebar.classList.remove('open');
+                // Update this block for mobile auto-close
+                if(window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                    // Add this line to reset the icon animation
+                    menuToggle.classList.remove('active'); 
+                }
             }
         });
 
