@@ -223,11 +223,19 @@ function renderSidebar() {
             if (unlockedModules.includes(index)) {
                 currentModuleId = index;
                 loadModule(currentModuleId);
-                // Update this block for mobile auto-close
-                if(window.innerWidth <= 768) {
+        
+                // MOBILE FIX: If on a small screen, reset the UI state
+                if (window.innerWidth <= 768) {
                     sidebar.classList.remove('open');
-                    // Add this line to reset the icon animation
-                    menuToggle.classList.remove('active'); 
+                    
+                    // FIX: This ensures the 'X' transforms back to the 'Hamburger'
+                    const menuBtn = document.getElementById('menu-toggle');
+                    menuBtn.classList.remove('active');
+                    
+                    // If you add the overlay (Step 2), hide it here too
+                    if(document.getElementById('sidebar-overlay')) {
+                        document.getElementById('sidebar-overlay').classList.remove('visible');
+                    }
                 }
             }
         });
