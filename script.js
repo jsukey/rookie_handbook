@@ -201,6 +201,15 @@ function init() {
             loadModule(currentModuleId);
         }
     });
+    // GLOBAL AUDIO ERROR LISTENER
+    audioPlayer.addEventListener('error', () => {
+        const audioStatus = document.getElementById('audio-status');
+        // Only trigger error if a source actually exists in the player
+        if (audioPlayer.querySelector('source')) {
+            console.error("Audio Error Code:", audioPlayer.error);
+            if (audioStatus) audioStatus.textContent = "Error: Format Unsupported";
+        }
+    }, true);
 }
 
 function renderSidebar() {
@@ -246,8 +255,9 @@ function loadModule(id) {
     renderSidebar();
     window.scrollTo(0,0);
 
-    // Stop current playback
+    // Hard reset of the audio element
     audioPlayer.pause();
+    audioPlayer.innerHTML = ''; // Removes all <source> tags
     audioPlayer.removeAttribute('src'); 
     audioPlayer.load();
 
@@ -290,12 +300,14 @@ function renderContent(mod) {
 
     audioToggle.addEventListener('click', () => {
         const audioUrl = `audio/module_${mod.id}.m4a`;
-        // Create an absolute URL for accurate comparison
-        const targetUrl = new URL(audioUrl, window.location.href).href;
-
-        if (audioPlayer.src !== targetUrl) {
-            audioPlayer.src = audioUrl;
-            audioPlayer.load(); // Prepare the new file
+        // Check if we need to load a new source
+        if (audioPlayer.innerHTML === '') {
+            // Create a source element for proper MIME type hinting
+            const source = document.createElement('source');
+            source.src = audioUrl;
+            source.type = 'audio/mp4'; // This is critical for .m4a files
+            audioPlayer.appendChild(source);
+            audioPlayer.load();
         }
         
         if (audioPlayer.paused) {
