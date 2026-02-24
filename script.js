@@ -198,6 +198,8 @@ function init() {
 
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('open');
+        // Add this line to animate the icon
+        menuToggle.classList.toggle('active');
     });
 }
 
