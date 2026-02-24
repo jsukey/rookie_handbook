@@ -17,7 +17,7 @@ const lessonData = [
                 <li><strong>Shear:</strong> A tearing or slicing force acting in opposite directions. Imagine a heavy beam resting on a brick wall; the weight of the beam wants to slide down, while the wall pushes up. The connection point is under shear stress.</li>
                 <li><strong>Torsion:</strong> A twisting force. Picture a large billboard on a single steel pole during a windstorm. The wind pushes the sign, twisting the pole.</li>
             </ul>
-            <img src="images/forces.jpg" alt="Compression, Tension, Shear, and Torsion" class="instructive-image">
+            <img src="images/forces.png" alt="Compression, Tension, Shear, and Torsion" class="instructive-image">
         `,
         quickCheck: [
             { q: "You notice a heavy steel beam bowing in the middle under the weight of the floor above. The bottom of that beam is being stretched. What force is acting on the bottom of the beam?", opts: ["Compression", "Tension", "Torsion"], ans: 1 },
@@ -32,7 +32,7 @@ const lessonData = [
             <p>First, the building has to support itself. This is the <strong>Dead Load</strong> (or self-weight). It is static, permanent, and unchanging. The steel beams, the concrete floors, the roof decking, and that massive HVAC unit bolted to the roof—these are all dead loads.</p>
             <p>But buildings aren't empty. People move in, bring heavy safes, stack inventory to the ceiling, and park vehicles inside. Mother nature adds snow to the roof. These transient, changing weights are <strong>Live Loads</strong>. As firefighters, we are a massive live load. When we stretch a line and open a 1000-gpm master stream, we are adding over 4 tons of water weight to that structure <em>every single minute</em>.</p>
             <p>Finally, there are <strong>Impact Loads</strong>. These are violent, sudden forces delivered in a short time. A car crashing into a load-bearing wall, or an explosion inside a structure. Impact loads cause disastrously high stresses because the building doesn't have time to distribute the force evenly, often leading to progressive collapse.</p>
-            <img src="images/loads.jpg" alt="Dead, Live, and Impact Loads" class="instructive-image">
+            <img src="images/loads.png" alt="Dead, Live, and Impact Loads" class="instructive-image">
         `,
         quickCheck: [
             { q: "A crew is flowing a master stream onto a flat commercial roof. What type of load is rapidly accumulating?", opts: ["Dead Load", "Live Load", "Impact Load"], ans: 1 },
@@ -45,7 +45,7 @@ const lessonData = [
         text: `
             <p>It is not just <em>how much</em> weight a building is holding; it is <em>how</em> that weight is applied.</p>
             <p>When a load is placed squarely in the center of a supporting member, it is an <strong>Axial Load</strong>. The force passes straight through the centroid of the material, distributing the stress evenly. This is the strongest and most efficient way to load a building.</p>
-            <img src="images/axial_eccentric.jpg" alt="Axial Load versus Eccentric Load" class="instructive-image">
+            <img src="images/axial_eccentric.png" alt="Axial Load versus Eccentric Load" class="instructive-image">
             <p>However, loads are often imperfect. An <strong>Eccentric Load</strong> is a force that is applied perpendicular to the plane of the section, but concentrated to one side of the center. This introduces bending stress (compression on one side, tension on the other) to a column or wall.</p>
             <p>Loads can also be grouped by concentration. A <strong>Concentrated Load</strong> is a heavy weight located at one specific point. A <strong>Uniformly Distributed Load</strong> is spread evenly over an area (like water sitting evenly across a flat roof).</p>
         `,
@@ -60,7 +60,7 @@ const lessonData = [
         text: `
             <p>When a building is combustible, the building itself is a load—a <strong>Fire Load</strong>. This represents the total amount of potential energy (heat) available to burn.</p>
             <p>Modern fire protection relies on the <strong>Heat Release Rate (HRR)</strong>. HRR is the <em>rate</em> at which the potential energy is released, typically measured in Kilowatts (KW) or Megawatts (MW). The HRR dictates how fast the fire will grow and whether a room will reach flashover.</p>
-            <img src="images/hrr_graph.jpg" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
+            <img src="images/hrr_graph.png" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
             <p>The widespread use of modern plastics and polyurethane foams means that today's fire loads have exceptionally high Heat Release Rates compared to legacy wood furnishings. High HRR means a faster attack on the gravity resistance system.</p>
         `,
         quickCheck: [
@@ -75,7 +75,7 @@ const lessonData = [
             <p>Engineers use a <strong>Safety Factor</strong> to account for unknown material flaws or unexpected extreme loads. The safety factor is the ratio between the ultimate strength of a material and its safe working stress.</p>
             <p>Manufactured materials like steel have lower safety factors (e.g., 2). Materials built on-site, like masonry, require higher safety factors (e.g., 10). <em>Fire rapidly consumes the safety factor margin.</em></p>
             <p>To get the best of both worlds, builders use <strong>Composite Materials</strong>. Concrete handles compression well but is weak in tension. By embedding steel rebar (highly resistant to tension) inside the concrete, you create <strong>Reinforced Concrete</strong>.</p>
-            <img src="images/rebar.jpg" alt="Reinforced Concrete Structure" class="instructive-image">
+            <img src="images/rebar.png" alt="Reinforced Concrete Structure" class="instructive-image">
         `,
         quickCheck: [
             { q: "What does fire do to a building's safety factor?", opts: ["Increases it.", "Rapidly consumes it.", "Has no effect."], ans: 1 },
@@ -87,10 +87,10 @@ const lessonData = [
         title: "Module 6: Horizontal Spans (Beams & Trusses)",
         text: `
             <p><strong>Beams</strong> transmit forces perpendicular to the load. When a simple beam is loaded from above, the <em>top</em> is in Compression and the <em>bottom</em> is in Tension.</p>
-            <img src="images/deflection.jpg" alt="Simple vs Cantilever Deflection" class="instructive-image">
+            <img src="images/deflection.png" alt="Simple vs Cantilever Deflection" class="instructive-image">
             <p>A <strong>cantilever beam</strong> is supported at only one end. If the single connection point fails, the entire beam drops.</p>
             <p><strong>Trusses</strong> are triangulated beams. If any single component fails, the entire truss fails. In fire, metal gusset plates (gang nails) release their 3/8-inch teeth due to pyrolytic decomposition of the wood, causing catastrophic failure long before the wood burns away.</p>
-            <img src="images/gusset_failure.jpg" alt="Gusset Plate Failure" class="instructive-image">
+            <img src="images/gusset_failure.png" alt="Gusset Plate Failure" class="instructive-image">
         `,
         quickCheck: [
             { q: "In a standard loaded beam, what force is acting on the top edge?", opts: ["Tension", "Compression", "Shear"], ans: 1 },
@@ -104,7 +104,7 @@ const lessonData = [
             <p><strong>Columns</strong> transmit compressive forces down to the foundation. If a column fails, the entire building above it collapses. Columns lose strength rapidly if their length is increased.</p>
             <p><strong>Load-Bearing Walls</strong> carry the weight of the structure above them. <strong>Veneer walls</strong> are for appearance only and rely on the wall behind them for stability.</p>
             <p>An <strong>Arch</strong> remains under compression, but the base pushes <em>outward</em>. This lateral thrust must be restrained by buttresses or tie-rods to prevent collapse.</p>
-            <img src="images/arch_thrust.jpg" alt="Arch Thrust Forces" class="instructive-image">
+            <img src="images/arch_thrust.png" alt="Arch Thrust Forces" class="instructive-image">
         `,
         quickCheck: [
             { q: "A wall that carries the weight of the roof above it is a:", opts: ["Curtain wall", "Veneer wall", "Load-bearing wall"], ans: 2 },
@@ -117,7 +117,7 @@ const lessonData = [
         text: `
             <p>All loads must be <strong>transmitted</strong> continuously to the foundation. Connections are often the weakest point in a fire.</p>
             <p>Unprotected steel bolts elongate and fail at 1000°F to 1100°F. Older <strong>Gravity Connections</strong> sit in sockets without bolts; a slight lateral shift can kick them out.</p>
-            <img src="images/gravity_connection.jpg" alt="Gravity Connection Hazard" class="instructive-image">
+            <img src="images/gravity_connection.png" alt="Gravity Connection Hazard" class="instructive-image">
             <p>Older masonry often used <strong>sand-lime mortar</strong>, which is water-soluble. Heavy hose streams can wash it away, causing delayed collapse.</p>
         `,
         quickCheck: [
