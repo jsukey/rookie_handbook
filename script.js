@@ -248,7 +248,7 @@ function loadModule(id) {
 
     // Stop current playback
     audioPlayer.pause();
-    audioPlayer.src = ""; // Clear source to prevent stale buffers
+    audioPlayer.removeAttribute('src'); 
     audioPlayer.load();
 
     const btnNext = document.getElementById('btn-next');
@@ -289,25 +289,25 @@ function renderContent(mod) {
     const audioStatus = document.getElementById('audio-status');
 
     audioToggle.addEventListener('click', () => {
-        // Construct clean path relative to current URL
         const audioUrl = `audio/module_${mod.id}.m4a`;
+        // Create an absolute URL for accurate comparison
+        const targetUrl = new URL(audioUrl, window.location.href).href;
 
-        // Check source against constructed relative path
-        if (!audioPlayer.src.endsWith(audioUrl)) {
-            // FIX: Setting source directly on the audio object
+        if (audioPlayer.src !== targetUrl) {
             audioPlayer.src = audioUrl;
-            audioPlayer.load();
+            audioPlayer.load(); // Prepare the new file
         }
         
         if (audioPlayer.paused) {
+            // Wait for the browser to be ready before playing
             const playPromise = audioPlayer.play();
             if (playPromise !== undefined) {
                 playPromise.then(_ => {
                     audioStatus.textContent = "Pause Lesson";
                     audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
                 }).catch(error => {
-                    console.error("Audio playback error:", error);
-                    audioStatus.textContent = "Playback Error";
+                    // This catches the 'NotSupportedError' or 'InterruptedByRequest' errors
+                    console.warn("Playback prevented or codec unsupported:", error);
                 });
             }
         } else {
@@ -317,11 +317,8 @@ function renderContent(mod) {
         }
     });
 
-    // DEBUGGER: Add error listener to help identify missing files
-    audioPlayer.addEventListener('error', (e) => {
-        console.error("Audio Source Error: Check if the file exists at audio/module_" + mod.id + ".m4a");
-        audioStatus.textContent = "Error: File Not Found";
-    }, true);
+    // Note: REMOVE the audioPlayer.addEventListener('error'...) block from this function
+    // It is now handled globally in init()
 
     audioPlayer.onended = () => {
         audioStatus.textContent = "Listen Again";
