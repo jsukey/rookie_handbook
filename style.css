@@ -205,3 +205,51 @@ body {
     .mobile-header { display: flex; }
     .content-wrapper { padding: 2rem 1.5rem; }
 }
+
+/* --- Material Design Menu Button Styles --- */
+
+/* The button container - ensuring a good touch target size (48x48dp) */
+.material-menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    gap: 6px; /* Space between bars */
+    /* Remove default button styles on mobile */
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* The individual bars */
+.bar {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-main);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: center;
+}
+
+/* --- Active State Animations (Transform to 'X') --- */
+
+/* Top bar rotates 45 degrees and moves down */
+.material-menu-btn.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+/* Middle bar fades out and slides slightly left */
+.material-menu-btn.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+/* Bottom bar rotates -45 degrees and moves up */
+.material-menu-btn.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
