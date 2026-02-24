@@ -1,4 +1,8 @@
-// --- Lesson Data Structure ---
+/**
+ * Chapter 2: Building Construction - Elyria FD Training
+ * Immersive "Learn Your Way" Educational Platform
+ */
+
 const lessonData = [
     {
         id: 0,
@@ -8,12 +12,12 @@ const lessonData = [
             <p>When a structure catches fire, it is not just burning; it is losing its ability to fight gravity. When the gravity resistance system is compromised, gravity wins.</p>
             <p>To read a building, you must first understand the four invisible forces tearing at it:</p>
             <ul>
-                <li><strong>Compression:</strong> A crushing force. Imagine the weight of a heavy rooftop AC unit pushing straight down on a concrete pillar.</li>
-                <li><strong>Tension:</strong> A stretching force. Think of a crane's cable lifting a steel beam, or the bottom edge of a loaded floor joist bowing downward.</li>
-                <li><strong>Shear:</strong> A tearing or slicing force acting in opposite directions. Imagine a heavy beam resting on a brick wall; the weight of the beam wants to slide down, while the wall pushes up.</li>
-                <li><strong>Torsion:</strong> A twisting force. Picture a large billboard on a single steel pole during a windstorm.</li>
+                <li><strong>Compression:</strong> A crushing force. Imagine the weight of a heavy rooftop AC unit pushing straight down on a concrete pillar. The pillar is being squeezed.</li>
+                <li><strong>Tension:</strong> A stretching force. Think of a crane's cable lifting a steel beam, or the bottom edge of a loaded floor joist bowing downward. It is being pulled apart.</li>
+                <li><strong>Shear:</strong> A tearing or slicing force acting in opposite directions. Imagine a heavy beam resting on a brick wall; the weight of the beam wants to slide down, while the wall pushes up. The connection point is under shear stress.</li>
+                <li><strong>Torsion:</strong> A twisting force. Picture a large billboard on a single steel pole during a windstorm. The wind pushes the sign, twisting the pole.</li>
             </ul>
-            <div class="instructive-image"></div>
+            <img src="images/forces.jpg" alt="Compression, Tension, Shear, and Torsion" class="instructive-image">
         `,
         quickCheck: [
             { q: "You notice a heavy steel beam bowing in the middle under the weight of the floor above. The bottom of that beam is being stretched. What force is acting on the bottom of the beam?", opts: ["Compression", "Tension", "Torsion"], ans: 1 },
@@ -28,7 +32,7 @@ const lessonData = [
             <p>First, the building has to support itself. This is the <strong>Dead Load</strong> (or self-weight). It is static, permanent, and unchanging. The steel beams, the concrete floors, the roof decking, and that massive HVAC unit bolted to the roof—these are all dead loads.</p>
             <p>But buildings aren't empty. People move in, bring heavy safes, stack inventory to the ceiling, and park vehicles inside. Mother nature adds snow to the roof. These transient, changing weights are <strong>Live Loads</strong>. As firefighters, we are a massive live load. When we stretch a line and open a 1000-gpm master stream, we are adding over 4 tons of water weight to that structure <em>every single minute</em>.</p>
             <p>Finally, there are <strong>Impact Loads</strong>. These are violent, sudden forces delivered in a short time. A car crashing into a load-bearing wall, or an explosion inside a structure. Impact loads cause disastrously high stresses because the building doesn't have time to distribute the force evenly, often leading to progressive collapse.</p>
-            <div class="instructive-image"></div>
+            <img src="images/loads.jpg" alt="Dead, Live, and Impact Loads" class="instructive-image">
         `,
         quickCheck: [
             { q: "A crew is flowing a master stream onto a flat commercial roof. What type of load is rapidly accumulating?", opts: ["Dead Load", "Live Load", "Impact Load"], ans: 1 },
@@ -37,13 +41,13 @@ const lessonData = [
     },
     {
         id: 2,
-        title: "Module 3: Direction and Destruction",
+        title: "Module 3: Direction and Destruction (Load Application)",
         text: `
             <p>It is not just <em>how much</em> weight a building is holding; it is <em>how</em> that weight is applied.</p>
             <p>When a load is placed squarely in the center of a supporting member, it is an <strong>Axial Load</strong>. The force passes straight through the centroid of the material, distributing the stress evenly. This is the strongest and most efficient way to load a building.</p>
-            <div class="instructive-image"></div>
-            <p>However, loads are often imperfect. An <strong>Eccentric Load</strong> is a force that is applied perpendicular to the plane of the section, but concentrated to one side of the center. Imagine standing a ladder straight up and pushing down on the very top of one side rail instead of the center. The ladder will want to bend. This introduces bending stress (compression on one side, tension on the other) to a column or wall.</p>
-            <p>Loads can also be grouped by concentration. A <strong>Concentrated Load</strong> is a heavy weight located at one specific point. A <strong>Uniformly Distributed Load</strong> is spread evenly over an area (like a 3-inch layer of water sitting evenly across a flat roof).</p>
+            <img src="images/axial_eccentric.jpg" alt="Axial Load versus Eccentric Load" class="instructive-image">
+            <p>However, loads are often imperfect. An <strong>Eccentric Load</strong> is a force that is applied perpendicular to the plane of the section, but concentrated to one side of the center. This introduces bending stress (compression on one side, tension on the other) to a column or wall.</p>
+            <p>Loads can also be grouped by concentration. A <strong>Concentrated Load</strong> is a heavy weight located at one specific point. A <strong>Uniformly Distributed Load</strong> is spread evenly over an area (like water sitting evenly across a flat roof).</p>
         `,
         quickCheck: [
             { q: "A heavy steel beam rests on the very edge of a concrete pillar, rather than the center, causing the pillar to bend outward slightly. What type of load application is this?", opts: ["Axial Load", "Eccentric Load", "Torsional Load"], ans: 1 },
@@ -52,136 +56,138 @@ const lessonData = [
     },
     {
         id: 3,
-        title: "Module 4: Fueling the Collapse",
+        title: "Module 4: Fueling the Collapse (Fire Loads & HRR)",
         text: `
-            <p>When a building is combustible, the building itself is a load—a <strong>Fire Load</strong>.</p>
-            <p>Fire load represents the total amount of potential energy (heat) available to burn. However, not all fuels burn the same way. Five pounds of solid oak burns much slower than five pounds of crushed wood chips.</p>
-            <div class="instructive-image"></div>
-            <p>Because of this, modern fire protection relies on the <strong>Heat Release Rate (HRR)</strong>. HRR is the <em>rate</em> at which the potential energy is released, typically measured in Kilowatts (KW) or Megawatts (MW). The HRR dictates how fast the fire will grow and whether a room will reach flashover.</p>
+            <p>When a building is combustible, the building itself is a load—a <strong>Fire Load</strong>. This represents the total amount of potential energy (heat) available to burn.</p>
+            <p>Modern fire protection relies on the <strong>Heat Release Rate (HRR)</strong>. HRR is the <em>rate</em> at which the potential energy is released, typically measured in Kilowatts (KW) or Megawatts (MW). The HRR dictates how fast the fire will grow and whether a room will reach flashover.</p>
+            <img src="images/hrr_graph.jpg" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
             <p>The widespread use of modern plastics and polyurethane foams means that today's fire loads have exceptionally high Heat Release Rates compared to legacy wood furnishings. High HRR means a faster attack on the gravity resistance system.</p>
         `,
         quickCheck: [
-            { q: "What does the term 'Fire Load' represent?", opts: ["The weight of the water applied.", "The total amount of potential energy available to burn.", "The amount of structural members resisting gravity."], ans: 1 },
-            { q: "Why is Heat Release Rate (HRR) more critical than total weight?", opts: ["It measures the rate at which energy is released.", "It calculates the dead load of the smoke.", "It determines the safety factor of materials."], ans: 0 }
+            { q: "What does the term 'Fire Load' represent?", opts: ["The weight of water applied.", "The total amount of potential energy available to burn.", "The amount of structural members resisting gravity."], ans: 1 },
+            { q: "Why is Heat Release Rate (HRR) more critical to fire growth than just total fuel weight?", opts: ["It measures the rate at which energy is released.", "It calculates the dead load of the smoke.", "It determines the safety factor of materials."], ans: 0 }
         ]
     },
     {
         id: 4,
-        title: "Module 5: The Margin of Error",
+        title: "Module 5: The Margin of Error (Safety Factor & Composites)",
         text: `
-            <p>Engineers use a <strong>Safety Factor</strong> to account for unknown material flaws or unexpected extreme loads.</p>
-            <p>The safety factor is the ratio between the ultimate strength of a material and its safe working stress. Manufactured materials like steel have lower safety factors (e.g., 2). Materials built on-site, like masonry, require higher safety factors (e.g., 10). <em>Fire destroys the safety factor.</em> As heat degrades the material, that margin of error vanishes.</p>
-            <div class="instructive-image"></div>
-            <p>To get the best of both worlds, builders use <strong>Composite Materials</strong>. Concrete is incredible at compression, but terrible at tension. If you embed steel rebar (highly resistant to tension) inside the concrete, you create <strong>Reinforced Concrete</strong>. A <strong>Flitch Plate Girder</strong> does the same thing, sandwiching steel between wooden beams.</p>
+            <p>Engineers use a <strong>Safety Factor</strong> to account for unknown material flaws or unexpected extreme loads. The safety factor is the ratio between the ultimate strength of a material and its safe working stress.</p>
+            <p>Manufactured materials like steel have lower safety factors (e.g., 2). Materials built on-site, like masonry, require higher safety factors (e.g., 10). <em>Fire rapidly consumes the safety factor margin.</em></p>
+            <p>To get the best of both worlds, builders use <strong>Composite Materials</strong>. Concrete handles compression well but is weak in tension. By embedding steel rebar (highly resistant to tension) inside the concrete, you create <strong>Reinforced Concrete</strong>.</p>
+            <img src="images/rebar.jpg" alt="Reinforced Concrete Structure" class="instructive-image">
         `,
         quickCheck: [
             { q: "What does fire do to a building's safety factor?", opts: ["Increases it.", "Rapidly consumes it.", "Has no effect."], ans: 1 },
-            { q: "Why is steel rebar added to concrete?", opts: ["Concrete is weak in compression.", "Concrete is weak in tension, and steel provides tensile strength.", "To lower the dead load."], ans: 1 }
+            { q: "Why is steel rebar added to concrete?", opts: ["Concrete is weak in compression.", "Concrete is weak in tension, and steel provides necessary strength.", "To lower the dead load."], ans: 1 }
         ]
     },
     {
         id: 5,
-        title: "Module 6: Horizontal Spans",
+        title: "Module 6: Horizontal Spans (Beams & Trusses)",
         text: `
-            <p><strong>Beams</strong> transmit forces perpendicular to the load. When a simple beam is loaded from above, the <em>top</em> is squeezing together (Compression) and the <em>bottom</em> is stretching out (Tension).</p>
-            <div class="instructive-image"></div>
-            <p>A <strong>cantilever beam</strong> is supported on only one end—like a diving board. If the single connection point fails, the entire beam drops.</p>
-            <p><strong>Trusses</strong> are specialized triangulated beams. The top chord acts like a continuous column (compression), while the bottom chord is under tension. <em>If any single component fails, the entire truss fails.</em></p>
-            <div class="instructive-image"></div>
-            <p>Metal gusset plates (gang nails) penetrate lightweight wood by only 3/8". As wood heats up, pyrolytic decomposition releases the metal teeth, causing catastrophic failure long before the wood burns away.</p>
+            <p><strong>Beams</strong> transmit forces perpendicular to the load. When a simple beam is loaded from above, the <em>top</em> is in Compression and the <em>bottom</em> is in Tension.</p>
+            <img src="images/deflection.jpg" alt="Simple vs Cantilever Deflection" class="instructive-image">
+            <p>A <strong>cantilever beam</strong> is supported at only one end. If the single connection point fails, the entire beam drops.</p>
+            <p><strong>Trusses</strong> are triangulated beams. If any single component fails, the entire truss fails. In fire, metal gusset plates (gang nails) release their 3/8-inch teeth due to pyrolytic decomposition of the wood, causing catastrophic failure long before the wood burns away.</p>
+            <img src="images/gusset_failure.jpg" alt="Gusset Plate Failure" class="instructive-image">
         `,
         quickCheck: [
-            { q: "In a standard loaded beam, what force is acting on the very top edge?", opts: ["Tension", "Compression", "Shear"], ans: 1 },
-            { q: "Why are lightweight wood trusses with metal gusset plates hazardous in fires?", opts: ["The metal adds dead load.", "Pyrolytic decomposition releases the shallow metal teeth.", "The plates snap the wood."], ans: 1 }
+            { q: "In a standard loaded beam, what force is acting on the top edge?", opts: ["Tension", "Compression", "Shear"], ans: 1 },
+            { q: "Why are lightweight wood trusses with gusset plates hazardous in fires?", opts: ["The plates add dead load.", "Pyrolytic decomposition releases the teeth.", "The plates snap the wood."], ans: 1 }
         ]
     },
     {
         id: 6,
-        title: "Module 7: Vertical Supports",
+        title: "Module 7: Vertical Supports (Columns, Walls & Arches)",
         text: `
-            <p><strong>Columns</strong> transmit compressive forces straight down. If a column fails, the entire building above it collapses. Columns lose strength rapidly if their length is increased.</p>
-            <p><strong>Walls</strong> are wide, slender columns. A <strong>Load-Bearing Wall</strong> carries the weight of the structure above it. A <strong>Non-Load-Bearing Wall</strong> (like a partition or veneer wall) supports only its own weight.</p>
-            <div class="instructive-image"></div>
-            <p>An <strong>Arch</strong> combines the beam and column, remaining under compression. However, the base pushes <em>outward</em>. If this lateral thrust is not restrained (by buttresses or tie-rods), the arch will push outward and collapse.</p>
+            <p><strong>Columns</strong> transmit compressive forces down to the foundation. If a column fails, the entire building above it collapses. Columns lose strength rapidly if their length is increased.</p>
+            <p><strong>Load-Bearing Walls</strong> carry the weight of the structure above them. <strong>Veneer walls</strong> are for appearance only and rely on the wall behind them for stability.</p>
+            <p>An <strong>Arch</strong> remains under compression, but the base pushes <em>outward</em>. This lateral thrust must be restrained by buttresses or tie-rods to prevent collapse.</p>
+            <img src="images/arch_thrust.jpg" alt="Arch Thrust Forces" class="instructive-image">
         `,
         quickCheck: [
-            { q: "A wall that carries the weight of the roof above it is classified as a:", opts: ["Curtain wall", "Veneer wall", "Load-bearing wall"], ans: 2 },
-            { q: "What is the fundamental danger of a non-restrained arch?", opts: ["No compressive strength.", "The base pushes outward, requiring restraint.", "It operates purely in tension."], ans: 1 }
+            { q: "A wall that carries the weight of the roof above it is a:", opts: ["Curtain wall", "Veneer wall", "Load-bearing wall"], ans: 2 },
+            { q: "What is the fundamental danger of a non-restrained arch?", opts: ["No compressive strength.", "The base pushes outward.", "It operates purely in tension."], ans: 1 }
         ]
     },
     {
         id: 7,
-        title: "Module 8: The Weakest Link",
+        title: "Module 8: The Weakest Link (Transmission & Connections)",
         text: `
-            <p>A building is only as strong as its connections. All loads must be <strong>transmitted</strong> continuously to the foundation. Any failure of continuity leads to collapse.</p>
-            <p>Connections are often the weakest point in a fire. Unprotected steel bolts elongate and fail at 1000°F to 1100°F, dropping beams that still have structural integrity.</p>
-            <div class="instructive-image"></div>
-            <p>Some older structures use <strong>Gravity Connections</strong>, sitting in sockets with no bolts. A slight lateral shift can kick the column out. Furthermore, old masonry often used <strong>sand-lime mortar</strong>, which is water-soluble. A heavy hose stream can wash the mortar out from between the bricks, causing delayed collapse.</p>
+            <p>All loads must be <strong>transmitted</strong> continuously to the foundation. Connections are often the weakest point in a fire.</p>
+            <p>Unprotected steel bolts elongate and fail at 1000°F to 1100°F. Older <strong>Gravity Connections</strong> sit in sockets without bolts; a slight lateral shift can kick them out.</p>
+            <img src="images/gravity_connection.jpg" alt="Gravity Connection Hazard" class="instructive-image">
+            <p>Older masonry often used <strong>sand-lime mortar</strong>, which is water-soluble. Heavy hose streams can wash it away, causing delayed collapse.</p>
         `,
         quickCheck: [
-            { q: "Why is sand-lime mortar a specific hazard?", opts: ["It is flammable.", "It is water-soluble and can be washed away by hose streams.", "It produces toxic gases."], ans: 1 },
-            { q: "At what temperature does unprotected structural steel typically elongate and fail?", opts: ["400°F - 500°F", "1000°F - 1100°F", "2000°F - 2500°F"], ans: 1 }
+            { q: "Why is sand-lime mortar a specific hazard during overhaul?", opts: ["It is flammable.", "It is water-soluble.", "It produces toxic gases."], ans: 1 },
+            { q: "At what temperature does unprotected structural steel typically fail?", opts: ["400°F - 500°F", "1000°F - 1100°F", "2000°F - 2500°F"], ans: 1 }
         ]
     },
-    {
-        id: 8,
-        title: "Final Exam",
-        isExam: true
-    }
+    { id: 8, title: "Final Evaluation", isExam: true }
 ];
 
-// --- Final Exam Data ---
 const examQuestions = [
-    { q: "The invisible system of structural elements and connections that supports a building is known as the:", opts: ["Lateral stability matrix", "Gravity resistance system", "Load-bearing network", "Structural distribution path"], ans: 1 },
-    { q: "A force that squeezes a structural member is called:", opts: ["Tension", "Torsion", "Shear", "Compression"], ans: 3 },
-    { q: "A force that stretches a structural member is called:", opts: ["Tension", "Compression", "Shear", "Torsion"], ans: 0 },
-    { q: "A force that pulls a structural member in opposite, parallel directions (like slicing) is called:", opts: ["Compression", "Tension", "Shear", "Torsion"], ans: 2 },
-    { q: "The static, unchanging weight of a building and its permanent components is the:", opts: ["Live Load", "Impact Load", "Dead Load", "Eccentric Load"], ans: 2 },
-    { q: "Which of the following is an example of a Dead Load?", opts: ["A large safe moved into an office", "Heavy snow accumulation on a roof", "A built-in concrete roof deck", "Firefighters conducting a primary search"], ans: 2 },
-    { q: "Transient, changing weights placed inside or on a structure are known as:", opts: ["Dead Loads", "Live Loads", "Impact Loads", "Axial Loads"], ans: 1 },
-    { q: "A 1000-gpm master stream flowing into a structure adds tremendous weight. This is classified as a:", opts: ["Dead Load", "Live Load", "Safety Factor", "Torsional Load"], ans: 1 },
-    { q: "A sudden, violent force, such as a vehicle striking a wall, is classified as an:", opts: ["Impact Load", "Axial Load", "Dead Load", "Eccentric Load"], ans: 0 },
-    { q: "A load that passes straight through the center of a supporting member, distributing stress evenly, is an:", opts: ["Eccentric load", "Torsional load", "Axial load", "Impact load"], ans: 2 },
-    { q: "A load that is applied perpendicular to the plane of the section but concentrated to one side of the center is an:", opts: ["Axial load", "Eccentric load", "Uniformly distributed load", "Live load"], ans: 1 },
-    { q: "The total amount of potential energy available to burn in a building is the:", opts: ["Dead Load", "Heat Release Rate", "Fire Load", "Torsional Load"], ans: 2 },
-    { q: "The rate at which potential energy in a fuel is released, determining how fast a fire will grow, is the:", opts: ["Safety Factor", "Heat Release Rate (HRR)", "Live Load", "Axial limit"], ans: 1 },
-    { q: "The ratio of a material's ultimate strength to its safe working stress is its:", opts: ["Load limit", "Safety factor", "Failure point", "Composite ratio"], ans: 1 },
-    { q: "What effect does fire have on a building's safety factor?", opts: ["It slowly increases it as materials harden.", "It has no effect until global collapse.", "It rapidly consumes the safety factor margin.", "It only affects the safety factor of dead loads."], ans: 2 },
-    { q: "Combining two materials to take advantage of the best characteristics of each creates a:", opts: ["Homogeneous material", "Composite material", "Unified structure", "Redundant assembly"], ans: 1 },
-    { q: "In reinforced concrete, what is the primary purpose of the steel rebar?", opts: ["To increase compressive strength.", "To provide necessary tensile strength.", "To lower the overall dead load.", "To prevent spalling."], ans: 1 },
-    { q: "When a simple horizontal beam is loaded from above, the bottom of the beam is subjected to:", opts: ["Compression", "Shear", "Tension", "Torsion"], ans: 2 },
-    { q: "A beam that is supported at only one end (like a balcony) is a:", opts: ["Lintel", "Cantilever beam", "Simple beam", "Flitch plate girder"], ans: 1 },
-    { q: "What is the fundamental danger of a truss assembly?", opts: ["They are inherently heavier than solid beams.", "If any single component fails, the entire truss fails.", "They cannot be made of composite materials.", "They only support dead loads."], ans: 1 },
-    { q: "Vertical members that transmit compressive forces to the foundation are:", opts: ["Beams", "Lintels", "Columns", "Arches"], ans: 2 },
-    { q: "A wall that carries the weight of the structure above it is a:", opts: ["Curtain wall", "Non-load-bearing wall", "Veneer wall", "Load-bearing wall"], ans: 3 },
-    { q: "A single vertical thickness of masonry designed simply to improve exterior appearance, completely relying on the wall behind it, is a:", opts: ["Fire wall", "Veneer wall", "Party wall", "Load-bearing wall"], ans: 1 },
-    { q: "An arch combines the function of the beam and column but poses a specific danger. If not properly restrained, the base of the arch will:", opts: ["Push inward", "Push outward", "Twist torsionally", "Shrink rapidly"], ans: 1 },
-    { q: "The manner in which a load is spread from the point of application down to the ground is known as:", opts: ["Reaction", "Transmission", "Deflection", "Pyrolysis"], ans: 1 },
-    { q: "Structural connections are critical because:", opts: ["They dictate aesthetic design.", "All loads must be transmitted continuously; a broken connection leads to collapse.", "They reduce live load.", "They increase the safety factor."], ans: 1 },
-    { q: "At temperatures between 1000°F and 1100°F, unprotected structural steel will:", opts: ["Contract and snap", "Elongate and fail", "Strengthen and harden", "Ignite and burn"], ans: 1 },
-    { q: "Metal gusset plates in lightweight wood construction fail rapidly in fire primarily because:", opts: ["The metal melts at 400°F.", "They add too much dead load.", "Pyrolytic decomposition releases the shallow teeth.", "The metal expands and splits the wood."], ans: 2 },
-    { q: "Sand-lime mortar is a particular hazard during overhaul in old buildings because:", opts: ["It is highly flammable.", "It reacts violently with CO.", "It is water-soluble and can be washed away by hose streams.", "It explodes when heated."], ans: 2 }
+    { q: "The invisible system that supports a building is the:", opts: ["Lateral matrix", "Gravity resistance system", "Load network", "Structural path"], ans: 1 },
+    { q: "A force that squeezes a structural member is:", opts: ["Tension", "Torsion", "Shear", "Compression"], ans: 3 },
+    { q: "A force that stretches a structural member is:", opts: ["Tension", "Compression", "Shear", "Torsion"], ans: 0 },
+    { q: "A force that pulls in opposite, parallel directions is:", opts: ["Compression", "Tension", "Shear", "Torsion"], ans: 2 },
+    { q: "The static, permanent weight of a building is the:", opts: ["Live Load", "Impact Load", "Dead Load", "Eccentric Load"], ans: 2 },
+    { q: "Which is a Dead Load?", opts: ["A safe", "Snow", "Built-in roof deck", "Firefighters"], ans: 2 },
+    { q: "Transient, changing weights in a structure are:", opts: ["Dead Loads", "Live Loads", "Impact Loads", "Axial Loads"], ans: 1 },
+    { q: "A 1000-gpm stream applied to a building is a:", opts: ["Dead Load", "Live Load", "Safety Factor", "Torsional Load"], ans: 1 },
+    { q: "A vehicle striking a wall is classified as an:", opts: ["Impact Load", "Axial Load", "Dead Load", "Eccentric Load"], ans: 0 },
+    { q: "A load passing straight through the centroid is an:", opts: ["Eccentric load", "Torsional load", "Axial load", "Impact load"], ans: 2 },
+    { q: "A load concentrated to one side of the center is an:", opts: ["Axial load", "Eccentric load", "Uniform load", "Live load"], ans: 1 },
+    { q: "The total potential energy available to burn is the:", opts: ["Dead Load", "Heat Release Rate", "Fire Load", "Torsional Load"], ans: 2 },
+    { q: "The rate at which fuel energy is released is the:", opts: ["Safety Factor", "Heat Release Rate (HRR)", "Live Load", "Axial limit"], ans: 1 },
+    { q: "The ratio of ultimate strength to safe working stress is:", opts: ["Load limit", "Safety factor", "Failure point", "Composite ratio"], ans: 1 },
+    { q: "Fire does what to a building's safety factor?", opts: ["Increases it", "Has no effect", "Rapidly consumes it", "Hardens it"], ans: 2 },
+    { q: "Combining two materials for best traits creates a:", opts: ["Homogeneous material", "Composite material", "Unified structure", "Redundant assembly"], ans: 1 },
+    { q: "Steel rebar is added to concrete primarily for:", opts: ["Compressive strength", "Tensile strength", "Lowering dead load", "Spalling prevention"], ans: 1 },
+    { q: "The bottom of a simple loaded beam is in:", opts: ["Compression", "Shear", "Tension", "Torsion"], ans: 2 },
+    { q: "A beam supported at only one end is a:", opts: ["Lintel", "Cantilever beam", "Simple beam", "Flitch plate"], ans: 1 },
+    { q: "What is the fundamental danger of a truss?", opts: ["They are too heavy", "Single component failure = total failure", "No composites allowed", "Only support dead loads"], ans: 1 },
+    { q: "Vertical members transmitting forces to the foundation:", opts: ["Beams", "Lintels", "Columns", "Arches"], ans: 2 },
+    { q: "A wall carrying the weight of the structure above is:", opts: ["Curtain wall", "Partition", "Veneer wall", "Load-bearing wall"], ans: 3 },
+    { q: "A masonry wall used only for exterior appearance is a:", opts: ["Fire wall", "Veneer wall", "Party wall", "Load-bearing wall"], ans: 1 },
+    { q: "If not restrained, the base of an arch will:", opts: ["Push inward", "Push outward", "Twist", "Shrink"], ans: 1 },
+    { q: "The spread of load from application to ground is:", opts: ["Reaction", "Transmission", "Deflection", "Pyrolysis"], ans: 1 },
+    { q: "A broken structural connection typically leads to:", opts: ["Increased safety factor", "Partial or total collapse", "Reduced live load", "Aesthetic change"], ans: 1 },
+    { q: "Unprotected structural steel elongates and fails at:", opts: ["400°F", "1000°F - 1100°F", "2500°F", "5000°F"], ans: 1 },
+    { q: "Gusset plates fail in fire because of:", opts: ["Melting at 400°F", "Too much dead load", "Pyrolytic decomposition of wood", "Metal expansion"], ans: 2 },
+    { q: "Sand-lime mortar hazard in old buildings:", opts: ["Highly flammable", "Reacts with CO", "Water-soluble/washable", "Explosive"], ans: 2 }
 ];
 
-
-// --- App State ---
+// --- Application State ---
 let currentModuleId = 0;
 let unlockedModules = [0];
-
-// --- DOM Elements ---
-const navLinksContainer = document.getElementById('nav-links');
-const contentWrapper = document.getElementById('content-wrapper');
-const btnNext = document.getElementById('btn-next');
-const btnPrev = document.getElementById('btn-prev');
-const progressBar = document.getElementById('progress-bar');
-const sidebar = document.getElementById('sidebar');
-const menuToggle = document.getElementById('menu-toggle');
+const audioPlayer = document.getElementById('lesson-audio');
 
 // --- Initialization ---
 function init() {
     renderSidebar();
     loadModule(currentModuleId);
     
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+
+    menuToggle.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('open');
+        menuToggle.classList.toggle('active');
+        overlay.classList.toggle('visible', isOpen);
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        menuToggle.classList.remove('active');
+        overlay.classList.remove('visible');
+    });
+
     btnNext.addEventListener('click', () => {
         if(currentModuleId < lessonData.length - 1) {
             currentModuleId++;
@@ -195,25 +201,14 @@ function init() {
             loadModule(currentModuleId);
         }
     });
-
-    const overlay = document.getElementById('sidebar-overlay');
-    
-    menuToggle.addEventListener('click', () => {
-        const isOpen = sidebar.classList.toggle('open');
-        menuToggle.classList.toggle('active');
-        overlay.classList.toggle('visible', isOpen);
-    });
-    
-    // Close menu if user taps the dimmed background
-    overlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        menuToggle.classList.remove('active');
-        overlay.classList.remove('visible');
-    });
 }
 
-// --- Render Logic ---
 function renderSidebar() {
+    const navLinksContainer = document.getElementById('nav-links');
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
     navLinksContainer.innerHTML = '';
     lessonData.forEach((mod, index) => {
         const li = document.createElement('li');
@@ -225,44 +220,37 @@ function renderSidebar() {
             li.classList.add('completed');
         }
 
-        li.textContent = mod.title.split(':')[0] || 'Exam';
-        if(mod.isExam) li.textContent = "Final Exam";
+        li.textContent = mod.title.split(':')[0] || 'Final Exam';
 
         li.addEventListener('click', () => {
             if (unlockedModules.includes(index)) {
                 currentModuleId = index;
                 loadModule(currentModuleId);
-        
-                // MOBILE FIX: If on a small screen, reset the UI state
-                if (window.innerWidth <= 768) {
+                if(window.innerWidth <= 768) {
                     sidebar.classList.remove('open');
-                    
-                    // FIX: This ensures the 'X' transforms back to the 'Hamburger'
-                    const menuBtn = document.getElementById('menu-toggle');
-                    menuBtn.classList.remove('active');
-                    
-                    // If you add the overlay (Step 2), hide it here too
-                    if(document.getElementById('sidebar-overlay')) {
-                        document.getElementById('sidebar-overlay').classList.remove('visible');
-                    }
+                    menuToggle.classList.remove('active');
+                    overlay.classList.remove('visible');
                 }
             }
         });
-
         navLinksContainer.appendChild(li);
     });
 
-    // Update Progress Bar
+    const progressBar = document.getElementById('progress-bar');
     const progress = (Math.max(...unlockedModules) / (lessonData.length - 1)) * 100;
     progressBar.style.width = `${progress}%`;
 }
 
 function loadModule(id) {
     const mod = lessonData[id];
-    renderSidebar(); // Update active states
+    renderSidebar();
     window.scrollTo(0,0);
 
-    // Update Buttons
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
+
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
     btnPrev.classList.toggle('hidden', id === 0);
     
     if (mod.isExam) {
@@ -270,34 +258,59 @@ function loadModule(id) {
         renderExam();
     } else {
         btnNext.classList.remove('hidden');
-        // Check if current module's quick check is passed (if it's the highest unlocked)
-        if (id === Math.max(...unlockedModules)) {
-            btnNext.classList.add('disabled');
-        } else {
-            btnNext.classList.remove('disabled');
-        }
+        btnNext.classList.toggle('disabled', id === Math.max(...unlockedModules));
         renderContent(mod);
     }
 }
 
 function renderContent(mod) {
+    const contentWrapper = document.getElementById('content-wrapper');
     contentWrapper.innerHTML = `
         <h1 class="module-title">${mod.title}</h1>
+        <div class="audio-control-container" id="audio-toggle">
+            <svg class="play-icon" id="audio-icon" viewBox="0 0 24 24">
+                <path id="play-path" d="M8 5v14l11-7z"/>
+            </svg>
+            <span class="audio-text" id="audio-status">Listen to Module</span>
+        </div>
         <div class="module-text">${mod.text}</div>
         <div class="quiz-section" id="quick-check-container">
             <h3>Quick Check</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">Answer to unlock the next module.</p>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Answer to unlock progress.</p>
             <div id="qc-questions"></div>
             <div id="qc-feedback" class="feedback-banner"></div>
         </div>
     `;
+
+    const audioToggle = document.getElementById('audio-toggle');
+    const audioPath = document.getElementById('play-path');
+    const audioStatus = document.getElementById('audio-status');
+
+    audioToggle.addEventListener('click', () => {
+        if (!audioPlayer.src.includes(`module_${mod.id}.mp3`)) {
+            audioPlayer.src = `audio/module_${mod.id}.mp3`;
+        }
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            audioStatus.textContent = "Pause Lesson";
+            audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
+        } else {
+            audioPlayer.pause();
+            audioStatus.textContent = "Resume Lesson";
+            audioPath.setAttribute("d", "M8 5v14l11-7z");
+        }
+    });
+
+    audioPlayer.onended = () => {
+        audioStatus.textContent = "Listen Again";
+        audioPath.setAttribute("d", "M8 5v14l11-7z");
+    };
 
     const qcContainer = document.getElementById('qc-questions');
     mod.quickCheck.forEach((q, qIndex) => {
         const qDiv = document.createElement('div');
         qDiv.className = 'quiz-question';
         qDiv.innerHTML = `<h4>${qIndex + 1}. ${q.q}</h4>`;
-        
         q.opts.forEach((opt, oIndex) => {
             const label = document.createElement('label');
             label.className = 'quiz-option';
@@ -312,25 +325,17 @@ function renderContent(mod) {
 function evaluateQuickCheck(mod) {
     let allCorrect = true;
     let allAnswered = true;
+    const btnNext = document.getElementById('btn-next');
 
     mod.quickCheck.forEach((q, qIndex) => {
         const selected = document.querySelector(`input[name="qc_${mod.id}_${qIndex}"]:checked`);
         const options = document.querySelectorAll(`input[name="qc_${mod.id}_${qIndex}"]`);
-        
-        if (!selected) {
-            allAnswered = false;
-            return;
-        }
-
+        if (!selected) { allAnswered = false; return; }
         options.forEach(opt => {
             opt.parentElement.classList.remove('correct', 'incorrect');
             if (opt.checked) {
-                if (parseInt(opt.value) === q.ans) {
-                    opt.parentElement.classList.add('correct');
-                } else {
-                    opt.parentElement.classList.add('incorrect');
-                    allCorrect = false;
-                }
+                if (parseInt(opt.value) === q.ans) opt.parentElement.classList.add('correct');
+                else { opt.parentElement.classList.add('incorrect'); allCorrect = false; }
             }
         });
     });
@@ -340,7 +345,7 @@ function evaluateQuickCheck(mod) {
         feedback.style.display = 'block';
         if (allCorrect) {
             feedback.style.backgroundColor = '#e6f4ea';
-            feedback.style.color = 'var(--success)';
+            feedback.style.color = '#1e8e3e';
             feedback.textContent = 'Correct! Next module unlocked.';
             btnNext.classList.remove('disabled');
             if (!unlockedModules.includes(mod.id + 1)) {
@@ -349,20 +354,20 @@ function evaluateQuickCheck(mod) {
             }
         } else {
             feedback.style.backgroundColor = '#fce8e6';
-            feedback.style.color = 'var(--error)';
-            feedback.textContent = 'Review the material and try again.';
+            feedback.style.color = '#d93025';
+            feedback.textContent = 'Review and try again.';
             btnNext.classList.add('disabled');
         }
     }
 }
 
 function renderExam() {
+    const contentWrapper = document.getElementById('content-wrapper');
     let html = `
-        <h1 class="module-title">Phase 1 Evaluation</h1>
-        <p style="margin-bottom: 2rem;">Passing standard is 90%.</p>
+        <h1 class="module-title">Final Evaluation</h1>
+        <p style="margin-bottom: 2rem;">A passing score of 90% is required.</p>
         <div id="exam-container">
     `;
-
     examQuestions.forEach((q, index) => {
         html += `
             <div class="quiz-question">
@@ -375,68 +380,54 @@ function renderExam() {
             </div>
         `;
     });
-
     html += `
         </div>
-        <button id="submit-exam" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Evaluation</button>
+        <button id="submit-exam" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Exam</button>
         <div id="exam-results" class="quiz-section hidden" style="text-align: center;"></div>
     `;
-
     contentWrapper.innerHTML = html;
-
     document.getElementById('submit-exam').addEventListener('click', evaluateExam);
 }
 
 function evaluateExam() {
     let score = 0;
-    const missedQuestions = [];
-
+    const missedModules = new Set();
     examQuestions.forEach((q, index) => {
         const selected = document.querySelector(`input[name="exam_${index}"]:checked`);
-        if (selected && parseInt(selected.value) === q.ans) {
-            score++;
-        } else {
-            missedQuestions.push(index + 1);
+        if (selected && parseInt(selected.value) === q.ans) score++;
+        else {
+            const qNum = index + 1;
+            if(qNum <= 4) missedModules.add("Module 1: Forces");
+            else if(qNum <= 9) missedModules.add("Module 2: Loads");
+            else if(qNum <= 13) missedModules.add("Modules 3 & 4: Application/Fire Loads");
+            else if(qNum <= 17) missedModules.add("Module 5: Safety Factor");
+            else if(qNum <= 21) missedModules.add("Module 6: Horizontal Spans");
+            else if(qNum <= 25) missedModules.add("Module 7: Vertical Supports");
+            else missedModules.add("Module 8: Connections");
         }
     });
 
     const resultsDiv = document.getElementById('exam-results');
     resultsDiv.classList.remove('hidden');
-    document.getElementById('submit-exam').classList.add('hidden'); // Hide submit button
-
-    let feedbackHTML = `<h2>Score: ${score} / ${examQuestions.length}</h2>`;
+    document.getElementById('submit-exam').classList.add('hidden');
     
-    if (score >= 26) { // ~90%
-        resultsDiv.style.borderTopColor = 'var(--success)';
-        feedbackHTML += `<p style="color: var(--success); font-weight: bold; margin-top: 1rem;">PASS. Excellent work.</p>
-                         <p>You have a firm grasp of structural engineering principles, load transmission, and the predictable failures of materials under fire conditions. You are cleared to proceed.</p>`;
+    const percentage = Math.round((score / examQuestions.length) * 100);
+    let feedbackHTML = `<h2>Score: ${score} / ${examQuestions.length} (${percentage}%)</h2>`;
+    
+    if (percentage >= 90) {
+        resultsDiv.style.borderTopColor = '#1e8e3e';
+        feedbackHTML += `<p style="color: #1e8e3e; font-weight: bold; margin-top: 1rem;">PASS</p>
+                         <p>Excellent work. You have mastered the core structural concepts of Chapter 2.</p>`;
     } else {
-        resultsDiv.style.borderTopColor = 'var(--error)';
-        feedbackHTML += `<p style="color: var(--error); font-weight: bold; margin-top: 1rem;">FAIL. Re-test required.</p>
-                         <p style="margin-bottom: 1rem;">You missed critical details required for fireground survival. Review the following modules based on your errors:</p>
-                         <ul style="text-align: left; display: inline-block;">`;
-        
-        // Dynamic mapping based on missed questions
-        const modulesToReview = new Set();
-        missedQuestions.forEach(qNum => {
-            if(qNum <= 4) modulesToReview.add("Module 1: Forces");
-            else if(qNum <= 9) modulesToReview.add("Module 2: Loads");
-            else if(qNum <= 13) modulesToReview.add("Modules 3 & 4: Application and Fire Loads");
-            else if(qNum <= 17) modulesToReview.add("Module 5: Safety Factor");
-            else if(qNum <= 21) modulesToReview.add("Module 6: Horizontal Spans");
-            else if(qNum <= 25) modulesToReview.add("Module 7: Vertical Supports");
-            else modulesToReview.add("Module 8: Connections");
-        });
-
-        modulesToReview.forEach(mod => {
-            feedbackHTML += `<li>${mod}</li>`;
-        });
+        resultsDiv.style.borderTopColor = '#d93025';
+        feedbackHTML += `<p style="color: #d93025; font-weight: bold; margin-top: 1rem;">FAIL - Re-test Required</p>
+                         <p>Review the following modules before your second attempt:</p>
+                         <ul style="text-align: left; display: inline-block; margin-top: 1rem;">`;
+        missedModules.forEach(m => feedbackHTML += `<li>${m}</li>`);
         feedbackHTML += `</ul>`;
     }
-
     resultsDiv.innerHTML = feedbackHTML;
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
-// Start
 init();
