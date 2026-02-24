@@ -204,10 +204,9 @@ function init() {
     // GLOBAL AUDIO ERROR LISTENER
     audioPlayer.addEventListener('error', () => {
         const audioStatus = document.getElementById('audio-status');
-        // Only trigger error if a source actually exists in the player
-        if (audioPlayer.querySelector('source')) {
-            console.error("Audio Error Code:", audioPlayer.error);
-            if (audioStatus) audioStatus.textContent = "Error: Format Unsupported";
+        // Ignore error if we are just resetting the source to empty
+        if (audioPlayer.src && !audioPlayer.src.endsWith('/')) {
+            if (audioStatus) audioStatus.textContent = "Error: File Not Found";
         }
     }, true);
 }
@@ -253,13 +252,11 @@ function renderSidebar() {
 function loadModule(id) {
     const mod = lessonData[id];
     renderSidebar();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 
-    // Hard reset of the audio element
+    // Standard MP3 reset
     audioPlayer.pause();
-    audioPlayer.innerHTML = ''; // Removes all <source> tags
-    audioPlayer.removeAttribute('src'); 
-    audioPlayer.load();
+    audioPlayer.src = ""; 
 
     const btnNext = document.getElementById('btn-next');
     const btnPrev = document.getElementById('btn-prev');
@@ -299,35 +296,23 @@ function renderContent(mod) {
     const audioStatus = document.getElementById('audio-status');
 
     audioToggle.addEventListener('click', () => {
-        const audioUrl = `audio/module_${mod.id}.m4a`;
-        // Check if we need to load a new source
-        if (audioPlayer.innerHTML === '') {
-            // Create a source element for proper MIME type hinting
-            const source = document.createElement('source');
-            source.src = audioUrl;
-            source.type = 'audio/mp4'; // This is critical for .m4a files
-            audioPlayer.appendChild(source);
-            audioPlayer.load();
-        }
-        
-        if (audioPlayer.paused) {
-            // Wait for the browser to be ready before playing
-            const playPromise = audioPlayer.play();
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    audioStatus.textContent = "Pause Lesson";
-                    audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
-                }).catch(error => {
-                    // This catches the 'NotSupportedError' or 'InterruptedByRequest' errors
-                    console.warn("Playback prevented or codec unsupported:", error);
-                });
-            }
-        } else {
-            audioPlayer.pause();
-            audioStatus.textContent = "Resume Lesson";
-            audioPath.setAttribute("d", "M8 5v14l11-7z");
-        }
-    });
+    const audioUrl = `audio/module_${mod.id}.mp3`;
+
+    // Only set source if it's different or empty
+    if (!audioPlayer.src.includes(audioUrl)) {
+        audioPlayer.src = audioUrl;
+    }
+    
+    if (audioPlayer.paused) {
+        audioPlayer.play().catch(e => console.error("Playback failed:", e));
+        audioStatus.textContent = "Pause Lesson";
+        audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
+    } else {
+        audioPlayer.pause();
+        audioStatus.textContent = "Resume Lesson";
+        audioPath.setAttribute("d", "M8 5v14l11-7z");
+    }
+});
 
     // Note: REMOVE the audioPlayer.addEventListener('error'...) block from this function
     // It is now handled globally in init()
