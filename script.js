@@ -196,10 +196,19 @@ function init() {
         }
     });
 
+    const overlay = document.getElementById('sidebar-overlay');
+    
     menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-        // Add this line to animate the icon
+        const isOpen = sidebar.classList.toggle('open');
         menuToggle.classList.toggle('active');
+        overlay.classList.toggle('visible', isOpen);
+    });
+    
+    // Close menu if user taps the dimmed background
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        menuToggle.classList.remove('active');
+        overlay.classList.remove('visible');
     });
 }
 
