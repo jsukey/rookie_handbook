@@ -287,8 +287,8 @@ function renderContent(mod) {
     const audioStatus = document.getElementById('audio-status');
 
     audioToggle.addEventListener('click', () => {
-        if (!audioPlayer.src.includes(`module_${mod.id}.mp3`)) {
-            audioPlayer.src = `audio/module_${mod.id}.mp3`;
+        if (!audioPlayer.src.includes(`module_${mod.id}.m4a`)) {
+            audioPlayer.src = `audio/module_${mod.id}.m4a`;
         }
         if (audioPlayer.paused) {
             audioPlayer.play();
