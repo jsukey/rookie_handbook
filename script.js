@@ -111,22 +111,63 @@ const lessonData = [
             <p>Loads can also be grouped by concentration. A <strong>Concentrated Load</strong> is a heavy weight located at one specific point. A <strong>Uniformly Distributed Load</strong> is spread evenly over an area (like water sitting evenly across a flat roof).</p>
         `,
         quickCheck: [
-            { q: "A heavy steel beam rests on the very edge of a concrete pillar, rather than the center, causing the pillar to bend outward slightly. What type of load application is this?", opts: ["Axial Load", "Eccentric Load", "Torsional Load"], ans: 1 },
-            { q: "What happens to a structural member when an eccentric load is applied?", opts: ["It experiences only compression.", "It experiences bending, causing compression on one side and tension on the other.", "It distributes the weight perfectly evenly."], ans: 1 }
+            { 
+                q: "A heavy steel beam rests on the very edge of a concrete pillar, rather than the center, causing the pillar to bend outward slightly. What type of load application is this?", 
+                opts: ["Axial Load", "Eccentric Load", "Torsional Load"], 
+                ans: 1,
+                coaching: "Axial loads go straight down the center, and torsional loads involve twisting. Because this weight sits off-center and induces a bending stress, it is an <strong>Eccentric Load</strong>."
+            },
+            { 
+                q: "What happens to a structural member when an eccentric load is applied?", 
+                opts: ["It experiences only compression.", "It experiences bending, causing compression on one side and tension on the other.", "It distributes the weight perfectly evenly."], 
+                ans: 1,
+                coaching: "An eccentric load pushes down unevenly. This forces the member to bend, which crushes (<strong>compression</strong>) the loaded side while stretching (<strong>tension</strong>) the opposite side, rapidly weakening the structural integrity."
+            }
         ]
     },
     {
         id: 3,
         title: "Module 4: Fueling the Collapse (Fire Loads & HRR)",
         text: `
-            <p>When a building is combustible, the building itself is a load—a <strong>Fire Load</strong>. This represents the total amount of potential energy (heat) available to burn.</p>
-            <p>Modern fire protection relies on the <strong>Heat Release Rate (HRR)</strong>. HRR is the <em>rate</em> at which the potential energy is released, typically measured in Kilowatts (KW) or Megawatts (MW). The HRR dictates how fast the fire will grow and whether a room will reach flashover.</p>
+            <p>When a building is combustible, the building itself is a load—a <strong>Fire Load</strong>. The fire load represents the total amount of potential energy (heat) available to burn in a given space.</p>
+            
+            <h3>Potential Energy vs. Rate of Release</h3>
+            <p>Understanding the difference between total Fire Load and <strong>Heat Release Rate (HRR)</strong> is critical for survival. Fire load is the total fuel available, usually measured in British thermal units (BTUs). HRR is the <em>speed</em> at which that energy is released, measured in Kilowatts (KW) or Megawatts (MW).</p>
+            <p>Think of it like a vehicle's fuel tank. A 20-gallon tank of gas holds a massive amount of potential energy (Fire Load). If you run the engine at idle, the energy is released slowly. If you cut the fuel line and ignite it all at once, the total energy is exactly the same, but the massive <em>rate of release</em> (HRR) creates a disastrous explosion.</p>
+            
+            <h3>Material Chemistry: Wood vs. Plastics</h3>
+            <p>Not all fire loads are created equal. Ordinary combustibles like wood and paper hold approximately 8,000 BTUs per pound. Modern plastics, polyurethane foams, and combustible liquids hold roughly <strong>16,000 BTUs per pound</strong>. A living room full of synthetic furniture doesn't just burn differently; it physically contains double the potential energy per pound compared to a legacy room filled with solid wood furniture.</p>
+            
+            <h3>Surface Area and HRR</h3>
+            <p>The physical shape of the fuel drastically alters the HRR. A 5-pound chunk of solid heavy timber will burn slowly because only the outer surface is exposed to oxygen. If you take that exact same 5 pounds of wood and turn it into thin wood paneling or wood chips, the total fire load (BTUs) remains identical. However, the massive increase in surface area means the material will burn exponentially faster, producing a severely high Heat Release Rate.</p>
+            <p>The widespread use of modern plastics combined with lightweight, high-surface-area building materials guarantees an aggressively high HRR, drastically reducing the time we have before flashover or structural collapse.</p>
             <img src="images/hrr_graph.jpg" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
-            <p>The widespread use of modern plastics and polyurethane foams means that today's fire loads have exceptionally high Heat Release Rates compared to legacy wood furnishings. High HRR means a faster attack on the gravity resistance system.</p>
         `,
         quickCheck: [
-            { q: "What does the term 'Fire Load' represent?", opts: ["The weight of water applied.", "The total amount of potential energy available to burn.", "The amount of structural members resisting gravity."], ans: 1 },
-            { q: "Why is Heat Release Rate (HRR) more critical to fire growth than just total fuel weight?", opts: ["It measures the rate at which energy is released.", "It calculates the dead load of the smoke.", "It determines the safety factor of materials."], ans: 0 }
+            { 
+                q: "What does the term 'Fire Load' represent?", 
+                opts: ["The weight of water applied by master streams.", "The total amount of potential energy (heat) available to burn.", "The rate at which a fire spreads across a ceiling."], 
+                ans: 1, 
+                coaching: "While water weight is a live load, the <strong>Fire Load</strong> specifically refers to the total amount of combustible potential energy in the space, including both the contents and the building materials themselves."
+            },
+            { 
+                q: "Why is Heat Release Rate (HRR) more critical to predicting flashover than just calculating the total weight of the fuel?", 
+                opts: ["It measures the rate at which energy is released, driving rapid temperature rise.", "It calculates the dead load of the smoke.", "It determines the safety factor of the building materials."], 
+                ans: 0, 
+                coaching: "Two rooms can have the exact same total weight of fuel, but if one room is filled with high-surface-area materials that release energy rapidly (<strong>high HRR</strong>), that room will flash over much faster."
+            },
+            {
+                q: "If you compare 10 pounds of ordinary solid wood furniture to 10 pounds of modern polyurethane foam and plastics, how do their potential heat yields compare?",
+                opts: ["The wood yields twice as much heat.", "They yield the exact same amount of heat because they weigh the same.", "The plastics yield roughly double the amount of heat (BTUs)."],
+                ans: 2,
+                coaching: "Modern plastics and combustible liquids hold roughly 16,000 Btu/lb, which is <strong>double</strong> the 8,000 Btu/lb found in ordinary wood and paper."
+            },
+            {
+                q: "Why does a 10-pound sheet of thin plywood burn significantly faster than a 10-pound solid block of heavy timber?",
+                opts: ["The plywood is an impact load.", "The plywood has significantly more surface area exposed to oxygen.", "The heavy timber contains more BTUs per pound."],
+                ans: 1,
+                coaching: "Both have the same total fire load (BTUs), but the thin plywood has vastly more <strong>surface area</strong>. More surface area exposed to oxygen leads to a drastically higher Heat Release Rate."
+            }
         ]
     },
     {
