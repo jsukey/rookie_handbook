@@ -286,67 +286,52 @@ function loadModule(id) {
 
 function renderContent(mod) {
     const contentWrapper = document.getElementById('content-wrapper');
+    
     contentWrapper.innerHTML = `
         <h1 class="module-title">${mod.title}</h1>
+        
         <div class="audio-control-container" id="audio-toggle">
             <svg class="play-icon" id="audio-icon" viewBox="0 0 24 24">
                 <path id="play-path" d="M8 5v14l11-7z"/>
             </svg>
             <span class="audio-text" id="audio-status">Listen to Module</span>
         </div>
+
+        <audio id="audio-player" style="display:none;"></audio>
+
         <div class="module-text">${mod.text}</div>
+
         <div class="quiz-section" id="quiz-container">
             <h3>Quick Check</h3>
             <div id="quiz-question-wrapper"></div>
         </div>
     `;
 
+    // Re-bind the global audioPlayer variable to the new element
+    audioPlayer = document.getElementById('audio-player');
+
     const audioToggle = document.getElementById('audio-toggle');
     const audioPath = document.getElementById('play-path');
     const audioStatus = document.getElementById('audio-status');
 
     audioToggle.addEventListener('click', () => {
-    const audioUrl = `audio/module_${mod.id}.mp3`;
+        const audioUrl = `audio/module_${mod.id}.mp3`;
+        if (!audioPlayer.src.includes(audioUrl)) {
+            audioPlayer.src = audioUrl;
+        }
 
-    // Only set source if it's different or empty
-    if (!audioPlayer.src.includes(audioUrl)) {
-        audioPlayer.src = audioUrl;
-    }
-    
-    if (audioPlayer.paused) {
-        audioPlayer.play().catch(e => console.error("Playback failed:", e));
-        audioStatus.textContent = "Pause Lesson";
-        audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
-    } else {
-        audioPlayer.pause();
-        audioStatus.textContent = "Resume Lesson";
-        audioPath.setAttribute("d", "M8 5v14l11-7z");
-    }
-});
-
-    // Note: REMOVE the audioPlayer.addEventListener('error'...) block from this function
-    // It is now handled globally in init()
-
-    audioPlayer.onended = () => {
-        audioStatus.textContent = "Listen Again";
-        audioPath.setAttribute("d", "M8 5v14l11-7z");
-    };
-
-    const qcContainer = document.getElementById('qc-questions');
-    mod.quickCheck.forEach((q, qIndex) => {
-        const qDiv = document.createElement('div');
-        qDiv.className = 'quiz-question';
-        qDiv.innerHTML = `<h4>${qIndex + 1}. ${q.q}</h4>`;
-        q.opts.forEach((opt, oIndex) => {
-            const label = document.createElement('label');
-            label.className = 'quiz-option';
-            label.innerHTML = `<input type="radio" name="qc_${mod.id}_${qIndex}" value="${oIndex}"> ${opt}`;
-            label.addEventListener('change', () => evaluateQuickCheck(mod));
-            qDiv.appendChild(label);
-        });
-        qcContainer.appendChild(qDiv);
+        if (audioPlayer.paused) {
+            audioPlayer.play().catch(e => console.warn("Audio blocked:", e));
+            audioStatus.textContent = "Pause Lesson";
+            audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
+        } else {
+            audioPlayer.pause();
+            audioStatus.textContent = "Resume Lesson";
+            audioPath.setAttribute("d", "M8 5v14l11-7z");
+        }
     });
-   displayQuizQuestion(mod);
+
+    displayQuizQuestion(mod);
 }
 
 function evaluateQuickCheck(mod) {
@@ -456,6 +441,7 @@ function evaluateExam() {
     resultsDiv.innerHTML = feedbackHTML;
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
+
 function displayQuizQuestion(mod) {
     const wrapper = document.getElementById('quiz-question-wrapper');
     const question = mod.quickCheck[currentQuizIndex];
@@ -463,18 +449,18 @@ function displayQuizQuestion(mod) {
 
     wrapper.innerHTML = `
         <div class="quiz-question active">
-            <p class="body-2" style="color: var(--text-muted)">Question ${currentQuizIndex + 1} of ${totalQuestions}</p>
-            <h4>${question.q}</h4>
-            <div id="options-container">
+            <p class="body-2" style="color: var(--text-muted); margin-bottom: 8px;">Question ${currentQuizIndex + 1} of ${totalQuestions}</p>
+            <h4 style="margin-bottom: 16px;">${question.q}</h4>
+            <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;">
                 ${question.opts.map((opt, i) => `
-                    <label class="quiz-option" id="opt-label-${i}">
-                        <input type="radio" name="quiz-opt" value="${i}"> ${opt}
+                    <label class="quiz-option" id="opt-label-${i}" style="padding: 12px; border: 1px solid #dadce0; border-radius: 8px; cursor: pointer; display: block;">
+                        <input type="radio" name="quiz-opt" value="${i}" style="margin-right: 8px;"> ${opt}
                     </label>
                 `).join('')}
             </div>
-            <div id="quiz-feedback" class="feedback-banner" style="display:none; margin-top: 1rem;"></div>
-            <button id="next-quiz-btn" class="btn btn-primary" style="display:none; margin-top: 1rem; width: 100%;">
-                ${currentQuizIndex + 1 === totalQuestions ? 'Complete Module' : 'Next Question'}
+            <div id="quiz-feedback" class="feedback-banner" style="display:none; margin-top: 20px;"></div>
+            <button id="next-quiz-btn" class="btn btn-primary" style="display:none; margin-top: 20px; width: 100%;">
+                ${currentQuizIndex + 1 === totalQuestions ? 'Finish Module' : 'Next Question'}
             </button>
         </div>
     `;
@@ -484,43 +470,51 @@ function displayQuizQuestion(mod) {
     const nextBtn = document.getElementById('next-quiz-btn');
 
     options.forEach(opt => {
-    opt.addEventListener('change', (e) => {
-        const selected = parseInt(e.target.value);
-        const isCorrect = selected === question.ans;
-        
-        options.forEach(input => input.disabled = true);
+        opt.addEventListener('change', (e) => {
+            const selected = parseInt(e.target.value);
+            const isCorrect = selected === question.ans;
+            
+            options.forEach(input => input.disabled = true);
 
-        // Visual cues for right/wrong
-        document.getElementById(`opt-label-${selected}`).classList.add(isCorrect ? 'correct' : 'incorrect');
-        if (!isCorrect) {
-            document.getElementById(`opt-label-${question.ans}`).classList.add('correct');
-        }
+            // Apply brand colors to labels
+            const selectedLabel = document.getElementById(`opt-label-${selected}`);
+            const correctLabel = document.getElementById(`opt-label-${question.ans}`);
 
-        // Show Coaching Micro-Lesson
-        feedback.style.display = 'block';
-        feedback.style.backgroundColor = isCorrect ? '#e6f4ea' : '#fce8e6';
-        feedback.style.color = isCorrect ? 'var(--success)' : 'var(--error)';
-        
-        // Detailed feedback header
-        const header = isCorrect 
-            ? `<strong>Correct!</strong>` 
-            : `<strong>Not Quite.</strong> The correct answer is <em>${question.opts[question.ans]}</em>.`;
+            if (isCorrect) {
+                selectedLabel.style.borderColor = '#1E8E3E';
+                selectedLabel.style.backgroundColor = '#e6f4ea';
+            } else {
+                selectedLabel.style.borderColor = '#D93025';
+                selectedLabel.style.backgroundColor = '#fce8e6';
+                correctLabel.style.borderColor = '#1E8E3E';
+                correctLabel.style.borderWidth = '2px';
+            }
 
-        feedback.innerHTML = `
-            <div style="margin-bottom: 8px;">${header}</div>
-            <div style="font-size: 0.9rem; line-height: 1.4;">${question.coaching}</div>
-        `;
+            // Coaching Micro-Lesson
+            feedback.style.display = 'block';
+            feedback.style.padding = '16px';
+            feedback.style.borderRadius = '8px';
+            feedback.style.borderLeft = `5px solid ${isCorrect ? '#1E8E3E' : '#D93025'}`;
+            feedback.style.backgroundColor = isCorrect ? '#f1f8f3' : '#fef1f0';
 
-        nextBtn.style.display = 'block';
+            const header = isCorrect 
+                ? `<span style="color: #1E8E3E; font-weight: bold;">Correct!</span>` 
+                : `<span style="color: #D93025; font-weight: bold;">Not Quite.</span> The correct answer is <strong>${question.opts[question.ans]}</strong>.`;
+
+            feedback.innerHTML = `
+                <div style="margin-bottom: 8px;">${header}</div>
+                <div style="font-size: 0.95rem; color: #202124;">${question.coaching}</div>
+            `;
+
+            nextBtn.style.display = 'block';
+        });
     });
-});
 
     nextBtn.addEventListener('click', () => {
         if (currentQuizIndex + 1 < totalQuestions) {
             currentQuizIndex++;
             displayQuizQuestion(mod);
         } else {
-            // Module Finished
             handleModuleComplete(mod);
         }
     });
