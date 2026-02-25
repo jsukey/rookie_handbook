@@ -78,7 +78,7 @@ const lessonData = [
                 q: "A crew is flowing a master stream onto a flat commercial roof. What type of load is rapidly accumulating?", 
                 opts: ["Dead Load", "Live Load", "Impact Load"], 
                 ans: 1,
-                coaching: "Dead loads are permanent parts of the building, and impact loads are sudden violent strikes. Water accumulating on a roof is a massive, shifting <strong>Live Load<s/trong> that the roof was likely never designed to hold."
+                coaching: "Dead loads are permanent parts of the building, and impact loads are sudden violent strikes. Water accumulating on a roof is a massive, shifting <strong>Live Load</strong> that the roof was likely never designed to hold."
             },
             { 
                 q: "A commercial building undergoes a renovation, and a massive new air conditioning chiller is permanently installed on the roof. This increases the structure's:", 
