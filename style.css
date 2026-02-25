@@ -163,11 +163,12 @@ body {
 .quiz-option.incorrect { background: #fce8e6; border-color: var(--error); }
 
 .feedback-banner {
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 8px;
-    margin-top: 1rem;
-    font-weight: 500;
-    display: none;
+    border-left: 5px solid; /* Color handled by JS */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease-in;
 }
 
 /* Buttons */
