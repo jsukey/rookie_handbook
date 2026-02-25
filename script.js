@@ -4,37 +4,55 @@
  */
 
 const lessonData = [
-  {
-       id: 0,
-       title: "Module 1: The Gravity Resistance System",
-       text: `...`, // Keep your existing text here
-       quickCheck: [
-           { 
-               q: "You notice a heavy steel beam bowing in the middle under the weight of the floor above. The bottom of that beam is being stretched. What force is acting on the bottom of the beam?", 
-               opts: ["Compression", "Tension", "Torsion"], 
-               ans: 1,
-               coaching: "It isn't Compression (which is a crushing force) or Torsion (which is twisting). In a loaded beam, the top 'crushes' together while the bottom stretches. That stretching force is **Tension**."
-           },
-           { 
-               q: "A fire burns through a critical wooden column in the basement, causing the first floor to drop. What system just failed?", 
-               opts: ["The lateral stability matrix", "The composite transmission path", "The gravity resistance system"], 
-               ans: 2,
-               coaching: "While lateral stability handles wind, the **Gravity Resistance System** is the specific network of columns and beams that fights the constant downward pull of the earth. When a column goes, the path to the ground is broken."
-           },
-           { 
-               q: "You observe a steel I-beam in the fire building that is visibly sagging but has not yet snapped. This visible 'sag' or change in shape is known as:", 
-               opts: ["Internal Stress", "Structural Strain", "Torsional Shear"], 
-               ans: 1,
-               coaching: "Stress is the invisible 'fight' happening inside the atoms of the steel. **Strain** is the physical, visible result of that fight. If you can see the sag with your eyes, you are looking at Strain."
-           },
-           { 
-               q: "As a fire increases the temperature of a structural member, what happens to its internal ability to resist stress?", 
-               opts: ["It increases as the material expands.", "It remains constant until the melting point.", "It decreases as molecular bonds are weakened by heat."], 
-               ans: 2,
-               coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly **decreases** the material's internal resistance to stress, leading to collapse long before the melting point."
-           }
-       ]
-   },
+{
+        id: 0,
+        title: "Module 1: The Gravity Resistance System",
+        text: `
+            <p>Look up at the ceiling of the apparatus bay. What is keeping that roof from crushing the rigs? It isn't magic; it is the <strong>gravity resistance system</strong>. Every building is in a constant, invisible battle against the earth's pull. Structural elements and their connections form a continuous path that transfers weight safely to the ground.</p>
+            <p>When a structure catches fire, it is not just burning; it is losing its ability to fight gravity. When the gravity resistance system is compromised, gravity wins.</p>
+            
+            <h3>The Forces of Destruction</h3>
+            <p>To read a building, you must first understand the four invisible forces tearing at it:</p>
+            <ul>
+                <li><strong>Compression:</strong> A crushing force. Imagine the weight of a heavy rooftop AC unit pushing straight down on a concrete pillar. The pillar is being squeezed.</li>
+                <li><strong>Tension:</strong> A stretching force. Think of a crane's cable lifting a steel beam, or the bottom edge of a loaded floor joist bowing downward. It is being pulled apart.</li>
+                <li><strong>Shear:</strong> A tearing or slicing force acting in opposite directions. Imagine a heavy beam resting on a brick wall; the weight of the beam wants to slide down, while the wall pushes up. The connection point is under shear stress.</li>
+                <li><strong>Torsion:</strong> A twisting force. Picture a large billboard on a single steel pole during a windstorm. The wind pushes the sign, twisting the pole.</li>
+            </ul>
+            <img src="images/forces.png" alt="Compression, Tension, Shear, and Torsion" class="instructive-image">
+
+            <h3>Stress and Strain: The Material Response</h3>
+            <p>While forces act <em>on</em> a building, <strong>Stress</strong> and <strong>Strain</strong> happen <em>inside</em> the materials themselves.</p>
+            <p><strong>Stress</strong> is the internal resistance of a material to an external force. It is measured as force per unit area. Think of it as how hard the atoms of a steel beam are "fighting back" to stay together when a load is applied. When heat from a fire weakens these atomic bonds, the material's ability to resist stress drops significantly.</p>
+            <p><strong>Strain</strong> is the actual physical deformation or change in shape that occurs because of stress. If you see a steel beam sagging (deflecting) or a wooden floor joist bowing, you are looking at <strong>Strain</strong>. If the strain exceeds the material's elastic limit, the deformation becomes permanent, leading to failure.</p>
+        `,
+        quickCheck: [
+            { 
+                q: "You notice a heavy steel beam bowing in the middle under the weight of the floor above. The bottom of that beam is being stretched. What force is acting on the bottom of the beam?", 
+                opts: ["Compression", "Tension", "Torsion"], 
+                ans: 1,
+                coaching: "It isn't Compression (which is a crushing force) or Torsion (which is twisting). In a loaded beam, the top 'crushes' together while the bottom stretches. That stretching force is **Tension**."
+            },
+            { 
+                q: "A fire burns through a critical wooden column in the basement, causing the first floor to drop. What system just failed?", 
+                opts: ["The lateral stability matrix", "The composite transmission path", "The gravity resistance system"], 
+                ans: 2,
+                coaching: "While lateral stability handles wind, the **Gravity Resistance System** is the specific network of columns and beams that fights the constant downward pull of the earth. When a column goes, the path to the ground is broken."
+            },
+            { 
+                q: "You observe a steel I-beam in the fire building that is visibly sagging but has not yet snapped. This visible 'sag' or change in shape is known as:", 
+                opts: ["Internal Stress", "Structural Strain", "Torsional Shear"], 
+                ans: 1,
+                coaching: "Stress is the invisible 'fight' happening inside the atoms of the steel. **Strain** is the physical, visible result of that fight. If you can see the sag with your eyes, you are looking at Strain."
+            },
+            { 
+                q: "As a fire increases the temperature of a structural member, what happens to its internal ability to resist stress?", 
+                opts: ["It increases as the material expands.", "It remains constant until the melting point.", "It decreases as molecular bonds are weakened by heat."], 
+                ans: 2,
+                coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly **decreases** the material's internal resistance to stress, leading to collapse long before the melting point."
+            }
+        ]
+    },
     {
         id: 1,
         title: "Module 2: The Weight of the World (Loads)",
@@ -171,11 +189,12 @@ const examQuestions = [
     { q: "Sand-lime mortar hazard in old buildings:", opts: ["Highly flammable", "Reacts with CO", "Water-soluble/washable", "Explosive"], ans: 2 }
 ];
 
+
 // --- Application State ---
 let currentModuleId = 0;
 let unlockedModules = [0];
-let currentQuizIndex = 0; // Tracks the new one-at-a-time quiz progress
-const audioPlayer = document.getElementById('lesson-audio'); // Keeps your original const!
+let currentQuizIndex = 0; 
+const audioPlayer = document.getElementById('lesson-audio'); 
 
 // --- Initialization ---
 function init() {
@@ -214,7 +233,6 @@ function init() {
         }
     });
     
-    // GLOBAL AUDIO ERROR LISTENER
     audioPlayer.addEventListener('error', () => {
         const audioStatus = document.getElementById('audio-status');
         if (audioPlayer.src && !audioPlayer.src.endsWith('/')) {
@@ -263,7 +281,7 @@ function renderSidebar() {
 
 function loadModule(id) {
     const mod = lessonData[id];
-    currentQuizIndex = 0; // Reset quiz progress for the new module
+    currentQuizIndex = 0; 
     renderSidebar();
     window.scrollTo(0, 0);
 
@@ -329,7 +347,6 @@ function renderContent(mod) {
         audioPath.setAttribute("d", "M8 5v14l11-7z");
     };
 
-    // Hands control over to the one-at-a-time logic
     displayQuizQuestion(mod);
 }
 
@@ -367,7 +384,6 @@ function displayQuizQuestion(mod) {
             
             options.forEach(input => input.disabled = true);
 
-            // Apply brand colors
             const selectedLabel = document.getElementById(`opt-label-${selected}`);
             const correctLabel = document.getElementById(`opt-label-${question.ans}`);
 
@@ -381,7 +397,6 @@ function displayQuizQuestion(mod) {
                 correctLabel.style.borderWidth = '2px';
             }
 
-            // Coaching Micro-Lesson
             feedback.style.display = 'block';
             feedback.style.padding = '16px';
             feedback.style.borderRadius = '8px';
@@ -392,7 +407,6 @@ function displayQuizQuestion(mod) {
                 ? `<span style="color: #1E8E3E; font-weight: bold;">✅ Correct!</span>` 
                 : `<span style="color: #D93025; font-weight: bold;">❌ Not Quite.</span> The correct answer is <strong>${question.opts[question.ans]}</strong>.`;
 
-            // Pulls the 'coaching' property from your lessonData
             feedback.innerHTML = `
                 <div style="margin-bottom: 8px;">${header}</div>
                 <div style="font-size: 0.95rem; color: #202124;">${question.coaching || (isCorrect ? "Great job." : "")}</div>
