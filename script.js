@@ -174,7 +174,8 @@ const examQuestions = [
 // --- Application State ---
 let currentModuleId = 0;
 let unlockedModules = [0];
-const audioPlayer = document.getElementById('lesson-audio');
+let currentQuizIndex = 0; // Tracks the new one-at-a-time quiz progress
+const audioPlayer = document.getElementById('lesson-audio'); // Keeps your original const!
 
 // --- Initialization ---
 function init() {
@@ -212,10 +213,10 @@ function init() {
             loadModule(currentModuleId);
         }
     });
+    
     // GLOBAL AUDIO ERROR LISTENER
     audioPlayer.addEventListener('error', () => {
         const audioStatus = document.getElementById('audio-status');
-        // Ignore error if we are just resetting the source to empty
         if (audioPlayer.src && !audioPlayer.src.endsWith('/')) {
             if (audioStatus) audioStatus.textContent = "Error: File Not Found";
         }
@@ -262,11 +263,10 @@ function renderSidebar() {
 
 function loadModule(id) {
     const mod = lessonData[id];
-    currentQuizIndex = 0;
+    currentQuizIndex = 0; // Reset quiz progress for the new module
     renderSidebar();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 
-    // Standard MP3 reset
     audioPlayer.pause();
     audioPlayer.src = ""; 
 
@@ -286,29 +286,21 @@ function loadModule(id) {
 
 function renderContent(mod) {
     const contentWrapper = document.getElementById('content-wrapper');
-    
     contentWrapper.innerHTML = `
         <h1 class="module-title">${mod.title}</h1>
-        
         <div class="audio-control-container" id="audio-toggle">
             <svg class="play-icon" id="audio-icon" viewBox="0 0 24 24">
                 <path id="play-path" d="M8 5v14l11-7z"/>
             </svg>
             <span class="audio-text" id="audio-status">Listen to Module</span>
         </div>
-
-        <audio id="audio-player" style="display:none;"></audio>
-
         <div class="module-text">${mod.text}</div>
-
+        
         <div class="quiz-section" id="quiz-container">
             <h3>Quick Check</h3>
             <div id="quiz-question-wrapper"></div>
         </div>
     `;
-
-    // Re-bind the global audioPlayer variable to the new element
-    audioPlayer = document.getElementById('audio-player');
 
     const audioToggle = document.getElementById('audio-toggle');
     const audioPath = document.getElementById('play-path');
@@ -316,12 +308,13 @@ function renderContent(mod) {
 
     audioToggle.addEventListener('click', () => {
         const audioUrl = `audio/module_${mod.id}.mp3`;
+
         if (!audioPlayer.src.includes(audioUrl)) {
             audioPlayer.src = audioUrl;
         }
-
+        
         if (audioPlayer.paused) {
-            audioPlayer.play().catch(e => console.warn("Audio blocked:", e));
+            audioPlayer.play().catch(e => console.error("Playback failed:", e));
             audioStatus.textContent = "Pause Lesson";
             audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
         } else {
@@ -331,46 +324,107 @@ function renderContent(mod) {
         }
     });
 
+    audioPlayer.onended = () => {
+        audioStatus.textContent = "Listen Again";
+        audioPath.setAttribute("d", "M8 5v14l11-7z");
+    };
+
+    // Hands control over to the one-at-a-time logic
     displayQuizQuestion(mod);
 }
 
-function evaluateQuickCheck(mod) {
-    let allCorrect = true;
-    let allAnswered = true;
-    const btnNext = document.getElementById('btn-next');
+function displayQuizQuestion(mod) {
+    const wrapper = document.getElementById('quiz-question-wrapper');
+    const question = mod.quickCheck[currentQuizIndex];
+    const totalQuestions = mod.quickCheck.length;
 
-    mod.quickCheck.forEach((q, qIndex) => {
-        const selected = document.querySelector(`input[name="qc_${mod.id}_${qIndex}"]:checked`);
-        const options = document.querySelectorAll(`input[name="qc_${mod.id}_${qIndex}"]`);
-        if (!selected) { allAnswered = false; return; }
-        options.forEach(opt => {
-            opt.parentElement.classList.remove('correct', 'incorrect');
-            if (opt.checked) {
-                if (parseInt(opt.value) === q.ans) opt.parentElement.classList.add('correct');
-                else { opt.parentElement.classList.add('incorrect'); allCorrect = false; }
+    wrapper.innerHTML = `
+        <div class="quiz-question active">
+            <p class="body-2" style="color: var(--text-muted); margin-bottom: 8px;">Question ${currentQuizIndex + 1} of ${totalQuestions}</p>
+            <h4 style="margin-bottom: 16px;">${question.q}</h4>
+            <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;">
+                ${question.opts.map((opt, i) => `
+                    <label class="quiz-option" id="opt-label-${i}" style="padding: 12px; border: 1px solid #dadce0; border-radius: 8px; cursor: pointer; display: block;">
+                        <input type="radio" name="quiz-opt" value="${i}" style="margin-right: 8px;"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+            <div id="quiz-feedback" class="feedback-banner" style="display:none; margin-top: 20px;"></div>
+            <button id="next-quiz-btn" class="btn btn-primary" style="display:none; margin-top: 20px; width: 100%;">
+                ${currentQuizIndex + 1 === totalQuestions ? 'Finish Module' : 'Next Question'}
+            </button>
+        </div>
+    `;
+
+    const options = document.querySelectorAll('input[name="quiz-opt"]');
+    const feedback = document.getElementById('quiz-feedback');
+    const nextBtn = document.getElementById('next-quiz-btn');
+
+    options.forEach(opt => {
+        opt.addEventListener('change', (e) => {
+            const selected = parseInt(e.target.value);
+            const isCorrect = selected === question.ans;
+            
+            options.forEach(input => input.disabled = true);
+
+            // Apply brand colors
+            const selectedLabel = document.getElementById(`opt-label-${selected}`);
+            const correctLabel = document.getElementById(`opt-label-${question.ans}`);
+
+            if (isCorrect) {
+                selectedLabel.style.borderColor = '#1E8E3E';
+                selectedLabel.style.backgroundColor = '#e6f4ea';
+            } else {
+                selectedLabel.style.borderColor = '#D93025';
+                selectedLabel.style.backgroundColor = '#fce8e6';
+                correctLabel.style.borderColor = '#1E8E3E';
+                correctLabel.style.borderWidth = '2px';
             }
+
+            // Coaching Micro-Lesson
+            feedback.style.display = 'block';
+            feedback.style.padding = '16px';
+            feedback.style.borderRadius = '8px';
+            feedback.style.borderLeft = `5px solid ${isCorrect ? '#1E8E3E' : '#D93025'}`;
+            feedback.style.backgroundColor = isCorrect ? '#f1f8f3' : '#fef1f0';
+
+            const header = isCorrect 
+                ? `<span style="color: #1E8E3E; font-weight: bold;">✅ Correct!</span>` 
+                : `<span style="color: #D93025; font-weight: bold;">❌ Not Quite.</span> The correct answer is <strong>${question.opts[question.ans]}</strong>.`;
+
+            // Pulls the 'coaching' property from your lessonData
+            feedback.innerHTML = `
+                <div style="margin-bottom: 8px;">${header}</div>
+                <div style="font-size: 0.95rem; color: #202124;">${question.coaching || (isCorrect ? "Great job." : "")}</div>
+            `;
+
+            nextBtn.style.display = 'block';
         });
     });
 
-    const feedback = document.getElementById('qc-feedback');
-    if (allAnswered) {
-        feedback.style.display = 'block';
-        if (allCorrect) {
-            feedback.style.backgroundColor = '#e6f4ea';
-            feedback.style.color = '#1e8e3e';
-            feedback.textContent = 'Correct! Next module unlocked.';
-            btnNext.classList.remove('disabled');
-            if (!unlockedModules.includes(mod.id + 1)) {
-                unlockedModules.push(mod.id + 1);
-                renderSidebar();
-            }
+    nextBtn.addEventListener('click', () => {
+        if (currentQuizIndex + 1 < totalQuestions) {
+            currentQuizIndex++;
+            displayQuizQuestion(mod);
         } else {
-            feedback.style.backgroundColor = '#fce8e6';
-            feedback.style.color = '#d93025';
-            feedback.textContent = 'Review and try again.';
-            btnNext.classList.add('disabled');
+            handleModuleComplete(mod);
         }
+    });
+}
+
+function handleModuleComplete(mod) {
+    const feedback = document.getElementById('quiz-feedback');
+    const nextBtn = document.getElementById('next-quiz-btn');
+    const btnNext = document.getElementById('btn-next');
+
+    feedback.innerHTML = `<p style="color: #1E8E3E; font-weight:bold;">✅ Module Complete!</p><p>You have unlocked the next lesson.</p>`;
+    nextBtn.style.display = 'none';
+    
+    if (!unlockedModules.includes(mod.id + 1)) {
+        unlockedModules.push(mod.id + 1);
+        renderSidebar();
     }
+    btnNext.classList.remove('disabled');
 }
 
 function renderExam() {
