@@ -52,20 +52,52 @@ const lessonData = [
                 coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly **decreases** the material's internal resistance to stress, leading to collapse long before the melting point."
             }
         ]
-    },
-    {
+    },{
         id: 1,
         title: "Module 2: The Weight of the World (Loads)",
         text: `
-            <p>Forces don't happen in a vacuum. They are created by <strong>loads</strong>. A load is simply any weight that the building must support.</p>
-            <p>First, the building has to support itself. This is the <strong>Dead Load</strong> (or self-weight). It is static, permanent, and unchanging. The steel beams, the concrete floors, the roof decking, and that massive HVAC unit bolted to the roof—these are all dead loads.</p>
-            <p>But buildings aren't empty. People move in, bring heavy safes, stack inventory to the ceiling, and park vehicles inside. Mother nature adds snow to the roof. These transient, changing weights are <strong>Live Loads</strong>. As firefighters, we are a massive live load. When we stretch a line and open a 1000-gpm master stream, we are adding over 4 tons of water weight to that structure <em>every single minute</em>.</p>
-            <p>Finally, there are <strong>Impact Loads</strong>. These are violent, sudden forces delivered in a short time. A car crashing into a load-bearing wall, or an explosion inside a structure. Impact loads cause disastrously high stresses because the building doesn't have time to distribute the force evenly, often leading to progressive collapse.</p>
-            <img src="images/loads.jpg" alt="Dead, Live, and Impact Loads" class="instructive-image">
+            <p>Forces don't happen in a vacuum. They are created by <strong>loads</strong>. A load is simply any weight or force that the building must support.</p>
+            
+            <h3>Dead Loads: The Building's Self-Weight</h3>
+            <p>First, the building has to support itself. This is the <strong>Dead Load</strong>. It is static, permanent, and unchanging. The steel beams, the concrete floors, the roof decking, and that massive HVAC unit bolted to the roof—these are all dead loads. Buildings are engineered to carry a specific dead load. A major hazard we face is when older buildings are renovated—like adding a new heavy roof directly over an old one—which dangerously maxes out the original dead load capacity.</p>
+            
+            <h3>Live Loads: The Transient Weights</h3>
+            <p>Buildings aren't empty. Think of the commercial structures over by Midway Mall. Tenants move in, bring heavy safes, stack inventory to the ceiling, and park vehicles inside. Mother nature adds snow to the roof. These transient, changing weights are <strong>Live Loads</strong>.</p>
+            <p>As firefighters, we are a massive live load. When we stretch a line and open a 1000-gpm master stream, we are adding over 4 tons of water weight to that structure <em>every single minute</em>. That water doesn't disappear; it pools and soaks into materials, drastically increasing the live load on a fire-weakened floor.</p>
+            
+            <h3>Impact Loads: Sudden Violence</h3>
+            <p><strong>Impact Loads</strong> are violent, sudden forces delivered in a short time. A car crashing into a load-bearing wall, or a partial collapse where a roof falls onto the floor below. Impact loads cause disastrously high stresses because the building doesn't have time to distribute the force evenly, often leading to rapid progressive collapse. Even the force of a solid master stream striking a brick wall is a localized impact load.</p>
+
+            <h3>Lateral Loads: The Sideways Push</h3>
+            <p>Gravity pulls straight down, but buildings also have to fight sideways forces known as <strong>Lateral Loads</strong>. High winds pushing against the broad side of a structure, seismic activity, or even the soil pressing against a basement foundation wall are all lateral loads. If a fire destroys a building's lateral stability (the internal bracing and connections), the building will rack sideways and collapse like a house of cards.</p>
+            
+            <img src="images/loads.jpg" alt="Dead, Live, Impact, and Lateral Loads diagram" class="instructive-image">
         `,
         quickCheck: [
-            { q: "A crew is flowing a master stream onto a flat commercial roof. What type of load is rapidly accumulating?", opts: ["Dead Load", "Live Load", "Impact Load"], ans: 1 },
-            { q: "A commercial building undergoes a renovation, and a massive new air conditioning chiller is permanently installed on the roof. This increases the structure's:", opts: ["Dead Load", "Live Load", "Torsional Load"], ans: 0 }
+            { 
+                q: "A crew is flowing a master stream onto a flat commercial roof. What type of load is rapidly accumulating?", 
+                opts: ["Dead Load", "Live Load", "Impact Load"], 
+                ans: 1,
+                coaching: "Dead loads are permanent parts of the building, and impact loads are sudden violent strikes. Water accumulating on a roof is a massive, shifting **Live Load** that the roof was likely never designed to hold."
+            },
+            { 
+                q: "A commercial building undergoes a renovation, and a massive new air conditioning chiller is permanently installed on the roof. This increases the structure's:", 
+                opts: ["Dead Load", "Live Load", "Torsional Load"], 
+                ans: 0,
+                coaching: "Because the chiller is permanently bolted to the structure, it becomes part of the building's self-weight, making it a **Dead Load**. Live loads are movable, and torsion is a twisting force, not a weight category."
+            },
+            { 
+                q: "During a severe storm, high winds push violently against the broad side of a multi-story apartment building. This sideways force is an example of what type of load?", 
+                opts: ["Axial Load", "Lateral Load", "Concentrated Dead Load"], 
+                ans: 1,
+                coaching: "Wind, seismic activity, and soil pressure push sideways, creating **Lateral Loads**. An axial load pushes straight down through the center of a column, and dead loads are the static weight of the building itself."
+            },
+            { 
+                q: "While fighting a commercial fire, a heavy rooftop AC unit plunges through the weakened roof and crashes onto the second floor. What type of load did the second floor just experience?", 
+                opts: ["Impact Load", "Suspended Dead Load", "Distributed Live Load"], 
+                ans: 0,
+                coaching: "When a heavy object falls and strikes a surface, it delivers its energy in a fraction of a second, creating a massive **Impact Load**. The floor might have held the unit's static weight if placed gently, but the sudden kinetic energy of the impact causes failure."
+            }
         ]
     },
     {
