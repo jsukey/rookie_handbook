@@ -31,25 +31,25 @@ const lessonData = [
                 q: "You notice a heavy steel beam bowing in the middle under the weight of the floor above. The bottom of that beam is being stretched. What force is acting on the bottom of the beam?", 
                 opts: ["Compression", "Tension", "Torsion"], 
                 ans: 1,
-                coaching: "It isn't Compression (which is a crushing force) or Torsion (which is twisting). In a loaded beam, the top 'crushes' together while the bottom stretches. That stretching force is **Tension**."
+                coaching: "It isn't Compression (which is a crushing force) or Torsion (which is twisting). In a loaded beam, the top 'crushes' together while the bottom stretches. That stretching force is <strong>Tension</strong>."
             },
             { 
                 q: "A fire burns through a critical wooden column in the basement, causing the first floor to drop. What system just failed?", 
                 opts: ["The lateral stability matrix", "The composite transmission path", "The gravity resistance system"], 
                 ans: 2,
-                coaching: "While lateral stability handles wind, the **Gravity Resistance System** is the specific network of columns and beams that fights the constant downward pull of the earth. When a column goes, the path to the ground is broken."
+                coaching: "While lateral stability handles wind, the <strong>Gravity Resistance System</strong> is the specific network of columns and beams that fights the constant downward pull of the earth. When a column goes, the path to the ground is broken."
             },
             { 
                 q: "You observe a steel I-beam in the fire building that is visibly sagging but has not yet snapped. This visible 'sag' or change in shape is known as:", 
                 opts: ["Internal Stress", "Structural Strain", "Torsional Shear"], 
                 ans: 1,
-                coaching: "Stress is the invisible 'fight' happening inside the atoms of the steel. **Strain** is the physical, visible result of that fight. If you can see the sag with your eyes, you are looking at Strain."
+                coaching: "Stress is the invisible 'fight' happening inside the atoms of the steel. <strong>Strain</strong> is the physical, visible result of that fight. If you can see the sag with your eyes, you are looking at Strain."
             },
             { 
                 q: "As a fire increases the temperature of a structural member, what happens to its internal ability to resist stress?", 
                 opts: ["It increases as the material expands.", "It remains constant until the melting point.", "It decreases as molecular bonds are weakened by heat."], 
                 ans: 2,
-                coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly **decreases** the material's internal resistance to stress, leading to collapse long before the melting point."
+                coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly <strong>decreases</strong> the material's internal resistance to stress, leading to collapse long before the melting point."
             }
         ]
     },{
@@ -78,25 +78,25 @@ const lessonData = [
                 q: "A crew is flowing a master stream onto a flat commercial roof. What type of load is rapidly accumulating?", 
                 opts: ["Dead Load", "Live Load", "Impact Load"], 
                 ans: 1,
-                coaching: "Dead loads are permanent parts of the building, and impact loads are sudden violent strikes. Water accumulating on a roof is a massive, shifting **Live Load** that the roof was likely never designed to hold."
+                coaching: "Dead loads are permanent parts of the building, and impact loads are sudden violent strikes. Water accumulating on a roof is a massive, shifting <strong>Live Load<s/trong> that the roof was likely never designed to hold."
             },
             { 
                 q: "A commercial building undergoes a renovation, and a massive new air conditioning chiller is permanently installed on the roof. This increases the structure's:", 
                 opts: ["Dead Load", "Live Load", "Torsional Load"], 
                 ans: 0,
-                coaching: "Because the chiller is permanently bolted to the structure, it becomes part of the building's self-weight, making it a **Dead Load**. Live loads are movable, and torsion is a twisting force, not a weight category."
+                coaching: "Because the chiller is permanently bolted to the structure, it becomes part of the building's self-weight, making it a <strong>Dead Load</strong>. Live loads are movable, and torsion is a twisting force, not a weight category."
             },
             { 
                 q: "During a severe storm, high winds push violently against the broad side of a multi-story apartment building. This sideways force is an example of what type of load?", 
                 opts: ["Axial Load", "Lateral Load", "Concentrated Dead Load"], 
                 ans: 1,
-                coaching: "Wind, seismic activity, and soil pressure push sideways, creating **Lateral Loads**. An axial load pushes straight down through the center of a column, and dead loads are the static weight of the building itself."
+                coaching: "Wind, seismic activity, and soil pressure push sideways, creating <strong>Lateral Loads</strong>. An axial load pushes straight down through the center of a column, and dead loads are the static weight of the building itself."
             },
             { 
                 q: "While fighting a commercial fire, a heavy rooftop AC unit plunges through the weakened roof and crashes onto the second floor. What type of load did the second floor just experience?", 
                 opts: ["Impact Load", "Suspended Dead Load", "Distributed Live Load"], 
                 ans: 0,
-                coaching: "When a heavy object falls and strikes a surface, it delivers its energy in a fraction of a second, creating a massive **Impact Load**. The floor might have held the unit's static weight if placed gently, but the sudden kinetic energy of the impact causes failure."
+                coaching: "When a heavy object falls and strikes a surface, it delivers its energy in a fraction of a second, creating a massive <strong>Impact Load</strong>. The floor might have held the unit's static weight if placed gently, but the sudden kinetic energy of the impact causes failure."
             }
         ]
     },
