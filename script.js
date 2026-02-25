@@ -263,8 +263,9 @@ function renderSidebar() {
 
 function loadModule(id) {
     const mod = lessonData[id];
+    currentQuizIndex = 0;
     renderSidebar();
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
 
     // Standard MP3 reset
     audioPlayer.pause();
@@ -295,11 +296,9 @@ function renderContent(mod) {
             <span class="audio-text" id="audio-status">Listen to Module</span>
         </div>
         <div class="module-text">${mod.text}</div>
-        <div class="quiz-section" id="quick-check-container">
+        <div class="quiz-section" id="quiz-container">
             <h3>Quick Check</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">Answer to unlock progress.</p>
-            <div id="qc-questions"></div>
-            <div id="qc-feedback" class="feedback-banner"></div>
+            <div id="quiz-question-wrapper"></div>
         </div>
     `;
 
@@ -348,6 +347,7 @@ function renderContent(mod) {
         });
         qcContainer.appendChild(qDiv);
     });
+   displayQuizQuestion(mod);
 }
 
 function evaluateQuickCheck(mod) {
@@ -456,6 +456,86 @@ function evaluateExam() {
     }
     resultsDiv.innerHTML = feedbackHTML;
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+function displayQuizQuestion(mod) {
+    const wrapper = document.getElementById('quiz-question-wrapper');
+    const question = mod.quickCheck[currentQuizIndex];
+    const totalQuestions = mod.quickCheck.length;
+
+    wrapper.innerHTML = `
+        <div class="quiz-question active">
+            <p class="body-2" style="color: var(--text-muted)">Question ${currentQuizIndex + 1} of ${totalQuestions}</p>
+            <h4>${question.q}</h4>
+            <div id="options-container">
+                ${question.opts.map((opt, i) => `
+                    <label class="quiz-option" id="opt-label-${i}">
+                        <input type="radio" name="quiz-opt" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+            <div id="quiz-feedback" class="feedback-banner" style="display:none; margin-top: 1rem;"></div>
+            <button id="next-quiz-btn" class="btn btn-primary" style="display:none; margin-top: 1rem; width: 100%;">
+                ${currentQuizIndex + 1 === totalQuestions ? 'Complete Module' : 'Next Question'}
+            </button>
+        </div>
+    `;
+
+    const options = document.querySelectorAll('input[name="quiz-opt"]');
+    const feedback = document.getElementById('quiz-feedback');
+    const nextBtn = document.getElementById('next-quiz-btn');
+
+    options.forEach(opt => {
+        opt.addEventListener('change', (e) => {
+            const selected = parseInt(e.target.value);
+            const isCorrect = selected === question.ans;
+            
+            // Disable all inputs after selection
+            options.forEach(input => input.disabled = true);
+
+            // Style the labels
+            document.getElementById(`opt-label-${selected}`).classList.add(isCorrect ? 'correct' : 'incorrect');
+            if (!isCorrect) {
+                document.getElementById(`opt-label-${question.ans}`).classList.add('correct');
+            }
+
+            // Show Coaching Micro-Lesson
+            feedback.style.display = 'block';
+            feedback.style.backgroundColor = isCorrect ? '#e6f4ea' : '#fce8e6';
+            feedback.style.color = isCorrect ? 'var(--success)' : 'var(--error)';
+            feedback.innerHTML = `
+                <p><strong>${isCorrect ? 'Correct!' : 'Coaching:'}</strong></p>
+                <p>${question.coaching || (isCorrect ? "Great job." : "The correct answer is: " + question.opts[question.ans])}</p>
+            `;
+
+            nextBtn.style.display = 'block';
+        });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentQuizIndex + 1 < totalQuestions) {
+            currentQuizIndex++;
+            displayQuizQuestion(mod);
+        } else {
+            // Module Finished
+            handleModuleComplete(mod);
+        }
+    });
+}
+
+function handleModuleComplete(mod) {
+    const feedback = document.getElementById('quiz-feedback');
+    const nextBtn = document.getElementById('next-quiz-btn');
+    const btnNext = document.getElementById('btn-next');
+
+    feedback.innerHTML = `<p><strong>Module Complete!</strong> You have unlocked the next lesson.</p>`;
+    nextBtn.style.display = 'none';
+    
+    // Unlock next module
+    if (!unlockedModules.includes(mod.id + 1)) {
+        unlockedModules.push(mod.id + 1);
+        renderSidebar();
+    }
+    btnNext.classList.remove('disabled');
 }
 
 init();
