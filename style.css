@@ -144,6 +144,15 @@ body {
     border-top: 4px solid var(--primary);
 }
 
+#quiz-container {
+    background-color: var(--surface);
+    padding: 24px;
+    border-radius: 12px;
+    border-left: 4px solid var(--secondary); /* The Navy "EFD" accent */
+    margin-top: 32px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
 .quiz-question { margin-bottom: 2rem; }
 .quiz-question h4 { margin-bottom: 1rem; font-size: 1.1rem; }
 
