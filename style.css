@@ -163,7 +163,7 @@ body {
     border: 1px solid var(--border);
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 .quiz-option:hover { background: var(--bg-light); }
