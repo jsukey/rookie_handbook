@@ -768,6 +768,10 @@ function handleModuleComplete(mod) {
     const nextBtn = document.getElementById('next-quiz-btn');
     const btnNext = document.getElementById('btn-next');
 
+    // Fix: Explicitly reset the inline styles to a positive state, overwriting the last question's evaluation
+    feedback.style.borderLeft = '5px solid #1E8E3E';
+    feedback.style.backgroundColor = '#f1f8f3';
+
     feedback.innerHTML = `<p style="color: #1E8E3E; font-weight:bold;">Module Complete!</p><p>You have unlocked the next lesson.</p>`;
     nextBtn.style.display = 'none';
     
