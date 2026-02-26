@@ -1,6 +1,9 @@
+/* File: style.css */
+
 :root {
     --primary: #d32f2f;
     --primary-hover: #b71c1c;
+    --secondary: #002244; /* Elyria FD Navy */
     --surface: #ffffff;
     --bg-light: #f8f9fa;
     --text-main: #202124;
@@ -12,7 +15,11 @@
     --shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 body {
     font-family: 'Inter', sans-serif;
@@ -53,6 +60,7 @@ body {
     background: var(--border);
     width: 100%;
 }
+
 .progress-bar {
     height: 100%;
     background: var(--primary);
@@ -98,6 +106,7 @@ body {
     border-bottom: 1px solid var(--border);
     align-items: center;
     gap: 1rem;
+    z-index: 80;
 }
 
 .content-wrapper {
@@ -114,20 +123,24 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Typography Extensions */
 .module-title { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--text-main); }
 .module-text p { margin-bottom: 1.25rem; font-size: 1.05rem; }
 .module-text ul { margin-bottom: 1.25rem; margin-left: 1.5rem; }
 .module-text li { margin-bottom: 0.5rem; }
+.body-2 { font-size: 0.875rem; font-weight: 500; }
 
 /* Images/Diagrams */
 .instructive-image {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.5rem;
-    margin: 2rem 0;
+    margin: 2rem auto;
     text-align: center;
     font-style: italic;
     color: var(--text-muted);
@@ -137,20 +150,12 @@ body {
 /* Quizzes & Quick Checks */
 .quiz-section {
     background: var(--surface);
-    padding: 2rem;
+    padding: 24px;
     border-radius: var(--radius);
-    margin-top: 3rem;
+    margin-top: 32px;
     box-shadow: var(--shadow);
     border-top: 4px solid var(--primary);
-}
-
-#quiz-container {
-    background-color: var(--surface);
-    padding: 24px;
-    border-radius: 12px;
-    border-left: 4px solid var(--secondary); /* The Navy "EFD" accent */
-    margin-top: 32px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--secondary);
 }
 
 .quiz-question { margin-bottom: 2rem; }
@@ -174,7 +179,7 @@ body {
 .feedback-banner {
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 5px solid; /* Color handled by JS */
+    border-left: 5px solid; 
     font-size: 0.95rem;
     line-height: 1.5;
     animation: fadeIn 0.3s ease-in;
@@ -212,13 +217,11 @@ body {
     .sidebar { transform: translateX(-100%); }
     .sidebar.open { transform: translateX(0); box-shadow: 4px 0 15px rgba(0,0,0,0.1); }
     .main-content { margin-left: 0; }
-    .mobile-header { display: flex; }
+    .mobile-header { display: flex; position: sticky; top: 0; z-index: 80; }
     .content-wrapper { padding: 2rem 1.5rem; }
 }
 
 /* --- Material Design Menu Button Styles --- */
-
-/* The button container - ensuring a good touch target size (48x48dp) */
 .material-menu-btn {
     display: flex;
     flex-direction: column;
@@ -230,13 +233,11 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
-    gap: 6px; /* Space between bars */
-    /* Remove default button styles on mobile */
+    gap: 6px; 
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
 
-/* The individual bars */
 .bar {
     width: 24px;
     height: 2px;
@@ -246,24 +247,21 @@ body {
     transform-origin: center;
 }
 
-/* --- Active State Animations (Transform to 'X') --- */
-
-/* Top bar rotates 45 degrees and moves down */
+/* --- Active State Animations --- */
 .material-menu-btn.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
 
-/* Middle bar fades out and slides slightly left */
 .material-menu-btn.active .bar:nth-child(2) {
     opacity: 0;
     transform: translateX(-10px);
 }
 
-/* Bottom bar rotates -45 degrees and moves up */
 .material-menu-btn.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+/* Overlays and Audio */
 .sidebar-overlay {
     display: none;
     position: fixed;
@@ -271,8 +269,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.4); /* Dim the background */
-    z-index: 90; /* Just below the sidebar */
+    background: rgba(0,0,0,0.4); 
+    z-index: 90; 
 }
 
 .sidebar-overlay.visible {
