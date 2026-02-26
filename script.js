@@ -122,6 +122,12 @@ const lessonData = [
                 opts: ["It experiences only compression.", "It experiences bending, causing compression on one side and tension on the other.", "It distributes the weight perfectly evenly."], 
                 ans: 1,
                 coaching: "An eccentric load pushes down unevenly. This forces the member to bend, which crushes (<strong>compression</strong>) the loaded side while stretching (<strong>tension</strong>) the opposite side, rapidly weakening the structural integrity."
+            },
+            { 
+                q: "What type of load causes a force to pass straight through the centroid of the material, distributing the stress evenly. ", 
+                opts: ["An Eccentric Load", "An Impact Load.", "A Lateral Load.", "An Axial Load."], 
+                ans: 3,
+                coaching: ""
             }
         ]
     },
@@ -174,92 +180,452 @@ const lessonData = [
         id: 4,
         title: "Module 5: The Margin of Error (Safety Factor & Composites)",
         text: `
-            <p>Engineers use a <strong>Safety Factor</strong> to account for unknown material flaws or unexpected extreme loads. The safety factor is the ratio between the ultimate strength of a material and its safe working stress.</p>
-            <p>Manufactured materials like steel have lower safety factors (e.g., 2). Materials built on-site, like masonry, require higher safety factors (e.g., 10). <em>Fire rapidly consumes the safety factor margin.</em></p>
-            <p>To get the best of both worlds, builders use <strong>Composite Materials</strong>. Concrete handles compression well but is weak in tension. By embedding steel rebar (highly resistant to tension) inside the concrete, you create <strong>Reinforced Concrete</strong>.</p>
+            <p>Engineers do not build structures to perfectly match the loads they are expected to carry; they build in a buffer. This buffer is called the <strong>Safety Factor</strong>. It is the ratio between the ultimate strength of a material (the exact point it breaks) and its safe working stress.</p>
+            
+            <h3>The Measure of the Unknown</h3>
+            <p>The safety factor represents a measure of what is <em>not</em> known about a material. Manufactured materials produced under strictly controlled factory conditions, like structural steel, have highly predictable strengths and usually carry a lower safety factor (e.g., 2). This means the steel is designed to handle twice the load it will actually carry.</p>
+            <p>In contrast, materials built on-site, like masonry, have many unknown variables. The quality of the mortar, the skill of the bricklayer, and the weather that day all affect the final strength. Because there are more unknowns, field-constructed masonry requires a much higher safety factor (e.g., 10). The design load is only one-tenth of the tested strength.</p>
+            
+            <h3>Fire Consumes the Margin</h3>
+            <p>Reductions in the safety factor might survive normal daily loading, but fire changes the math. <em>Fire rapidly consumes the safety factor margin.</em> As heat raises the temperature of a structural member, its ultimate strength plummets, rapidly closing the gap between the working load and catastrophic failure. For example, temporary steel bracing used in construction has a highly reduced safety factor; if a fire breaks out in an unfinished building, that steel will fail much sooner than the permanent structural steel.</p>
+            
+            <h3>Composite Materials and Elements</h3>
+            <p>To get the best of both worlds, builders frequently combine materials. Concrete is relatively inexpensive and incredibly strong in compression, but it is highly vulnerable to tension (stretching). Steel is strong in both, but expensive. By embedding steel rebar at the specific locations where tensile stresses develop, you create <strong>Reinforced Concrete</strong>.</p>
+            <p>We also see <strong>Composite Structural Elements</strong>. A classic example is a <strong>Flitch plate girder</strong>, which is made by sandwiching a heavy piece of steel (or plywood) between two wooden beams. It gives the massive strength of steel but can be installed by workers using ordinary carpentry tools.</p>
+            <p><strong>The Golden Rule of Composites:</strong> All elements of a composite material must react together to carry the load. If fire or heat causes the materials to separate (e.g., the wood burns away from the flitch plate, or heat shears the studs connecting a steel beam to a concrete floor), the composite no longer exists. The materials separately will be unable to carry the load, and the system will fail.</p>
             <img src="images/rebar.jpg" alt="Reinforced Concrete Structure" class="instructive-image">
         `,
         quickCheck: [
-            { q: "What does fire do to a building's safety factor?", opts: ["Increases it.", "Rapidly consumes it.", "Has no effect."], ans: 1 },
-            { q: "Why is steel rebar added to concrete?", opts: ["Concrete is weak in compression.", "Concrete is weak in tension, and steel provides necessary strength.", "To lower the dead load."], ans: 1 }
+            { 
+                q: "Why does field-constructed masonry require a much higher safety factor (e.g., 10) than factory-produced steel (e.g., 2)?", 
+                opts: ["Masonry is naturally heavier and increases the dead load.", "There are significantly more unknown variables in field construction.", "Steel is completely fireproof, so it doesn't need a high safety factor."], 
+                ans: 1, 
+                coaching: "Steel is manufactured under strict factory conditions, making its strength highly predictable. Field-built masonry has many unknown variables (weather, mortar mix, workmanship), so engineers require a much larger **Safety Factor** to account for what they don't know."
+            },
+            { 
+                q: "What happens to a structural element's safety factor during a working fire?", 
+                opts: ["It rapidly decreases as heat weakens the material's ultimate strength.", "It remains the same until the material physically melts.", "It increases due to the thermal expansion of the materials."], 
+                ans: 0, 
+                coaching: "Fire rapidly consumes the safety factor margin. As heat weakens the internal molecular bonds, the material's 'ultimate strength' drops dramatically, quickly closing the gap between the working load and structural failure."
+            },
+            { 
+                q: "In reinforced concrete, what specific weakness of the concrete is the steel rebar designed to compensate for?", 
+                opts: ["Weakness in Compression", "Weakness in Tension", "Vulnerability to Shear forces"], 
+                ans: 1, 
+                coaching: "Concrete is incredibly strong against crushing (compression), but very weak against stretching (**tension**). The steel rebar is placed specifically where the material will be pulled apart, creating a composite that resists both forces."
+            },
+            { 
+                q: "You encounter a floor girder that has a thick steel plate sandwiched securely between two wooden beams. What is this called, and what is its primary weakness in a fire?", 
+                opts: ["A Flitch plate girder; if the materials separate, the entire unit fails.", "A Bar-joist truss; the steel expands and pushes the wood apart.", "A Diaphragm floor; the wood burns faster than the steel."], 
+                ans: 0, 
+                coaching: "This is a **Flitch plate girder**. The critical rule for composite materials is that they must act together. If fire destroys the bolts or burns away the wood, the elements separate, the composite ceases to exist, and the load cannot be supported."
+            }
         ]
     },
     {
         id: 5,
-        title: "Module 6: Horizontal Spans (Beams & Trusses)",
+        title: "Module 6: Horizontal Spans (The Physics of Beams)",
         text: `
-            <p><strong>Beams</strong> transmit forces perpendicular to the load. When a simple beam is loaded from above, the <em>top</em> is in Compression and the <em>bottom</em> is in Tension.</p>
+            <p>A <strong>Beam</strong> is one of the oldest and most fundamental structural members. Its primary job is to receive a load, turn that force laterally (perpendicular to the load), and deliver it to the reaction points (the supports or columns).</p>
+            
+            <h3>Deflection: The Tug-of-War Inside a Beam</h3>
+            <p>When a simple beam (supported at both ends) is loaded from above, it deflects, or bends downward. This bending creates a dangerous tug-of-war inside the material.</p>
+            <ul>
+                <li><strong>The Top:</strong> The material at the top of the beam shortens and squeezes together. It is in <strong>Compression</strong>.</li>
+                <li><strong>The Bottom:</strong> The material at the bottom of the beam elongates and is pulled apart. It is in <strong>Tension</strong>.</li>
+                <li><strong>The Neutral Axis:</strong> The line right down the middle where the length doesn't change and the material is doing the least amount of work.</li>
+            </ul>
+            
+            <h3>Carrying Capacity: Depth vs. Width</h3>
+            <p>Why are floor joists tall and narrow instead of wide and flat? It comes down to physics. The load-carrying capacity of a beam increases only in direct proportion to its width, but it increases by the <strong>square of its depth</strong>.</p>
+            <p>If you take a 2x4 wooden beam and put a second 2x4 right next to it (doubling the width), you double the carrying capacity. However, if you take the same amount of wood and make a single 2x8 beam (doubling the depth), the carrying capacity increases by a factor of four. Deeper beams are significantly stronger, but they create larger void spaces for fire and combustible gases to accumulate.</p>
+
+            <h3>Dangerous Beam Types on the Fireground</h3>
+            <p>Not all beams are supported equally. Recognizing these two types can save your life:</p>
+            <p><strong>Cantilever Beams:</strong> A cantilever is supported and rigidly held at only <em>one</em> end (like a diving board or an exterior balcony). Because it projects out into space, the forces are reversed: the tension is on the top, and the compression is on the bottom. Cantilevers are highly unstable in a fire. If the single connection point at the wall fails, the entire projecting section acts as a lever and drops, often pulling the exterior wall down with it.</p>
+            <p><strong>Suspended Beams:</strong> Think of a heavy theater marquee hanging over a sidewalk. It is a simple beam where one or both ends are suspended by a tension member (like a chain, cable, or steel rod) anchored back into the building. If a fire in the attic or cockloft destroys that anchor point, the beam instantly becomes an un-designed cantilever. The sudden shift in forces causes catastrophic collapse.</p>
             <img src="images/deflection.jpg" alt="Simple vs Cantilever Deflection" class="instructive-image">
-            <p>A <strong>cantilever beam</strong> is supported at only one end. If the single connection point fails, the entire beam drops.</p>
-            <p><strong>Trusses</strong> are triangulated beams. If any single component fails, the entire truss fails. In fire, metal gusset plates (gang nails) release their 3/8-inch teeth due to pyrolytic decomposition of the wood, causing catastrophic failure long before the wood burns away.</p>
-            <img src="images/gusset_failure.jpg" alt="Gusset Plate Failure" class="instructive-image">
         `,
         quickCheck: [
-            { q: "In a standard loaded beam, what force is acting on the top edge?", opts: ["Tension", "Compression", "Shear"], ans: 1 },
-            { q: "Why are lightweight wood trusses with gusset plates hazardous in fires?", opts: ["The plates add dead load.", "Pyrolytic decomposition releases the teeth.", "The plates snap the wood."], ans: 1 }
+            { 
+                q: "When a simple floor beam is loaded from above by the weight of the roof, what internal forces are acting on the top and bottom of that beam?", 
+                opts: ["Top is in Tension; Bottom is in Compression", "Top is in Compression; Bottom is in Tension", "Both are under Shear stress"], 
+                ans: 1, 
+                coaching: "When a simple beam deflects downward, the top crushes together (**Compression**) while the bottom edge is stretched apart (**Tension**)."
+            },
+            { 
+                q: "A contractor decides to double the depth of a solid wooden floor beam (e.g., upgrading from a 2x4 to a 2x8). How does this affect the beam's load-carrying capacity?", 
+                opts: ["It doubles the capacity.", "It increases the capacity by a factor of four.", "It cuts the capacity in half due to the added dead load."], 
+                ans: 1, 
+                coaching: "A beam's strength increases by the **square of its depth**. Doubling the depth (2 squared) increases the carrying capacity by 4 times, which is why floor joists are tall rather than wide."
+            },
+            { 
+                q: "You are operating under an exterior apartment balcony. You recognize it is supported at only one end, projecting out from the building. What type of beam is this?", 
+                opts: ["A Continuous Beam", "A Suspended Beam", "A Cantilever Beam"], 
+                ans: 2, 
+                coaching: "A beam supported at only one end is a **Cantilever**. These are particularly dangerous because if the single connection point to the building fails, the entire structure drops."
+            },
+            { 
+                q: "During a fire in an old theater, the roof structure is heavily compromised. Why does this pose a severe, immediate collapse hazard to the heavy marquee over the front sidewalk?", 
+                opts: ["The marquee is a Suspended Beam, and its supporting tension cables are anchored in the burning roof structure.", "The marquee will absorb the heat and melt the masonry wall.", "The marquee is an Axial Load that will crush the sidewalk."], 
+                ans: 0, 
+                coaching: "Marquees are often **Suspended Beams** held up by chains or rods anchored in the roof/attic. If fire destroys that anchor, the marquee loses its support and collapses, often pulling the front wall down with it."
+            }
         ]
     },
     {
         id: 6,
-        title: "Module 7: Vertical Supports (Columns, Walls & Arches)",
+        title: "Module 7: Triangulated Death Traps (Trusses)",
         text: `
-            <p><strong>Columns</strong> transmit compressive forces down to the foundation. If a column fails, the entire building above it collapses. Columns lose strength rapidly if their length is increased.</p>
-            <p><strong>Load-Bearing Walls</strong> carry the weight of the structure above them. <strong>Veneer walls</strong> are for appearance only and rely on the wall behind them for stability.</p>
-            <p>An <strong>Arch</strong> remains under compression, but the base pushes <em>outward</em>. This lateral thrust must be restrained by buttresses or tie-rods to prevent collapse.</p>
-            <img src="images/arch_thrust.jpg" alt="Arch Thrust Forces" class="instructive-image">
+            <p>A <strong>Truss</strong> is a specialized type of beam. It is a framed structure consisting of a group of triangles arranged in a single plane. The genius—and the danger—of a truss lies in its geometry: only one triangle can be formed from any three lines, making the triangle inherently rigid and stable.</p>
+            
+            <h3>The Anatomy of a Truss</h3>
+            <p>Trusses are highly engineered to separate forces, allowing builders to use a minimum amount of material to span massive distances. You must know the terminology:</p>
+            <ul>
+                <li><strong>Top Chord:</strong> The top member of the truss, which is in <strong>Compression</strong>. It acts exactly like a column laid on its side.</li>
+                <li><strong>Bottom Chord:</strong> The bottom member of the truss, which is in <strong>Tension</strong>. It acts like a chain pulling the walls together.</li>
+                <li><strong>The Web:</strong> The internal network of struts (compression) and ties (tension) that connect the top and bottom chords.</li>
+                <li><strong>Panel Points:</strong> The vital connections where the web members meet the chords.</li>
+            </ul>
+            
+            <h3>The Fatal Flaw of Efficiency</h3>
+            <p>Because trusses use the absolute minimum amount of material necessary to carry the design load, there is almost zero "fat" to burn. In a solid wood beam, the loss of some outer material is not immediately fatal. In a truss, <strong>if any single component fails, the entire truss fails.</strong></p>
+            <p>Consider the top chord (compression). If a panel point fails, a 5-foot section of the top chord suddenly becomes an unsupported 10-foot section. According to the laws of columns, doubling the length reduces its carrying capacity to just 25%, causing immediate crushing failure.</p>
+
+            <h3>The Danger of the Gusset Plate</h3>
+            <p>Modern lightweight wooden trusses are held together by metal <strong>Gusset Plates</strong> (gang nails). These are thin pieces of galvanized sheet steel with 3/8-inch teeth punched into the wood. In a fire, the metal plate acts as a heat collector. It absorbs the heat and drives it into the wood fibers gripping the shallow teeth.</p>
+            <p>This heat causes <strong>pyrolytic decomposition</strong> (chemical breakdown by heat) of the wood fibers. The wood literally turns to charcoal around the teeth, and the tension of the bottom chord violently pulls the plates out. The truss fails catastrophically long before the wood is actually burned away by flame.</p>
+            <img src="images/gusset_failure.jpg" alt="Gusset Plate Failure" class="instructive-image">
         `,
         quickCheck: [
-            { q: "A wall that carries the weight of the roof above it is a:", opts: ["Curtain wall", "Veneer wall", "Load-bearing wall"], ans: 2 },
-            { q: "What is the fundamental danger of a non-restrained arch?", opts: ["No compressive strength.", "The base pushes outward.", "It operates purely in tension."], ans: 1 }
+            { 
+                q: "What forces are acting on the Top Chord and the Bottom Chord of a standard roof truss?", 
+                opts: ["Top is in Tension; Bottom is in Compression", "Top is in Compression; Bottom is in Tension", "Both chords are in Shear"], 
+                ans: 1, 
+                coaching: "Just like a simple beam, when a truss deflects downward, the Top Chord crushes together (**Compression**) and the Bottom Chord stretches apart (**Tension**)."
+            },
+            { 
+                q: "Why is the failure of a single panel point in a truss's top chord so disastrous?", 
+                opts: ["It immediately increases the dead load.", "It doubles the length of the unsupported 'column', reducing its carrying capacity to 25%.", "It reverses the forces, putting the top chord into tension."], 
+                ans: 1, 
+                coaching: "The top chord is under compression and acts like a column. If a connection fails and a 5-foot section becomes a 10-foot section, the math is brutal: doubling the length cuts the strength to **one-quarter** of its original capacity, causing instant collapse."
+            },
+            { 
+                q: "You are ventilating a roof supported by lightweight wood trusses with metal gusset plates. What hidden process causes these plates to fail prematurely?", 
+                opts: ["The metal plates expand and snap the wood.", "The plates act as heat collectors, causing pyrolytic decomposition of the wood fibers gripping the teeth.", "The galvanized steel melts at extremely low temperatures."], 
+                ans: 1, 
+                coaching: "The plates don't melt; they absorb heat and cook the wood around the shallow 3/8-inch teeth (**pyrolytic decomposition**). Once the wood turns to charcoal, the tension of the bottom chord rips the plates right out."
+            },
+            { 
+                q: "Compared to a solid sawn wood beam, why is a lightweight wooden truss inherently more dangerous in a fire?", 
+                opts: ["Trusses use minimal material and rely entirely on every single piece; if one part fails, the whole system fails.", "Trusses are built with more heavy timber.", "Solid beams use gusset plates which are stronger."], 
+                ans: 0, 
+                coaching: "A solid beam has mass and can lose outer layers to fire while surviving. A truss has no extra mass; it is a **highly interdependent system**. The failure of one tie, strut, or plate brings the whole thing down."
+            }
+        ]
+    },   
+    {
+        id: 7,
+        title: "Module 8: Vertical Supports (Columns & Walls)",
+        text: `
+            <p>While beams handle horizontal spans, <strong>Columns</strong> and <strong>Walls</strong> are the vertical workhorses of the gravity resistance system. Their primary job is to transmit compressive forces down to the foundation.</p>
+            
+            <h3>Columns and Euler's Law</h3>
+            <p>A column transmits a compressive force along a straight path. But columns don't fail the same way beams do. While a beam loses strength proportionately as it gets longer, a column loses strength by the <strong>square of its change in length</strong>.</p>
+            <p>This brings us to <strong>Euler's Law</strong> for long, slender columns. If a tall column is rigidly braced at its midpoint, its "effective length" is cut in half, which actually <em>quadruples</em> its load-carrying capacity. However, the reverse is equally true—and deadly on the fireground. If a fire destroys a mid-point brace, the column's effective length doubles, and its load-carrying capacity instantly drops to just 25%. The addition of a single pound over that new critical load will cause the column to suddenly buckle into an "S" shape and collapse.</p>
+            <p><em>Terminology Note:</em> Firefighters must use correct terminology. Steel beams are "I-shaped" because depth gives them strength. Steel columns are "H-shaped" or box-shaped because the most efficient shape for compression is one that distributes material equally away from the center.</p>
+
+            <h3>Walls: The Wide Columns</h3>
+            <p>A wall is essentially a wide, slender column. Walls are divided into two main categories:</p>
+            <ul>
+                <li><strong>Load-Bearing Walls:</strong> These carry the weight of the structure above them in addition to their own dead weight. Surprisingly, a load-bearing wall is actually <em>more stable</em> against wind and lateral forces than an identical non-load-bearing wall. Think of a stack of books: it is easy to push over from the side, but if you press down hard on the top (the superimposed load), it becomes very difficult to knock over.</li>
+                <li><strong>Non-Load-Bearing Walls:</strong> These support only their own weight. A prime example is a <strong>Veneer Wall</strong>. Brick veneer is a single vertical thickness of masonry designed purely for appearance. It totally depends on the underlying wood or steel frame for stability, connected only by thin metal ties. If fire destroys those ties, the heavy brick face peels off and collapses catastrophically.</li>
+            </ul>
+
+            <h3>Cantilever Walls (Tilt-Slab)</h3>
+            <p>A high, freestanding masonry wall acts as a vertical cantilever beam (supported only at the bottom) against the wind. In modern precast concrete <strong>tilt-slab</strong> construction, the massive wall slabs are erected and held temporarily by bracing poles. Once the <strong>roof</strong> is built, it provides the permanent bracing. If a fire destroys the roof structure, those massive concrete walls instantly revert to un-designed, unsupported vertical cantilevers and are highly prone to toppling outward.</p>
+            <img src="images/arch_thrust.jpg" alt="Column Buckling and Wall Types" class="instructive-image">
+        `,
+        quickCheck: [
+            { 
+                q: "During a fire, a wooden brace supporting the midpoint of a tall steel column burns away, effectively doubling the column's unsupported length. According to Euler's Law, what happens to the column's load-carrying capacity?", 
+                opts: ["It is reduced by half (50%).", "It is reduced to one-quarter (25%) of its original capacity.", "It remains the same as long as the steel hasn't melted."], 
+                ans: 1, 
+                coaching: "A column loses strength by the **square of its length**. If you double the unsupported length, you must divide the carrying capacity by 4 (two squared). The capacity drops to just **25%**, often leading to sudden buckling."
+            },
+            { 
+                q: "Why is a load-bearing masonry wall actually more stable against lateral forces (like wind or hose streams) than a non-load-bearing wall of the exact same construction?", 
+                opts: ["The superimposed weight pushing down on the load-bearing wall increases its overall stability.", "Load-bearing walls are built with steel rebar.", "Non-load-bearing walls are purely decorative."], 
+                ans: 0, 
+                coaching: "Just like pressing down on a stack of books, the **superimposed load** (the weight of the roof/floors) pushing straight down heavily stabilizes the masonry against sideways (lateral) forces."
+            },
+            { 
+                q: "You are conducting a 360 size-up on a wood-frame residential fire and notice a brick exterior. What is the primary collapse hazard of a brick veneer wall?", 
+                opts: ["It will expand and crush the foundation.", "It is a composite wall that will cause the roof to fail.", "It relies entirely on metal ties to the wood frame; if the ties fail, the brick will peel away and collapse outward."], 
+                ans: 2, 
+                coaching: "Veneer walls only support their own weight and are purely cosmetic. They rely totally on the underlying wall for stability. If the **metal ties** heat up or the wood frame burns, the heavy veneer will detach and fall."
+            },
+            { 
+                q: "In a modern precast concrete tilt-slab building, what structural component provides the permanent bracing that stops the exterior walls from falling outward like giant cantilevers?", 
+                opts: ["The flying buttresses.", "The roof structure.", "The concrete foundation slab."], 
+                ans: 1, 
+                coaching: "Tilt-slab walls act as highly unstable vertical cantilevers until the **roof** is tied into them. If a fire burns away the roof, the walls lose their top bracing and are in severe danger of falling outward."
+            }
         ]
     },
     {
-        id: 7,
-        title: "Module 8: The Weakest Link (Transmission & Connections)",
+        id: 8,
+        title: "Module 9: The Arch, The Frame, and The Dome",
         text: `
-            <p>All loads must be <strong>transmitted</strong> continuously to the foundation. Connections are often the weakest point in a fire.</p>
-            <p>Unprotected steel bolts elongate and fail at 1000°F to 1100°F. Older <strong>Gravity Connections</strong> sit in sockets without bolts; a slight lateral shift can kick them out.</p>
-            <img src="images/gravity_connection.jpg" alt="Gravity Connection Hazard" class="instructive-image">
-            <p>Older masonry often used <strong>sand-lime mortar</strong>, which is water-soluble. Heavy hose streams can wash it away, causing delayed collapse.</p>
+            <p>While beams handle horizontal spans by bending, the <strong>Arch</strong> combines the functions of the beam and the column. The Romans perfected the arch, allowing them to span wide openings using materials (like stone) that have virtually zero tensile strength.</p>
+            
+            <h3>The Physics of the Arch</h3>
+            <p>An arch is under <strong>compression</strong> along its entire length. Because the arch is constantly squeezing together, its weight and the load it carries are pushed down the curve. However, this creates a massive <strong>outward thrust</strong> at the base.</p>
+            <p>Because the base of an arch wants to kick outward, it must be restrained. Historically, this was done with heavy masonry blocks called <strong>buttresses</strong> built on the outside of the wall. When arches fail, or in modern designs, they are often held together with <strong>steel tie-rods</strong> spanning across the bottom.</p>
+            <p><em>Terminology Note:</em> A bowstring-truss roof is often incorrectly called an "arched truss." Remember, a truss acts as a beam, and its thrust goes straight down into the walls. A true arch thrusts outward. This is a critical distinction when predicting wall collapse.</p>
+
+            <h3>Rigid Frames: The Arch's Cousin</h3>
+            <p>The <strong>Rigid Frame</strong> is derived directly from the arch and is widely used in commercial buildings, hangars, and churches to create massive clear spaces. Just like the arch, the rigid frame creates an enormous outward thrust at its base.</p>
+            <p>To resist this, the bases of the frame are usually tied together with steel reinforcing rods hidden <em>inside the concrete floor</em>. The floor itself is structurally necessary to hold the building together. If a contractor unknowingly cuts a trench into the floor and severs that tie-rod, or if a basement fire destroys a wooden floor void housing a tie-rod, the frame will kick outward and the building will collapse.</p>
+
+            <h3>Shells and Domes</h3>
+            <p>A <strong>Shell</strong> is a thin, curved plate (often built of concrete) that can span wide areas despite being less than 2 inches thick. It works by transmitting loads evenly along the entire curved surface to the supports. A <strong>Dome</strong> is essentially a three-dimensional arch or shell. <strong>Geodesic domes</strong> take this further by utilizing a large number of triangles to provide massive volume with very little dead weight.</p>
+            <img src="images/arch_thrust.jpg" alt="Arch and Rigid Frame Outward Thrust" class="instructive-image">
         `,
         quickCheck: [
-            { q: "Why is sand-lime mortar a specific hazard during overhaul?", opts: ["It is flammable.", "It is water-soluble.", "It produces toxic gases."], ans: 1 },
-            { q: "At what temperature does unprotected structural steel typically fail?", opts: ["400°F - 500°F", "1000°F - 1100°F", "2000°F - 2500°F"], ans: 1 }
+            { 
+                q: "Unlike a simple beam that experiences both tension and compression, a true arch operates entirely under what force?", 
+                opts: ["Tension", "Compression", "Torsion"], 
+                ans: 1, 
+                coaching: "An arch is entirely under **Compression**. The stones or materials are constantly squeezing together, pushing the load down the curve to the base."
+            },
+            { 
+                q: "What is the fundamental structural difference between how a bowstring truss and a true arch deliver their loads to the supporting walls?", 
+                opts: ["A truss pushes outward, an arch pushes straight down.", "A truss pushes straight down, an arch pushes outward at the base.", "Both push outward, but the truss requires buttresses."], 
+                ans: 1, 
+                coaching: "A truss acts as a beam, meaning its thrust goes **straight down** the wall or column. A true arch pushes **outward** at the base, which is why arches must be tied or buttressed to prevent the walls from blowing out."
+            },
+            { 
+                q: "You are operating at a fire in a modern church built with massive wooden rigid frames. What hidden component, if compromised by fire in the basement void space, could cause the entire frame to collapse?", 
+                opts: ["The flying buttresses.", "The metal gusset plates at the peak.", "The steel tie-rods connecting the bases of the frame across the floor."], 
+                ans: 2, 
+                coaching: "Rigid frames thrust outward at the base. They are often held together by **tie-rods** buried in or running under the floor. If a basement fire destroys those ties, the base kicks out and the frame collapses."
+            },
+            { 
+                q: "Which structural element can be best described as a three-dimensional arch that transmits loads along its curved surface?", 
+                opts: ["A Dome", "A Flitch Plate Girder", "A Cantilever Beam"], 
+                ans: 0, 
+                coaching: "A **Dome** (or shell) is a three-dimensional arch. Much like an eggshell, it is incredibly strong for its weight because it distributes the forces evenly across its curved surface."
+            }
         ]
     },
-    { id: 8, title: "Final Evaluation", isExam: true }
+    {
+        id: 9,
+        title: "Module 10: The Weakest Link (Foundations & Connections)",
+        text: `
+            <p>Every load placed on a building must be transmitted continuously to the ground. If there is a single failure of continuity in this transmission path, you will have a partial or total collapse. Ultimately, all loads are delivered to the ground through the <strong>Foundation</strong>. But how do those forces get there? Through connections.</p>
+            
+            <h3>Connections: The True Point of Failure</h3>
+            <p>Except for the simplest structures, a building's gravity resistance system is only as strong as its weakest link: the connections. A building on fire is essentially a building under demolition. In the vast majority of cases, structural failure is actually connection failure.</p>
+            <ul>
+                <li><strong>Pinned vs. Rigid Connections:</strong> Pinned connections (simple bolts or rivets) usually cannot reroute forces if a structural member is removed. Rigid connections (like a monolithic poured concrete frame) can sometimes redistribute loads to prevent immediate collapse.</li>
+                <li><strong>Shear vs. Moment Connections:</strong> A simple bolted steel connection is a <em>shear connection</em>; it stops the beam from sliding down the column. If the beam is both bolted <em>and</em> welded, it becomes a <em>moment connection</em>, which also prevents the beam from rotating or bending at the joint.</li>
+            </ul>
+
+            <h3>Designed to Fail: Fire Cuts and Gravity Fits</h3>
+            <p>In older masonry buildings, you will often find <strong>Fire Cut</strong> joists. The ends of the wood joists are cut at a steep angle before being placed into the wall pockets. Why? So that if the floor burns and collapses, the joist acts like a lever and slips right out of the pocket without pulling the massive masonry wall down onto the street. It sacrifices the floor to save the wall.</p>
+            <p>Similarly, older heavy timber buildings feature self-releasing floors with anchor boxes, and many cast-iron columns rely entirely on <strong>Gravity Connections</strong> (the sheer weight of the building holding them in place). If a floor shifts or sags, a gravity-fit column can easily kick out.</p>
+
+            <h3>The Threat to Steel Connections</h3>
+            <p>Steel is frequently used to tie buildings together, but it is highly vulnerable to heat. <strong>Unprotected steel heated to 1000°F (538°C) elongates 9.5 inches per 100 feet of length.</strong> If a steel girder is tightly restrained in a masonry wall and begins to expand, that massive force will push the exterior walls outward, dropping the floors. Conversely, steel tie-rods and tension cables used to hold arches or failing buildings together will fail entirely at just 800°F (427°C).</p>
+            
+            <h3>The Danger of Water Weight</h3>
+            <p>The continuous transmission of loads is strained by the fire, but it is often broken by the fire department. A 1000-gpm master stream isn't just putting out fire; it is adding <strong>over 8,000 pounds (4 tons) of water weight</strong> to the structure <em>every single minute</em>. That water pools on flat roofs and is absorbed by materials like paper and fabric, drastically increasing the live load on weakened connections.</p>
+            <img src="images/rebar.jpg" alt="Steel and Concrete Connections" class="instructive-image">
+        `,
+        quickCheck: [
+            { 
+                q: "At what temperature does unprotected structural steel begin to elongate significantly (9.5 inches per 100 feet), potentially pushing exterior walls outward?", 
+                opts: ["800°F (427°C)", "1000°F (538°C)", "1500°F (815°C)"], 
+                ans: 1, 
+                coaching: "At **1000°F**, steel elongates 9.5 inches per 100 feet. If the beam is restrained in the walls, this massive expansion force will overturn the walls or drop its load of joists. Note: Steel tie-rods/cables fail even lower, at 800°F."
+            },
+            { 
+                q: "What is the specific architectural purpose of 'fire cut' wood joists in older masonry buildings?", 
+                opts: ["To make the wood more resistant to pyrolytic decomposition.", "To provide a tighter friction fit inside the brick wall pocket.", "To allow a burning floor to collapse and slip out without pulling the exterior wall down."], 
+                ans: 2, 
+                coaching: "A **fire cut** is an angled cut on the end of a joist. It is intentionally designed to fail—allowing the burning floor to slip cleanly out of the wall pocket so the heavy masonry wall doesn't collapse onto firefighters operating outside."
+            },
+            { 
+                q: "In steel-frame construction, a beam that is both bolted AND welded to a column prevents the beam from sliding AND rotating. What is this rigid connection called?", 
+                opts: ["A Pinned Connection", "A Shear Connection", "A Moment Connection"], 
+                ans: 2, 
+                coaching: "A **Moment Connection** is rigid (bolted and welded) and resists the bending/rotational 'moment'. A simple shear connection is only bolted and cannot reroute forces effectively if the structure begins to fail."
+            },
+            { 
+                q: "A crew is conducting a defensive attack on a commercial building using a 1000-gpm master stream. Roughly how much live load (water weight) is being added to the structure every minute?", 
+                opts: ["1,000 pounds", "4,000 pounds", "Over 8,000 pounds (4 tons)"], 
+                ans: 2, 
+                coaching: "Water weighs 8.34 lbs per gallon. A 1000-gpm master stream adds **over 8,000 lbs (4 tons)** of live and impact load to a weakened structure *every single minute*, drastically increasing collapse potential."
+            }
+        ]
+    },
+    { id: 10, title: "Final Evaluation", isExam: true }
 ];
 
+// finalExam.js
+
 const examQuestions = [
-    { q: "The invisible system that supports a building is the:", opts: ["Lateral matrix", "Gravity resistance system", "Load network", "Structural path"], ans: 1 },
-    { q: "A force that squeezes a structural member is:", opts: ["Tension", "Torsion", "Shear", "Compression"], ans: 3 },
-    { q: "A force that stretches a structural member is:", opts: ["Tension", "Compression", "Shear", "Torsion"], ans: 0 },
-    { q: "A force that pulls in opposite, parallel directions is:", opts: ["Compression", "Tension", "Shear", "Torsion"], ans: 2 },
-    { q: "The static, permanent weight of a building is the:", opts: ["Live Load", "Impact Load", "Dead Load", "Eccentric Load"], ans: 2 },
-    { q: "Which is a Dead Load?", opts: ["A safe", "Snow", "Built-in roof deck", "Firefighters"], ans: 2 },
-    { q: "Transient, changing weights in a structure are:", opts: ["Dead Loads", "Live Loads", "Impact Loads", "Axial Loads"], ans: 1 },
-    { q: "A 1000-gpm stream applied to a building is a:", opts: ["Dead Load", "Live Load", "Safety Factor", "Torsional Load"], ans: 1 },
-    { q: "A vehicle striking a wall is classified as an:", opts: ["Impact Load", "Axial Load", "Dead Load", "Eccentric Load"], ans: 0 },
-    { q: "A load passing straight through the centroid is an:", opts: ["Eccentric load", "Torsional load", "Axial load", "Impact load"], ans: 2 },
-    { q: "A load concentrated to one side of the center is an:", opts: ["Axial load", "Eccentric load", "Uniform load", "Live load"], ans: 1 },
-    { q: "The total potential energy available to burn is the:", opts: ["Dead Load", "Heat Release Rate", "Fire Load", "Torsional Load"], ans: 2 },
-    { q: "The rate at which fuel energy is released is the:", opts: ["Safety Factor", "Heat Release Rate (HRR)", "Live Load", "Axial limit"], ans: 1 },
-    { q: "The ratio of ultimate strength to safe working stress is:", opts: ["Load limit", "Safety factor", "Failure point", "Composite ratio"], ans: 1 },
-    { q: "Fire does what to a building's safety factor?", opts: ["Increases it", "Has no effect", "Rapidly consumes it", "Hardens it"], ans: 2 },
-    { q: "Combining two materials for best traits creates a:", opts: ["Homogeneous material", "Composite material", "Unified structure", "Redundant assembly"], ans: 1 },
-    { q: "Steel rebar is added to concrete primarily for:", opts: ["Compressive strength", "Tensile strength", "Lowering dead load", "Spalling prevention"], ans: 1 },
-    { q: "The bottom of a simple loaded beam is in:", opts: ["Compression", "Shear", "Tension", "Torsion"], ans: 2 },
-    { q: "A beam supported at only one end is a:", opts: ["Lintel", "Cantilever beam", "Simple beam", "Flitch plate"], ans: 1 },
-    { q: "What is the fundamental danger of a truss?", opts: ["They are too heavy", "Single component failure = total failure", "No composites allowed", "Only support dead loads"], ans: 1 },
-    { q: "Vertical members transmitting forces to the foundation:", opts: ["Beams", "Lintels", "Columns", "Arches"], ans: 2 },
-    { q: "A wall carrying the weight of the structure above is:", opts: ["Curtain wall", "Partition", "Veneer wall", "Load-bearing wall"], ans: 3 },
-    { q: "A masonry wall used only for exterior appearance is a:", opts: ["Fire wall", "Veneer wall", "Party wall", "Load-bearing wall"], ans: 1 },
-    { q: "If not restrained, the base of an arch will:", opts: ["Push inward", "Push outward", "Twist", "Shrink"], ans: 1 },
-    { q: "The spread of load from application to ground is:", opts: ["Reaction", "Transmission", "Deflection", "Pyrolysis"], ans: 1 },
-    { q: "A broken structural connection typically leads to:", opts: ["Increased safety factor", "Partial or total collapse", "Reduced live load", "Aesthetic change"], ans: 1 },
-    { q: "Unprotected structural steel elongates and fails at:", opts: ["400°F", "1000°F - 1100°F", "2500°F", "5000°F"], ans: 1 },
-    { q: "Gusset plates fail in fire because of:", opts: ["Melting at 400°F", "Too much dead load", "Pyrolytic decomposition of wood", "Metal expansion"], ans: 2 },
-    { q: "Sand-lime mortar hazard in old buildings:", opts: ["Highly flammable", "Reacts with CO", "Water-soluble/washable", "Explosive"], ans: 2 }
+    { 
+        q: "What system forms a continuous path to transfer a building's weight safely to the ground?", 
+        opts: ["The composite transmission path", "The lateral stability matrix", "The gravity resistance system", "The dead load network"], 
+        ans: 2 
+    },
+    { 
+        q: "Which invisible force acts as a tearing or slicing force in opposite directions?", 
+        opts: ["Shear", "Compression", "Torsion", "Tension"], 
+        ans: 0 
+    },
+    { 
+        q: "What is the internal resistance of a material to an external force called?", 
+        opts: ["Strain", "Deflection", "Shear", "Stress"], 
+        ans: 3 
+    },
+    { 
+        q: "When a wooden floor joist bows, the actual physical, visible deformation is known as:", 
+        opts: ["Torsion", "Strain", "Stress", "Shear"], 
+        ans: 1 
+    },
+    { 
+        q: "A massive HVAC unit permanently bolted to a roof is an example of what type of load?", 
+        opts: ["Dead Load", "Live Load", "Impact Load", "Lateral Load"], 
+        ans: 0 
+    },
+    { 
+        q: "When a master stream adds over 4 tons of water weight per minute to a structure, this rapidly accumulating weight is a:", 
+        opts: ["Live Load", "Dead Load", "Impact Load", "Lateral Load"], 
+        ans: 0 
+    },
+    { 
+        q: "High winds pushing against the broad side of a structure create what type of load?", 
+        opts: ["Axial Load", "Live Load", "Impact Load", "Lateral Load"], 
+        ans: 3 
+    },
+    { 
+        q: "A sudden, violent force delivered in a short time, such as a partial roof collapse onto a lower floor, is a(n):", 
+        opts: ["Eccentric Load", "Impact Load", "Lateral Load", "Concentrated Dead Load"], 
+        ans: 1 
+    },
+    { 
+        q: "A force that passes straight through the centroid of a material, distributing stress evenly, is an:", 
+        opts: ["Axial Load", "Eccentric Load", "Impact Load", "Torsional Load"], 
+        ans: 0 
+    },
+    { 
+        q: "A weight placed off-center on a pillar, which induces a bending stress, is called an:", 
+        opts: ["Axial Load", "Concentrated Load", "Eccentric Load", "Uniformly Distributed Load"], 
+        ans: 2 
+    },
+    { 
+        q: "Water sitting evenly across a flat roof is an example of what type of load application?", 
+        opts: ["Concentrated Load", "Eccentric Load", "Axial Load", "Uniformly Distributed Load"], 
+        ans: 3 
+    },
+    { 
+        q: "What term represents the total amount of potential energy (heat) available to burn in a given space?", 
+        opts: ["Heat Release Rate", "Fire Load", "Safety Factor", "Live Load"], 
+        ans: 1 
+    },
+    { 
+        q: "Modern plastics and polyurethane foams contain approximately how many BTUs per pound?", 
+        opts: ["8,000", "12,000", "16,000", "24,000"], 
+        ans: 2 
+    },
+    { 
+        q: "If 5 pounds of solid heavy timber is turned into thin wood chips, what changes drastically?", 
+        opts: ["The dead load of the material", "The total Fire Load (BTUs)", "The safety factor of the wood", "The Heat Release Rate (HRR)"], 
+        ans: 3 
+    },
+    { 
+        q: "Ordinary combustibles like wood and paper hold approximately how many BTUs per pound?", 
+        opts: ["8,000", "16,000", "24,000", "32,000"], 
+        ans: 0 
+    },
+    { 
+        q: "The built-in buffer that is the ratio between a material's ultimate breaking strength and its safe working stress is the:", 
+        opts: ["Elastic limit", "Safety Factor", "Heat Release Rate", "Torsional threshold"], 
+        ans: 1 
+    },
+    { 
+        q: "Why does field-constructed masonry require a much higher safety factor (e.g., 10) than factory-produced steel (e.g., 2)?", 
+        opts: ["It is inherently heavier.", "It has a lower melting point.", "It has significantly more unknown variables.", "It lacks compression strength."], 
+        ans: 2 
+    },
+    { 
+        q: "In reinforced concrete, what specific weakness of the concrete is the embedded steel rebar designed to compensate for?", 
+        opts: ["Concrete's weakness in compression", "Concrete's vulnerability to shear forces", "Concrete's high safety factor", "Concrete's weakness in tension"], 
+        ans: 3 
+    },
+    { 
+        q: "What is the golden rule of composite structural elements like a Flitch plate girder?", 
+        opts: ["All elements of a composite material must react together to carry the load.", "The steel must always bear the tension.", "The safety factor must be reduced in a fire.", "They are immune to pyrolytic decomposition."], 
+        ans: 0 
+    },
+    { 
+        q: "The load-carrying capacity of a beam increases by the square of its:", 
+        opts: ["Width", "Length", "Depth", "Weight"], 
+        ans: 2 
+    },
+    { 
+        q: "When a simple beam deflects downward under a load, the material at the bottom of the beam is elongating and is in:", 
+        opts: ["Tension", "Compression", "Torsion", "Shear"], 
+        ans: 0 
+    },
+    { 
+        q: "A beam that is supported and rigidly held at only one end, projecting out into space like an exterior balcony, is a:", 
+        opts: ["Continuous Beam", "Suspended Beam", "Simple Beam", "Cantilever Beam"], 
+        ans: 3 
+    },
+    { 
+        q: "If fire destroys the roof anchor point of a suspended beam (like a heavy theater marquee), it instantly reverts to a highly unstable:", 
+        opts: ["Axial column", "Un-designed cantilever", "Rigid connection", "Uniformly distributed load"], 
+        ans: 1 
+    },
+    { 
+        q: "In a standard roof truss, the top chord acts like a column laid on its side and is entirely under:", 
+        opts: ["Tension", "Compression", "Torsion", "Shear"], 
+        ans: 1 
+    },
+    { 
+        q: "What hidden, heat-driven process causes wood fibers to turn to charcoal and release metal gusset plates prematurely?", 
+        opts: ["Elongation", "Shear deflection", "Pyrolytic decomposition", "Thermal expansion"], 
+        ans: 2 
+    },
+    { 
+        q: "According to Euler's Law, if a tall column loses its mid-point brace and its effective length doubles, its load-carrying capacity instantly drops to:", 
+        opts: ["50%", "33%", "25%", "10%"], 
+        ans: 2 
+    },
+    { 
+        q: "In modern precast concrete tilt-slab construction, what provides the permanent bracing that stops the exterior walls from toppling outward?", 
+        opts: ["The foundation", "The roof structure", "The steel tie-rods", "The floor system"], 
+        ans: 1 
+    },
+    { 
+        q: "Unlike a simple beam that experiences both tension and compression, a true arch operates entirely under what force?", 
+        opts: ["Compression", "Tension", "Torsion", "Shear"], 
+        ans: 0 
+    },
+    { 
+        q: "Rigid frames create an enormous outward thrust at their base, which is usually resisted by what hidden component?", 
+        opts: ["Fire cut wall pockets", "Metal gusset plates", "Flying buttresses", "Steel tie-rods hidden inside the concrete floor"], 
+        ans: 3 
+    },
+    { 
+        q: "At what temperature does unprotected structural steel elongate 9.5 inches per 100 feet of length?", 
+        opts: ["800°F (427°C)", "1000°F (538°C)", "1200°F (649°C)", "1500°F (815°C)"], 
+        ans: 1 
+    }
 ];
 
 
