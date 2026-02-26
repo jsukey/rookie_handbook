@@ -747,6 +747,9 @@ function displayQuizQuestion(mod) {
             `;
 
             nextBtn.style.display = 'block';
+            
+            // Modern standard for smooth scrolling
+            nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
     });
 
