@@ -1,10 +1,11 @@
 /**
  * Chapter 2: Building Construction - Elyria FD Training
  * Immersive "Learn Your Way" Educational Platform
+ * File: app.js
  */
 
 const lessonData = [
-{
+    {
         id: 0,
         title: "Module 1: The Gravity Resistance System",
         text: `
@@ -127,7 +128,7 @@ const lessonData = [
                 q: "What type of load causes a force to pass straight through the centroid of the material, distributing the stress evenly. ", 
                 opts: ["An Eccentric Load", "An Impact Load.", "A Lateral Load.", "An Axial Load."], 
                 ans: 3,
-                coaching: ""
+                coaching: "Because the force passes perfectly down the center of the supporting member, it distributes the weight evenly. This is an <strong>Axial Load</strong>."
             }
         ]
     },
@@ -473,169 +474,53 @@ const lessonData = [
     { id: 10, title: "Final Evaluation", isExam: true }
 ];
 
-// finalExam.js
-
 const examQuestions = [
-    { 
-        q: "What system forms a continuous path to transfer a building's weight safely to the ground?", 
-        opts: ["The composite transmission path", "The lateral stability matrix", "The gravity resistance system", "The dead load network"], 
-        ans: 2 
-    },
-    { 
-        q: "Which invisible force acts as a tearing or slicing force in opposite directions?", 
-        opts: ["Shear", "Compression", "Torsion", "Tension"], 
-        ans: 0 
-    },
-    { 
-        q: "What is the internal resistance of a material to an external force called?", 
-        opts: ["Strain", "Deflection", "Shear", "Stress"], 
-        ans: 3 
-    },
-    { 
-        q: "When a wooden floor joist bows, the actual physical, visible deformation is known as:", 
-        opts: ["Torsion", "Strain", "Stress", "Shear"], 
-        ans: 1 
-    },
-    { 
-        q: "A massive HVAC unit permanently bolted to a roof is an example of what type of load?", 
-        opts: ["Dead Load", "Live Load", "Impact Load", "Lateral Load"], 
-        ans: 0 
-    },
-    { 
-        q: "When a master stream adds over 4 tons of water weight per minute to a structure, this rapidly accumulating weight is a:", 
-        opts: ["Live Load", "Dead Load", "Impact Load", "Lateral Load"], 
-        ans: 0 
-    },
-    { 
-        q: "High winds pushing against the broad side of a structure create what type of load?", 
-        opts: ["Axial Load", "Live Load", "Impact Load", "Lateral Load"], 
-        ans: 3 
-    },
-    { 
-        q: "A sudden, violent force delivered in a short time, such as a partial roof collapse onto a lower floor, is a(n):", 
-        opts: ["Eccentric Load", "Impact Load", "Lateral Load", "Concentrated Dead Load"], 
-        ans: 1 
-    },
-    { 
-        q: "A force that passes straight through the centroid of a material, distributing stress evenly, is an:", 
-        opts: ["Axial Load", "Eccentric Load", "Impact Load", "Torsional Load"], 
-        ans: 0 
-    },
-    { 
-        q: "A weight placed off-center on a pillar, which induces a bending stress, is called an:", 
-        opts: ["Axial Load", "Concentrated Load", "Eccentric Load", "Uniformly Distributed Load"], 
-        ans: 2 
-    },
-    { 
-        q: "Water sitting evenly across a flat roof is an example of what type of load application?", 
-        opts: ["Concentrated Load", "Eccentric Load", "Axial Load", "Uniformly Distributed Load"], 
-        ans: 3 
-    },
-    { 
-        q: "What term represents the total amount of potential energy (heat) available to burn in a given space?", 
-        opts: ["Heat Release Rate", "Fire Load", "Safety Factor", "Live Load"], 
-        ans: 1 
-    },
-    { 
-        q: "Modern plastics and polyurethane foams contain approximately how many BTUs per pound?", 
-        opts: ["8,000", "12,000", "16,000", "24,000"], 
-        ans: 2 
-    },
-    { 
-        q: "If 5 pounds of solid heavy timber is turned into thin wood chips, what changes drastically?", 
-        opts: ["The dead load of the material", "The total Fire Load (BTUs)", "The safety factor of the wood", "The Heat Release Rate (HRR)"], 
-        ans: 3 
-    },
-    { 
-        q: "Ordinary combustibles like wood and paper hold approximately how many BTUs per pound?", 
-        opts: ["8,000", "16,000", "24,000", "32,000"], 
-        ans: 0 
-    },
-    { 
-        q: "The built-in buffer that is the ratio between a material's ultimate breaking strength and its safe working stress is the:", 
-        opts: ["Elastic limit", "Safety Factor", "Heat Release Rate", "Torsional threshold"], 
-        ans: 1 
-    },
-    { 
-        q: "Why does field-constructed masonry require a much higher safety factor (e.g., 10) than factory-produced steel (e.g., 2)?", 
-        opts: ["It is inherently heavier.", "It has a lower melting point.", "It has significantly more unknown variables.", "It lacks compression strength."], 
-        ans: 2 
-    },
-    { 
-        q: "In reinforced concrete, what specific weakness of the concrete is the embedded steel rebar designed to compensate for?", 
-        opts: ["Concrete's weakness in compression", "Concrete's vulnerability to shear forces", "Concrete's high safety factor", "Concrete's weakness in tension"], 
-        ans: 3 
-    },
-    { 
-        q: "What is the golden rule of composite structural elements like a Flitch plate girder?", 
-        opts: ["All elements of a composite material must react together to carry the load.", "The steel must always bear the tension.", "The safety factor must be reduced in a fire.", "They are immune to pyrolytic decomposition."], 
-        ans: 0 
-    },
-    { 
-        q: "The load-carrying capacity of a beam increases by the square of its:", 
-        opts: ["Width", "Length", "Depth", "Weight"], 
-        ans: 2 
-    },
-    { 
-        q: "When a simple beam deflects downward under a load, the material at the bottom of the beam is elongating and is in:", 
-        opts: ["Tension", "Compression", "Torsion", "Shear"], 
-        ans: 0 
-    },
-    { 
-        q: "A beam that is supported and rigidly held at only one end, projecting out into space like an exterior balcony, is a:", 
-        opts: ["Continuous Beam", "Suspended Beam", "Simple Beam", "Cantilever Beam"], 
-        ans: 3 
-    },
-    { 
-        q: "If fire destroys the roof anchor point of a suspended beam (like a heavy theater marquee), it instantly reverts to a highly unstable:", 
-        opts: ["Axial column", "Un-designed cantilever", "Rigid connection", "Uniformly distributed load"], 
-        ans: 1 
-    },
-    { 
-        q: "In a standard roof truss, the top chord acts like a column laid on its side and is entirely under:", 
-        opts: ["Tension", "Compression", "Torsion", "Shear"], 
-        ans: 1 
-    },
-    { 
-        q: "What hidden, heat-driven process causes wood fibers to turn to charcoal and release metal gusset plates prematurely?", 
-        opts: ["Elongation", "Shear deflection", "Pyrolytic decomposition", "Thermal expansion"], 
-        ans: 2 
-    },
-    { 
-        q: "According to Euler's Law, if a tall column loses its mid-point brace and its effective length doubles, its load-carrying capacity instantly drops to:", 
-        opts: ["50%", "33%", "25%", "10%"], 
-        ans: 2 
-    },
-    { 
-        q: "In modern precast concrete tilt-slab construction, what provides the permanent bracing that stops the exterior walls from toppling outward?", 
-        opts: ["The foundation", "The roof structure", "The steel tie-rods", "The floor system"], 
-        ans: 1 
-    },
-    { 
-        q: "Unlike a simple beam that experiences both tension and compression, a true arch operates entirely under what force?", 
-        opts: ["Compression", "Tension", "Torsion", "Shear"], 
-        ans: 0 
-    },
-    { 
-        q: "Rigid frames create an enormous outward thrust at their base, which is usually resisted by what hidden component?", 
-        opts: ["Fire cut wall pockets", "Metal gusset plates", "Flying buttresses", "Steel tie-rods hidden inside the concrete floor"], 
-        ans: 3 
-    },
-    { 
-        q: "At what temperature does unprotected structural steel elongate 9.5 inches per 100 feet of length?", 
-        opts: ["800°F (427°C)", "1000°F (538°C)", "1200°F (649°C)", "1500°F (815°C)"], 
-        ans: 1 
-    }
+    { q: "What system forms a continuous path to transfer a building's weight safely to the ground?", opts: ["The composite transmission path", "The lateral stability matrix", "The gravity resistance system", "The dead load network"], ans: 2 },
+    { q: "Which invisible force acts as a tearing or slicing force in opposite directions?", opts: ["Shear", "Compression", "Torsion", "Tension"], ans: 0 },
+    { q: "What is the internal resistance of a material to an external force called?", opts: ["Strain", "Deflection", "Shear", "Stress"], ans: 3 },
+    { q: "When a wooden floor joist bows, the actual physical, visible deformation is known as:", opts: ["Torsion", "Strain", "Stress", "Shear"], ans: 1 },
+    { q: "A massive HVAC unit permanently bolted to a roof is an example of what type of load?", opts: ["Dead Load", "Live Load", "Impact Load", "Lateral Load"], ans: 0 },
+    { q: "When a master stream adds over 4 tons of water weight per minute to a structure, this rapidly accumulating weight is a:", opts: ["Live Load", "Dead Load", "Impact Load", "Lateral Load"], ans: 0 },
+    { q: "High winds pushing against the broad side of a structure create what type of load?", opts: ["Axial Load", "Live Load", "Impact Load", "Lateral Load"], ans: 3 },
+    { q: "A sudden, violent force delivered in a short time, such as a partial roof collapse onto a lower floor, is a(n):", opts: ["Eccentric Load", "Impact Load", "Lateral Load", "Concentrated Dead Load"], ans: 1 },
+    { q: "A force that passes straight through the centroid of a material, distributing stress evenly, is an:", opts: ["Axial Load", "Eccentric Load", "Impact Load", "Torsional Load"], ans: 0 },
+    { q: "A weight placed off-center on a pillar, which induces a bending stress, is called an:", opts: ["Axial Load", "Concentrated Load", "Eccentric Load", "Uniformly Distributed Load"], ans: 2 },
+    { q: "Water sitting evenly across a flat roof is an example of what type of load application?", opts: ["Concentrated Load", "Eccentric Load", "Axial Load", "Uniformly Distributed Load"], ans: 3 },
+    { q: "What term represents the total amount of potential energy (heat) available to burn in a given space?", opts: ["Heat Release Rate", "Fire Load", "Safety Factor", "Live Load"], ans: 1 },
+    { q: "Modern plastics and polyurethane foams contain approximately how many BTUs per pound?", opts: ["8,000", "12,000", "16,000", "24,000"], ans: 2 },
+    { q: "If 5 pounds of solid heavy timber is turned into thin wood chips, what changes drastically?", opts: ["The dead load of the material", "The total Fire Load (BTUs)", "The safety factor of the wood", "The Heat Release Rate (HRR)"], ans: 3 },
+    { q: "Ordinary combustibles like wood and paper hold approximately how many BTUs per pound?", opts: ["8,000", "16,000", "24,000", "32,000"], ans: 0 },
+    { q: "The built-in buffer that is the ratio between a material's ultimate breaking strength and its safe working stress is the:", opts: ["Elastic limit", "Safety Factor", "Heat Release Rate", "Torsional threshold"], ans: 1 },
+    { q: "Why does field-constructed masonry require a much higher safety factor (e.g., 10) than factory-produced steel (e.g., 2)?", opts: ["It is inherently heavier.", "It has a lower melting point.", "It has significantly more unknown variables.", "It lacks compression strength."], ans: 2 },
+    { q: "In reinforced concrete, what specific weakness of the concrete is the embedded steel rebar designed to compensate for?", opts: ["Concrete's weakness in compression", "Concrete's vulnerability to shear forces", "Concrete's high safety factor", "Concrete's weakness in tension"], ans: 3 },
+    { q: "What is the golden rule of composite structural elements like a Flitch plate girder?", opts: ["All elements of a composite material must react together to carry the load.", "The steel must always bear the tension.", "The safety factor must be reduced in a fire.", "They are immune to pyrolytic decomposition."], ans: 0 },
+    { q: "The load-carrying capacity of a beam increases by the square of its:", opts: ["Width", "Length", "Depth", "Weight"], ans: 2 },
+    { q: "When a simple beam deflects downward under a load, the material at the bottom of the beam is elongating and is in:", opts: ["Tension", "Compression", "Torsion", "Shear"], ans: 0 },
+    { q: "A beam that is supported and rigidly held at only one end, projecting out into space like an exterior balcony, is a:", opts: ["Continuous Beam", "Suspended Beam", "Simple Beam", "Cantilever Beam"], ans: 3 },
+    { q: "If fire destroys the roof anchor point of a suspended beam (like a heavy theater marquee), it instantly reverts to a highly unstable:", opts: ["Axial column", "Un-designed cantilever", "Rigid connection", "Uniformly distributed load"], ans: 1 },
+    { q: "In a standard roof truss, the top chord acts like a column laid on its side and is entirely under:", opts: ["Tension", "Compression", "Torsion", "Shear"], ans: 1 },
+    { q: "What hidden, heat-driven process causes wood fibers to turn to charcoal and release metal gusset plates prematurely?", opts: ["Elongation", "Shear deflection", "Pyrolytic decomposition", "Thermal expansion"], ans: 2 },
+    { q: "According to Euler's Law, if a tall column loses its mid-point brace and its effective length doubles, its load-carrying capacity instantly drops to:", opts: ["50%", "33%", "25%", "10%"], ans: 2 },
+    { q: "In modern precast concrete tilt-slab construction, what provides the permanent bracing that stops the exterior walls from toppling outward?", opts: ["The foundation", "The roof structure", "The steel tie-rods", "The floor system"], ans: 1 },
+    { q: "Unlike a simple beam that experiences both tension and compression, a true arch operates entirely under what force?", opts: ["Compression", "Tension", "Torsion", "Shear"], ans: 0 },
+    { q: "Rigid frames create an enormous outward thrust at their base, which is usually resisted by what hidden component?", opts: ["Fire cut wall pockets", "Metal gusset plates", "Flying buttresses", "Steel tie-rods hidden inside the concrete floor"], ans: 3 },
+    { q: "At what temperature does unprotected structural steel elongate 9.5 inches per 100 feet of length?", opts: ["800°F (427°C)", "1000°F (538°C)", "1200°F (649°C)", "1500°F (815°C)"], ans: 1 }
 ];
-
 
 // --- Application State ---
 let currentModuleId = 0;
 let unlockedModules = [0];
 let currentQuizIndex = 0; 
-const audioPlayer = document.getElementById('lesson-audio'); 
+let audioPlayer; 
 
 // --- Initialization ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize audio player safely after DOM load
+    audioPlayer = document.getElementById('lesson-audio'); 
+    
+    init();
+});
+
 function init() {
     renderSidebar();
     loadModule(currentModuleId);
@@ -672,12 +557,14 @@ function init() {
         }
     });
     
-    audioPlayer.addEventListener('error', () => {
-        const audioStatus = document.getElementById('audio-status');
-        if (audioPlayer.src && !audioPlayer.src.endsWith('/')) {
-            if (audioStatus) audioStatus.textContent = "Error: File Not Found";
-        }
-    }, true);
+    if (audioPlayer) {
+        audioPlayer.addEventListener('error', () => {
+            const audioStatus = document.getElementById('audio-status');
+            if (audioPlayer.src && !audioPlayer.src.endsWith('/')) {
+                if (audioStatus) audioStatus.textContent = "Error: File Not Found";
+            }
+        }, true);
+    }
 }
 
 function renderSidebar() {
@@ -724,8 +611,10 @@ function loadModule(id) {
     renderSidebar();
     window.scrollTo(0, 0);
 
-    audioPlayer.pause();
-    audioPlayer.src = ""; 
+    if (audioPlayer) {
+        audioPlayer.pause();
+        audioPlayer.src = ""; 
+    }
 
     const btnNext = document.getElementById('btn-next');
     const btnPrev = document.getElementById('btn-prev');
@@ -764,6 +653,8 @@ function renderContent(mod) {
     const audioStatus = document.getElementById('audio-status');
 
     audioToggle.addEventListener('click', () => {
+        if (!audioPlayer) return;
+        
         const audioUrl = `audio/module_${mod.id}.mp3`;
 
         if (!audioPlayer.src.includes(audioUrl)) {
@@ -781,172 +672,14 @@ function renderContent(mod) {
         }
     });
 
-    audioPlayer.onended = () => {
-        audioStatus.textContent = "Listen Again";
-        audioPath.setAttribute("d", "M8 5v14l11-7z");
-    };
+    if (audioPlayer) {
+        audioPlayer.onended = () => {
+            audioStatus.textContent = "Listen Again";
+            audioPath.setAttribute("d", "M8 5v14l11-7z");
+        };
+    }
 
     displayQuizQuestion(mod);
-}
-
-function displayQuizQuestion(mod) {
-    const wrapper = document.getElementById('quiz-question-wrapper');
-    const question = mod.quickCheck[currentQuizIndex];
-    const totalQuestions = mod.quickCheck.length;
-
-    wrapper.innerHTML = `
-        <div class="quiz-question active">
-            <p class="body-2" style="color: var(--text-muted); margin-bottom: 8px;">Question ${currentQuizIndex + 1} of ${totalQuestions}</p>
-            <h4 style="margin-bottom: 16px;">${question.q}</h4>
-            <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;">
-                ${question.opts.map((opt, i) => `
-                    <label class="quiz-option" id="opt-label-${i}" style="padding: 12px; border: 1px solid #dadce0; border-radius: 8px; cursor: pointer; display: block;">
-                        <input type="radio" name="quiz-opt" value="${i}" style="margin-right: 8px;"> ${opt}
-                    </label>
-                `).join('')}
-            </div>
-            <div id="quiz-feedback" class="feedback-banner" style="display:none; margin-top: 20px;"></div>
-            <button id="next-quiz-btn" class="btn btn-primary" style="display:none; margin-top: 20px; width: 100%;">
-                ${currentQuizIndex + 1 === totalQuestions ? 'Finish Module' : 'Next Question'}
-            </button>
-        </div>
-    `;
-
-    const options = document.querySelectorAll('input[name="quiz-opt"]');
-    const feedback = document.getElementById('quiz-feedback');
-    const nextBtn = document.getElementById('next-quiz-btn');
-
-    options.forEach(opt => {
-        opt.addEventListener('change', (e) => {
-            const selected = parseInt(e.target.value);
-            const isCorrect = selected === question.ans;
-            
-            options.forEach(input => input.disabled = true);
-
-            const selectedLabel = document.getElementById(`opt-label-${selected}`);
-            const correctLabel = document.getElementById(`opt-label-${question.ans}`);
-
-            if (isCorrect) {
-                selectedLabel.style.borderColor = '#1E8E3E';
-                selectedLabel.style.backgroundColor = '#e6f4ea';
-            } else {
-                selectedLabel.style.borderColor = '#D93025';
-                selectedLabel.style.backgroundColor = '#fce8e6';
-                correctLabel.style.borderColor = '#1E8E3E';
-                correctLabel.style.borderWidth = '2px';
-            }
-
-            feedback.style.display = 'block';
-            feedback.style.padding = '16px';
-            feedback.style.borderRadius = '8px';
-            feedback.style.borderLeft = `5px solid ${isCorrect ? '#1E8E3E' : '#D93025'}`;
-            feedback.style.backgroundColor = isCorrect ? '#f1f8f3' : '#fef1f0';
-
-            const header = isCorrect 
-                ? `<span style="color: #1E8E3E; font-weight: bold;">✅ Correct!</span>` 
-                : `<span style="color: #D93025; font-weight: bold;">❌ Not Quite.</span> The correct answer is <strong>${question.opts[question.ans]}</strong>.`;
-
-            feedback.innerHTML = `
-                <div style="margin-bottom: 8px;">${header}</div>
-                <div style="font-size: 0.95rem; color: #202124;">${question.coaching || (isCorrect ? "Great job." : "")}</div>
-            `;
-
-            nextBtn.style.display = 'block';
-        });
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentQuizIndex + 1 < totalQuestions) {
-            currentQuizIndex++;
-            displayQuizQuestion(mod);
-        } else {
-            handleModuleComplete(mod);
-        }
-    });
-}
-
-function handleModuleComplete(mod) {
-    const feedback = document.getElementById('quiz-feedback');
-    const nextBtn = document.getElementById('next-quiz-btn');
-    const btnNext = document.getElementById('btn-next');
-
-    feedback.innerHTML = `<p style="color: #1E8E3E; font-weight:bold;">✅ Module Complete!</p><p>You have unlocked the next lesson.</p>`;
-    nextBtn.style.display = 'none';
-    
-    if (!unlockedModules.includes(mod.id + 1)) {
-        unlockedModules.push(mod.id + 1);
-        renderSidebar();
-    }
-    btnNext.classList.remove('disabled');
-}
-
-function renderExam() {
-    const contentWrapper = document.getElementById('content-wrapper');
-    let html = `
-        <h1 class="module-title">Final Evaluation</h1>
-        <p style="margin-bottom: 2rem;">A passing score of 90% is required.</p>
-        <div id="exam-container">
-    `;
-    examQuestions.forEach((q, index) => {
-        html += `
-            <div class="quiz-question">
-                <h4>${index + 1}. ${q.q}</h4>
-                ${q.opts.map((opt, oIndex) => `
-                    <label class="quiz-option">
-                        <input type="radio" name="exam_${index}" value="${oIndex}"> ${opt}
-                    </label>
-                `).join('')}
-            </div>
-        `;
-    });
-    html += `
-        </div>
-        <button id="submit-exam" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Exam</button>
-        <div id="exam-results" class="quiz-section hidden" style="text-align: center;"></div>
-    `;
-    contentWrapper.innerHTML = html;
-    document.getElementById('submit-exam').addEventListener('click', evaluateExam);
-}
-
-function evaluateExam() {
-    let score = 0;
-    const missedModules = new Set();
-    examQuestions.forEach((q, index) => {
-        const selected = document.querySelector(`input[name="exam_${index}"]:checked`);
-        if (selected && parseInt(selected.value) === q.ans) score++;
-        else {
-            const qNum = index + 1;
-            if(qNum <= 4) missedModules.add("Module 1: Forces");
-            else if(qNum <= 9) missedModules.add("Module 2: Loads");
-            else if(qNum <= 13) missedModules.add("Modules 3 & 4: Application/Fire Loads");
-            else if(qNum <= 17) missedModules.add("Module 5: Safety Factor");
-            else if(qNum <= 21) missedModules.add("Module 6: Horizontal Spans");
-            else if(qNum <= 25) missedModules.add("Module 7: Vertical Supports");
-            else missedModules.add("Module 8: Connections");
-        }
-    });
-
-    const resultsDiv = document.getElementById('exam-results');
-    resultsDiv.classList.remove('hidden');
-    document.getElementById('submit-exam').classList.add('hidden');
-    
-    const percentage = Math.round((score / examQuestions.length) * 100);
-    let feedbackHTML = `<h2>Score: ${score} / ${examQuestions.length} (${percentage}%)</h2>`;
-    
-    if (percentage >= 90) {
-        resultsDiv.style.borderTopColor = '#1e8e3e';
-        feedbackHTML += `<p style="color: #1e8e3e; font-weight: bold; margin-top: 1rem;">PASS</p>
-                         <p>Excellent work. You have mastered the core structural concepts of Chapter 2.</p>`;
-    } else {
-        resultsDiv.style.borderTopColor = '#d93025';
-        feedbackHTML += `<p style="color: #d93025; font-weight: bold; margin-top: 1rem;">FAIL - Re-test Required</p>
-                         <p>Review the following modules before your second attempt:</p>
-                         <ul style="text-align: left; display: inline-block; margin-top: 1rem;">`;
-        missedModules.forEach(m => feedbackHTML += `<li>${m}</li>`);
-        feedbackHTML += `</ul>`;
-    }
-    resultsDiv.innerHTML = feedbackHTML;
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
 function displayQuizQuestion(mod) {
@@ -1005,12 +738,12 @@ function displayQuizQuestion(mod) {
             feedback.style.backgroundColor = isCorrect ? '#f1f8f3' : '#fef1f0';
 
             const header = isCorrect 
-                ? `<span style="color: #1E8E3E; font-weight: bold;">Correct!</span>` 
-                : `<span style="color: #D93025; font-weight: bold;">Not Quite.</span> The correct answer is <strong>${question.opts[question.ans]}</strong>.`;
+                ? `<span style="color: #1E8E3E; font-weight: bold;">✅ Correct!</span>` 
+                : `<span style="color: #D93025; font-weight: bold;">❌ Not Quite.</span> The correct answer is <strong>${question.opts[question.ans]}</strong>.`;
 
             feedback.innerHTML = `
                 <div style="margin-bottom: 8px;">${header}</div>
-                <div style="font-size: 0.95rem; color: #202124;">${question.coaching}</div>
+                <div style="font-size: 0.95rem; color: #202124;">${question.coaching || (isCorrect ? "Great job." : "")}</div>
             `;
 
             nextBtn.style.display = 'block';
@@ -1032,7 +765,7 @@ function handleModuleComplete(mod) {
     const nextBtn = document.getElementById('next-quiz-btn');
     const btnNext = document.getElementById('btn-next');
 
-    feedback.innerHTML = `<p><strong>Module Complete!</strong> You have unlocked the next lesson.</p>`;
+    feedback.innerHTML = `<p style="color: #1E8E3E; font-weight:bold;">✅ Module Complete!</p><p>You have unlocked the next lesson.</p>`;
     nextBtn.style.display = 'none';
     
     // Unlock next module
@@ -1043,4 +776,76 @@ function handleModuleComplete(mod) {
     btnNext.classList.remove('disabled');
 }
 
-init();
+function renderExam() {
+    const contentWrapper = document.getElementById('content-wrapper');
+    let html = `
+        <h1 class="module-title">Final Evaluation</h1>
+        <p style="margin-bottom: 2rem;">A passing score of 90% is required.</p>
+        <div id="exam-container">
+    `;
+    examQuestions.forEach((q, index) => {
+        html += `
+            <div class="quiz-question">
+                <h4>${index + 1}. ${q.q}</h4>
+                ${q.opts.map((opt, oIndex) => `
+                    <label class="quiz-option">
+                        <input type="radio" name="exam_${index}" value="${oIndex}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+    });
+    html += `
+        </div>
+        <button id="submit-exam" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Exam</button>
+        <div id="exam-results" class="quiz-section hidden" style="text-align: center;"></div>
+    `;
+    contentWrapper.innerHTML = html;
+    document.getElementById('submit-exam').addEventListener('click', evaluateExam);
+}
+
+function evaluateExam() {
+    let score = 0;
+    const missedModules = new Set();
+    examQuestions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="exam_${index}"]:checked`);
+        if (selected && parseInt(selected.value) === q.ans) {
+            score++;
+        } else {
+            const qNum = index + 1;
+            // Updated logic to accurately map the 30 new test questions to the correct 10 modules
+            if (qNum <= 4) missedModules.add("Module 1: The Gravity Resistance System");
+            else if (qNum <= 8) missedModules.add("Module 2: The Weight of the World (Loads)");
+            else if (qNum <= 11) missedModules.add("Module 3: Direction and Destruction (Load Application)");
+            else if (qNum <= 15) missedModules.add("Module 4: Fueling the Collapse (Fire Loads & HRR)");
+            else if (qNum <= 19) missedModules.add("Module 5: The Margin of Error (Safety Factor & Composites)");
+            else if (qNum <= 23) missedModules.add("Module 6: Horizontal Spans (The Physics of Beams)");
+            else if (qNum <= 25) missedModules.add("Module 7: Triangulated Death Traps (Trusses)");
+            else if (qNum <= 27) missedModules.add("Module 8: Vertical Supports (Columns & Walls)");
+            else if (qNum <= 29) missedModules.add("Module 9: The Arch, The Frame, and The Dome");
+            else missedModules.add("Module 10: The Weakest Link (Foundations & Connections)");
+        }
+    });
+
+    const resultsDiv = document.getElementById('exam-results');
+    resultsDiv.classList.remove('hidden');
+    document.getElementById('submit-exam').classList.add('hidden');
+    
+    const percentage = Math.round((score / examQuestions.length) * 100);
+    let feedbackHTML = `<h2>Score: ${score} / ${examQuestions.length} (${percentage}%)</h2>`;
+    
+    if (percentage >= 90) {
+        resultsDiv.style.borderTopColor = '#1e8e3e';
+        feedbackHTML += `<p style="color: #1e8e3e; font-weight: bold; margin-top: 1rem;">PASS</p>
+                         <p>Excellent work. You have mastered the core structural concepts of Chapter 2.</p>`;
+    } else {
+        resultsDiv.style.borderTopColor = '#d93025';
+        feedbackHTML += `<p style="color: #d93025; font-weight: bold; margin-top: 1rem;">FAIL - Re-test Required</p>
+                         <p>Review the following modules before your second attempt:</p>
+                         <ul style="text-align: left; display: inline-block; margin-top: 1rem;">`;
+        missedModules.forEach(m => feedbackHTML += `<li>${m}</li>`);
+        feedbackHTML += `</ul>`;
+    }
+    resultsDiv.innerHTML = feedbackHTML;
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
