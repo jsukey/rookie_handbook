@@ -155,7 +155,7 @@ body {
     margin-top: 32px;
     box-shadow: var(--shadow);
     border-top: 4px solid var(--primary);
-    border-left: 4px solid var(--secondary);
+    border-left: 4px solid var(--primary);
 }
 
 .quiz-question { margin-bottom: 2rem; }
