@@ -6,54 +6,274 @@
 
 const lessonData = [
     {
-        id: 0,
-        title: "Module 1: The Gravity Resistance System",
-        text: `
-            <p>Look up at the ceiling of the apparatus bay. What is keeping that roof from crushing the rigs? It isn't magic; it is the <strong>gravity resistance system</strong>. Every building is in a constant, invisible battle against the earth's pull. Structural elements and their connections form a continuous path that transfers weight safely to the ground.</p>
-            <p>When a structure catches fire, it is not just burning; it is losing its ability to fight gravity. When the gravity resistance system is compromised, gravity wins.</p>
-            
-            <h3>The Forces of Destruction</h3>
-            <p>To read a building, you must first understand the four invisible forces tearing at it:</p>
-            <ul>
-                <li><strong>Compression:</strong> A crushing force. Imagine the weight of a heavy rooftop AC unit pushing straight down on a concrete pillar. The pillar is being squeezed.</li>
-                <li><strong>Tension:</strong> A stretching force. Think of a crane's cable lifting a steel beam, or the bottom edge of a loaded floor joist bowing downward. It is being pulled apart.</li>
-                <li><strong>Shear:</strong> A tearing or slicing force acting in opposite directions. Imagine a heavy beam resting on a brick wall; the weight of the beam wants to slide down, while the wall pushes up. The connection point is under shear stress.</li>
-                <li><strong>Torsion:</strong> A twisting force. Picture a large billboard on a single steel pole during a windstorm. The wind pushes the sign, twisting the pole.</li>
-            </ul>
-            <img src="images/forces.png" alt="Compression, Tension, Shear, and Torsion" class="instructive-image">
+    id: 0,
+    title: "Module 1: The Gravity Resistance System",
+    text: `
+        <p>Look up at the ceiling of the apparatus bay. What is keeping that roof from crushing the rigs? It isn't magic; it is the <strong>gravity resistance system</strong>. Every building is in a constant, invisible battle against the earth's pull. Structural elements and their connections form a continuous path that transfers weight safely to the ground.</p>
+        <p>When a structure catches fire, it is not just burning; it is losing its ability to fight gravity. When the gravity resistance system is compromised, gravity wins.</p>
+        
+        <h3>The Forces of Destruction</h3>
+        <p>To read a building, you must first understand the four invisible forces tearing at it:</p>
+        <ul>
+            <li><strong>Compression:</strong> A crushing force. Imagine the weight of a heavy rooftop AC unit pushing straight down on a concrete pillar. The pillar is being squeezed.</li>
+            <li><strong>Tension:</strong> A stretching force. Think of a crane's cable lifting a steel beam, or the bottom edge of a loaded floor joist bowing downward. It is being pulled apart.</li>
+            <li><strong>Shear:</strong> A tearing or slicing force acting in opposite directions. Imagine a heavy beam resting on a brick wall; the weight of the beam wants to slide down, while the wall pushes up. The connection point is under shear stress.</li>
+            <li><strong>Torsion:</strong> A twisting force. Picture a large billboard on a single steel pole during a windstorm. The wind pushes the sign, twisting the pole.</li>
+        </ul>
 
-            <h3>Stress and Strain: The Material Response</h3>
-            <p>While forces act <em>on</em> a building, <strong>Stress</strong> and <strong>Strain</strong> happen <em>inside</em> the materials themselves.</p>
-            <p><strong>Stress</strong> is the internal resistance of a material to an external force. It is measured as force per unit area. Think of it as how hard the atoms of a steel beam are "fighting back" to stay together when a load is applied. When heat from a fire weakens these atomic bonds, the material's ability to resist stress drops significantly.</p>
-            <p><strong>Strain</strong> is the actual physical deformation or change in shape that occurs because of stress. If you see a steel beam sagging (deflecting) or a wooden floor joist bowing, you are looking at <strong>Strain</strong>. If the strain exceeds the material's elastic limit, the deformation becomes permanent, leading to failure.</p>
-        `,
-        quickCheck: [
-            { 
-                q: "You notice a heavy steel beam bowing in the middle under the weight of the floor above. The bottom of that beam is being stretched. What force is acting on the bottom of the beam?", 
-                opts: ["Compression", "Tension", "Torsion"], 
-                ans: 1,
-                coaching: "It isn't Compression (which is a crushing force) or Torsion (which is twisting). In a loaded beam, the top 'crushes' together while the bottom stretches. That stretching force is <strong>Tension</strong>."
-            },
-            { 
-                q: "A fire burns through a critical wooden column in the basement, causing the first floor to drop. What system just failed?", 
-                opts: ["The lateral stability matrix", "The composite transmission path", "The gravity resistance system"], 
-                ans: 2,
-                coaching: "While lateral stability handles wind, the <strong>Gravity Resistance System</strong> is the specific network of columns and beams that fights the constant downward pull of the earth. When a column goes, the path to the ground is broken."
-            },
-            { 
-                q: "You observe a steel I-beam in the fire building that is visibly sagging but has not yet snapped. This visible 'sag' or change in shape is known as:", 
-                opts: ["Internal Stress", "Structural Strain", "Torsional Shear"], 
-                ans: 1,
-                coaching: "Stress is the invisible 'fight' happening inside the atoms of the steel. <strong>Strain</strong> is the physical, visible result of that fight. If you can see the sag with your eyes, you are looking at Strain."
-            },
-            { 
-                q: "As a fire increases the temperature of a structural member, what happens to its internal ability to resist stress?", 
-                opts: ["It increases as the material expands.", "It remains constant until the melting point.", "It decreases as molecular bonds are weakened by heat."], 
-                ans: 2,
-                coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly <strong>decreases</strong> the material's internal resistance to stress, leading to collapse long before the melting point."
+        <!-- Embedded Animated SVG Graphic -->
+        <style>
+            .forces-anim-container {
+                --anim-dur: 16s; /* Total 16s cycle = 4s per force phase */
+                width: 100%;
+                max-width: 500px;
+                background-color: #ffffff;
+                border-radius: 16px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                box-sizing: border-box;
+                position: relative;
+                margin: 2.5rem auto; /* Centers the graphic block with spacing */
             }
-        ]
-    },{
+
+            .forces-anim-container svg {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            /* -------------------------------------------
+               MASTER MEMBER DEFORMATION
+            ------------------------------------------- */
+            #columnGroup {
+                transform-origin: 200px 400px; /* Origin at the bottom fixed base */
+                animation: masterDeform var(--anim-dur) ease-in-out infinite;
+            }
+
+            @keyframes masterDeform {
+                /* 1. COMPRESSION (0% - 25%) */
+                0%, 5% { transform: scale(1, 1) skewX(0); }
+                10%, 15% { transform: scale(1.05, 0.9) skewX(0); } /* Squish down */
+                20%, 25% { transform: scale(1, 1) skewX(0); }
+                
+                /* 2. TENSION (25% - 50%) */
+                25%, 30% { transform: scale(1, 1) skewX(0); }
+                35%, 40% { transform: scale(0.9, 1.15) skewX(0); } /* Stretch up */
+                45%, 50% { transform: scale(1, 1) skewX(0); }
+
+                /* 3. SHEAR (50% - 75%) */
+                50%, 55% { transform: scale(1, 1) skewX(0); }
+                60%, 65% { transform: scale(1, 1) skewX(-15deg); } /* Skew right */
+                70%, 75% { transform: scale(1, 1) skewX(0); }
+
+                /* 4. TORSION (75% - 100%) */
+                75%, 80% { transform: scale(1, 1) skewX(0); }
+                85%, 90% { transform: scale(0.92, 1) skewX(0); } /* Pinch width slightly to sell the 3D twist */
+                95%, 100% { transform: scale(1, 1) skewX(0); }
+            }
+
+            /* -------------------------------------------
+               INTERNAL GRID LINES & TOP CAP (TORSION)
+            ------------------------------------------- */
+            .internal-lines {
+                transform-origin: 200px 400px; /* Anchor lines at the bottom base */
+                animation: twistLines var(--anim-dur) ease-in-out infinite;
+            }
+            
+            @keyframes twistLines {
+                0%, 80% { transform: skewX(0); opacity: 0.6; }
+                /* Skewing the lines creates a realistic 3D surface helix */
+                85%, 90% { transform: skewX(-25deg); opacity: 0.8; }
+                95%, 100% { transform: skewX(0); opacity: 0.6; }
+            }
+
+            .top-cap {
+                transform-origin: 200px 195px;
+                animation: capTwist var(--anim-dur) ease-in-out infinite;
+            }
+
+            @keyframes capTwist {
+                0%, 80% { transform: rotate(0) scaleX(1); }
+                /* Cap rotates slightly and narrows to sell the 3D perspective */
+                85%, 90% { transform: rotate(5deg) scaleX(0.95); } 
+                95%, 100% { transform: rotate(0) scaleX(1); }
+            }
+
+            /* -------------------------------------------
+               VISIBILITY CONTROLS (Fade in/out elements)
+            ------------------------------------------- */
+            .vis-comp { animation: showComp var(--anim-dur) ease-in-out infinite; }
+            .vis-tens { animation: showTens var(--anim-dur) ease-in-out infinite; }
+            .vis-shear { animation: showShear var(--anim-dur) ease-in-out infinite; }
+            .vis-tors { animation: showTors var(--anim-dur) ease-in-out infinite; }
+
+            @keyframes showComp { 0%, 23% {opacity: 1;} 25%, 98% {opacity: 0;} 100% {opacity: 1;} }
+            @keyframes showTens { 0%, 22% {opacity: 0;} 25%, 48% {opacity: 1;} 50%, 100% {opacity: 0;} }
+            @keyframes showShear { 0%, 47% {opacity: 0;} 50%, 73% {opacity: 1;} 75%, 100% {opacity: 0;} }
+            @keyframes showTors { 0%, 72% {opacity: 0;} 75%, 98% {opacity: 1;} 100% {opacity: 0;} }
+
+            /* -------------------------------------------
+               ARROW MOVEMENTS
+            ------------------------------------------- */
+            .arrow-comp { animation: moveComp var(--anim-dur) ease-in-out infinite; }
+            @keyframes moveComp {
+                0%, 5%, 20%, 100% { transform: translateY(0); }
+                10%, 15% { transform: translateY(21px); } /* Tracks squish */
+            }
+
+            .arrow-tens { animation: moveTens var(--anim-dur) ease-in-out infinite; }
+            @keyframes moveTens {
+                0%, 30%, 45%, 100% { transform: translateY(0); }
+                35%, 40% { transform: translateY(-30px); } /* Pulls Up by 30px */
+            }
+
+            .arrow-shear { animation: moveShear var(--anim-dur) ease-in-out infinite; }
+            @keyframes moveShear {
+                0%, 55%, 70%, 100% { transform: translateX(0); }
+                60%, 65% { transform: translateX(53px); } /* Math: 200px height * tan(15deg) skew = ~53.5px shift right */
+            }
+
+            .arrow-tors { 
+                transform-origin: 200px 195px; 
+                animation: moveTors var(--anim-dur) ease-in-out infinite; 
+            }
+            @keyframes moveTors {
+                0%, 80%, 95%, 100% { transform: scale(1) translateY(0); }
+                85%, 90% { transform: scale(1.02) translateY(3px); } 
+            }
+
+            /* Draw the torsion arrow dynamically */
+            .torsion-path {
+                stroke-dasharray: 250;
+                animation: drawTors var(--anim-dur) ease-in-out infinite;
+            }
+            @keyframes drawTors {
+                0%, 80% { stroke-dashoffset: 250; }
+                85%, 90% { stroke-dashoffset: 0; }
+                95%, 100% { stroke-dashoffset: 250; }
+            }
+        </style>
+
+        <div class="forces-anim-container">
+            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Member Gradient -->
+                    <linearGradient id="colGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#cbd5e1"/>
+                        <stop offset="25%" stop-color="#f1f5f9"/>
+                        <stop offset="75%" stop-color="#94a3b8"/>
+                        <stop offset="100%" stop-color="#64748b"/>
+                    </linearGradient>
+                    
+                    <!-- Force Gradients -->
+                    <linearGradient id="compGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#b91c1c"/>
+                    </linearGradient>
+                    <linearGradient id="tensGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                        <stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/>
+                    </linearGradient>
+                    <linearGradient id="shearGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#b45309"/>
+                    </linearGradient>
+                    <linearGradient id="torsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#6b21a8"/>
+                    </linearGradient>
+
+                    <!-- Clip path to keep skewed lines strictly inside the column -->
+                    <clipPath id="columnClip">
+                        <rect x="161" y="201" width="78" height="198" />
+                    </clipPath>
+                </defs>
+
+                <!-- Foundation / Ground -->
+                <line x1="30" y1="410" x2="370" y2="410" stroke="#cbd5e1" stroke-width="20" stroke-linecap="round"/>
+                <rect x="130" y="400" width="140" height="10" fill="#475569" rx="3"/>
+
+                <!-- MAIN STRUCTURAL MEMBER -->
+                <g id="columnGroup">
+                    <!-- Main Column Body -->
+                    <rect x="160" y="200" width="80" height="200" fill="url(#colGrad)" stroke="#334155" stroke-width="2"/>
+                    
+                    <!-- Dynamic Grid Lines Masked to the Column -->
+                    <g clip-path="url(#columnClip)">
+                        <g class="internal-lines" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4 4" fill="none">
+                            <line x1="120" y1="200" x2="120" y2="400" />
+                            <line x1="140" y1="200" x2="140" y2="400" />
+                            <line x1="160" y1="200" x2="160" y2="400" />
+                            <line x1="180" y1="200" x2="180" y2="400" />
+                            <line x1="200" y1="200" x2="200" y2="400" />
+                            <line x1="220" y1="200" x2="220" y2="400" />
+                            <line x1="240" y1="200" x2="240" y2="400" />
+                            <line x1="260" y1="200" x2="260" y2="400" />
+                            <line x1="280" y1="200" x2="280" y2="400" />
+                        </g>
+                    </g>
+
+                    <!-- Top Cap -->
+                    <rect class="top-cap" x="145" y="190" width="110" height="10" fill="#475569" rx="3"/>
+                </g>
+
+                <!-- LABELS (Centered at top, fading in and out) -->
+                <g class="vis-comp">
+                    <rect x="135" y="15" width="130" height="30" rx="15" fill="#fee2e2" stroke="#fca5a5" stroke-width="2"/>
+                    <text x="200" y="36" text-anchor="middle" fill="#b91c1c" font-weight="700" font-size="14" letter-spacing="1">COMPRESSION</text>
+                </g>
+                <g class="vis-tens">
+                    <rect x="135" y="15" width="130" height="30" rx="15" fill="#e0e7ff" stroke="#a5b4fc" stroke-width="2"/>
+                    <text x="200" y="36" text-anchor="middle" fill="#4338ca" font-weight="700" font-size="14" letter-spacing="1">TENSION</text>
+                </g>
+                <g class="vis-shear">
+                    <rect x="135" y="15" width="130" height="30" rx="15" fill="#fef08a" stroke="#fde047" stroke-width="2"/>
+                    <text x="200" y="36" text-anchor="middle" fill="#a16207" font-weight="700" font-size="14" letter-spacing="1">SHEAR</text>
+                </g>
+                <g class="vis-tors">
+                    <rect x="135" y="15" width="130" height="30" rx="15" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="2"/>
+                    <text x="200" y="36" text-anchor="middle" fill="#7e22ce" font-weight="700" font-size="14" letter-spacing="1">TORSION</text>
+                </g>
+
+                <!-- DYNAMIC FORCE ARROWS -->
+                
+                <!-- 1. Compression Arrow -->
+                <g class="vis-comp">
+                    <g class="arrow-comp">
+                        <rect x="185" y="70" width="30" height="90" fill="url(#compGrad)"/>
+                        <polygon points="170,160 230,160 200,190" fill="#b91c1c"/>
+                    </g>
+                </g>
+
+                <!-- 2. Tension Arrow -->
+                <g class="vis-tens">
+                    <g class="arrow-tens">
+                        <rect x="185" y="80" width="30" height="110" fill="url(#tensGrad)"/>
+                        <polygon points="170,80 230,80 200,50" fill="#1d4ed8"/>
+                    </g>
+                </g>
+
+                <!-- 3. Shear Arrow -->
+                <g class="vis-shear">
+                    <g class="arrow-shear">
+                        <rect x="60" y="180" width="80" height="30" fill="url(#shearGrad)"/>
+                        <polygon points="140,165 140,225 170,195" fill="#b45309"/>
+                    </g>
+                </g>
+
+                <!-- 4. Torsion Arrow -->
+                <g class="vis-tors">
+                    <g class="arrow-tors">
+                        <path class="torsion-path" d="M 130 195 A 90 25 0 1 1 270 195" fill="none" stroke="url(#torsGrad)" stroke-width="12" stroke-linecap="round"/>
+                    </g>
+                </g>
+
+            </svg>
+        </div>
+
+        <h3>Stress and Strain: The Material Response</h3>
+        <p>While forces act <em>on</em> a building, <strong>Stress</strong> and <strong>Strain</strong> happen <em>inside</em> the materials themselves.</p>
+        <p><strong>Stress</strong> is the internal resistance of a material to an external force. It is measured as force per unit area. Think of it as how hard the atoms of a steel beam are "fighting back" to stay together when a load is applied. When heat from a fire weakens these atomic bonds, the material's ability to resist stress drops significantly.</p>
+        <p><strong>Strain</strong> is the actual physical deformation or change in shape that occurs because of stress. If you see a steel beam sagging (deflecting) or a wooden floor joist bowing, you are looking at <strong>Strain</strong>. If the strain exceeds the material's elastic limit, the deformation becomes permanent, leading to failure.</p>
+    `,
+},
+    {
         id: 1,
         title: "Module 2: The Weight of the World (Loads)",
         text: `
