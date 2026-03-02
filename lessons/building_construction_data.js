@@ -266,6 +266,30 @@ const lessonData = [
         <p><strong>Stress</strong> is the internal resistance of a material to an external force. It is measured as force per unit area. Think of it as how hard the atoms of a steel beam are "fighting back" to stay together when a load is applied. When heat from a fire weakens these atomic bonds, the material's ability to resist stress drops significantly.</p>
         <p><strong>Strain</strong> is the actual physical deformation or change in shape that occurs because of stress. If you see a steel beam sagging (deflecting) or a wooden floor joist bowing, you are looking at <strong>Strain</strong>. If the strain exceeds the material's elastic limit, the deformation becomes permanent, leading to failure.</p>
     `,
+        quickCheck: [
+            { 
+                q: "You notice a heavy steel beam bowing in the middle under the weight of the floor above. The bottom of that beam is being stretched. What force is acting on the bottom of the beam?", 
+                opts: ["Compression", "Tension", "Torsion"], 
+                ans: 1,
+                coaching: "It isn't Compression (which is a crushing force) or Torsion (which is twisting). In a loaded beam, the top 'crushes' together while the bottom stretches. That stretching force is <strong>Tension</strong>."
+            },
+            { 
+                q: "A fire burns through a critical wooden column in the basement, causing the first floor to drop. What system just failed?", 
+                opts: ["The lateral stability matrix", "The composite transmission path", "The gravity resistance system"], 
+                ans: 2,
+                coaching: "While lateral stability handles wind, the <strong>Gravity Resistance System</strong> is the specific network of columns and beams that fights the constant downward pull of the earth. When a column goes, the path to the ground is broken."
+            },
+            { 
+                q: "You observe a steel I-beam in the fire building that is visibly sagging but has not yet snapped. This visible 'sag' or change in shape is known as:", 
+                opts: ["Internal Stress", "Structural Strain", "Torsional Shear"], 
+                ans: 1,
+                coaching: "Stress is the invisible 'fight' happening inside the atoms of the steel. <strong>Strain</strong> is the physical, visible result of that fight. If you can see the sag with your eyes, you are looking at Strain."
+            },
+            { 
+                q: "As a fire increases the temperature of a structural member, what happens to its internal ability to resist stress?", 
+                opts: ["It increases as the material expands.", "It remains constant until the melting point.", "It decreases as molecular bonds are weakened by heat."], 
+                ans: 2,
+                coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly <strong>decreases</strong> the material's internal resistance to stress, leading to collapse long before the melting point."
 },
     {
         id: 1,
