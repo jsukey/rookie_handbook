@@ -1,5 +1,3 @@
-
-
 // --- Application State ---
 let currentModuleId = 0;
 let unlockedModules = [0];
@@ -10,6 +8,10 @@ let audioPlayer;
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize audio player safely after DOM load
     audioPlayer = document.getElementById('lesson-audio'); 
+    if (!audioPlayer) {
+        // Fallback headless audio object if the HTML tag is missing
+        audioPlayer = new Audio();
+    }
     
     init();
 });
@@ -50,14 +52,8 @@ function init() {
         }
     });
     
-    if (audioPlayer) {
-        audioPlayer.addEventListener('error', () => {
-            const audioStatus = document.getElementById('audio-status');
-            if (audioPlayer.src && !audioPlayer.src.endsWith('/')) {
-                if (audioStatus) audioStatus.textContent = "Error: File Not Found";
-            }
-        }, true);
-    }
+    // NOTE: The global audio error listener was removed from here. 
+    // It was causing the ghost error when the module switched.
 }
 
 function renderSidebar() {
@@ -106,7 +102,9 @@ function loadModule(id) {
 
     if (audioPlayer) {
         audioPlayer.pause();
-        audioPlayer.src = ""; 
+        // Fix: Use removeAttribute instead of src="" to prevent browser MediaErrors
+        audioPlayer.removeAttribute('src'); 
+        audioPlayer.load();
     }
 
     const btnNext = document.getElementById('btn-next');
@@ -131,7 +129,7 @@ function renderContent(mod) {
             <svg class="play-icon" id="audio-icon" viewBox="0 0 24 24">
                 <path id="play-path" d="M8 5v14l11-7z"/>
             </svg>
-            <span class="audio-text" id="audio-status">Listen to Module</span>
+            <span class="audio-text" id="audio-status">Loading audio...</span>
         </div>
         <div class="module-text">${mod.text}</div>
         
@@ -145,34 +143,61 @@ function renderContent(mod) {
     const audioPath = document.getElementById('play-path');
     const audioStatus = document.getElementById('audio-status');
 
-    audioToggle.addEventListener('click', () => {
-        if (!audioPlayer) return;
-        
-        const audioUrl = `../audio/module_${mod.id}.mp3`;
-
-        if (!audioPlayer.src.includes(audioUrl)) {
-            audioPlayer.src = audioUrl;
-        }
-        
-        if (audioPlayer.paused) {
-            audioPlayer.play().catch(e => console.error("Playback failed:", e));
-            audioStatus.textContent = "Pause Lesson";
-            audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
-        } else {
-            audioPlayer.pause();
-            audioStatus.textContent = "Resume Lesson";
-            audioPath.setAttribute("d", "M8 5v14l11-7z");
-        }
-    });
-
     if (audioPlayer) {
+        // 1. Assign source and begin loading immediately
+        audioPlayer.src = `../audio/module_${mod.id}.mp3`;
+        audioPlayer.load();
+
+        // 2. Reactive Event: Audio is successfully found and ready
+        audioPlayer.oncanplay = () => {
+            if (audioPlayer.paused) {
+                audioStatus.textContent = "Listen to Module";
+            }
+            audioToggle.style.opacity = '1';
+            audioToggle.style.pointerEvents = 'auto';
+        };
+
+        // 3. Reactive Event: Audio file actually does not exist
+        audioPlayer.onerror = () => {
+            audioStatus.textContent = "Audio Not Available";
+            audioToggle.style.opacity = '0.5';
+            audioToggle.style.pointerEvents = 'none'; // Disable clicking
+        };
+
+        // 4. Reactive Event: Audio finished playing
         audioPlayer.onended = () => {
             audioStatus.textContent = "Listen Again";
             audioPath.setAttribute("d", "M8 5v14l11-7z");
         };
+
+        // 5. Click Handler
+        audioToggle.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play().catch(e => console.error("Playback failed:", e));
+                audioStatus.textContent = "Pause Lesson";
+                audioPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
+            } else {
+                audioPlayer.pause();
+                audioStatus.textContent = "Resume Lesson";
+                audioPath.setAttribute("d", "M8 5v14l11-7z");
+            }
+        });
     }
 
-    displayQuizQuestion(mod);
+    // Render Quiz if it exists
+    if (mod.quickCheck && mod.quickCheck.length > 0) {
+        displayQuizQuestion(mod);
+    } else {
+        // Hide quiz container if module has no questions
+        document.getElementById('quiz-container').style.display = 'none';
+        
+        // Auto-unlock the next module since there is no test
+        if (!unlockedModules.includes(mod.id + 1)) {
+            unlockedModules.push(mod.id + 1);
+            renderSidebar();
+        }
+        document.getElementById('btn-next').classList.remove('disabled');
+    }
 }
 
 function displayQuizQuestion(mod) {
@@ -261,7 +286,7 @@ function handleModuleComplete(mod) {
     const nextBtn = document.getElementById('next-quiz-btn');
     const btnNext = document.getElementById('btn-next');
 
-    // Fix: Explicitly reset the inline styles to a positive state, overwriting the last question's evaluation
+    // Fix: Explicitly reset the inline styles to a positive state
     feedback.style.borderLeft = '5px solid #1E8E3E';
     feedback.style.backgroundColor = '#f1f8f3';
 
