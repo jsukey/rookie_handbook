@@ -290,7 +290,8 @@ const lessonData = [
                 opts: ["It increases as the material expands.", "It remains constant until the melting point.", "It decreases as molecular bonds are weakened by heat."], 
                 ans: 2,
                 coaching: "Heat doesn't have to melt steel to kill it. As the temperature rises, molecular bonds vibrate and loosen. This rapidly <strong>decreases</strong> the material's internal resistance to stress, leading to collapse long before the melting point."
-},
+            ]
+        },
     {
         id: 1,
         title: "Module 2: The Weight of the World (Loads)",
