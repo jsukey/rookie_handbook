@@ -347,7 +347,7 @@ const lessonData = [
         text: `
             <p>It is not just <em>how much</em> weight a building is holding; it is <em>how</em> that weight is applied.</p>
             <p>When a load is placed squarely in the center of a supporting member, it is an <strong>Axial Load</strong>. The force passes straight through the centroid of the material, distributing the stress evenly. This is the strongest and most efficient way to load a building.</p>
-            <img src=../images/axial_eccentric.jpg" alt="Axial Load versus Eccentric Load" class="instructive-image">
+            <img src="../images/axial_eccentric.jpg" alt="Axial Load versus Eccentric Load" class="instructive-image">
             <p>However, loads are often imperfect. An <strong>Eccentric Load</strong> is a force that is applied perpendicular to the plane of the section, but concentrated to one side of the center. This introduces bending stress (compression on one side, tension on the other) to a column or wall.</p>
             <p>Loads can also be grouped by concentration. A <strong>Concentrated Load</strong> is a heavy weight located at one specific point. A <strong>Uniformly Distributed Load</strong> is spread evenly over an area (like water sitting evenly across a flat roof).</p>
         `,
@@ -388,7 +388,7 @@ const lessonData = [
             <h3>Surface Area and HRR</h3>
             <p>The physical shape of the fuel drastically alters the HRR. A 5-pound chunk of solid heavy timber will burn slowly because only the outer surface is exposed to oxygen. If you take that exact same 5 pounds of wood and turn it into thin wood paneling or wood chips, the total fire load (BTUs) remains identical. However, the massive increase in surface area means the material will burn exponentially faster, producing a severely high Heat Release Rate.</p>
             <p>The widespread use of modern plastics combined with lightweight, high-surface-area building materials guarantees an aggressively high HRR, drastically reducing the time we have before flashover or structural collapse.</p>
-            <img src=../images/hrr_graph.jpg" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
+            <img src="../images/hrr_graph.jpg" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
         `,
         quickCheck: [
             { 
@@ -434,7 +434,7 @@ const lessonData = [
             <p>To get the best of both worlds, builders frequently combine materials. Concrete is relatively inexpensive and incredibly strong in compression, but it is highly vulnerable to tension (stretching). Steel is strong in both, but expensive. By embedding steel rebar at the specific locations where tensile stresses develop, you create <strong>Reinforced Concrete</strong>.</p>
             <p>We also see <strong>Composite Structural Elements</strong>. A classic example is a <strong>Flitch plate girder</strong>, which is made by sandwiching a heavy piece of steel (or plywood) between two wooden beams. It gives the massive strength of steel but can be installed by workers using ordinary carpentry tools.</p>
             <p><strong>The Golden Rule of Composites:</strong> All elements of a composite material must react together to carry the load. If fire or heat causes the materials to separate (e.g., the wood burns away from the flitch plate, or heat shears the studs connecting a steel beam to a concrete floor), the composite no longer exists. The materials separately will be unable to carry the load, and the system will fail.</p>
-            <img src=../images/rebar.jpg" alt="Reinforced Concrete Structure" class="instructive-image">
+            <img src="../images/rebar.jpg" alt="Reinforced Concrete Structure" class="instructive-image">
         `,
         quickCheck: [
             { 
@@ -485,7 +485,7 @@ const lessonData = [
             <p>Not all beams are supported equally. Recognizing these two types can save your life:</p>
             <p><strong>Cantilever Beams:</strong> A cantilever is supported and rigidly held at only <em>one</em> end (like a diving board or an exterior balcony). Because it projects out into space, the forces are reversed: the tension is on the top, and the compression is on the bottom. Cantilevers are highly unstable in a fire. If the single connection point at the wall fails, the entire projecting section acts as a lever and drops, often pulling the exterior wall down with it.</p>
             <p><strong>Suspended Beams:</strong> Think of a heavy theater marquee hanging over a sidewalk. It is a simple beam where one or both ends are suspended by a tension member (like a chain, cable, or steel rod) anchored back into the building. If a fire in the attic or cockloft destroys that anchor point, the beam instantly becomes an un-designed cantilever. The sudden shift in forces causes catastrophic collapse.</p>
-            <img src=../images/deflection.jpg" alt="Simple vs Cantilever Deflection" class="instructive-image">
+            <img src="../images/deflection.jpg" alt="Simple vs Cantilever Deflection" class="instructive-image">
         `,
         quickCheck: [
             { 
@@ -536,7 +536,7 @@ const lessonData = [
             <h3>The Danger of the Gusset Plate</h3>
             <p>Modern lightweight wooden trusses are held together by metal <strong>Gusset Plates</strong> (gang nails). These are thin pieces of galvanized sheet steel with 3/8-inch teeth punched into the wood. In a fire, the metal plate acts as a heat collector. It absorbs the heat and drives it into the wood fibers gripping the shallow teeth.</p>
             <p>This heat causes <strong>pyrolytic decomposition</strong> (chemical breakdown by heat) of the wood fibers. The wood literally turns to charcoal around the teeth, and the tension of the bottom chord violently pulls the plates out. The truss fails catastrophically long before the wood is actually burned away by flame.</p>
-            <img src=../images/gusset_failure.jpg" alt="Gusset Plate Failure" class="instructive-image">
+            <img src="../images/gusset_failure.jpg" alt="Gusset Plate Failure" class="instructive-image">
         `,
         quickCheck: [
             { 
@@ -585,7 +585,7 @@ const lessonData = [
 
             <h3>Cantilever Walls (Tilt-Slab)</h3>
             <p>A high, freestanding masonry wall acts as a vertical cantilever beam (supported only at the bottom) against the wind. In modern precast concrete <strong>tilt-slab</strong> construction, the massive wall slabs are erected and held temporarily by bracing poles. Once the <strong>roof</strong> is built, it provides the permanent bracing. If a fire destroys the roof structure, those massive concrete walls instantly revert to un-designed, unsupported vertical cantilevers and are highly prone to toppling outward.</p>
-            <img src=../images/arch_thrust.jpg" alt="Column Buckling and Wall Types" class="instructive-image">
+            <img src="../images/arch_thrust.jpg" alt="Column Buckling and Wall Types" class="instructive-image">
         `,
         quickCheck: [
             { 
@@ -631,7 +631,7 @@ const lessonData = [
 
             <h3>Shells and Domes</h3>
             <p>A <strong>Shell</strong> is a thin, curved plate (often built of concrete) that can span wide areas despite being less than 2 inches thick. It works by transmitting loads evenly along the entire curved surface to the supports. A <strong>Dome</strong> is essentially a three-dimensional arch or shell. <strong>Geodesic domes</strong> take this further by utilizing a large number of triangles to provide massive volume with very little dead weight.</p>
-            <img src=../images/arch_thrust.jpg" alt="Arch and Rigid Frame Outward Thrust" class="instructive-image">
+            <img src="../images/arch_thrust.jpg" alt="Arch and Rigid Frame Outward Thrust" class="instructive-image">
         `,
         quickCheck: [
             { 
@@ -682,7 +682,7 @@ const lessonData = [
             
             <h3>The Danger of Water Weight</h3>
             <p>The continuous transmission of loads is strained by the fire, but it is often broken by the fire department. A 1000-gpm master stream isn't just putting out fire; it is adding <strong>over 8,000 pounds (4 tons) of water weight</strong> to the structure <em>every single minute</em>. That water pools on flat roofs and is absorbed by materials like paper and fabric, drastically increasing the live load on weakened connections.</p>
-            <img src=../images/rebar.jpg" alt="Steel and Concrete Connections" class="instructive-image">
+            <img src="../images/rebar.jpg" alt="Steel and Concrete Connections" class="instructive-image">
         `,
         quickCheck: [
             { 
