@@ -286,7 +286,7 @@ const lessonData = [
             <h3>Lateral Loads: The Sideways Push</h3>
             <p>Gravity pulls straight down, but buildings also have to fight sideways forces known as <strong>Lateral Loads</strong>. High winds pushing against the broad side of a structure, seismic activity, or even the soil pressing against a basement foundation wall are all lateral loads. If a fire destroys a building's lateral stability (the internal bracing and connections), the building will rack sideways and collapse like a house of cards.</p>
             
-            <img src="images/loads.png" alt="Dead, Live, Impact, and Lateral Loads diagram" class="instructive-image">
+            <img src="../images/loads.png" alt="Dead, Live, Impact, and Lateral Loads diagram" class="instructive-image">
         `,
         quickCheck: [
             { 
