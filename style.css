@@ -306,3 +306,125 @@ body {
     font-weight: 600;
     color: #041e49;
 }
+
+/* --- Dashboard Specific Styles --- */
+.dashboard-body {
+    background-color: var(--bg-light);
+    display: block; /* Override app-container flex */
+}
+
+.dashboard-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-area h1 {
+    color: var(--secondary);
+    font-size: 1.5rem;
+}
+
+.dashboard-main {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.welcome-banner {
+    margin-bottom: 3rem;
+}
+
+.welcome-banner h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* UI Component Standard: Lesson Card */
+.course-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-decoration: none;
+    color: var(--text-main);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover:not(.locked) {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-color: var(--secondary);
+}
+
+.course-card h3 {
+    font-size: 1.25rem;
+    color: var(--secondary);
+    margin: 12px 0 8px 0;
+}
+
+.card-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--bg-light);
+    color: var(--text-muted);
+    width: fit-content;
+}
+
+.status-active {
+    background: #e8f0fe;
+    color: #1976D2; /* Info color from your rules */
+}
+
+.course-card.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #f8f9fa;
+}
+
+.card-progress {
+    margin-top: auto;
+    padding-top: 16px;
+    height: 4px;
+    background: var(--bg-light);
+    border-radius: 2px;
+    width: 100%;
+    position: relative;
+}
+
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 2px;
+}
