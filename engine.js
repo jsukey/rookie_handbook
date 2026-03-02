@@ -148,7 +148,7 @@ function renderContent(mod) {
     audioToggle.addEventListener('click', () => {
         if (!audioPlayer) return;
         
-        const audioUrl = `audio/module_${mod.id}.mp3`;
+        const audioUrl = `../audio/module_${mod.id}.mp3`;
 
         if (!audioPlayer.src.includes(audioUrl)) {
             audioPlayer.src = audioUrl;
