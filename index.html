@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Dashboard - Elyria FD</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-area">
+                <svg width="40" height="40" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#d32f2f"/>
+                    <path d="M50 20c-15 25-5 40 0 60 5-20 15-35 0-60z" fill="white"/>
+                </svg>
+                <h1>Elyria FD Training Academy</h1>
+            </div>
+            <p class="body-2">Probationary Phase 1</p>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="welcome-banner">
+            <h2>Welcome to your training dashboard.</h2>
+            <p>Select a chapter below to begin or resume your coursework.</p>
+        </div>
+
+        <div class="course-grid">
+            <a href="#" class="course-card locked">
+                <div class="card-status">Locked</div>
+                <h3>Chapter 1: Department Orientation</h3>
+                <p class="body-2">Chain of command, station duties, and fundamental policies.</p>
+            </a>
+
+            <a href="chapters/ch2_construction.html" class="course-card active-card">
+                <div class="card-status status-active">In Progress</div>
+                <h3>Chapter 2: Building Construction</h3>
+                <p class="body-2">The gravity resistance system, loads, and collapse recognition.</p>
+                <div class="card-progress">
+                    <div class="progress-fill" style="width: 30%;"></div>
+                </div>
+            </a>
+
+            <a href="#" class="course-card locked">
+                <div class="card-status">Locked</div>
+                <h3>Chapter 3: Fire Behavior</h3>
+                <p class="body-2">Flow paths, HRR, and modern fire dynamics.</p>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
