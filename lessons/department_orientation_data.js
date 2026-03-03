@@ -3,7 +3,6 @@ const lessonData = [
         id: 0,
         title: "Module 0: Expectations and The Rookie Mentality",
         text: `
-            <audio controls src="module_0.mp3">Your browser does not support the audio element.</audio>
             <h3>Welcome and Fire Chief Expectations</h3>
             <p>Welcome to the Elyria Fire Department! You are now a member of an elite team of professionals, dedicated to providing the very best in emergency services to our community.</p>
             <p>As the Fire Chief of this amazing organization, it is my responsibility to provide our community with the highest level of emergency response capability as we can. Just as important to me is that EVERYONE GOES HOME when they get off shift. Keeping this in mind, I am outlining my expectations of you below:</p>
@@ -55,7 +54,6 @@ const lessonData = [
         id: 1,
         title: "Module 1: Daily Station Life and Duties",
         text: `
-            <audio controls src="module_1.mp3">Your browser does not support the audio element.</audio>
             <h3>Welcome To Our House...</h3>
             <p>Congratulations, you have been hired at the Firehouse fulltime. Believe it or not that was the easy part. Now you need to prove to everyone that you deserve to be here. We are not impressed with your talk. We are not impressed with stories from your other departments. Prove it to us that you deserve this job through your actions.</p>
             <ul>
@@ -106,7 +104,6 @@ const lessonData = [
         id: 2,
         title: "Module 2: Department Policies and General Regulations",
         text: `
-            <audio controls src="module_2.mp3">Your browser does not support the audio element.</audio>
             <h3>201. Electronic Mail</h3>
             <p>The purpose of this policy is to establish guidelines for the proper use and application of the electronic mail (email) system provided by the Department. Elyria Fire Department members shall use email in a professional manner in accordance with City of Elyria policy and current law (Ohio Public Records Act). Elyria Fire Department members shall use/review department email as part of their normal duties.</p>
             
@@ -159,7 +156,6 @@ const lessonData = [
         id: 3,
         title: "Module 3: Operational Rules and Prohibited Activities",
         text: `
-            <audio controls src="module_3.mp3">Your browser does not support the audio element.</audio>
             <h3>206. Rules and Regulations (Part 2)</h3>
             <ul>
                 <li>n. Members shall participate in all company activities as prescribed by the Training Officer, Company Officer or Chief Officer.</li>
