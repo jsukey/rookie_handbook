@@ -1,4 +1,4 @@
-const currentLessonName = "Firefighter Accountability";
+const currentLessonName = "Accountability System";
 const lessonData = [
     {
         id: 0,
