@@ -3,88 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Dashboard - Elyria FD</title>
+    <title>Elyria FD Academy - Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <head>
+    
     <script>
-        // AUTH GUARD: Check if user is logged in before loading the dashboard
-        const activeUser = localStorage.getItem('activeUser');
+        // AUTH GUARD: Kick out unauthenticated users immediately
+        const activeUser = JSON.parse(localStorage.getItem('activeUser'));
         if (!activeUser) {
-            // If no active user is found, redirect to login page immediately
-            window.location.replace('login.html'); 
+            window.location.replace('login.html');
         }
     </script>
-    
-    </head>
 </head>
-<body class="dashboard-body">
-    <header class="dashboard-header">
-        <div class="header-content">
-            <div class="logo-area">
-                <svg width="40" height="40" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="#d32f2f"/>
-                    <path d="M50 20c-15 25-5 40 0 60 5-20 15-35 0-60z" fill="white"/>
-                </svg>
-                <h1>Elyria FD Training Academy</h1>
-            </div>
-            <p class="body-2">Probationary Phase 1</p>
-        </div>
-    </header>
+<body>
 
-    <main class="dashboard-main">
-        <div class="welcome-banner">
-            <h2>Welcome to your training dashboard.</h2>
-            <p>Select a chapter below to begin or resume your coursework.</p>
-        </div>
+    <div class="dashboard-header">
+        <h1 id="welcomeMessage">Welcome to your training dashboard!</h1>
+        <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+    </div>
 
-        <div class="course-grid">
+    <div class="phase-container">
+        <h2>Phase 1: Basic Operations</h2>
+        
+        <a href="lessons/department_orientation.html" class="lesson-item" data-module="Department Orientation">
+            <span>Department Orientation</span>
+            <span class="progress-badge">0% Completed</span>
+        </a>
+        
+        <a href="lessons/firefighter_accountability_system.html" class="lesson-item" data-module="Accountability System">
+            <span>Firefighter Accountability System</span>
+            <span class="progress-badge">0% Completed</span>
+        </a>
+        
+        <a href="lessons/fire_behavior.html" class="lesson-item" data-module="Fire Behavior">
+            <span>Fire Behavior</span>
+            <span class="progress-badge">0% Completed</span>
+        </a>
+
+        <a href="lessons/building_construction.html" class="lesson-item" data-module="Building Construction">
+            <span>Building Construction</span>
+            <span class="progress-badge">0% Completed</span>
+        </a>
+
+        <a href="lessons/air_managment.html" class="lesson-item" data-module="Air Management">
+            <span>Air Management</span>
+            <span class="progress-badge">0% Completed</span>
+        </a>
+    </div>
+
+    <div class="phase-container phase-locked">
+        <h2>Phase 2: Advanced Fireground Tactics <span class="locked-indicator">🔒 Locked</span></h2>
+        
+        <div class="lesson-item">
+            <span>Search & Rescue Operations</span>
+            <span class="progress-badge">Locked</span>
+        </div>
+        <div class="lesson-item">
+            <span>Ventilation Strategies</span>
+            <span class="progress-badge">Locked</span>
+        </div>
+    </div>
+
+    <div class="phase-container phase-locked">
+        <h2>Phase 3: Specialty Rescue & Hazmat <span class="locked-indicator">🔒 Locked</span></h2>
+        
+        <div class="lesson-item">
+            <span>Vehicle Extrication Basics</span>
+            <span class="progress-badge">Locked</span>
+        </div>
+        <div class="lesson-item">
+            <span>Hazmat First Responder Operations</span>
+            <span class="progress-badge">Locked</span>
+        </div>
+    </div>
+
+    <script>
+        // 1. Set Personalized Greeting
+        if (activeUser && activeUser.firstName) {
+            document.getElementById('welcomeMessage').innerText = `Welcome to your training dashboard, ${activeUser.firstName}!`;
+        }
+
+        // 2. Inject Training Progress
+        const userProgress = JSON.parse(localStorage.getItem('userProgress')) || [];
+        
+        // Loop through the progress array from the database
+        userProgress.forEach(progressItem => {
+            // Find the lesson block that matches the module name
+            const lessonLink = document.querySelector(`.lesson-item[data-module="${progressItem.module}"]`);
             
-            <a href="lessons/department_orientation.html" class="course-card active-card">
-                <div class="card-status status-active">In Progress</div>
-                <h3>Department Orientation</h3>
-                <p class="body-2">Chain of command, station duties, and fundamental policies.</p>
-                <div class="card-progress">
-                    <div class="progress-fill" style="width: 90%;"></div>
-                </div>
-            </a>
+            if (lessonLink) {
+                const badge = lessonLink.querySelector('.progress-badge');
+                
+                // Ensure we have a valid number, default to 0
+                const completionPercentage = parseInt(progressItem.completion) || 0;
+                
+                badge.innerText = `${completionPercentage}% Completed`;
+                
+                // If they hit 100%, change the color to green
+                if (completionPercentage >= 100) {
+                    badge.classList.add('progress-complete');
+                }
+            }
+        });
 
-            <a href="lessons/building_construction.html" class="course-card active-card">
-                <div class="card-status status-active">In Progress</div>
-                <h3>Chapter 2: Building Construction</h3>
-                <p class="body-2">The gravity resistance system, loads, and collapse recognition.</p>
-                <div class="card-progress">
-                    <div class="progress-fill" style="width: 80%;"></div>
-                </div>
-            </a>
-
-            <a href="lessons/fire_behavior.html" class="course-card active-card">
-                <div class="card-status status-active">In Progress</div>
-                <h3>Fire Behavior</h3>
-                <p class="body-2">Flow paths, HRR, and modern fire dynamics.</p>
-                <div class="card-progress">
-                    <div class="progress-fill" style="width: 10%;"></div>
-                </div>
-            </a>
-            
-            <a href="lessons/air_managment.html" class="course-card active-card">
-                <div class="card-status status-active">In Progress</div>
-                <h3>Air Managment</h3>
-                <p class="body-2">SCBA Air Managment Policy & Standards</p>
-                <div class="card-progress">
-                    <div class="progress-fill" style="width: 0%;"></div>
-                </div>
-            </a>
-
-            <a href="lessons/firefighter_accountability_system.html" class="course-card active-card">
-                <div class="card-status status-active">In Progress</div>
-                <h3>Firefighter Accountability System</h3>
-                <p class="body-2">The Accountability PASSPORT System</p>
-                <div class="card-progress">
-                    <div class="progress-fill" style="width: 0%;"></div>
-                </div>
-            </a>
-        </div>
-    </main>
+        // 3. Logout Function
+        function logoutUser() {
+            localStorage.removeItem('activeUser');
+            localStorage.removeItem('userProgress');
+            window.location.replace('login.html');
+        }
+    </script>
 </body>
 </html>
