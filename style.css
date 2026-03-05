@@ -548,3 +548,23 @@ body {
     margin-left: 10px;
     vertical-align: middle;
 }
+
+
+/* --- Sidebar Home Button --- */
+.sidebar-home-btn {
+    display: block;
+    padding: 12px 15px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 4px solid #222;
+    margin-bottom: 15px;
+    transition: background-color 0.2s;
+}
+
+.sidebar-home-btn:hover {
+    background-color: #d9534f; /* Firehouse red on hover */
+    color: white;
+}
