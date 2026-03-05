@@ -1,3 +1,4 @@
+const currentLessonName = "Building Construction";
 const lessonData = [
     {
     id: 0,
