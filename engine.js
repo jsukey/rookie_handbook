@@ -52,13 +52,7 @@ function init() {
     btnNext.addEventListener('click', () => {
         if(currentModuleId < lessonData.length - 1) {
             currentModuleId++;
-            
-            // If they are seeing this slide for the first time, unlock it and sync!
-            if (!unlockedModules.includes(currentModuleId)) {
-                unlockedModules.push(currentModuleId);
-                syncProgress(); // <--- This sends the data to the Google Sheet
-            }
-            
+            // We removed the unlock and sync check from here
             loadModule(currentModuleId);
         }
     });
@@ -212,6 +206,7 @@ function renderContent(mod) {
         // Auto-unlock the next module since there is no test
         if (!unlockedModules.includes(mod.id + 1)) {
             unlockedModules.push(mod.id + 1);
+            syncProgress();
             renderSidebar();
         }
         document.getElementById('btn-next').classList.remove('disabled');
@@ -314,6 +309,7 @@ function handleModuleComplete(mod) {
     // Unlock next module
     if (!unlockedModules.includes(mod.id + 1)) {
         unlockedModules.push(mod.id + 1);
+        syncProgress();
         renderSidebar();
     }
     btnNext.classList.remove('disabled');
