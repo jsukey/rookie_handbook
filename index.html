@@ -6,6 +6,17 @@
     <title>Training Dashboard - Elyria FD</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <head>
+    <script>
+        // AUTH GUARD: Check if user is logged in before loading the dashboard
+        const activeUser = localStorage.getItem('activeUser');
+        if (!activeUser) {
+            // If no active user is found, redirect to login page immediately
+            window.location.replace('login.html'); 
+        }
+    </script>
+    
+    </head>
 </head>
 <body class="dashboard-body">
     <header class="dashboard-header">
