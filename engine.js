@@ -52,6 +52,13 @@ function init() {
     btnNext.addEventListener('click', () => {
         if(currentModuleId < lessonData.length - 1) {
             currentModuleId++;
+            
+            // If they are seeing this slide for the first time, unlock it and sync!
+            if (!unlockedModules.includes(currentModuleId)) {
+                unlockedModules.push(currentModuleId);
+                syncProgress(); // <--- This sends the data to the Google Sheet
+            }
+            
             loadModule(currentModuleId);
         }
     });
@@ -385,3 +392,44 @@ function evaluateExam() {
     resultsDiv.innerHTML = feedbackHTML;
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
+
+// --- DATABASE SYNC LOGIC ---
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzKvUH_i-Oi5ZBXnGmwLHOmjue9gwQk8CeGMxf85aFeNZXOXGpDig/exec'; 
+
+function syncProgress() {
+    const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+    if (!activeUser || typeof currentLessonName === 'undefined') return;
+
+    // Calculate completion percentage
+    const maxUnlocked = Math.max(...unlockedModules);
+    const totalSlides = lessonData.length - 1;
+    let percentage = Math.round((maxUnlocked / totalSlides) * 100);
+    
+    if (percentage > 100) percentage = 100;
+
+    // 1. Update localStorage instantly so the Dashboard is accurate immediately
+    let userProgress = JSON.parse(localStorage.getItem('userProgress')) || [];
+    let moduleFound = false;
+    userProgress.forEach(p => {
+        if (p.module === currentLessonName) {
+            p.completion = percentage;
+            moduleFound = true;
+        }
+    });
+    if (!moduleFound) {
+        userProgress.push({ module: currentLessonName, completion: percentage });
+    }
+    localStorage.setItem('userProgress', JSON.stringify(userProgress));
+
+    // 2. Silently fire the payload to Google Sheets in the background
+    fetch(WEBHOOK_URL, {
+        method: 'POST',
+        body: JSON.stringify({
+            action: 'updateProgress',
+            studentId: activeUser.id,
+            moduleName: currentLessonName,
+            completionPercentage: percentage
+        })
+    }).catch(error => console.error("Sync Error:", error));
+}
+
