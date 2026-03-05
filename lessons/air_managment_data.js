@@ -1,4 +1,4 @@
-const currentLessonName = "Air Managment";
+const currentLessonName = "Air Management";
 const lessonData = [
     {
         id: 0,
