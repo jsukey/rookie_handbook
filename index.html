@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     
     <script>
-        // AUTH GUARD: Kick out unauthenticated users immediately
+        // AUTH GUARD
         const activeUser = JSON.parse(localStorage.getItem('activeUser'));
         if (!activeUser) {
             window.location.replace('login.html');
@@ -23,56 +23,104 @@
 
     <div class="phase-container">
         <h2>Phase 1: Basic Operations</h2>
-        
-        <a href="lessons/department_orientation.html" class="lesson-item" data-module="Department Orientation">
-            <span>Department Orientation</span>
-            <span class="progress-badge">0% Completed</span>
-        </a>
-        
-        <a href="lessons/firefighter_accountability_system.html" class="lesson-item" data-module="Accountability System">
-            <span>Firefighter Accountability System</span>
-            <span class="progress-badge">0% Completed</span>
-        </a>
-        
-        <a href="lessons/fire_behavior.html" class="lesson-item" data-module="Fire Behavior">
-            <span>Fire Behavior</span>
-            <span class="progress-badge">0% Completed</span>
-        </a>
+        <div class="card-grid">
+            
+            <a href="lessons/department_orientation.html" class="lesson-card" data-module="Department Orientation">
+                <h3>Department Orientation</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">0%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="lessons/firefighter_accountability_system.html" class="lesson-card" data-module="Accountability System">
+                <h3>Accountability System</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">0%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="lessons/fire_behavior.html" class="lesson-card" data-module="Fire Behavior">
+                <h3>Fire Behavior</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">0%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </a>
 
-        <a href="lessons/building_construction.html" class="lesson-item" data-module="Building Construction">
-            <span>Building Construction</span>
-            <span class="progress-badge">0% Completed</span>
-        </a>
+            <a href="lessons/building_construction.html" class="lesson-card" data-module="Building Construction">
+                <h3>Building Construction</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">0%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </a>
 
-        <a href="lessons/air_managment.html" class="lesson-item" data-module="Air Management">
-            <span>Air Management</span>
-            <span class="progress-badge">0% Completed</span>
-        </a>
+            <a href="lessons/air_managment.html" class="lesson-card" data-module="Air Management">
+                <h3>Air Management</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">0%</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
     </div>
 
     <div class="phase-container phase-locked">
         <h2>Phase 2: Advanced Fireground Tactics <span class="locked-indicator">🔒 Locked</span></h2>
-        
-        <div class="lesson-item">
-            <span>Search & Rescue Operations</span>
-            <span class="progress-badge">Locked</span>
-        </div>
-        <div class="lesson-item">
-            <span>Ventilation Strategies</span>
-            <span class="progress-badge">Locked</span>
+        <div class="card-grid">
+            
+            <div class="lesson-card">
+                <h3>Search & Rescue Operations</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">Locked</span>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Ventilation Strategies</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">Locked</span>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <div class="phase-container phase-locked">
         <h2>Phase 3: Specialty Rescue & Hazmat <span class="locked-indicator">🔒 Locked</span></h2>
-        
-        <div class="lesson-item">
-            <span>Vehicle Extrication Basics</span>
-            <span class="progress-badge">Locked</span>
-        </div>
-        <div class="lesson-item">
-            <span>Hazmat First Responder Operations</span>
-            <span class="progress-badge">Locked</span>
+        <div class="card-grid">
+            
+            <div class="lesson-card">
+                <h3>Vehicle Extrication Basics</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">Locked</span>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Hazmat Operations</h3>
+                <div class="progress-wrapper">
+                    <span class="progress-text">Locked</span>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -82,25 +130,26 @@
             document.getElementById('welcomeMessage').innerText = `Welcome to your training dashboard, ${activeUser.firstName}!`;
         }
 
-        // 2. Inject Training Progress
+        // 2. Inject Training Progress into Progress Bars
         const userProgress = JSON.parse(localStorage.getItem('userProgress')) || [];
         
-        // Loop through the progress array from the database
         userProgress.forEach(progressItem => {
-            // Find the lesson block that matches the module name
-            const lessonLink = document.querySelector(`.lesson-item[data-module="${progressItem.module}"]`);
+            const card = document.querySelector(`.lesson-card[data-module="${progressItem.module}"]`);
             
-            if (lessonLink) {
-                const badge = lessonLink.querySelector('.progress-badge');
+            if (card) {
+                const percentage = parseInt(progressItem.completion) || 0;
                 
-                // Ensure we have a valid number, default to 0
-                const completionPercentage = parseInt(progressItem.completion) || 0;
+                // Update text
+                const textElement = card.querySelector('.progress-text');
+                textElement.innerText = `${percentage}%`;
                 
-                badge.innerText = `${completionPercentage}% Completed`;
+                // Update bar width
+                const barFill = card.querySelector('.progress-bar-fill');
+                barFill.style.width = `${percentage}%`;
                 
-                // If they hit 100%, change the color to green
-                if (completionPercentage >= 100) {
-                    badge.classList.add('progress-complete');
+                // Turn green if 100%
+                if (percentage >= 100) {
+                    barFill.classList.add('complete');
                 }
             }
         });
