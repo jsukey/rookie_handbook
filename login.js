@@ -6,7 +6,7 @@ const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzK
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
     e.preventDefault(); // Prevent page reload
     
-    const studentId = document.getElementById('studentId').value;
+    const userEmail = document.getElementById('userEmail').value;
     const password = document.getElementById('password').value;
     const loginBtn = document.getElementById('loginBtn');
     const errorMsg = document.getElementById('error-message');
@@ -20,10 +20,10 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         const response = await fetch(WEBHOOK_URL, {
             method: 'POST',
             body: JSON.stringify({
-                action: 'login',
-                studentId: studentId,
-                password: password
-            })
+            action: 'login',
+            userEmail: userEmail,
+            password: password
+        })
         });
 
         const data = await response.json();
