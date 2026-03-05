@@ -396,19 +396,17 @@ function evaluateExam() {
 // --- DATABASE SYNC LOGIC ---
 const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzKvUH_i-Oi5ZBXnGmwLHOmjue9gwQk8CeGMxf85aFeNZXOXGpDig/exec'; 
 function syncProgress() {
+    console.log("--- SYNC PROGRESS TRIGGERED ---");
+
     const activeUser = JSON.parse(localStorage.getItem('activeUser'));
     
-    console.log("--- SYNC PROGRESS TRIGGERED ---");
-    console.log("Active User:", activeUser);
-    console.log("Current Lesson Name:", typeof currentLessonName !== 'undefined' ? currentLessonName : "UNDEFINED");
-
-    // 1. Check for Early Exits
+    // 1. Check for missing data and LOG IT if it's missing
     if (!activeUser) {
-        console.warn("Sync Aborted: No activeUser found in localStorage. Did you test this page without logging in first?");
+        console.error("SYNC ABORTED: No activeUser found. You must log in first.");
         return;
     }
     if (typeof currentLessonName === 'undefined') {
-        console.warn("Sync Aborted: currentLessonName is missing.");
+        console.error("SYNC ABORTED: currentLessonName is missing from your data.js file.");
         return;
     }
 
@@ -416,12 +414,11 @@ function syncProgress() {
     const maxUnlocked = Math.max(...unlockedModules);
     const totalSlides = lessonData.length - 1;
     let percentage = Math.round((maxUnlocked / totalSlides) * 100);
-    
     if (percentage > 100) percentage = 100;
 
-    console.log(`Preparing payload: Student ID: ${activeUser.id}, Module: ${currentLessonName}, Progress: ${percentage}%`);
+    console.log(`Preparing to send: Student ID: ${activeUser.id}, Module: ${currentLessonName}, Progress: ${percentage}%`);
 
-    // 2. Update localStorage instantly so the Dashboard is accurate immediately
+    // 2. Update localStorage instantly
     let userProgress = JSON.parse(localStorage.getItem('userProgress')) || [];
     let moduleFound = false;
     userProgress.forEach(p => {
@@ -435,9 +432,13 @@ function syncProgress() {
     }
     localStorage.setItem('userProgress', JSON.stringify(userProgress));
 
-    // 3. Fire the payload to Google Sheets and LISTEN for the response
+    // 3. Fire the payload to Google Sheets (with correct headers) and LISTEN for the response
     fetch(WEBHOOK_URL, {
         method: 'POST',
+        redirect: 'follow', // Required for Google Apps Script
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8" // Bypasses strict CORS blocks
+        },
         body: JSON.stringify({
             action: 'updateProgress',
             studentId: activeUser.id,
@@ -445,14 +446,14 @@ function syncProgress() {
             completionPercentage: percentage
         })
     })
-    .then(response => response.json()) // We must parse the Apps Script response!
+    .then(response => response.json())
     .then(data => {
         console.log("Apps Script Response:", data);
         if (data.success) {
-            console.log("✅ Successfully updated Master Tracker!");
+            console.log("✅ Successfully updated the Master Tracker Sheet!");
         } else {
-            console.error("❌ Apps Script Error:", data.message, data.error || "");
+            console.error("❌ Apps Script rejected the data:", data.message);
         }
     })
-    .catch(error => console.error("❌ Network/Fetch Error:", error));
+    .catch(error => console.error("❌ Network/CORS Error:", error));
 }
