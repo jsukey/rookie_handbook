@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elyria FD Academy - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Scoped styles just for the login layout to keep it centered and clean */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #d9534f; /* Firehouse red */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .login-container button:hover {
+            background-color: #c9302c;
+        }
+        #error-message {
+            color: #d9534f;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Elyria FD Academy</h2>
+    <p>Probationary Training Portal</p>
+    
+    <form id="loginForm">
+        <input type="text" id="studentId" placeholder="Student ID (e.g., 1234)" required autocomplete="username">
+        <input type="password" id="password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" id="loginBtn">Login</button>
+    </form>
+    
+    <div id="error-message"></div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
