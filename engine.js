@@ -26,6 +26,17 @@ function init() {
     const btnNext = document.getElementById('btn-next');
     const btnPrev = document.getElementById('btn-prev');
 
+    // We add a quick check to make sure we don't accidentally create two buttons
+    if (sidebar && !document.querySelector('.sidebar-home-btn')) {
+        const homeBtn = document.createElement('a');
+        homeBtn.href = '../index.html'; // Points back to the dashboard
+        homeBtn.className = 'sidebar-home-btn';
+        homeBtn.innerHTML = '⬅ Back to Dashboard';
+        
+        // Prepend puts it at the very top of the sidebar
+        sidebar.prepend(homeBtn);
+    }
+
     menuToggle.addEventListener('click', () => {
         const isOpen = sidebar.classList.toggle('open');
         menuToggle.classList.toggle('active');
