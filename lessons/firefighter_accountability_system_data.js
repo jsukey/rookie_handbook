@@ -1,3 +1,4 @@
+const currentLessonName = "Firefighter Accountability";
 const lessonData = [
     {
         id: 0,
