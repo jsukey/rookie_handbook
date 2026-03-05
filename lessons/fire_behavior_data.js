@@ -1,3 +1,4 @@
+const currentLessonName = "Fire Behavior";
 const lessonData = [
     {
     id: 0,
