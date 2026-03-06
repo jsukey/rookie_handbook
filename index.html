@@ -130,7 +130,7 @@
             document.getElementById('welcomeMessage').innerText = `Welcome to your training dashboard, ${activeUser.firstName}!`;
         }
         // CONDITIONAL ADMIN BUTTON
-        if (userData.isAdmin) {
+        if (activeUser.isAdmin) {
             const header = document.querySelector('header');
             
             // Create an Admin Portal button
