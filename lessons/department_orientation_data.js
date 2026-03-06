@@ -67,9 +67,10 @@ const lessonData = [
                 <li><strong>Know your role.</strong> During rig checks you need to talk with your crew. Find out what tools for what calls are needed, what EMS equipment you should be grabbing on every run and how best benefit the crew.</li>
                 <li><strong>Daily details.</strong> Mop floors, clean bathrooms. These are responsibilities that must be taken care of. You are the lowest on the totem pole. Take that mop from the senior firefighter. Clean the toilets, don't make the senior firefighters do the details no one likes to do.</li>
                 <li><strong>Daily tasking.</strong> Whatever task you are doing, take something from it. Building inspections, learn the building number and layout. Extinguisher inspections, learn their locations, type and use.</li>
-                <li><strong>Down time.</strong> Guess what, you get none. Put your phone away and study. You should be in a book. Not Facebook, get off it. If no one is up for teaching, go out into the bays and go through the rigs.</li>
+                <li><strong>Down time.</strong> Guess what, you get none. Put your phone away and study. You should be in a book. Not Facebook, get off it. If no one is up for teaching, go out into the bays and go through the rigs. When you are tired of that and need a break, study your district maps and learn all the policies and procedures.</li>
                 <li><strong>Meals.</strong> Get in on meals with the crew. Offer to help cook and clean as the meal prep progresses. If they don't cook together, finish first and still offer to wash the dishes. Not by sitting in your seat and asking. Go to the sink and take it from them when they are done.</li>
                 <li><strong>Station drills/Crew drills/classes.</strong> Be upfront. Be involved and pay attention. You should do these drills until you can't do them wrong. Give the instructors your full attention, they deserve it from you and you will learn from them.</li>
+                <li><strong>Own your mistakes.</strong>You're new.  You're going to screw up.  <strong>Do Not</strong> make excuses or blame others.  Own the mistakes fully.  That is how you tell us that you will fix them.  That is how you build trust, not by being perfect, but by being accountable.</li>
                 <li><strong>Evening rest.</strong> Keep yourself available for anything leftover that needs done. You should be the first up for any detail of the day that was missed. Don't be the first to go to bed. Wait it out until most of the crew does. Make your bed early though so you aren't making a bunch of commotion while others are trying to rest.</li>
                 <li><strong>The next morning.</strong> You should be up before 0700. Not waking up at 0700. You should be out of your room, in uniform starting the morning details. Start the coffee again, clean any dishes left out from the midnight snackers. Clean the bathrooms if needed, wipe down the counters in the kitchen, take out the trash.</li>
             </ul>
@@ -103,28 +104,71 @@ const lessonData = [
     },
     {
         id: 2,
-        title: "Module 2: Department Policies and General Regulations",
+        title: "Module 2: The Probationary Journey",
         text: `
-            <h3>201. Electronic Mail</h3>
-            <p>The purpose of this policy is to establish guidelines for the proper use and application of the electronic mail (email) system provided by the Department. Elyria Fire Department members shall use email in a professional manner in accordance with City of Elyria policy and current law (Ohio Public Records Act). Elyria Fire Department members shall use/review department email as part of their normal duties.</p>
+            <h3>What to Expect This Year</h3>
+            <p>Welcome to the next twelve months of your career. Your probationary year is a structured, intense period designed to build a safe, competent, and reliable firefighter. You aren't just here to pass tests; you are here to prove you belong on this team.</p>
             
-            <h3>206. Rules and Regulations (Part 1)</h3>
-            <p>Rules and regulations are not designed, nor intended, to limit any member in the exercising of his/her judgment or initiative in taking the action that a reasonable person would take in extraordinary situations which are bound to arise in the fire service.</p>
+            <h3>Your Daily Routine</h3>
+            <p>Consistency is key. Every single day, you are expected to execute the following routine without being reminded:</p>
             <ul>
-                <li>a. Chain of command is to be utilized for efficient and effective FD operations.</li>
-                <li>b. Insubordination at any level is not acceptable and will not be tolerated.</li>
-                <li>c. Members shall participate in all Fire Department training activities as directed, be familiar with all equipment they may be required to use in performance of their duties, and perform related work as required.</li>
-                <li>d. Members shall use their training and capabilities to protect the public at all times and work competently in their positions.</li>
-                <li>e. Members shall not engage in activities that are detrimental to themselves, the city, or the Fire Department.</li>
-                <li>f. Members shall report to duty in a state of performance readiness that is fit for duty. Members reporting for duty under the influence of any medication, prescription, or non-prescription, that may impede mental or physical reaction must report that information to their supervisor.</li>
-                <li>g. Members shall be held personally responsible for all Department property issued to them. Any property which may be lost or damaged through abuse, carelessness, or neglect may be replaced at the expense of the member to who said equipment was issued.</li>
-                <li>h. No advertising matter, posters, for sale signs, private notices, or other disfigurements shall be posted or permitted on Fire Department property or apparatus without Fire Department approval. No article shall be displayed on Fire Department premises for sale. Use of the Elyria Fire Department logo, pictures of Elyria Fire Department apparatus or anything that might appear as an endorsement by this Fire Department for private or personal business is prohibited.</li>
-                <li>i. Members shall not leave quarters for personal reason without first notifying a supervisor and gaining his/her permission.</li>
-                <li>j. When any member is assigned to a fill-in or "acting officer" position, he/she shall exercise the full authority and responsibility of that position.</li>
-                <li>k. All members will treat as confidential, the official business of the Fire Department. They shall not impart or discuss with anyone any matters concerning the department or its members, except to officers of the Elyria Fire Department or under process of the law. Members will make every effort to protect patient privacy in accordance with state and federal laws.</li>
-                <li>l. No member shall make any purchase or incur any liability in the name of the City of Elyria Fire Department without the permission of the Chief or Acting Chief in Chiefs absence.</li>
-                <li>m. No member shall receive any fee nor solicit, demand, or suggest from any person or persons, pay for services rendered in performance of duty, except their salary as paid by the City of Elyria.</li>
+                <li><strong>Check your email daily:</strong> Communication is critical. Stay on top of department memos, training updates, and schedule changes.</li>
+                <li><strong>Report to your officer:</strong> Check in with your company officer first thing to get your daily tasks and expectations.</li>
+                <li><strong>Check the Dashboard:</strong> Log into this Elyria FD Training Dashboard every shift to review your daily assignments and track your progress.</li>
             </ul>
+
+            <h3>The Training Loop</h3>
+            <p>We use a specific cycle to ensure you actually absorb the material. You will complete the assigned <strong>self-learning</strong> for a topic, followed by hands-on <strong>in-person learning</strong> with your crew. After that, you'll complete an <strong>evaluation</strong>. If you struggle, you will go through <strong>remediation training</strong> until you master it. We won't let you fail, but you have to put in the work.</p>
+
+            <h3>Phases and Attitude</h3>
+            <p>Your rookie year is broken down into three distinct phases, each lasting 4 months. Each phase builds directly on the previous one, meaning your early learning lays the foundation for the entire program. Do not slack off. Falling behind early makes it exponentially harder to catch up later.</p>
+            <p>Finally, remember this: You are being evaluated on much more than just your performance and book knowledge. We are constantly evaluating your <strong>attitude</strong>. Show us that you want to be here. Be coachable, stay humble, operate ethically, and show empathy to both the public and your crew.</p>
+        `,
+        quickCheck: [
+            { 
+                q: "How often should you check your department email and the training dashboard?", 
+                opts: ["Once a week", "Every shift/daily", "Only when an officer tells you to", "At the end of each 4-month phase"], 
+                ans: 1,
+                coaching: "Communication is critical. You are expected to check your email and the training dashboard daily."
+            },
+            { 
+                q: "What is the correct sequence for the training loop?", 
+                opts: ["Evaluation, in-person learning, self-learning, remediation", "In-person learning, evaluation, self-learning, remediation", "Self-learning, in-person learning, evaluation, remediation", "Remediation, self-learning, evaluation, in-person learning"], 
+                ans: 2,
+                coaching: "You will complete the assigned self-learning, attend in-person learning, complete the evaluation, and then complete remediation if necessary."
+            },
+            { 
+                q: "How is the probationary training timeline structured?", 
+                opts: ["Two phases lasting 6 months each", "Three phases lasting 4 months each", "Four phases lasting 3 months each", "A single 12-month continuous phase"], 
+                ans: 1,
+                coaching: "Your rookie year is broken down into three distinct phases, each lasting 4 months."
+            },
+            { 
+                q: "Besides performance and book knowledge, what critical trait are you constantly being evaluated on?", 
+                opts: ["Your driving ability", "Your attitude (coachable, humble, ethical, empathetic)", "Your cooking skills", "Your physical lifting capacity"], 
+                ans: 1,
+                coaching: "We are constantly evaluating your attitude. Show us that you want to be here, be coachable, stay humble, operate ethically, and show empathy."
+            }
+        ]
+    },
+    {
+        id: 3,
+        title: "Module 3: Department Policies and General Regulations",
+        text: `
+            <h3>The Spirit of the Rules</h3>
+            <p>We have a thick policy manual, and yes, you are expected to read it in its entirety. However, these rules aren't designed to turn you into a robot or limit your common sense. They exist to keep you safe and maintain order. In extraordinary situations, you are still expected to use the judgment of a reasonable firefighter.</p>
+            
+            <h3>Communication and Accountability</h3>
+            <p>Let's talk about basic administration. You have a department email. Use it professionally and review it as part of your normal duties. Remember, under the Ohio Public Records Act, your emails are public record—don't put anything in writing you wouldn't want on the front page of the paper.</p>
+            <p>On the fireground and in the station, the <strong>chain of command</strong> is how we operate efficiently. Use it. Insubordination at any level is completely unacceptable and will not be tolerated. If you have an issue, follow the chain to get it resolved.</p>
+
+            <h3>Readiness and Responsibility</h3>
+            <p>When you walk through the doors, you need to be fit for duty. If you are taking any medication—prescription or over-the-counter—that might slow your mental or physical reaction times, you must report it to your supervisor immediately.</p>
+            <p>Take pride in the gear the department provides. You are personally responsible for the property issued to you. If you destroy or lose equipment through carelessness or neglect, you may be replacing it out of your own pocket.</p>
+
+            <h3>Integrity and Trust</h3>
+            <p>You have been given a position of immense public trust. Treat the official business of the Elyria Fire Department as confidential. What happens on a medical run stays on a medical run; protect patient privacy at all costs in accordance with federal law.</p>
+            <p>Never leave quarters for personal reasons without getting your supervisor's permission first. Never buy anything in the department's name without the Fire Chief's explicit permission. And finally, never ask for or accept tips, fees, or "thank you" money from citizens for doing your job. Your paycheck from the City of Elyria is your compensation.</p>
         `,
         quickCheck: [
             { 
@@ -154,30 +198,26 @@ const lessonData = [
         ]
     },
     {
-        id: 3,
-        title: "Module 3: Operational Rules and Prohibited Activities",
+        id: 4,
+        title: "Module 4: Operational Rules and Prohibited Activities",
         text: `
-            <h3>206. Rules and Regulations (Part 2)</h3>
+            <h3>Station Life Boundaries</h3>
+            <p>Living at the firehouse requires mutual respect and strict boundaries. Show up clean-shaven and in a proper, well-maintained uniform. Your first priority is ensuring the cleanliness of your assigned apparatus and the station.</p>
+            <p>Beds are off-limits between the hours of 0700 and 2100 unless the officer in charge gives you permission. Similarly, don't go clanging weights in the gym between 2200 and 0700 while the rest of the crew is trying to sleep, unless the officer approves it.</p>
+            <p>Communication is the lifeblood of our shift work. Every morning, you must have a face-to-face pass-on with the off-going crew to discuss the apparatus status, ongoing problems, and station facilities.</p>
+
+            <h3>The Zero Tolerance List</h3>
+            <p>There are some absolute hard lines in the fire service. Crossing them will cost you your career:</p>
             <ul>
-                <li>n. Members shall participate in all company activities as prescribed by the Training Officer, Company Officer or Chief Officer.</li>
-                <li>o. All members reporting for duty and while on-duty shall be clean shaven and neatly dressed in a proper and well-maintained uniform.</li>
-                <li>p. All members shall insure the cleanliness of their assigned apparatus and station areas daily.</li>
-                <li>q. Beds may not be occupied between the hours of 0700 and 2100 except with the permission of the officer in charge of the station.</li>
-                <li>r. Physical Fitness/weight room activities shall not take place in the station between the hours 2200-07:00, unless officer in charge approves.</li>
-                <li>s. Members shall not permit those not a member of the fire department to ride upon any fire department vehicle without permission from the fire chief.</li>
-                <li>t. No member shall participate in any form of gambling for money or any article of value while on duty.</li>
-                <li>u. All members are to communicate with one another as to activities, suggestions, problems, and status of their respective units, companies, station facilities and shifts. Face to face communication between the on-coming officer and the off-going officer of each apparatus to insure a smooth transfer of information shall be done daily.</li>
-                <li>v. Members shall not engage in any sexual activity while on duty.</li>
-                <li>w. All members shall keep themselves physically fit.</li>
-                <li>x. Members shall not abuse their leave privileges.</li>
-                <li>y. Members shall not knowingly falsify any Fire Department record.</li>
-                <li>z. No member shall remove from a station without permission, damage or tamper with another member's personal property or property belonging to the city of Elyria.</li>
-                <li>aa. No member shall display discriminatory or abusive behavior pertaining to politics, sex, religion, age, sexual preference, diversity, ethnicity, or labor union membership while on duty or on Fire Department premises.</li>
-                <li>bb. The carrying or possessing of a fire arm or ammunition on or within Elyria Fire Department property, facilities or equipment, at any time is specifically prohibited.</li>
-                <li>cc. Seat belts shall be worn by all members and their passengers when driving or riding in an Elyria Fire Department vehicle. Apparatus and vehicle operators SHALL NOT leave quarters or a parked position until ALL members are seated and belted in.</li>
-                <li>dd. Use of personal cell phones, photo/electronic communication devices, or music devices may not be used when: Driving apparatus, responding, returning, public relations, training, inspections, and FD duties.</li>
-                <li>ee. These rules shall be known as the revised rules of the Elyria Fire department for the government of the Elyria Fire Department, except as when otherwise provided these rules shall apply to the members of the uniformed force. These rules are supplemented by the City's Policy and Procedural Manual, CBA, and other Laws.</li>
+                <li><strong>No Discrimination:</strong> We do not tolerate discriminatory or abusive behavior regarding race, sex, religion, age, sexual preference, ethnicity, or union membership.</li>
+                <li><strong>No Falsifying Records:</strong> Integrity is everything. Never knowingly falsify a department record.</li>
+                <li><strong>No Station Shenanigans:</strong> Gambling for money on duty is strictly prohibited. Engaging in any sexual activity while on duty is prohibited. Do not tamper with or damage another member's personal property or city property.</li>
+                <li><strong>No Firearms:</strong> Leave your personal weapons at home. Possessing a firearm or ammunition on Elyria Fire Department property or apparatus is strictly prohibited.</li>
             </ul>
+
+            <h3>Safety First, Always</h3>
+            <p>When the tones drop, adrenaline spikes, but safety protocols don't go out the window. If you are driving an apparatus, <strong>do not move the vehicle</strong> until every single member is seated and actively wearing their seatbelt. No exceptions.</p>
+            <p>Finally, keep your head in the game. Personal cell phones, electronics, and music devices are completely prohibited when you are driving the apparatus, responding to or returning from calls, conducting public relations, training, or doing inspections. Your focus belongs entirely on the job and your crew.</p>
         `,
         quickCheck: [
             { 
@@ -206,7 +246,7 @@ const lessonData = [
             }
         ]
     },
-    { id: 4, title: "Final Evaluation", isExam: true }
+    { id: 5, title: "Final Evaluation", isExam: true }
 ];
 
 const examQuestions = [
