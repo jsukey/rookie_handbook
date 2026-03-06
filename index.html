@@ -129,6 +129,26 @@
         if (activeUser && activeUser.firstName) {
             document.getElementById('welcomeMessage').innerText = `Welcome to your training dashboard, ${activeUser.firstName}!`;
         }
+        // CONDITIONAL ADMIN BUTTON
+        if (userData.isAdmin) {
+            const header = document.querySelector('header');
+            
+            // Create an Admin Portal button
+            const adminBtn = document.createElement('button');
+            adminBtn.className = 'btn';
+            adminBtn.style.backgroundColor = '#2c3e50'; // Make it look distinct from the logout button
+            adminBtn.style.marginLeft = '10px';
+            adminBtn.textContent = 'Training Officer Dashboard';
+            
+            // When clicked, send them to admin.html
+            adminBtn.onclick = () => {
+                window.location.href = 'admin.html';
+            };
+            
+            // Insert it right before the Logout button
+            const logoutBtn = document.getElementById('logout-btn');
+            header.insertBefore(adminBtn, logoutBtn);
+        }
 
         // 2. Inject Training Progress into Progress Bars
         const userProgress = JSON.parse(localStorage.getItem('userProgress')) || [];

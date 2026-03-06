@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Officer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific Admin Table Styles matching your theme */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .admin-table th, .admin-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .admin-table th {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+        }
+        .status-unlocked {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .status-locked {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .status-dependent {
+            color: #ed6c02;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header style="text-align: center; margin-bottom: 2rem;">
+        <h1>Training Officer Dashboard</h1>
+        <p>Manage recruit cohorts, track time-in-grade eligibility, and unlock progression phases.</p>
+    </header>
+
+    <div id="loading" style="text-align: center; margin: 2rem 0;">
+        <p><em>Loading roster data from database...</em></p>
+    </div>
+
+    <div id="admin-table-section" class="card" style="display: none; overflow-x: auto;">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Recruit Name & ID</th>
+                    <th>Start Date</th>
+                    <th>Phase 2 Status</th>
+                    <th>Phase 3 Status</th>
+                </tr>
+            </thead>
+            <tbody id="roster-body">
+                </tbody>
+        </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+        <button class="btn" onclick="window.location.href='index.html'" style="background-color: #555;">Return to Portal</button>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
