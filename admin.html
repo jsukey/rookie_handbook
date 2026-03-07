@@ -3,69 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Officer Dashboard</title>
+    <title>Training Officer Dashboard - Elyria FD</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Specific Admin Table Styles matching your theme */
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+    <script>
+        // AUTH GUARD
+        const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+        if (!activeUser) {
+            window.location.replace('login.html');
         }
-        .admin-table th, .admin-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .admin-table th {
-            background-color: #f8f9fa;
-            color: #333;
-            font-weight: 600;
-        }
-        .status-unlocked {
-            color: #2e7d32;
-            font-weight: bold;
-        }
-        .status-locked {
-            color: #d32f2f;
-            font-weight: bold;
-        }
-        .status-dependent {
-            color: #ed6c02;
-            font-size: 0.9em;
-        }
-    </style>
+    </script>
 </head>
 <body>
 
-<div class="container">
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1>Training Officer Dashboard</h1>
-        <p>Manage recruit cohorts, track time-in-grade eligibility, and unlock progression phases.</p>
-    </header>
+<div class="admin-layout">
+    <nav class="admin-nav">
+        <h2>Training Officer</h2>
+        <div class="nav-tab active" onclick="switchTab('view-roster')">Roster & Progress</div>
+        <div class="nav-tab" onclick="switchTab('view-add')">Add New Recruit</div>
+        
+        <div class="nav-tab nav-return" onclick="window.location.href='index.html'">
+            ⬅ Return to Portal
+        </div>
+    </nav>
 
-    <div id="loading" style="text-align: center; margin: 2rem 0;">
-        <p><em>Loading roster data from database...</em></p>
-    </div>
+    <main class="admin-main">
+        <div class="admin-header">
+            <h1>Command Dashboard</h1>
+            <p>Manage recruit cohorts, track module progress, and control phase progression.</p>
+        </div>
 
-    <div id="admin-table-section" class="card" style="display: none; overflow-x: auto;">
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>Recruit Name & ID</th>
-                    <th>Start Date</th>
-                    <th>Phase 2 Status</th>
-                    <th>Phase 3 Status</th>
-                </tr>
-            </thead>
-            <tbody id="roster-body">
-                </tbody>
-        </table>
-    </div>
+        <div id="loading" style="text-align: center; margin: 3rem 0; color: var(--text-muted);">
+            <p><em>Loading secured roster data...</em></p>
+        </div>
 
-    <div style="text-align: center; margin-top: 2rem;">
-        <button class="btn" onclick="window.location.href='index.html'" style="background-color: #555;">Return to Portal</button>
-    </div>
+        <div id="view-roster" class="view-section active" style="display: none;">
+            
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Active Recruits</h3>
+                    <div class="stat" id="stat-total">0</div>
+                </div>
+                <div class="summary-card" style="border-left-color: var(--success);">
+                    <h3>Phase 2 Eligible</h3>
+                    <div class="stat" id="stat-p2">0</div>
+                </div>
+                <div class="summary-card" style="border-left-color: var(--primary);">
+                    <h3>Phase 3 Eligible</h3>
+                    <div class="stat" id="stat-p3">0</div>
+                </div>
+            </div>
+
+            <div class="admin-toolbar">
+                <input type="text" id="searchBar" class="search-input" placeholder="Search recruits by name or ID...">
+                <button class="btn btn-primary" onclick="loadAdminDashboard()">↻ Refresh Data</button>
+            </div>
+
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Recruit Info</th>
+                            <th>Start Date</th>
+                            <th style="width: 20%;">Overall Progress</th>
+                            <th>Phase 2</th>
+                            <th>Phase 3</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roster-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="view-add" class="view-section">
+            <div class="iframe-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdaWkadJfmAomhjXmbtQRSnyfIQDwKjMWcmdbZR6dR0Xmkn4g/viewform?embedded=true" width="640" height="1232" frameborder="0" marginheight="0" marginwidth="0">
+                    Loading…
+                </iframe>
+            </div>
+        </div>
+
+    </main>
 </div>
 
 <script src="admin.js"></script>
