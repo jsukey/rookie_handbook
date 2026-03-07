@@ -346,41 +346,77 @@ function renderExam() {
 function evaluateExam() {
     let score = 0;
     const missedModules = new Set();
+    const missedQuestions = []; 
+
     examQuestions.forEach((q, index) => {
         const selected = document.querySelector(`input[name="exam_${index}"]:checked`);
-        if (selected && parseInt(selected.value) === q.ans) {
+        const studentAnswerIndex = selected ? parseInt(selected.value) : -1;
+
+        if (studentAnswerIndex === q.ans) {
             score++;
         } else {
             const qNum = index + 1;
-            // Updated logic to accurately map the 30 new test questions to the correct 10 modules
-            if (qNum <= 4) missedModules.add("Module 1: The Gravity Resistance System");
-            else if (qNum <= 8) missedModules.add("Module 2: The Weight of the World (Loads)");
-            else if (qNum <= 11) missedModules.add("Module 3: Direction and Destruction (Load Application)");
-            else if (qNum <= 15) missedModules.add("Module 4: Fueling the Collapse (Fire Loads & HRR)");
-            else if (qNum <= 19) missedModules.add("Module 5: The Margin of Error (Safety Factor & Composites)");
-            else if (qNum <= 23) missedModules.add("Module 6: Horizontal Spans (The Physics of Beams)");
-            else if (qNum <= 25) missedModules.add("Module 7: Triangulated Death Traps (Trusses)");
-            else if (qNum <= 27) missedModules.add("Module 8: Vertical Supports (Columns & Walls)");
-            else if (qNum <= 29) missedModules.add("Module 9: The Arch, The Frame, and The Dome");
-            else missedModules.add("Module 10: The Weakest Link (Foundations & Connections)");
+            
+            missedQuestions.push({
+                qNum: qNum,
+                qText: q.q,
+                studentAnswer: studentAnswerIndex !== -1 ? q.opts[studentAnswerIndex] : "Left Blank",
+                correctAnswer: q.opts[q.ans]
+            });
+
+            // DYNAMIC MAPPING: Look for a 'topic' or 'module' property on the question itself.
+            // If it doesn't exist yet, fallback to a generic message.
+            const topicToReview = q.topic || q.moduleRef || "Review Lesson Material";
+            missedModules.add(topicToReview);
         }
     });
 
+    const percentage = Math.round((score / examQuestions.length) * 100);
+    const passed = percentage >= 90; 
+
+    // Transmit the Exam Data to Google Sheets
+    const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+    if (activeUser && typeof currentLessonName !== 'undefined') {
+        const payload = {
+            action: 'submitExam',
+            studentId: activeUser.id,
+            assessmentName: currentLessonName + " Final Exam",
+            score: percentage,
+            passFail: passed,
+            missedQuestionsData: missedQuestions
+        };
+
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            redirect: 'follow',
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) console.log("✅ Exam telemetry saved to database.");
+            else console.error("❌ Database rejected exam save:", data.message);
+        })
+        .catch(error => console.error("❌ Network error saving exam:", error));
+    } else {
+        console.error("SYNC ABORTED: Missing activeUser or currentLessonName.");
+    }
+
+    // Render UI Results
     const resultsDiv = document.getElementById('exam-results');
     resultsDiv.classList.remove('hidden');
     document.getElementById('submit-exam').classList.add('hidden');
     
-    const percentage = Math.round((score / examQuestions.length) * 100);
     let feedbackHTML = `<h2>Score: ${score} / ${examQuestions.length} (${percentage}%)</h2>`;
     
-    if (percentage >= 90) {
+    if (passed) {
         resultsDiv.style.borderTopColor = '#1e8e3e';
         feedbackHTML += `<p style="color: #1e8e3e; font-weight: bold; margin-top: 1rem;">PASS</p>
-                         <p>Excellent work. You have mastered the core structural concepts of Chapter 2.</p>`;
+                         <p>Excellent work. You have mastered the core concepts of this lesson.</p>`;
     } else {
         resultsDiv.style.borderTopColor = '#d93025';
         feedbackHTML += `<p style="color: #d93025; font-weight: bold; margin-top: 1rem;">FAIL - Re-test Required</p>
-                         <p>Review the following modules before your second attempt:</p>
+                         <p>Review the following topics before your second attempt:</p>
                          <ul style="text-align: left; display: inline-block; margin-top: 1rem;">`;
         missedModules.forEach(m => feedbackHTML += `<li>${m}</li>`);
         feedbackHTML += `</ul>`;
