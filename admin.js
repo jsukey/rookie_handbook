@@ -202,4 +202,134 @@ async function unlockPhase(studentId, phase) {
             alert("A network error occurred while trying to unlock the phase.");
         }
     }
+
+    // Add these global variables at the top of admin.js
+let globalTestData = []; 
+let myChart = null; // Holds the Chart.js instance
+
+// 1. Update your loadAdminDashboard function to pull the new data
+async function loadAdminDashboard() {
+    const loadingDiv = document.getElementById('loading');
+    loadingDiv.style.display = 'block';
+
+    try {
+        // Fetch ALL dashboard data (Roster + Test Scores) in one call
+        const response = await fetch(`${WEBHOOK_URL}?action=getDashboardData`);
+        const result = await response.json();
+        
+        globalRosterData = result.roster;
+        globalTestData = result.testScores;
+        
+        updateSummaryStats(globalRosterData);
+        renderTable(globalRosterData);
+        renderGlobalAnalytics(); // Render the Chart
+
+        loadingDiv.style.display = 'none';
+        switchTab('view-roster');
+
+    } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+        loadingDiv.innerHTML = `<p style="color: red;">Error loading data.</p>`;
+    }
+}
+
+// 2. Add the Student Profile View Logic
+function viewStudentProfile(studentId) {
+    const student = globalRosterData.find(s => s.studentId == studentId);
+    if (!student) return;
+
+    // Populate Header
+    document.getElementById('detail-name').innerText = `${student.name}`;
+    document.getElementById('detail-id').innerText = student.studentId;
+    document.getElementById('detail-cohort').innerText = student.assignedCohort || 'N/A';
+
+    // Find their exams
+    const studentExams = globalTestData.filter(test => test.studentId == studentId);
+    const historyContainer = document.getElementById('exam-history-container');
+    historyContainer.innerHTML = '';
+
+    if (studentExams.length === 0) {
+        historyContainer.innerHTML = '<p>No exam data found for this student.</p>';
+    } else {
+        studentExams.forEach(exam => {
+            // Parse the JSON string we saved in Column G
+            const missedQuestions = JSON.parse(exam.missedQuestionsData || "[]");
+            
+            let html = `
+                <div class="summary-card" style="margin-bottom: 1rem; border-left-color: ${exam.passFail ? 'var(--success)' : 'var(--error)'}">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <strong>${exam.assessmentName}</strong>
+                        <span>Score: ${exam.score}% (${exam.passFail ? 'PASS' : 'FAIL'})</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666;">Date: ${exam.dateAdministered}</p>
+            `;
+
+            if (missedQuestions.length > 0) {
+                html += `<hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                         <h4 style="font-size: 0.9rem; margin-bottom: 8px;">Questions Missed:</h4>
+                         <ul style="font-size: 0.85rem; padding-left: 20px;">`;
+                missedQuestions.forEach(mq => {
+                    html += `<li style="margin-bottom: 6px;">
+                                <strong>Q${mq.qNum}:</strong> ${mq.qText}<br>
+                                <span style="color: var(--error);">Answered: ${mq.studentAnswer}</span><br>
+                                <span style="color: var(--success);">Correct: ${mq.correctAnswer}</span>
+                             </li>`;
+                });
+                html += `</ul>`;
+            }
+            html += `</div>`;
+            historyContainer.innerHTML += html;
+        });
+    }
+
+    switchTab('view-student-detail');
+}
+
+// 3. Add the Chart.js Logic for Global Analytics
+function renderGlobalAnalytics() {
+    const ctx = document.getElementById('missedQuestionsChart').getContext('2d');
+    
+    // Tally up the missed questions
+    const questionTallies = {};
+    
+    globalTestData.forEach(exam => {
+        const missedQuestions = JSON.parse(exam.missedQuestionsData || "[]");
+        missedQuestions.forEach(mq => {
+            // Group by Lesson + Question Number to keep it readable
+            const label = `${exam.assessmentName.replace(" Final Exam", "")} - Q${mq.qNum}`;
+            questionTallies[label] = (questionTallies[label] || 0) + 1;
+        });
+    });
+
+    // Sort to find the most frequently missed
+    const sortedData = Object.entries(questionTallies)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10); // Top 10 worst questions
+
+    const labels = sortedData.map(item => item[0]);
+    const values = sortedData.map(item => item[1]);
+
+    if(myChart) myChart.destroy(); // Clear old chart on refresh
+
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Times Missed',
+                data: values,
+                backgroundColor: 'rgba(211, 47, 47, 0.7)', // EFD Red
+                borderColor: 'rgba(211, 47, 47, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, ticks: { stepSize: 1 } }
+            }
+        }
+    });
+}
 }
