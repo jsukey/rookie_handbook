@@ -181,7 +181,17 @@ function renderContent(mod) {
 
     if (audioPlayer) {
         // 1. Assign source and begin loading immediately
-        audioPlayer.src = `../audio/module_${mod.id}.mp3`;
+        // Format the lesson name to snake_case for the folder path (e.g. "Building Construction" -> "building_construction")
+        const lessonFolder = currentLessonName.toLowerCase().replace(/\s+/g, '_');
+
+        // Set the dynamic source
+        audioPlayer.src = `../audio/${lessonFolder}/module_${currentModuleId}.mp3`;
+
+        // Optional: Add error handling in case a lesson doesn't have audio recorded yet
+        audioPlayer.onerror = function() {
+            console.warn(`Audio file not found: ../audio/${lessonFolder}/module_${currentModuleId}.mp3`);
+            // You could also disable the play button here if no audio exists
+        };
         audioPlayer.load();
 
         // 2. Reactive Event: Audio is successfully found and ready
