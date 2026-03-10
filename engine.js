@@ -13,6 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
         audioPlayer = new Audio();
     }
     
+    // ==========================================
+    // BUG FIX: Restore state from localStorage
+    // ==========================================
+    const userProgress = JSON.parse(localStorage.getItem('userProgress')) || [];
+    
+    // Find the saved progress for the current lesson (currentLessonName comes from data.js)
+    const lessonProgress = userProgress.find(p => p.module === currentLessonName);
+    
+    if (lessonProgress && lessonProgress.completion > 0) {
+        const totalSlides = lessonData.length - 1;
+        // Reverse the math from syncProgress() to find the highest unlocked index
+        const maxUnlocked = Math.round((lessonProgress.completion / 100) * totalSlides);
+        
+        // Rebuild the array (e.g., if max is 2, array becomes [0, 1, 2])
+        unlockedModules = [];
+        for (let i = 0; i <= maxUnlocked; i++) {
+            unlockedModules.push(i);
+        }
+        
+        // Optional: Jump the user directly to their highest unlocked module
+        // currentModuleId = maxUnlocked; 
+    }
+    // ==========================================
+
     init();
 });
 
