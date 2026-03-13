@@ -1,10 +1,10 @@
-const currentLessonName = "Self Rescue";
+const currentLessonName = "Apparatus Familiarization";
 const lessonData = [
     {
         id: 0,
-        title: "Self Rescue Placeholder",
+        title: "Apparatus Familiarization Placeholder",
         text: `
-            <p>self rescue placeholder</p>`,
+            <p>Apparatus Familiarization placeholder</p>`,
         quickCheck: [
             { 
                 q: "What is the minimum psi required in a cylinder to make entry into a hazardous atmosphere?", 
