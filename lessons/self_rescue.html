@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Rescue - Elyria FD</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23d32f2f%22/><path d=%22M50 20c-15 25-5 40 0 60 5-20 15-35 0-60z%22 fill=%22white%22/></svg>">
+    <script> 
+        // AUTH GUARD
+        const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+        if (!activeUser) {
+            window.location.replace('../login.html');
+        }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Elyria FD Training</h2>
+                <p>Probationary Phase 1</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+            </ul>
+        </nav>
+
+        
+        <audio id="lesson-audio"></audio>
+        
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+        
+        <main class="main-content">
+            <header class="mobile-header">
+                <button id="menu-toggle" class="material-menu-btn" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <h2>Self Rescue</h2>
+            </header>
+
+            <div class="content-wrapper" id="content-wrapper">
+                </div>
+
+            <footer class="content-footer">
+                <button id="btn-prev" class="btn btn-secondary hidden">Previous</button>
+                <button id="btn-next" class="btn btn-primary disabled">Next Module</button>
+            </footer>
+        </main>
+    </div>
+    <body>
+        <script src="self_rescue_data.js"></script>
+        <script src="../engine.js"></script>
+    </body>
+</html>
