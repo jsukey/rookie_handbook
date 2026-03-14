@@ -1,11 +1,10 @@
 // admin.js - Training Officer Dashboard Logic
 
-// ==========================================
-// ⚠️ PASTE YOUR APPS SCRIPT WEBHOOK URL BELOW
-// ==========================================
 const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzKvUH_i-Oi5ZBXnGmwLHOmjue9gwQk8CeGMxf85aFeNZXOXGpDig/exec'; 
 
 let globalRosterData = []; // Store data globally for search filtering
+let globalTestData = []; 
+let myChart = null; // Holds the Chart.js instance
 
 document.addEventListener("DOMContentLoaded", () => {
     loadAdminDashboard();
@@ -49,37 +48,6 @@ function switchTab(tabId) {
             tab.classList.add('active');
         }
     });
-}
-
-/**
- * Fetches the roster from the Google Sheet and updates the dashboard.
- */
-async function loadAdminDashboard() {
-    const loadingDiv = document.getElementById('loading');
-    const rosterView = document.getElementById('view-roster');
-    
-    loadingDiv.style.display = 'block';
-    rosterView.style.display = 'none'; // Hide table while loading
-
-    try {
-        const response = await fetch(`${WEBHOOK_URL}?action=getAdminRoster`);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        globalRosterData = await response.json();
-        
-        updateSummaryStats(globalRosterData);
-        renderTable(globalRosterData);
-
-        loadingDiv.style.display = 'none';
-        rosterView.style.display = 'block';
-
-    } catch (error) {
-        console.error("Error fetching roster:", error);
-        loadingDiv.innerHTML = `<p style="color: var(--error); font-weight: bold;">Error loading data. Check your Webhook URL or network connection.</p>`;
-    }
 }
 
 /**
@@ -202,10 +170,8 @@ async function unlockPhase(studentId, phase) {
             alert("A network error occurred while trying to unlock the phase.");
         }
     }
+}
 
-    // Add these global variables at the top of admin.js
-let globalTestData = []; 
-let myChart = null; // Holds the Chart.js instance
 
 // 1. Update your loadAdminDashboard function to pull the new data
 async function loadAdminDashboard() {
@@ -331,5 +297,4 @@ function renderGlobalAnalytics() {
             }
         }
     });
-}
 }
