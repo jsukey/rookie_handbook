@@ -98,11 +98,9 @@ function renderTable(data) {
             }
         }
 
-        // Placeholder for Phase Progress 
-        // (Currently defaults to 0 until backend phase-calculation is built)
-        const p1Progress = student.phase1Progress || 0;
-        const p2Progress = student.phase2Progress || 0;
-        const p3Progress = student.phase3Progress || 0;
+        const p1 = student.phase1Progress || { text: "0/0", pct: 0 };
+        const p2 = student.phase2Progress || { text: "0/0", pct: 0 };
+        const p3 = student.phase3Progress || { text: "0/0", pct: 0 };
 
         // Build the row - strictly Info, Date, and 3 Progress Bars
         tr.innerHTML = `
@@ -112,16 +110,16 @@ function renderTable(data) {
             </td>
             <td>${startDateStr}</td>
             <td>
-                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p1Progress}%</div>
-                <div class="mini-progress-bg"><div class="mini-progress-fill ${p1Progress >= 100 ? 'complete' : ''}" style="width: ${p1Progress}%;"></div></div>
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p1.text}</div>
+                <div class="mini-progress-bg"><div class="mini-progress-fill ${p1.pct >= 100 ? 'complete' : ''}" style="width: ${p1.pct}%;"></div></div>
             </td>
             <td>
-                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p2Progress}%</div>
-                <div class="mini-progress-bg"><div class="mini-progress-fill ${p2Progress >= 100 ? 'complete' : ''}" style="width: ${p2Progress}%;"></div></div>
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p2.text}</div>
+                <div class="mini-progress-bg"><div class="mini-progress-fill ${p2.pct >= 100 ? 'complete' : ''}" style="width: ${p2.pct}%;"></div></div>
             </td>
             <td>
-                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p3Progress}%</div>
-                <div class="mini-progress-bg"><div class="mini-progress-fill ${p3Progress >= 100 ? 'complete' : ''}" style="width: ${p3Progress}%;"></div></div>
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p3.text}</div>
+                <div class="mini-progress-bg"><div class="mini-progress-fill ${p3.pct >= 100 ? 'complete' : ''}" style="width: ${p3.pct}%;"></div></div>
             </td>
         `;
         tbody.appendChild(tr);
