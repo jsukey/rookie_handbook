@@ -84,7 +84,10 @@
         </div>
 
         <div id="view-student-detail" class="view-section" style="display: none;">
-            <button class="btn" style="margin-bottom: 1rem;" onclick="switchTab('view-roster')">⬅ Back to Roster</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2>Student Profile</h2>
+                <button class="btn btn-secondary" onclick="switchTab('view-roster')">← Back to Roster</button>
+            </div>
             
             <div class="summary-card" style="margin-bottom: 2rem;">
                 <h2 id="detail-name" style="color: var(--secondary); margin-bottom: 0.5rem;">Student Name</h2>

@@ -120,8 +120,8 @@ function renderTable(data) {
 
         // Build the row
         tr.innerHTML = `
-            <td>
-                <strong style="color: var(--secondary); font-size: 1.05rem;">${student.name}</strong><br>
+            <td style="cursor: pointer; transition: 0.2s;" onclick="viewStudentProfile('${student.studentId}')" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                <strong style="color: var(--primary); font-size: 1.05rem; text-decoration: underline;">${student.name}</strong><br>
                 <small style="color: var(--text-muted);">ID: ${student.studentId}</small>
             </td>
             <td>${startDateStr}</td>
