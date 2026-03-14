@@ -70,6 +70,9 @@ function updateSummaryStats(data) {
 /**
  * Renders the HTML table rows based on provided data array
  */
+/**
+ * Renders the HTML table rows based on provided data array
+ */
 function renderTable(data) {
     const tbody = document.getElementById('roster-body');
     tbody.innerHTML = ''; 
@@ -82,43 +85,16 @@ function renderTable(data) {
     data.forEach(student => {
         const tr = document.createElement('tr');
         
-        // --- Progress Calculation Mockup ---
-        // If your Google Sheet provides an 'overallProgress' percentage, use it. 
-        // Otherwise, this defaults to 0 for the UI visualization.
-        const progressVal = student.overallProgress || 0; 
-        const progressClass = progressVal >= 100 ? 'complete' : '';
+        // Fix: Use assignedCohort from the new backend payload
+        const startDateStr = student.assignedCohort || 'N/A';
 
-        // --- Phase 2 Cell Logic ---
-        let p2Cell = '';
-        if (student.phase2Unlocked) {
-            p2Cell = `<span class="status-unlocked">✓ Unlocked</span>`;
-        } else if (student.phase2Eligible) {
-            p2Cell = `<button class="btn btn-primary btn-small" onclick="unlockPhase('${student.studentId}', 2)">Unlock Ph 2</button>`;
-        } else {
-            p2Cell = `<span class="status-locked">🔒 Time Locked</span>`;
-        }
+        // Placeholder for Phase Progress 
+        // (Currently defaults to 0 until backend phase-calculation is built)
+        const p1Progress = student.phase1Progress || 0;
+        const p2Progress = student.phase2Progress || 0;
+        const p3Progress = student.phase3Progress || 0;
 
-        // --- Phase 3 Cell Logic ---
-        let p3Cell = '';
-        if (student.phase3Unlocked) {
-            p3Cell = `<span class="status-unlocked">✓ Unlocked</span>`;
-        } else if (student.phase3Eligible) {
-            if (student.phase2Unlocked) {
-                p3Cell = `<button class="btn btn-primary btn-small" onclick="unlockPhase('${student.studentId}', 3)">Unlock Ph 3</button>`;
-            } else {
-                p3Cell = `<span class="status-dependent">🔒 P2 Required</span>`;
-            }
-        } else {
-            p3Cell = `<span class="status-locked">🔒 Time Locked</span>`;
-        }
-
-        // Format start date safely
-        let startDateStr = 'N/A';
-        if (student.startDate) {
-            startDateStr = new Date(student.startDate).toLocaleDateString();
-        }
-
-        // Build the row
+        // Build the row - strictly Info, Date, and 3 Progress Bars
         tr.innerHTML = `
             <td style="cursor: pointer; transition: 0.2s;" onclick="viewStudentProfile('${student.studentId}')" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
                 <strong style="color: var(--primary); font-size: 1.05rem; text-decoration: underline;">${student.name}</strong><br>
@@ -126,13 +102,17 @@ function renderTable(data) {
             </td>
             <td>${startDateStr}</td>
             <td>
-                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${progressVal}%</div>
-                <div class="mini-progress-bg">
-                    <div class="mini-progress-fill ${progressClass}" style="width: ${progressVal}%;"></div>
-                </div>
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p1Progress}%</div>
+                <div class="mini-progress-bg"><div class="mini-progress-fill ${p1Progress >= 100 ? 'complete' : ''}" style="width: ${p1Progress}%;"></div></div>
             </td>
-            <td>${p2Cell}</td>
-            <td>${p3Cell}</td>
+            <td>
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p2Progress}%</div>
+                <div class="mini-progress-bg"><div class="mini-progress-fill ${p2Progress >= 100 ? 'complete' : ''}" style="width: ${p2Progress}%;"></div></div>
+            </td>
+            <td>
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">${p3Progress}%</div>
+                <div class="mini-progress-bg"><div class="mini-progress-fill ${p3Progress >= 100 ? 'complete' : ''}" style="width: ${p3Progress}%;"></div></div>
+            </td>
         `;
         tbody.appendChild(tr);
     });
@@ -209,6 +189,18 @@ function viewStudentProfile(studentId) {
     document.getElementById('detail-id').innerText = student.studentId;
     document.getElementById('detail-cohort').innerText = student.assignedCohort || 'N/A';
 
+    let p2Action = student.phase2Unlocked 
+        ? `<span class="status-unlocked" style="display:inline-block; margin-right: 15px;">✓ Phase 2 Unlocked</span>` 
+        : `<button class="btn btn-primary btn-small" style="margin-right: 15px;" onclick="unlockPhase('${student.studentId}', 2)">Unlock Phase 2</button>`;
+        
+    let p3Action = student.phase3Unlocked 
+        ? `<span class="status-unlocked">✓ Phase 3 Unlocked</span>` 
+        : (student.phase2Unlocked 
+            ? `<button class="btn btn-primary btn-small" onclick="unlockPhase('${student.studentId}', 3)">Unlock Phase 3</button>` 
+            : `<span class="status-dependent">🔒 P2 Required for P3</span>`);
+
+    document.getElementById('profile-actions').innerHTML = p2Action + p3Action;
+    
     // Find their exams
     const studentExams = globalTestData.filter(test => test.studentId == studentId);
     const historyContainer = document.getElementById('exam-history-container');
