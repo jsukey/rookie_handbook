@@ -86,7 +86,17 @@ function renderTable(data) {
         const tr = document.createElement('tr');
         
         // Fix: Use assignedCohort from the new backend payload
-        const startDateStr = student.assignedCohort || 'N/A';
+        // Fix: Use assignedCohort and format it to show only the date
+        let startDateStr = 'N/A';
+        if (student.assignedCohort) {
+            const dateObj = new Date(student.assignedCohort);
+            // Check if it's a valid date object, then format it. Otherwise fallback to raw string.
+            if (!isNaN(dateObj.getTime())) {
+                startDateStr = dateObj.toLocaleDateString(); // E.g., "1/15/2024"
+            } else {
+                startDateStr = student.assignedCohort;
+            }
+        }
 
         // Placeholder for Phase Progress 
         // (Currently defaults to 0 until backend phase-calculation is built)
@@ -200,7 +210,7 @@ function viewStudentProfile(studentId) {
             : `<span class="status-dependent">🔒 P2 Required for P3</span>`);
 
     document.getElementById('profile-actions').innerHTML = p2Action + p3Action;
-    
+
     // Find their exams
     const studentExams = globalTestData.filter(test => test.studentId == studentId);
     const historyContainer = document.getElementById('exam-history-container');
