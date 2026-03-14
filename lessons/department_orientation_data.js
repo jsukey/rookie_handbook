@@ -62,7 +62,7 @@ const lessonData = [
                 <li><strong>Make coffee.</strong> Have a pot ready in the morning. When low, brew another.</li>
                 <li><strong>Stage your gear.</strong> Roll call is @ 0800. Your gear should be at your rig, by your seat position checked and ready to go so you can take over immediately.</li>
                 <li><strong>Stop and listen.</strong> Mornings at the fire station can be busy. Listen to stories from runs past and learn what you can. Don't be too eager to compare every story told to something familiar that you did at your last job or what you would have done.</li>
-                <li><strong>Roll Call.</strong> This is your final opportunity for introductions. Make them BEFORE roll call starts at 0800. Once roll call starts, shut up. Stand for roll call and pay attention. Do NOT have your phone out or even on. Place it on silent or vibrate.</li>
+                <li><strong>Shift Start / Rig Transfer.</strong> This is your final opportunity for introductions. Make them BEFORE shift starts at 0800. Once the shift starts, shut up. Do NOT have your phone out or even on. Place it on silent or vibrate.</li>
                 <li><strong>Rig checks.</strong> Immediately after roll call you need to check the rigs. Have it ready to go then get with the driver and go over the rig. Every compartment. Every tool. All medical equipment. You should be the first into the bays and the last out during rig checks.</li>
                 <li><strong>Know your role.</strong> During rig checks you need to talk with your crew. Find out what tools for what calls are needed, what EMS equipment you should be grabbing on every run and how best benefit the crew.</li>
                 <li><strong>Daily details.</strong> Mop floors, clean bathrooms. These are responsibilities that must be taken care of. You are the lowest on the totem pole. Take that mop from the senior firefighter. Clean the toilets, don't make the senior firefighters do the details no one likes to do.</li>
@@ -70,17 +70,17 @@ const lessonData = [
                 <li><strong>Down time.</strong> Guess what, you get none. Put your phone away and study. You should be in a book. Not Facebook, get off it. If no one is up for teaching, go out into the bays and go through the rigs. When you are tired of that and need a break, study your district maps and learn all the policies and procedures.</li>
                 <li><strong>Meals.</strong> Get in on meals with the crew. Offer to help cook and clean as the meal prep progresses. If they don't cook together, finish first and still offer to wash the dishes. Not by sitting in your seat and asking. Go to the sink and take it from them when they are done.</li>
                 <li><strong>Station drills/Crew drills/classes.</strong> Be upfront. Be involved and pay attention. You should do these drills until you can't do them wrong. Give the instructors your full attention, they deserve it from you and you will learn from them.</li>
-                <li><strong>Own your mistakes.</strong>You're new.  You're going to screw up.  <strong>Do Not</strong> make excuses or blame others.  Own the mistakes fully.  That is how you tell us that you will fix them.  That is how you build trust, not by being perfect, but by being accountable.</li>
+                <li><strong>Own your mistakes.</strong>You're new.  You're going to screw up.  We did too.  <strong>Do Not</strong> make excuses or blame others.  Own the mistakes fully.  That is how you tell us that you will fix them.  That is how you build trust, not by being perfect, but by being accountable.</li>
                 <li><strong>Evening rest.</strong> Keep yourself available for anything leftover that needs done. You should be the first up for any detail of the day that was missed. Don't be the first to go to bed. Wait it out until most of the crew does. Make your bed early though so you aren't making a bunch of commotion while others are trying to rest.</li>
                 <li><strong>The next morning.</strong> You should be up before 0700. Not waking up at 0700. You should be out of your room, in uniform starting the morning details. Start the coffee again, clean any dishes left out from the midnight snackers. Clean the bathrooms if needed, wipe down the counters in the kitchen, take out the trash.</li>
             </ul>
         `,
         quickCheck: [
             { 
-                q: "What time does roll call start?", 
+                q: "What time does shift start?", 
                 opts: ["0800", "0700", "0600", "0830"], 
                 ans: 0,
-                coaching: "Roll call is @ 0800. Your gear should be at your rig, by your seat position checked and ready to go."
+                coaching: "Shift start is @ 0800. Your gear should be at your rig, by your seat position checked and ready to go."
             },
             { 
                 q: "What is the expectation regarding your cell phone during roll call?", 
