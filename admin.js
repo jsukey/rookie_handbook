@@ -170,6 +170,13 @@ async function loadAdminDashboard() {
         // Fetch ALL dashboard data (Roster + Test Scores) in one call
         const response = await fetch(`${WEBHOOK_URL}?action=getDashboardData`);
         const result = await response.json();
+
+        console.log("BACKEND PAYLOAD:", result); 
+        if (result.error) {
+            console.error("APPS SCRIPT ERROR:", result.error);
+            alert("Google Apps Script Error: " + result.error);
+            return; // Stops the script from trying to build a broken table
+        }
         
         globalRosterData = result.roster;
         globalTestData = result.testScores;
