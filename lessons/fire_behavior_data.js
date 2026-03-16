@@ -14,7 +14,7 @@ const lessonData = [
             <li><strong>Uninhibited chemical chain reaction:</strong> a sustained oxidation reaction that produces sufficient excess heat to continue heating unburned fuel.</li>
         </ul>
 
-        <img src="../images/fire_behavior_0.png" alt="Fire Behavior" class="instructive-image">
+        <img src="../images/fire_behavior_mobile.png" alt="Fire Behavior" class="instructive-image">
 
         
         <h3>Heat Transfer</h3>
