@@ -112,7 +112,8 @@ const lessonData = [
             <h3>Interior Finishes and Building Hazards</h3>
             <p>Fire growth is heavily influenced by building construction and interior finishes. Materials like low-density fiberboard, combustible acoustical tile, adhesives, and foamed-plastic insulation can dramatically increase surface flame spread, add fuel contributing to flashover, and generate toxic smoke.</p>
             <p>Remodeling can create dangerous hidden void spaces. For example, when a new fire-rated ceiling is installed directly below an older combustible ceiling, it creates a concealed space where explosive gases can accumulate and fire can burn undetected before bursting downward.</p>
-            
+            <img src="../images/interior_finishes.png" alt="Interior Finishes" class="instructive-image">
+
             <h3>Smoke and Toxic Gases</h3>
             <p>Smoke is the generic term for the airborne solid and liquid particulates and gases produced by a fire. Solid particulates, typically carbon, give smoke its opaqueness. Smoke gases can paralyze or slow the ability to escape.</p>
             <ul>
@@ -121,7 +122,9 @@ const lessonData = [
             </ul>
             <p>Toxicity is a product of concentration and exposure time. Haber’s rule states that any exposure in which the concentration (in parts per million [ppm]) multiplied by minutes exposed equals 33,000 is likely to be dangerous.</p>
             <p>Modern building materials introduce additional toxic hazards. Polyvinyl chloride (PVC), a common electrical insulator, emits highly toxic gases when burned. Polychlorinated biphenyls (PCBs), historically used as nonflammable coolants in electrical transformers, can release highly toxic and difficult-to-clean by-products when heated or cracked during a fire.</p>
-        `,
+            <img src="../images/interior_finishes.png" alt="Interior Finishes" class="instructive-image">
+
+            `,
         quickCheck: [
             { 
                 q: "What is a major hazard created when a new ceiling is installed below an older combustible ceiling?", 
