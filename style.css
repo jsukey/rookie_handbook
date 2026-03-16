@@ -139,7 +139,7 @@ body {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 1.5rem;
+    padding: 0;
     margin: 2rem auto;
     text-align: center;
     font-style: italic;
