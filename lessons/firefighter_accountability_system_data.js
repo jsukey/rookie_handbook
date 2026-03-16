@@ -127,7 +127,9 @@ const lessonData = [
 
             <h3>Lost/Missing Firefighter</h3>
             <p>An absent or unaccounted member of any crew will automatically be assumed lost or trapped in the hazard zone until otherwise determined safe. For any reports of missing firefighters, Command shall request the next greater mutual aid alarm, initiate an immediate roll call (PAR), dispatch the Rapid Intervention Team (RIT) to the last reported working area, and simultaneously adjust all on-scene strategies to a priority search and rescue effort.</p>
-        `,
+            <img src="../images/accountability_2.png" alt="Accountability Procedures and Responsibilties" class="instructive-image">
+
+            `,
         quickCheck: [
             { 
                 q: "What is a basic rule regarding PASSPORTS and the hazard zone?", 
