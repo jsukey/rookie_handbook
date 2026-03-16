@@ -67,7 +67,7 @@ const lessonData = [
                 <li><strong>Flashover:</strong> a transition stage in which exposed surfaces ignite simultaneously, resulting in full room involvement.</li>
                 <li><strong>Smoldering/decay:</strong> glowing combustion without flame, typically occurring when the oxygen supply is limited.</li>
             </ul>
-            <img src="../images/stages_of_fire.png" alt="Stages of Fire Growth" class="instructive-image">
+            <img src="../images/stages_of_fire_mobile.png" alt="Stages of Fire Growth" class="instructive-image">
 
             
             <p>Key elements of a compartment fire include the fire plume (column of flames, smoke, and heated gases), the ceiling layer (hot gases collecting at the top of a room), and the neutral plane (interface between the hot ceiling layer and cooler air flowing in).</p>
