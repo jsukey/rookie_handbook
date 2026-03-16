@@ -18,7 +18,7 @@ const lessonData = [
                 <li><strong>Togetherness:</strong> All crews will go in together, stay together, and come out together. Reduced visibility and increased risk will require very tight togetherness.</li>
                 <li><strong>Radio Failure:</strong> If a radio fails while in the hazard zone, the crew will exit unless there is another working radio with the crew.</li>
             </ul>
-            <img src="../images/accountability_1.png" alt="Accountability Procedures and Responsibilties" class="instructive-image">
+            <img src="../images/accountability_0.png" alt="Accountability Procedures and Responsibilties" class="instructive-image">
 
         `,
         quickCheck: [
@@ -67,6 +67,7 @@ const lessonData = [
             <p>Accountability Officers may be apparatus operators, Division/Group supervisors, or personnel specifically assigned to serve as Accountability Officers. The first engine to each geographic side of the incident or point of entry will serve as the initial accountability location, managed by the apparatus operator.</p>
             <p>All crews entering the incident will deliver their PASSPORTS to the accountability location closest to their point of entry before entering the hazard zone. As Command implements divisions or groups, Supervisors will manage PASSPORTS only if they do not enter the hazard zone.</p>
             <p>The Accountability Officer's responsibilities include developing a tracking plan, requesting area resources, providing progress reports to Command, and initiating PARs upon benchmarks or as required.</p>
+            <img src="../images/accountability_1.png" alt="Accountability Procedures and Responsibilties" class="instructive-image">
         `,
         quickCheck: [
             { 
