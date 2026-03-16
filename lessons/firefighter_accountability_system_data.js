@@ -2,7 +2,7 @@ const currentLessonName = "Accountability System";
 const lessonData = [
     {
         id: 0,
-        title: "Module 0: Purpose and Procedures",
+        title: "Purpose and Procedures",
         text: `
             <p>The <strong>PASSPORT Personnel Accountability System</strong> gives an Incident Commander a fast and efficient means to account for all fire/rescue personnel that are working within a small geographic area within the hazard zone of an incident. Use of the system will provide enhanced personal safety for the individual firefighter and an improved means to track and account for all personnel working in the hazard zone.</p>
             
@@ -48,7 +48,7 @@ const lessonData = [
     },
     {
         id: 1,
-        title: "Module 1: Accountability Equipment and Officers",
+        title: "Accountability Equipment and Officers",
         text: `
             <p>To enhance accountability and to improve tracking of firefighters in the hazard zone, the <strong>PASSPORT</strong> system will be used.</p>
             
@@ -95,7 +95,7 @@ const lessonData = [
     },
     {
         id: 2,
-        title: "Module 2: Implementation and Operations",
+        title: "Implementation and Operations",
         text: `
             <p>The objective of the PASSPORT system is to collect crew members’ PASSPORTS near the point of entry and to ensure that PASSPORTS are accurate, reflecting only those members inside the hazard zone. The system shall be mandated for all incidents involving use of mutual aid.</p>
             
@@ -128,26 +128,26 @@ const lessonData = [
         quickCheck: [
             { 
                 q: "What is a basic rule regarding PASSPORTS and the hazard zone?", 
-                opts: ["PASSPORTS never enter the hazard zone", "PASSPORTS must be carried in the left pocket", "PASSPORTS are taken inside by the company officer", "PASSPORTS remain at the central command post only"], 
-                ans: 0,
+                opts: ["PASSPORTS must be carried in the left pocket", "PASSPORTS are taken inside by the company officer", "PASSPORTS remain at the central command post only", "PASSPORTS never enter the hazard zone"], 
+                ans: 3,
                 coaching: "A basic rule of implementation is that PASSPORTS never enter the hazard zone."
             },
             { 
                 q: "When is a Personnel Accountability Report (PAR) required?", 
-                opts: ["At every 30-minute elapsed time during the incident", "Every 10 minutes during the incident", "Only when requested by the dispatcher", "Only when arriving on scene"], 
-                ans: 0,
+                opts: ["Every 10 minutes during the incident", "Only when requested by the dispatcher", "Only when arriving on scene", "At every 30-minute elapsed time during the incident"], 
+                ans: 3,
                 coaching: "A PAR or roll call is required at every 30-minute elapsed time during the incident."
             },
             { 
                 q: "What must Command do immediately for any report of a missing firefighter?", 
-                opts: ["Request the next greater mutual aid alarm", "Continue defensive operations as normal", "Wait 5 minutes to see if the firefighter radios in", "Dismiss the Rapid Intervention Team"], 
-                ans: 0,
+                opts: ["Continue defensive operations as normal", "Wait 5 minutes to see if the firefighter radios in", "Request the next greater mutual aid alarm", "Dismiss the Rapid Intervention Team"], 
+                ans: 2,
                 coaching: "For any report of a missing firefighter, Command shall request the next greater mutual aid alarm."
             },
             { 
                 q: "Who will collect PASSPORTS from tanker units during water shuttle operations?", 
-                opts: ["The Water Supply Officer", "The Incident Commander", "The Lobby Group Supervisor", "The Safety Officer"], 
-                ans: 0,
+                opts: ["The Incident Commander", "The Water Supply Officer", "The Lobby Group Supervisor", "The Safety Officer"], 
+                ans: 1,
                 coaching: "During water shuttle operations, PASSPORTS from tanker units will be collected by the Water Supply Officer."
             }
         ]
