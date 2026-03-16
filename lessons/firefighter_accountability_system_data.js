@@ -18,6 +18,8 @@ const lessonData = [
                 <li><strong>Togetherness:</strong> All crews will go in together, stay together, and come out together. Reduced visibility and increased risk will require very tight togetherness.</li>
                 <li><strong>Radio Failure:</strong> If a radio fails while in the hazard zone, the crew will exit unless there is another working radio with the crew.</li>
             </ul>
+            <img src="../images/accountability_1.png" alt="Accountability Procedures and Responsibilties" class="instructive-image">
+
         `,
         quickCheck: [
             { 
