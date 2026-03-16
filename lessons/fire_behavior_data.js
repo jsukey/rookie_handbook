@@ -122,7 +122,6 @@ const lessonData = [
             </ul>
             <p>Toxicity is a product of concentration and exposure time. Haber’s rule states that any exposure in which the concentration (in parts per million [ppm]) multiplied by minutes exposed equals 33,000 is likely to be dangerous.</p>
             <p>Modern building materials introduce additional toxic hazards. Polyvinyl chloride (PVC), a common electrical insulator, emits highly toxic gases when burned. Polychlorinated biphenyls (PCBs), historically used as nonflammable coolants in electrical transformers, can release highly toxic and difficult-to-clean by-products when heated or cracked during a fire.</p>
-            <img src="../images/interior_finishes.png" alt="Interior Finishes" class="instructive-image">
 
             `,
         quickCheck: [
