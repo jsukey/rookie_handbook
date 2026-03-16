@@ -13,6 +13,9 @@ const lessonData = [
             <li><strong>Heat:</strong> a form of energy that is the source of ignition.</li>
             <li><strong>Uninhibited chemical chain reaction:</strong> a sustained oxidation reaction that produces sufficient excess heat to continue heating unburned fuel.</li>
         </ul>
+
+        <img src="../images/fire_behavior_0.png" alt="Fire Behavior" class="instructive-image">
+
         
         <h3>Heat Transfer</h3>
         <p>Heat transfer dictates how a fire spreads. There are three primary methods of heat transfer:</p>
@@ -21,11 +24,6 @@ const lessonData = [
             <li><strong>Convection:</strong> the transfer of heat through circulation within a medium such as a gas or a liquid.</li>
             <li><strong>Radiation:</strong> the transfer of heat through electromagnetic waves.</li>
         </ul>
-        <img src="../images/fire_behavior_0.png" alt="Fire Behavior" class="instructive-image">
-
-        
-
-[Image of methods of heat transfer: conduction, convection, radiation]
 
         <p>Large quantities of radiant heat can cause autoignition, a phenomenon in which a combustible material ignites spontaneously without the application of a flame or spark. In contrast, piloted ignition occurs when a heated combustible material ignites from an applied flame or spark.</p>
         <p>Autoexposure describes the vertical spread of fire on the exterior of a multistory building, from one floor to the floor above, driven by radiation and convection.</p>
@@ -69,6 +67,8 @@ const lessonData = [
                 <li><strong>Flashover:</strong> a transition stage in which exposed surfaces ignite simultaneously, resulting in full room involvement.</li>
                 <li><strong>Smoldering/decay:</strong> glowing combustion without flame, typically occurring when the oxygen supply is limited.</li>
             </ul>
+            <img src="../images/stages_of_fire.png" alt="Stages of Fire Growth" class="instructive-image">
+
             
             <p>Key elements of a compartment fire include the fire plume (column of flames, smoke, and heated gases), the ceiling layer (hot gases collecting at the top of a room), and the neutral plane (interface between the hot ceiling layer and cooler air flowing in).</p>
             <p>Bi-directional flow is the movement of cooler air into the room and hot gases leaving. Fresh air drawn into the fire is known as entrainment.</p>
@@ -76,7 +76,7 @@ const lessonData = [
             <h3>Backdraft and Flow Paths</h3>
             <p>Backdraft occurs when heated gaseous products of combustion burn with explosive force when oxygen is introduced into an oxygen-depleted environment.</p>
             <p>Flow paths describe the movement of hot fire gases and smoke from areas of high pressure to low pressure. Providing flow paths by opening doors or windows allows oxygen into the compartment and products of combustion to exit, causing the fire to rapidly grow in size.</p>
-            
+            <img src="../images/flow_paths.png" alt="Flow Paths" class="instructive-image">
         `,
         quickCheck: [
             { 
