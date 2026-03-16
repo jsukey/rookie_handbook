@@ -2,7 +2,7 @@ const currentLessonName = "Fire Behavior";
 const lessonData = [
     {
     id: 0,
-    title: "Module 0: The Basics of Fire and Heat Transfer",
+    title: "The Basics of Fire and Heat Transfer",
     text: `
         <h3>The Basics of Fire</h3>
         <p>Fire is a rapid oxidation (chemical) reaction that produces heat and visible light.</p>
@@ -21,6 +21,8 @@ const lessonData = [
             <li><strong>Convection:</strong> the transfer of heat through circulation within a medium such as a gas or a liquid.</li>
             <li><strong>Radiation:</strong> the transfer of heat through electromagnetic waves.</li>
         </ul>
+        <img src="../images/fire_behavior_0.png" alt="Fire Behavior" class="instructive-image">
+
         
 
 [Image of methods of heat transfer: conduction, convection, radiation]
@@ -31,33 +33,33 @@ const lessonData = [
         quickCheck: [
             { 
                 q: "Which component of the fire tetrahedron is also known as a reducing agent?", 
-                opts: ["Fuel", "Oxidizing agent", "Heat", "Uninhibited chemical chain reaction"], 
-                ans: 0,
+                opts: ["Oxidizing agent", "Heat", "Uninhibited chemical chain reaction", "Fuel"], 
+                ans: 3,
                 coaching: "Fuel is defined as a material that will sustain combustion, also known as a reducing agent."
             },
             { 
                 q: "Which method of heat transfer occurs through circulation within a medium such as a gas or liquid?", 
-                opts: ["Convection", "Conduction", "Radiation", "Autoexposure"], 
-                ans: 0,
+                opts: ["Conduction", "Radiation", "Autoexposure", "Convection"], 
+                ans: 3,
                 coaching: "Convection is the transfer of heat through circulation within a medium such as a gas or a liquid."
             },
             { 
                 q: "What term describes a combustible material igniting spontaneously without the application of a flame or spark?", 
-                opts: ["Autoignition", "Piloted ignition", "Autoexposure", "Conduction"], 
-                ans: 0,
+                opts: ["Piloted ignition", "Autoexposure", "Autoignition", "Conduction"], 
+                ans: 2,
                 coaching: "Autoignition is a phenomenon in which a combustible material ignites spontaneously without the application of a flame or spark."
             },
             { 
                 q: "What does the term autoexposure describe?", 
-                opts: ["The vertical spread of fire on the exterior of a multistory building", "The transfer of heat through direct contact", "The ignition of a material when a flame is applied", "A sustained oxidation reaction producing excess heat"], 
-                ans: 0,
+                opts: ["The transfer of heat through direct contact", "The ignition of a material when a flame is applied", "The vertical spread of fire on the exterior of a multistory building", "A sustained oxidation reaction producing excess heat"], 
+                ans: 2,
                 coaching: "Autoexposure describes the vertical spread of fire on the exterior of a multistory building, from one floor to the floor(s) above."
             }
         ]
     },
     {
         id: 1,
-        title: "Module 1: Compartment Fires and Flow Paths",
+        title: "Compartment Fires and Flow Paths",
         text: `
             <h3>Compartment Fires</h3>
             <p>A compartment is the enclosure around a fire. If not ventilation-limited, a fire will pass through four stages:</p>
@@ -79,14 +81,14 @@ const lessonData = [
         quickCheck: [
             { 
                 q: "Which stage of a compartment fire is a transition stage where exposed surfaces ignite simultaneously?", 
-                opts: ["Flashover", "Incipient", "Free burning", "Smoldering/decay"], 
-                ans: 0,
+                opts: ["Incipient", "Flashover", "Free burning", "Smoldering/decay"], 
+                ans: 1,
                 coaching: "Flashover is a transition stage in which exposed surfaces within the compartment ignite simultaneously resulting in full room involvement."
             },
             { 
                 q: "What is the interface between the hot ceiling layer and the cooler air flowing into the compartment called?", 
-                opts: ["Neutral plane", "Fire plume", "Bi-directional flow", "Entrainment"], 
-                ans: 0,
+                opts: ["Fire plume", "Bi-directional flow", "Entrainment", "Neutral plane"], 
+                ans: 3,
                 coaching: "The neutral plane is the interface between the hot ceiling layer and the cooler air flowing into the compartment."
             },
             { 
@@ -97,15 +99,15 @@ const lessonData = [
             },
             { 
                 q: "What dictates the movement of hot fire gases and smoke in a flow path?", 
-                opts: ["Movement from areas of high pressure to low pressure", "Movement from areas of low pressure to high pressure", "Movement restricted entirely to the neutral plane", "Movement driven solely by radiant heat"], 
-                ans: 0,
+                opts: ["Movement from areas of low pressure to high pressure", "Movement restricted entirely to the neutral plane", "Movement from areas of high pressure to low pressure", "Movement driven solely by radiant heat"], 
+                ans: 2,
                 coaching: "Flow paths are described as the movement of hot fire gases and smoke from areas of high pressure to low pressure."
             }
         ]
     },
     {
         id: 2,
-        title: "Module 2: Building Materials, Interior Finishes, and Smoke",
+        title: "Building Materials, Interior Finishes, and Smoke",
         text: `
             <h3>Interior Finishes and Building Hazards</h3>
             <p>Fire growth is heavily influenced by building construction and interior finishes. Materials like low-density fiberboard, combustible acoustical tile, adhesives, and foamed-plastic insulation can dramatically increase surface flame spread, add fuel contributing to flashover, and generate toxic smoke.</p>
@@ -123,8 +125,8 @@ const lessonData = [
         quickCheck: [
             { 
                 q: "What is a major hazard created when a new ceiling is installed below an older combustible ceiling?", 
-                opts: ["It creates a dangerous hidden void space where fire can burn undetected", "It immediately overloads the structural floor joists", "It restricts the flow path causing an immediate backdraft", "It prevents carbon monoxide from stratifying"], 
-                ans: 0,
+                opts: ["It immediately overloads the structural floor joists", "It creates a dangerous hidden void space where fire can burn undetected", "It restricts the flow path causing an immediate backdraft", "It prevents carbon monoxide from stratifying"], 
+                ans: 1,
                 coaching: "When a new ceiling is installed below the old ceiling, the dangerous combustible ceiling is left above, creating a void."
             },
             { 
@@ -135,14 +137,14 @@ const lessonData = [
             },
             { 
                 q: "According to Haber's rule, an exposure is likely to be dangerous when the concentration (in ppm) multiplied by minutes exposed equals what number?", 
-                opts: ["33,000", "12,500", "3,500", "10,000"], 
-                ans: 0,
+                opts: ["12,500", "33,000", "3,500", "10,000"], 
+                ans: 1,
                 coaching: "Haber’s rule states that any exposure in which the concentration (in ppm) × minutes exposed equals 33,000 is likely to be dangerous."
             },
             { 
                 q: "What highly toxic chemical was historically used as a nonflammable coolant in electrical transformers?", 
-                opts: ["Polychlorinated biphenyls (PCBs)", "Polyvinyl chloride (PVC)", "Nitrous oxide", "Hydrogen cyanide (HCN)"], 
-                ans: 0,
+                opts: ["Polyvinyl chloride (PVC)", "Nitrous oxide", "Polychlorinated biphenyls (PCBs)", "Hydrogen cyanide (HCN)"], 
+                ans: 2,
                 coaching: "PCBs were used as nonflammable coolants in transformers and can release toxic by-products during a fire."
             }
         ]
