@@ -76,7 +76,7 @@ const lessonData = [
             <h3>Backdraft and Flow Paths</h3>
             <p>Backdraft occurs when heated gaseous products of combustion burn with explosive force when oxygen is introduced into an oxygen-depleted environment.</p>
             <p>Flow paths describe the movement of hot fire gases and smoke from areas of high pressure to low pressure. Providing flow paths by opening doors or windows allows oxygen into the compartment and products of combustion to exit, causing the fire to rapidly grow in size.</p>
-            <img src="../images/flow_paths.png" alt="Flow Paths" class="instructive-image">
+            <img src="../images/flow_paths_mobile.png" alt="Flow Paths" class="instructive-image">
         `,
         quickCheck: [
             { 
