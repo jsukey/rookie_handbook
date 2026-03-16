@@ -2,7 +2,7 @@ const currentLessonName = "Department Orientation";
 const lessonData = [
     {
         id: 0,
-        title: "Module 0: Expectations and The Rookie Mentality",
+        title: "Expectations and The Rookie Mentality",
         text: `
             <h3>Welcome and Fire Chief Expectations</h3>
             <p>Welcome to the Elyria Fire Department! You are now a member of an elite team of professionals, dedicated to providing the very best in emergency services to our community.</p>
@@ -27,8 +27,8 @@ const lessonData = [
         quickCheck: [
             { 
                 q: "According to the Fire Chief's expectations, what does 'on time' mean?", 
-                opts: ["Being early", "Arriving exactly at 0800", "Being in the building before the bell rings", "Arriving within 5 minutes of roll call"], 
-                ans: 0,
+                opts: ["Arriving exactly at 0800", "Being in the building before the bell rings", "Arriving within 5 minutes of roll call", "Being early"], 
+                ans: 3,
                 coaching: "Know your schedule – on time means being early!"
             },
             { 
@@ -39,31 +39,31 @@ const lessonData = [
             },
             { 
                 q: "What attitude has no place in the fire service?", 
-                opts: ["An attitude of entitlement", "An attitude of eagerness", "An attitude of service", "An attitude of confidence"], 
-                ans: 0,
+                opts: ["An attitude of eagerness", "An attitude of entitlement", "An attitude of service", "An attitude of confidence"], 
+                ans: 1,
                 coaching: "There is no place for an attitude of entitlement in the fire service."
             },
             { 
                 q: "How should you act when experienced firefighters are telling stories?", 
-                opts: ["Be quiet and listen to those around you who have gone before you.", "Interrupt to share a similar experience you had.", "Take notes in your Rookie Book.", "Ask immediately if it relates to a daily detail."], 
-                ans: 0,
+                opts: ["Interrupt to share a similar experience you had.", "Take notes in your Rookie Book.", "Be quiet and listen to those around you who have gone before you.", "Ask immediately if it relates to a daily detail."], 
+                ans: 2,
                 coaching: "Be quiet and listen to those around you who have gone before you. Soak in the knowledge and experiences from the things they tell you."
             }
         ]
     },
     {
         id: 1,
-        title: "Module 1: Daily Station Life and Duties",
+        title: "Daily Station Life and Duties",
         text: `
             <h3>Welcome To Our House...</h3>
             <p>Congratulations, you have been hired at the Firehouse fulltime. Believe it or not that was the easy part. Now you need to prove to everyone that you deserve to be here. We are not impressed with your talk. We are not impressed with stories from your other departments. Prove it to us that you deserve this job through your actions.</p>
             <ul>
                 <li><strong>Introduce yourself to EVERYONE. EVERYDAY.</strong> You're new and we forget you.</li>
                 <li><strong>Make coffee.</strong> Have a pot ready in the morning. When low, brew another.</li>
-                <li><strong>Stage your gear.</strong> Roll call is @ 0800. Your gear should be at your rig, by your seat position checked and ready to go so you can take over immediately.</li>
+                <li><strong>Stage your gear.</strong> Your shift starts at 0800. Your gear should be at your rig, by your seat position checked and ready to go so you can take over immediately.</li>
                 <li><strong>Stop and listen.</strong> Mornings at the fire station can be busy. Listen to stories from runs past and learn what you can. Don't be too eager to compare every story told to something familiar that you did at your last job or what you would have done.</li>
                 <li><strong>Shift Start / Rig Transfer.</strong> This is your final opportunity for introductions. Make them BEFORE shift starts at 0800. Once the shift starts, shut up. Do NOT have your phone out or even on. Place it on silent or vibrate.</li>
-                <li><strong>Rig checks.</strong> Immediately after roll call you need to check the rigs. Have it ready to go then get with the driver and go over the rig. Every compartment. Every tool. All medical equipment. You should be the first into the bays and the last out during rig checks.</li>
+                <li><strong>Rig checks.</strong> As soon as shift begins you need to check the rigs. Have it ready to go then get with the driver and go over the rig. Every compartment. Every tool. All medical equipment. You should be the first into the bays and the last out during rig checks.</li>
                 <li><strong>Know your role.</strong> During rig checks you need to talk with your crew. Find out what tools for what calls are needed, what EMS equipment you should be grabbing on every run and how best benefit the crew.</li>
                 <li><strong>Daily details.</strong> Mop floors, clean bathrooms. These are responsibilities that must be taken care of. You are the lowest on the totem pole. Take that mop from the senior firefighter. Clean the toilets, don't make the senior firefighters do the details no one likes to do.</li>
                 <li><strong>Daily tasking.</strong> Whatever task you are doing, take something from it. Building inspections, learn the building number and layout. Extinguisher inspections, learn their locations, type and use.</li>
@@ -78,8 +78,8 @@ const lessonData = [
         quickCheck: [
             { 
                 q: "What time does shift start?", 
-                opts: ["0800", "0700", "0600", "0830"], 
-                ans: 0,
+                opts: ["0700", "0800", "0600", "0830"], 
+                ans: 1,
                 coaching: "Shift start is @ 0800. Your gear should be at your rig, by your seat position checked and ready to go."
             },
             { 
@@ -90,8 +90,8 @@ const lessonData = [
             },
             { 
                 q: "What should you do regarding daily details such as mopping floors and cleaning bathrooms?", 
-                opts: ["Take the mop from the senior firefighter; you are the lowest on the totem pole.", "Wait to be explicitly assigned the task by the company officer.", "Only complete the details you were assigned at roll call.", "Leave the bathrooms for the evening shift to clean."], 
-                ans: 0,
+                opts: ["Wait to be explicitly assigned the task by the company officer.", "Only complete the details you were assigned at roll call.", "Leave the bathrooms for the evening shift to clean.", "Take the mop from the senior firefighter; you are the lowest on the totem pole."], 
+                ans: 3,
                 coaching: "You are the lowest on the totem pole. Take that mop from the senior firefighter. Clean the toilets, don't make the senior firefighters do the details no one likes to do."
             },
             { 
@@ -104,7 +104,7 @@ const lessonData = [
     },
     {
         id: 2,
-        title: "Module 2: The Probationary Journey",
+        title: "The Probationary Journey",
         text: `
             <h3>What to Expect This Year</h3>
             <p>Welcome to the next twelve months of your career. Your probationary year is a structured, intense period designed to build a safe, competent, and reliable firefighter. You aren't just here to pass tests; you are here to prove you belong on this team.</p>
@@ -145,15 +145,15 @@ const lessonData = [
             },
             { 
                 q: "Besides performance and book knowledge, what critical trait are you constantly being evaluated on?", 
-                opts: ["Your driving ability", "Your attitude (coachable, humble, ethical, empathetic)", "Your cooking skills", "Your physical lifting capacity"], 
-                ans: 1,
+                opts: ["Your driving ability", "Your cooking skills", "Your physical lifting capacity", "Your attitude (coachable, humble, ethical, empathetic)",], 
+                ans: 3,
                 coaching: "We are constantly evaluating your attitude. Show us that you want to be here, be coachable, stay humble, operate ethically, and show empathy."
             }
         ]
     },
     {
         id: 3,
-        title: "Module 3: Department Policies and General Regulations",
+        title: "Department Policies and General Regulations",
         text: `
             <h3>The Spirit of the Rules</h3>
             <p>We have a thick policy manual, and yes, you are expected to read it in its entirety. However, these rules aren't designed to turn you into a robot or limit your common sense. They exist to keep you safe and maintain order. In extraordinary situations, you are still expected to use the judgment of a reasonable firefighter.</p>
@@ -199,7 +199,7 @@ const lessonData = [
     },
     {
         id: 4,
-        title: "Module 4: Operational Rules and Prohibited Activities",
+        title: "Operational Rules and Prohibited Activities",
         text: `
             <h3>Station Life Boundaries</h3>
             <p>Living at the firehouse requires mutual respect and strict boundaries. Show up clean-shaven and in a proper, well-maintained uniform. Your first priority is ensuring the cleanliness of your assigned apparatus and the station.</p>
@@ -207,7 +207,7 @@ const lessonData = [
             <p>Communication is the lifeblood of our shift work. Every morning, you must have a face-to-face pass-on with the off-going crew to discuss the apparatus status, ongoing problems, and station facilities.</p>
 
             <h3>The Zero Tolerance List</h3>
-            <p>There are some absolute hard lines in the fire service. Crossing them will cost you your career:</p>
+            <p>There are some absolute hard lines in the fire service. Crossing them may cost you your career:</p>
             <ul>
                 <li><strong>No Discrimination:</strong> We do not tolerate discriminatory or abusive behavior regarding race, sex, religion, age, sexual preference, ethnicity, or union membership.</li>
                 <li><strong>No Falsifying Records:</strong> Integrity is everything. Never knowingly falsify a department record.</li>
@@ -250,28 +250,28 @@ const lessonData = [
 ];
 
 const examQuestions = [
-    { q: "Besides the Elyria Fire Department, who else do you represent when in uniform?", opts: ["The City of Elyria", "The entire state fire marshal office", "The IAFF local union", "Only yourself and your assigned station"], ans: 0, coaching: "You don't just represent the Elyria Fire Department. You also represent the City of Elyria to your community!", topic: "Department Orientation" },
-    { q: "What behaviors does the Fire Chief say are 'fast ways to not be a part of this organization any longer'?", opts: ["Discrimination of any kind, sexual harassment, and violence in the workplace", "Being late for roll call twice in a month", "Failing a physical fitness assessment", "Sleeping past 0700 on a duty day"], ans: 0, coaching: "Discrimination of any kind, sexual harassment, and violence in the workplace are fast ways to not be a part of this organization any longer.", topic: "Department Orientation"},
+    { q: "Besides the Elyria Fire Department, who else do you represent when in uniform?", opts: ["The entire state fire marshal office", "The IAFF local union", "Only yourself and your assigned station", "The City of Elyria"], ans: 3, coaching: "You don't just represent the Elyria Fire Department. You also represent the City of Elyria to your community!", topic: "Department Orientation" },
+    { q: "What behaviors does the Fire Chief say are 'fast ways to not be a part of this organization any longer'?", opts: ["Being late for roll call twice in a month", "Failing a physical fitness assessment", "Sleeping past 0700 on a duty day", "Discrimination of any kind, sexual harassment, and violence in the workplace"], ans: 3, coaching: "Discrimination of any kind, sexual harassment, and violence in the workplace are fast ways to not be a part of this organization any longer.", topic: "Department Orientation"},
     { q: "According to the rookie mentality, what should you be doing regarding your downtime at the station?", opts: ["You get none; put your phone away and study in a book.", "Use the time to catch up on sleep.", "Spend time on social media to decompress.", "Wait in the dayroom for the next call."], ans: 0, coaching: "Down time. Guess what, you get none. Put your phone away and study. You should be in a book.", topic: "Department Orientation" },
-    { q: "How should a rookie approach small tasks like washing off an oil drip under the apparatus?", opts: ["Seek opportunities to be there for the crew and see small tasks through to completion", "Leave them for the station janitor to handle", "Document them in the logbook for the oncoming shift to handle", "Only do them if directly ordered by an officer"], ans: 0, coaching: "We should be seeking opportunities to be there for those we work with... washing off that spot under the apparatus where oil inevitably drips...", topic: "Department Orientation" },
-    { q: "Where should your gear be staged prior to the 0800 roll call?", opts: ["At your rig, by your seat position checked and ready to go", "In your personal locker", "Hanging on the turnout rack", "In the back of your personal vehicle"], ans: 0, coaching: "Your gear should be at your rig, by your seat position checked and ready to go so you can take over immediately.", topic: "Department Orientation" },
+    { q: "How should a rookie approach small tasks like washing off an oil drip under the apparatus?", opts: ["Leave them for the station janitor to handle", "Seek opportunities to be there for the crew and see small tasks through to completion", "Document them in the logbook for the oncoming shift to handle", "Only do them if directly ordered by an officer"], ans: 1, coaching: "We should be seeking opportunities to be there for those we work with... washing off that spot under the apparatus where oil inevitably drips...", topic: "Department Orientation" },
+    { q: "Where should your gear be staged prior to the 0800 start of shift?", opts: ["At your rig, by your seat position checked and ready to go", "In your personal locker", "Hanging on the turnout rack", "In the back of your personal vehicle"], ans: 0, coaching: "Your gear should be at your rig, by your seat position checked and ready to go so you can take over immediately.", topic: "Department Orientation" },
     { q: "Who should be the first into the bays and the last out during rig checks?", opts: ["The rookie", "The company officer", "The apparatus driver/operator", "The senior firefighter"], ans: 0, coaching: "You should be the first into the bays and the last out during rig checks.", topic: "Department Orientation" },
-    { q: "What is expected of you the next morning before 0700?", opts: ["You should be out of your room, in uniform starting the morning details", "You should be waking up to get ready for 0800 shift change", "You should be making your bed and packing your bags", "You should be doing a final rig check before shift change"], ans: 0, coaching: "You should be up before 0700. Not waking up at 0700. You should be out of your room, in uniform starting the morning details.", topic: "Department Orientation" },
-    { q: "What should you do regarding dishes if you finish your meal first?", opts: ["Go to the sink and take the dishes from the crew when they are done", "Sit in your seat and ask if anyone needs help", "Go to your room and start studying", "Only wash your own dishes to keep things fair"], ans: 0, coaching: "If they don't cook together, finish first and still offer to wash the dishes. Not by sitting in your seat and asking. Go to the sink and take it from them when they are done.", topic: "Department Orientation" },
-    { q: "How often should Elyria Fire Department members use/review department email?", opts: ["As part of their normal duties", "Only at the beginning of their shift", "Once per week on training days", "Only when directed by a chief officer"], ans: 0, coaching: "Elyria Fire Department members shall use/review department email as part of their normal duties.", topic: "Department Orientation" },
+    { q: "What is expected of you the next morning before 0700?", opts: [ "You should be waking up to get ready for 0800 shift change", "You should be out of your room, in uniform starting the morning details", "You should be making your bed and packing your bags", "You should be doing a final rig check before shift change"], ans: 1, coaching: "You should be up before 0700. Not waking up at 0700. You should be out of your room, in uniform starting the morning details.", topic: "Department Orientation" },
+    { q: "What should you do regarding dishes if you finish your meal first?", opts: ["Sit in your seat and ask if anyone needs help", "Go to your room and start studying", "Go to the sink and take the dishes from the crew when they are done", "Only wash your own dishes to keep things fair"], ans: 2, coaching: "If they don't cook together, finish first and still offer to wash the dishes. Not by sitting in your seat and asking. Go to the sink and take it from them when they are done.", topic: "Department Orientation" },
+    { q: "How often should Elyria Fire Department members use/review department email?", opts: ["Only at the beginning of their shift", "Once per week on training days", "As part of their normal duties", "Only when directed by a chief officer"], ans: 2, coaching: "Elyria Fire Department members shall use/review department email as part of their normal duties.", topic: "Department Orientation" },
     { q: "Are the rules and regulations designed to limit a member's judgment in extraordinary situations?", opts: ["No, they are not designed nor intended to limit judgment or initiative", "Yes, they must be followed strictly without exception", "Yes, only chief officers can exercise judgment outside the rules", "No, unless the situation involves hazardous materials"], ans: 0, coaching: "Rules and regulations are not designed, nor intended, to limit any member in the exercising of his/her judgment or initiative in taking the action that a reasonable person would take in extraordinary situations.", topic: "Department Orientation" },
-    { q: "What is the department's policy regarding insubordination?", opts: ["Insubordination at any level is not acceptable and will not be tolerated", "It is acceptable only during non-emergency activities", "It is tolerated if the member is acting for safety reasons", "It requires a written warning before any disciplinary action"], ans: 0, coaching: "Insubordination at any level is not acceptable and will not be tolerated.", topic: "Department Orientation" },
-    { q: "What is required before a member can leave quarters for a personal reason?", opts: ["Notifying a supervisor and gaining his/her permission", "Signing out in the station logbook", "Having another member cover their riding position", "Leaving their radio on and staying within the district"], ans: 0, coaching: "Members shall not leave quarters for personal reason without first notifying a supervisor and gaining his/her permission.", topic: "Department Orientation" },
+    { q: "What is the department's policy regarding insubordination?", opts: ["It is acceptable only during non-emergency activities", "It is tolerated if the member is acting for safety reasons", "It requires a written warning before any disciplinary action", "Insubordination at any level is not acceptable and will not be tolerated"], ans: 3, coaching: "Insubordination at any level is not acceptable and will not be tolerated.", topic: "Department Orientation" },
+    { q: "What is required before a member can leave quarters for a personal reason?", opts: ["Signing out in the station logbook", "Having another member cover their riding position", "Leaving their radio on and staying within the district", "Notifying a supervisor and gaining his/her permission"], ans: 3, coaching: "Members shall not leave quarters for personal reason without first notifying a supervisor and gaining his/her permission.", topic: "Department Orientation" },
     { q: "How should members handle the official business of the Fire Department regarding confidentiality?", opts: ["They shall not impart or discuss with anyone any matters, except to officers of the Elyria FD or under process of the law", "They can discuss it freely with their immediate family members", "They can discuss it with other city employees, but not the general public", "They can only discuss it during approved union meetings"], ans: 0, coaching: "All members will treat as confidential, the official business... They shall not impart or discuss with anyone any matters... except to officers of the Elyria Fire Department or under process of the law.", topic: "Department Orientation" },
-    { q: "What is the rule regarding receiving fees or soliciting pay for services rendered in performance of duty?", opts: ["No member shall receive any fee or solicit pay, except their salary paid by the City", "Members may accept tips or gifts as long as they are under $50", "Members may receive fees only for off-duty details", "Members may accept donations on behalf of the station fund"], ans: 0, coaching: "No member shall receive any fee nor solicit, demand, or suggest... pay for services rendered in performance of duty, except their salary as paid by the City of Elyria.", topic: "Department Orientation" },
-    { q: "What is the appearance standard for members reporting for duty and while on-duty?", opts: ["Clean shaven and neatly dressed in a proper and well-maintained uniform", "Wearing whatever uniform is comfortable for station duties", "Clean shaven, but uniforms are optional until 0800", "Neatly dressed, with facial hair neatly trimmed to a quarter-inch"], ans: 0, coaching: "All members reporting for duty and while on-duty shall be clean shaven and neatly dressed in a proper and well-maintained uniform.", topic: "Department Orientation" },
-    { q: "During what hours are physical fitness/weight room activities normally prohibited in the station without officer approval?", opts: ["2200-0700", "2100-0600", "0700-1700", "2300-0500"], ans: 0, coaching: "Physical Fitness/weight room activities shall not take place in the station between the hours 2200-07:00, unless officer in charge approves.", topic: "Department Orientation" },
-    { q: "Who must give permission for someone who is not a member of the fire department to ride upon any fire department vehicle?", opts: ["The fire chief", "The company officer", "The shift commander", "The city mayor"], ans: 0, coaching: "Members shall not permit those not a member of the fire department to ride upon any fire department vehicle without permission from the fire chief.", topic: "Department Orientation" },
+    { q: "What is the rule regarding receiving fees or soliciting pay for services rendered in performance of duty?", opts: ["Members may accept tips or gifts as long as they are under $50", "No member shall receive any fee or solicit pay, except their salary paid by the City", "Members may receive fees only for off-duty details", "Members may accept donations on behalf of the station fund"], ans: 1, coaching: "No member shall receive any fee nor solicit, demand, or suggest... pay for services rendered in performance of duty, except their salary as paid by the City of Elyria.", topic: "Department Orientation" },
+    { q: "What is the appearance standard for members reporting for duty and while on-duty?", opts: ["Wearing whatever uniform is comfortable for station duties", "Clean shaven and neatly dressed in a proper and well-maintained uniform", "Clean shaven, but uniforms are optional until 0800", "Neatly dressed, with facial hair neatly trimmed to a quarter-inch"], ans: 1, coaching: "All members reporting for duty and while on-duty shall be clean shaven and neatly dressed in a proper and well-maintained uniform.", topic: "Department Orientation" },
+    { q: "During what hours are physical fitness/weight room activities normally prohibited in the station without officer approval?", opts: ["2100-0600", "0700-1700", "2200-0700", "2300-0500"], ans: 2, coaching: "Physical Fitness/weight room activities shall not take place in the station between the hours 2200-07:00, unless officer in charge approves.", topic: "Department Orientation" },
+    { q: "Who must give permission for someone who is not a member of the fire department to ride upon any fire department vehicle?", opts: ["The company officer", "The fire chief", "The shift commander", "The city mayor"], ans: 1, coaching: "Members shall not permit those not a member of the fire department to ride upon any fire department vehicle without permission from the fire chief.", topic: "Department Orientation" },
     { q: "What is the policy regarding gambling while on duty?", opts: ["No member shall participate in any form of gambling for money or any article of value while on duty", "Gambling is allowed only during evening rest hours after 2100", "Gambling is permitted as long as the stakes do not exceed $10", "Only station-sanctioned lottery pools are permitted"], ans: 0, coaching: "No member shall participate in any form of gambling for money or any article of value while on duty.", topic: "Department Orientation" },
     { q: "How should the on-coming officer and off-going officer communicate daily to insure a smooth transfer of information?", opts: ["Face to face communication", "Via the department electronic mail system", "By writing notes in the apparatus logbook", "Over the station intercom system"], ans: 0, coaching: "Face to face communication between the on-coming officer and the off-going officer of each apparatus to insure a smooth transfer of information shall be done daily.", topic: "Department Orientation" },
-    { q: "What is the department policy on sexual activity while on duty?", opts: ["Members shall not engage in any sexual activity while on duty", "It is permitted only between married department members", "It is prohibited only if it interferes with response times", "It is permitted in private quarters after 2100"], ans: 0, coaching: "Members shall not engage in any sexual activity while on duty.", topic: "Department Orientation" },
+    { q: "What is the department policy on sexual activity while on duty?", opts: ["It is permitted only between married department members", "It is prohibited only if it interferes with response times", "It is permitted in private quarters after 2100", "Members shall not engage in any sexual activity while on duty"], ans: 3, coaching: "Members shall not engage in any sexual activity while on duty.", topic: "Department Orientation" },
     { q: "What is the rule regarding the falsification of Fire Department records?", opts: ["Members shall not knowingly falsify any Fire Department record", "Records can be altered if approved by the shift commander", "Falsification is permitted only for protecting patient privacy", "Records can be altered up to 24 hours after the incident"], ans: 0, coaching: "Members shall not knowingly falsify any Fire Department record.", topic: "Department Orientation" },
     { q: "Discriminatory or abusive behavior pertaining to which of the following is explicitly prohibited by the rules while on duty?", opts: ["Politics, sex, religion, age, sexual preference, diversity, ethnicity, or labor union membership", "Only race, religion, and national origin", "Only gender and age", "Only political affiliation and religion"], ans: 0, coaching: "No member shall display discriminatory or abusive behavior pertaining to politics, sex, religion, age, sexual preference, diversity, ethnicity, or labor union membership while on duty...", topic: "Department Orientation" },
-    { q: "When are personal cell phones explicitly prohibited from being used?", opts: ["Driving apparatus, responding, returning, public relations, training, inspections, and FD duties", "During any hours between 0700 and 1700", "Only while driving the apparatus or returning from a call", "Only during formal training classes"], ans: 0, coaching: "Use of personal cell phones... may not be used when: Driving apparatus, responding, returning, public relations, training, inspections, and FD duties.", topic: "Department Orientation" },
-    { q: "What must members NOT do with advertising matter, posters, or for sale signs?", opts: ["Post or permit them on Fire Department property or apparatus without Fire Department approval", "Place them in the day room without the station captain's verbal consent", "Post them on the exterior bay doors", "Distribute them to the public while on duty"], ans: 0, coaching: "No advertising matter, posters, for sale signs, private notices, or other disfigurements shall be posted or permitted on Fire Department property or apparatus without Fire Department approval.", topic: "Department Orientation" }
+    { q: "When are personal cell phones explicitly prohibited from being used?", opts: ["During any hours between 0700 and 1700", "Only while driving the apparatus or returning from a call", "Only during formal training classes", "Driving apparatus, responding, returning, public relations, training, inspections, and FD duties"], ans: 3, coaching: "Use of personal cell phones... may not be used when: Driving apparatus, responding, returning, public relations, training, inspections, and FD duties.", topic: "Department Orientation" },
+    { q: "What must members NOT do with advertising matter, posters, or for sale signs?", opts: ["Place them in the day room without the station captain's verbal consent", "Post them on the exterior bay doors", "Post or permit them on Fire Department property or apparatus without Fire Department approval", "Distribute them to the public while on duty"], ans: 2, coaching: "No advertising matter, posters, for sale signs, private notices, or other disfigurements shall be posted or permitted on Fire Department property or apparatus without Fire Department approval.", topic: "Department Orientation" }
 ];
