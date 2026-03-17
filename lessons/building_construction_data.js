@@ -21,11 +21,11 @@ const lessonData = [
             .forces-anim-container {
                 --anim-dur: 16s; /* Total 16s cycle = 4s per force phase */
                 width: 100%;
-                max-width: 500px;
+                max-width: 400px;
                 background-color: #ffffff;
                 border-radius: 16px;
                 box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-                padding: 20px;
+                padding: 0;
                 box-sizing: border-box;
                 position: relative;
                 margin: 2.5rem auto; /* Centers the graphic block with spacing */
