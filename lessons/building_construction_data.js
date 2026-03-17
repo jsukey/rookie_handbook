@@ -389,7 +389,7 @@ const lessonData = [
             <h3>Surface Area and HRR</h3>
             <p>The physical shape of the fuel drastically alters the HRR. A 5-pound chunk of solid heavy timber will burn slowly because only the outer surface is exposed to oxygen. If you take that exact same 5 pounds of wood and turn it into thin wood paneling or wood chips, the total fire load (BTUs) remains identical. However, the massive increase in surface area means the material will burn exponentially faster, producing a severely high Heat Release Rate.</p>
             <p>The widespread use of modern plastics combined with lightweight, high-surface-area building materials guarantees an aggressively high HRR, drastically reducing the time we have before flashover or structural collapse.</p>
-            <img src="../images/hrr_graph.jpg" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
+            <img src="../images/hrr.png" alt="Heat Release Rate: Modern vs Legacy" class="instructive-image">
         `,
         quickCheck: [
             { 
