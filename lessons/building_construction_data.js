@@ -2,7 +2,7 @@ const currentLessonName = "Building Construction";
 const lessonData = [
     {
     id: 0,
-    title: "Module 1: The Gravity Resistance System",
+    title: "The Gravity Resistance System",
     text: `
         <p>Look up at the ceiling of the apparatus bay. What is keeping that roof from crushing the rigs? It isn't magic; it is the <strong>gravity resistance system</strong>. Every building is in a constant, invisible battle against the earth's pull. Structural elements and their connections form a continuous path that transfers weight safely to the ground.</p>
         <p>When a structure catches fire, it is not just burning; it is losing its ability to fight gravity. When the gravity resistance system is compromised, gravity wins.</p>
@@ -296,7 +296,7 @@ const lessonData = [
         },
     {
         id: 1,
-        title: "Module 2: The Weight of the World (Loads)",
+        title: "The Weight of the World (Loads)",
         text: `
             <p>Forces don't happen in a vacuum. They are created by <strong>loads</strong>. A load is simply any weight or force that the building must support.</p>
             
@@ -344,11 +344,11 @@ const lessonData = [
     },
     {
         id: 2,
-        title: "Module 3: Direction and Destruction (Load Application)",
+        title: "Direction and Destruction (Load Application)",
         text: `
             <p>It is not just <em>how much</em> weight a building is holding; it is <em>how</em> that weight is applied.</p>
             <p>When a load is placed squarely in the center of a supporting member, it is an <strong>Axial Load</strong>. The force passes straight through the centroid of the material, distributing the stress evenly. This is the strongest and most efficient way to load a building.</p>
-            <img src="../images/axial_eccentric.jpg" alt="Axial Load versus Eccentric Load" class="instructive-image">
+            <img src="../images/axial_loads.png" alt="Axial Load versus Eccentric Load" class="instructive-image">
             <p>However, loads are often imperfect. An <strong>Eccentric Load</strong> is a force that is applied perpendicular to the plane of the section, but concentrated to one side of the center. This introduces bending stress (compression on one side, tension on the other) to a column or wall.</p>
             <p>Loads can also be grouped by concentration. A <strong>Concentrated Load</strong> is a heavy weight located at one specific point. A <strong>Uniformly Distributed Load</strong> is spread evenly over an area (like water sitting evenly across a flat roof).</p>
         `,
@@ -375,7 +375,7 @@ const lessonData = [
     },
     {
         id: 3,
-        title: "Module 4: Fueling the Collapse (Fire Loads & HRR)",
+        title: "Fueling the Collapse (Fire Loads & HRR)",
         text: `
             <p>When a building is combustible, the building itself is a load—a <strong>Fire Load</strong>. The fire load represents the total amount of potential energy (heat) available to burn in a given space.</p>
             
@@ -420,7 +420,7 @@ const lessonData = [
     },
     {
         id: 4,
-        title: "Module 5: The Margin of Error (Safety Factor & Composites)",
+        title: "The Margin of Error (Safety Factor & Composites)",
         text: `
             <p>Engineers do not build structures to perfectly match the loads they are expected to carry; they build in a buffer. This buffer is called the <strong>Safety Factor</strong>. It is the ratio between the ultimate strength of a material (the exact point it breaks) and its safe working stress.</p>
             
@@ -466,7 +466,7 @@ const lessonData = [
     },
     {
         id: 5,
-        title: "Module 6: Horizontal Spans (The Physics of Beams)",
+        title: "Horizontal Spans (The Physics of Beams)",
         text: `
             <p>A <strong>Beam</strong> is one of the oldest and most fundamental structural members. Its primary job is to receive a load, turn that force laterally (perpendicular to the load), and deliver it to the reaction points (the supports or columns).</p>
             
@@ -517,7 +517,7 @@ const lessonData = [
     },
     {
         id: 6,
-        title: "Module 7: Triangulated Death Traps (Trusses)",
+        title: "Triangulated Death Traps (Trusses)",
         text: `
             <p>A <strong>Truss</strong> is a specialized type of beam. It is a framed structure consisting of a group of triangles arranged in a single plane. The genius—and the danger—of a truss lies in its geometry: only one triangle can be formed from any three lines, making the triangle inherently rigid and stable.</p>
             
@@ -568,7 +568,7 @@ const lessonData = [
     },   
     {
         id: 7,
-        title: "Module 8: Vertical Supports (Columns & Walls)",
+        title: "Vertical Supports (Columns & Walls)",
         text: `
             <p>While beams handle horizontal spans, <strong>Columns</strong> and <strong>Walls</strong> are the vertical workhorses of the gravity resistance system. Their primary job is to transmit compressive forces down to the foundation.</p>
             
@@ -617,7 +617,7 @@ const lessonData = [
     },
     {
         id: 8,
-        title: "Module 9: The Arch, The Frame, and The Dome",
+        title: "The Arch, The Frame, and The Dome",
         text: `
             <p>While beams handle horizontal spans by bending, the <strong>Arch</strong> combines the functions of the beam and the column. The Romans perfected the arch, allowing them to span wide openings using materials (like stone) that have virtually zero tensile strength.</p>
             
@@ -663,7 +663,7 @@ const lessonData = [
     },
     {
         id: 9,
-        title: "Module 10: The Weakest Link (Foundations & Connections)",
+        title: "The Weakest Link (Foundations & Connections)",
         text: `
             <p>Every load placed on a building must be transmitted continuously to the ground. If there is a single failure of continuity in this transmission path, you will have a partial or total collapse. Ultimately, all loads are delivered to the ground through the <strong>Foundation</strong>. But how do those forces get there? Through connections.</p>
             
