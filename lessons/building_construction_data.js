@@ -539,7 +539,7 @@ const lessonData = [
             <h3>The Danger of the Gusset Plate</h3>
             <p>Modern lightweight wooden trusses are held together by metal <strong>Gusset Plates</strong> (gang nails). These are thin pieces of galvanized sheet steel with 3/8-inch teeth punched into the wood. In a fire, the metal plate acts as a heat collector. It absorbs the heat and drives it into the wood fibers gripping the shallow teeth.</p>
             <p>This heat causes <strong>pyrolytic decomposition</strong> (chemical breakdown by heat) of the wood fibers. The wood literally turns to charcoal around the teeth, and the tension of the bottom chord violently pulls the plates out. The truss fails catastrophically long before the wood is actually burned away by flame.</p>
-            <img src="../images/gusset_failure.jpg" alt="Gusset Plate Failure" class="instructive-image">
+            <img src="../images/gusset_plates.png" alt="Gusset Plate Failure" class="instructive-image">
         `,
         quickCheck: [
             { 
