@@ -435,7 +435,7 @@ const lessonData = [
             <p>To get the best of both worlds, builders frequently combine materials. Concrete is relatively inexpensive and incredibly strong in compression, but it is highly vulnerable to tension (stretching). Steel is strong in both, but expensive. By embedding steel rebar at the specific locations where tensile stresses develop, you create <strong>Reinforced Concrete</strong>.</p>
             <p>We also see <strong>Composite Structural Elements</strong>. A classic example is a <strong>Flitch plate girder</strong>, which is made by sandwiching a heavy piece of steel (or plywood) between two wooden beams. It gives the massive strength of steel but can be installed by workers using ordinary carpentry tools.</p>
             <p><strong>The Golden Rule of Composites:</strong> All elements of a composite material must react together to carry the load. If fire or heat causes the materials to separate (e.g., the wood burns away from the flitch plate, or heat shears the studs connecting a steel beam to a concrete floor), the composite no longer exists. The materials separately will be unable to carry the load, and the system will fail.</p>
-            <img src="../images/rebar.jpg" alt="Reinforced Concrete Structure" class="instructive-image">
+            <img src="../images/composits.png" alt="Reinforced Concrete" class="instructive-image">
         `,
         quickCheck: [
             { 
