@@ -477,6 +477,8 @@ const lessonData = [
                 <li><strong>The Bottom:</strong> The material at the bottom of the beam elongates and is pulled apart. It is in <strong>Tension</strong>.</li>
                 <li><strong>The Neutral Axis:</strong> The line right down the middle where the length doesn't change and the material is doing the least amount of work.</li>
             </ul>
+            <img src="../images/neutral_axis.png" alt="Neutral Axis in a Beam" class="instructive-image">
+
             
             <h3>Carrying Capacity: Depth vs. Width</h3>
             <p>Why are floor joists tall and narrow instead of wide and flat? It comes down to physics. The load-carrying capacity of a beam increases only in direct proportion to its width, but it increases by the <strong>square of its depth</strong>.</p>
