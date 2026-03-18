@@ -488,7 +488,6 @@ const lessonData = [
             <p>Not all beams are supported equally. Recognizing these two types can save your life:</p>
             <p><strong>Cantilever Beams:</strong> A cantilever is supported and rigidly held at only <em>one</em> end (like a diving board or an exterior balcony). Because it projects out into space, the forces are reversed: the tension is on the top, and the compression is on the bottom. Cantilevers are highly unstable in a fire. If the single connection point at the wall fails, the entire projecting section acts as a lever and drops, often pulling the exterior wall down with it.</p>
             <p><strong>Suspended Beams:</strong> Think of a heavy theater marquee hanging over a sidewalk. It is a simple beam where one or both ends are suspended by a tension member (like a chain, cable, or steel rod) anchored back into the building. If a fire in the attic or cockloft destroys that anchor point, the beam instantly becomes an un-designed cantilever. The sudden shift in forces causes catastrophic collapse.</p>
-            <img src="../images/deflection.jpg" alt="Simple vs Cantilever Deflection" class="instructive-image">
         `,
         quickCheck: [
             { 
@@ -578,6 +577,7 @@ const lessonData = [
             <p>A column transmits a compressive force along a straight path. But columns don't fail the same way beams do. While a beam loses strength proportionately as it gets longer, a column loses strength by the <strong>square of its change in length</strong>.</p>
             <p>This brings us to <strong>Euler's Law</strong> for long, slender columns. If a tall column is rigidly braced at its midpoint, its "effective length" is cut in half, which actually <em>quadruples</em> its load-carrying capacity. However, the reverse is equally true—and deadly on the fireground. If a fire destroys a mid-point brace, the column's effective length doubles, and its load-carrying capacity instantly drops to just 25%. The addition of a single pound over that new critical load will cause the column to suddenly buckle into an "S" shape and collapse.</p>
             <p><em>Terminology Note:</em> Firefighters must use correct terminology. Steel beams are "I-shaped" because depth gives them strength. Steel columns are "H-shaped" or box-shaped because the most efficient shape for compression is one that distributes material equally away from the center.</p>
+            <img src="../images/eulers.png" alt="Eulers Law column" class="instructive-image">
 
             <h3>Walls: The Wide Columns</h3>
             <p>A wall is essentially a wide, slender column. Walls are divided into two main categories:</p>
@@ -588,7 +588,6 @@ const lessonData = [
 
             <h3>Cantilever Walls (Tilt-Slab)</h3>
             <p>A high, freestanding masonry wall acts as a vertical cantilever beam (supported only at the bottom) against the wind. In modern precast concrete <strong>tilt-slab</strong> construction, the massive wall slabs are erected and held temporarily by bracing poles. Once the <strong>roof</strong> is built, it provides the permanent bracing. If a fire destroys the roof structure, those massive concrete walls instantly revert to un-designed, unsupported vertical cantilevers and are highly prone to toppling outward.</p>
-            <img src="../images/arch_thrust.jpg" alt="Column Buckling and Wall Types" class="instructive-image">
         `,
         quickCheck: [
             { 
