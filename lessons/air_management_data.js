@@ -50,6 +50,7 @@ const lessonData = [
             <p>Self-contained breathing apparatus (SCBA) shall be used when entering an atmosphere that may be IDLH. Full-face respirators shall not be used when there is a potential for an oxygen-deficient atmosphere. For other mask types, cartridge respirator filters shall be replaced whenever the wearer begins to smell, taste, or be irritated by a contaminant. N95 masks protect against particulate contaminants that are 0.3 microns or larger. N95 masks are not suitable in an oxygen-deficient atmosphere or where an unsafe level of carbon monoxide exists.</p>
             <h3>Fit Testing and Medical Evaluations</h3>
             <p>Each new department member required to use SCBAs shall be quantitatively fit tested before being permitted to use SCBAs in a hazardous atmosphere and annually thereafter. Fit testing is to be done only in a negative-pressure mode. All members who are required to use respiratory protection must complete a medical evaluation questionnaire upon initial fit testing and annually thereafter. The questionnaires will be reviewed by a Physician or Licensed Health Care Professional (PLHCP) selected by the Department.</p>
+            <img src="../images/air_fit.png" alt="Air Management" class="instructive-image">
         `,
         quickCheck: [
             { 
