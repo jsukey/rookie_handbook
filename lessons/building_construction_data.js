@@ -674,6 +674,8 @@ const lessonData = [
                 <li><strong>Pinned vs. Rigid Connections:</strong> Pinned connections (simple bolts or rivets) usually cannot reroute forces if a structural member is removed. Rigid connections (like a monolithic poured concrete frame) can sometimes redistribute loads to prevent immediate collapse.</li>
                 <li><strong>Shear vs. Moment Connections:</strong> A simple bolted steel connection is a <em>shear connection</em>; it stops the beam from sliding down the column. If the beam is both bolted <em>and</em> welded, it becomes a <em>moment connection</em>, which also prevents the beam from rotating or bending at the joint.</li>
             </ul>
+            <img src="../images/rigid_pinned.png" alt="Connections" class="instructive-image">
+
 
             <h3>Designed to Fail: Fire Cuts and Gravity Fits</h3>
             <p>In older masonry buildings, you will often find <strong>Fire Cut</strong> joists. The ends of the wood joists are cut at a steep angle before being placed into the wall pockets. Why? So that if the floor burns and collapses, the joist acts like a lever and slips right out of the pocket without pulling the massive masonry wall down onto the street. It sacrifices the floor to save the wall.</p>
@@ -684,7 +686,6 @@ const lessonData = [
             
             <h3>The Danger of Water Weight</h3>
             <p>The continuous transmission of loads is strained by the fire, but it is often broken by the fire department. A 1000-gpm master stream isn't just putting out fire; it is adding <strong>over 8,000 pounds (4 tons) of water weight</strong> to the structure <em>every single minute</em>. That water pools on flat roofs and is absorbed by materials like paper and fabric, drastically increasing the live load on weakened connections.</p>
-            <img src="../images/rigid_pinned.png" alt="Connections" class="instructive-image">
         `,
         quickCheck: [
             { 
