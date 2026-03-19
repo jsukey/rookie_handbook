@@ -4,7 +4,7 @@ const lessonData = [
         id: 0,
         title: "Harris XL-200P Basic Functions & Maintenance",
         text: `
-            <p>Welcome to Module 0: Harris XL-200P Basic Functions and Maintenance. This module covers our primary communication lifeline on the fireground. The Harris XL-200P portable radio is engineered to withstand extreme conditions, meeting MIL-STD-810G standards, while maintaining connectivity across VHF, UHF, and 700/800 MHz frequencies.</p>
+            <p>This module covers our primary communication lifeline on the fireground. The Harris XL-200P portable radio is engineered to withstand extreme conditions, meeting MIL-STD-810G standards, while maintaining connectivity across VHF, UHF, and 700/800 MHz frequencies.</p>
             <h3>Power and Navigation</h3>
             <p>To initialize the unit and adjust the volume, turn the Power/Volume knob clockwise. Channel selection is controlled via the Group/Channel Knob located on the top panel. To navigate between the four designated channel banks (Zones 1-4), utilize the A/B/C/D switch.</p>
             <h3>Quick Select Buttons</h3>
