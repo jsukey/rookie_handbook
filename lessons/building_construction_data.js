@@ -633,7 +633,7 @@ const lessonData = [
 
             <h3>Shells and Domes</h3>
             <p>A <strong>Shell</strong> is a thin, curved plate (often built of concrete) that can span wide areas despite being less than 2 inches thick. It works by transmitting loads evenly along the entire curved surface to the supports. A <strong>Dome</strong> is essentially a three-dimensional arch or shell. <strong>Geodesic domes</strong> take this further by utilizing a large number of triangles to provide massive volume with very little dead weight.</p>
-            <img src="../images/arch_thrust.jpg" alt="Arch and Rigid Frame Outward Thrust" class="instructive-image">
+            <img src="../images/arch_vs_truss.png" alt="Arch and Rigid Frame Outward Thrust" class="instructive-image">
         `,
         quickCheck: [
             { 
