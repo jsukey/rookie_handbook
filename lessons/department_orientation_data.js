@@ -185,14 +185,14 @@ const lessonData = [
             },
             { 
                 q: "Who must grant permission before a member can make any purchase or incur liability in the name of the Elyria Fire Department?", 
-                opts: ["The Chief or Acting Chief", "The shift commander", "The company officer", "The quartermaster"], 
-                ans: 0,
+                opts: ["The shift commander", "The company officer", "The Chief or Acting Chief", "The quartermaster"], 
+                ans: 2,
                 coaching: "No member shall make any purchase... without the permission of the Chief or Acting Chief in Chiefs absence."
             },
             { 
                 q: "What happens if a member loses or damages Department property through abuse, carelessness, or neglect?", 
-                opts: ["It may be replaced at the expense of the member to who said equipment was issued", "The department's insurance will cover the cost of replacement completely", "The member faces mandatory 3-day suspension without pay", "The member will be issued older, reserve equipment as a replacement"], 
-                ans: 0,
+                opts: ["The department's insurance will cover the cost of replacement completely", "It may be replaced at the expense of the member to who said equipment was issued", "The member faces mandatory 3-day suspension without pay", "The member will be issued older, reserve equipment as a replacement"], 
+                ans: 1,
                 coaching: "Any property which may be lost or damaged through abuse, carelessness, or neglect may be replaced at the expense of the member to who said equipment was issued."
             }
         ]
@@ -222,14 +222,14 @@ const lessonData = [
         quickCheck: [
             { 
                 q: "Between what hours are beds generally prohibited from being occupied without permission?", 
-                opts: ["0700 and 2100", "0600 and 2000", "0800 and 2200", "0700 and 1700"], 
-                ans: 0,
+                opts: ["0600 and 2000", "0800 and 2200", "0700 and 2100", "0700 and 1700"], 
+                ans: 2,
                 coaching: "Beds may not be occupied between the hours of 0700 and 2100 except with the permission of the officer in charge of the station."
             },
             { 
                 q: "When are apparatus and vehicle operators permitted to leave quarters or a parked position?", 
-                opts: ["When ALL members are seated and belted in", "When the officer says they are responding", "When the bay doors are fully open", "When the dispatcher acknowledges their response"], 
-                ans: 0,
+                opts: ["When the officer says they are responding", "When ALL members are seated and belted in", "When the bay doors are fully open", "When the dispatcher acknowledges their response"], 
+                ans: 1,
                 coaching: "Apparatus and vehicle operators SHALL NOT leave quarters or a parked position until ALL members are seated and belted in."
             },
             { 
@@ -240,8 +240,8 @@ const lessonData = [
             },
             { 
                 q: "When are personal cell phones prohibited from being used?", 
-                opts: ["Driving apparatus, responding, returning, public relations, training, inspections, and FD duties", "Only while actively responding to an emergency call", "Only during public relations events and station tours", "Between the hours of 0700 and 1700"], 
-                ans: 0,
+                opts: ["Only while actively responding to an emergency call", "Only during public relations events and station tours", "Between the hours of 0700 and 1700", "Driving apparatus, responding, returning, public relations, training, inspections, and FD duties"], 
+                ans: 3,
                 coaching: "Use of personal cell phones... may not be used when: Driving apparatus, responding, returning, public relations, training, inspections, and FD duties."
             }
         ]

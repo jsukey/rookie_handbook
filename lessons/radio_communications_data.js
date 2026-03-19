@@ -2,107 +2,126 @@ const currentLessonName = "Radio Communications";
 const lessonData = [
     {
         id: 0,
-        title: "Radio Comms Placeholder",
+        title: "Module 0: Harris XL-200P Basic Functions & Maintenance",
         text: `
-            <p>Radio Comms placeholder</p>`,
+            <p>Welcome to Module 0: Harris XL-200P Basic Functions and Maintenance. This module covers our primary communication lifeline on the fireground. The Harris XL-200P portable radio is engineered to withstand extreme conditions, meeting MIL-STD-810G standards, while maintaining connectivity across VHF, UHF, and 700/800 MHz frequencies.</p>
+            <h3>Power and Navigation</h3>
+            <p>To initialize the unit and adjust the volume, turn the Power/Volume knob clockwise. Channel selection is controlled via the Group/Channel Knob located on the top panel. To navigate between the four designated channel banks (Zones 1-4), utilize the A/B/C/D switch.</p>
+            <h3>Quick Select Buttons</h3>
+            <p>During dynamic incidents, rapid channel switching is essential. The Harris radio features programmable quick-select buttons to facilitate this without requiring visual confirmation. Press the yellow button located above the Push-To-Talk (PTT) switch for an immediate transfer to EPD. For Lifecare, press the black button directly below the PTT. To access the EFD Repeater, press the secondary black button located directly below the Lifecare button.</p>
+            <h3>Maintenance and Cleaning</h3>
+            <p>Proper maintenance ensures operational readiness. In accordance with Policy 714, portable radio batteries must be replaced daily at 0800 hours and immediately following prolonged use at an incident. To clean the exterior of the radio, battery, and accessories, utilize a damp cloth with warm water and a 0.5% mild dish detergent solution. The use of chemical cleaners or sprays is strictly prohibited as they compromise the equipment's weather seals.</p>
+        `,
         quickCheck: [
             { 
-                q: "What is the minimum psi required in a cylinder to make entry into a hazardous atmosphere?", 
-                opts: ["4000 psi", "4500 psi", "5000 psi", "5500 psi"], 
-                ans: 2,
-                coaching: "Members must have a minimum of 5000 psi in their cylinder in order to make entry into a hazardous atmosphere or Hazard Zone."
-            },
-            { 
-                q: "What percentage of the SCBA air supply is considered the emergency reserve?", 
-                opts: ["10%", "25%", "33%", "50%"], 
-                ans: 2,
-                coaching: "The last 33% of the air supply in an SCBA is the emergency reserve."
-            },
-            { 
-                q: "How should an immediate low air alarm ringing in the Hazard Zone with no radio report be treated?", 
-                opts: ["As a mechanical failure", "As a normal operational alert", "With the same urgency as a Mayday", "As a signal to change strategy"], 
-                ans: 2,
-                coaching: "If members hear a low air alarm ringing with no immediate radio report, it shall be treated with the same urgency as a Mayday."
-            },
-            { 
-                q: "What does a 50% HUD light activation consist of?", 
-                opts: ["One flashing red light", "Two flashing amber lights", "Three solid green lights", "One solid red light"], 
+                q: "What time are portable radio batteries required to be changed daily?", 
+                opts: ["0700 hours", "0800 hours", "0900 hours", "2000 hours"], 
                 ans: 1,
-                coaching: "A 50% HUD light activation is indicated by two flashing amber lights."
+                coaching: "Portable batteries are changed daily at 0800 and whenever they are on for prolonged periods of time on calls."
+            },
+            { 
+                q: "Which button is used for a quick change to the EPD channel?", 
+                opts: ["Top channel knob", "Black button below PTT", "Yellow button above PTT", "Orange emergency button"], 
+                ans: 2,
+                coaching: "Press the yellow quick-select button located above the Push-To-Talk (PTT) button for EPD."
+            },
+            { 
+                q: "How do you switch between the four different channel banks (Zones 1-4)?", 
+                opts: ["A/B/C/D switch", "Volume knob", "Push-To-Talk button", "Emergency button"], 
+                ans: 0,
+                coaching: "Use the A/B/C/D switch to navigate between the four channel banks."
+            },
+            { 
+                q: "What is the approved method for cleaning the exterior of the radio?", 
+                opts: ["10% bleach solution", "Dry microfiber rag", "Alcohol sanitizing wipe", "Damp cloth and 0.5% mild dish detergent"], 
+                ans: 3,
+                coaching: "Clean using a damp clean cloth with warm water and mild dish detergent (0.5% in water)."
             }
         ]
     },
     {
         id: 1,
-        title: "Module 1: Respiratory Protection & Equipment Use",
+        title: "Module 1: Radio Communications & CAN Reports",
         text: `
-            <p>Let us cover respiratory protection and equipment use. Members using respiratory protection shall ensure that they have no facial hair between the sealing surface of the facepiece and the face that could interfere with the seal or the valve function. Members shall perform a user seal check each time they put on the respirators.</p>
-            <h3>Equipment Limitations</h3>
-            <p>Self-contained breathing apparatus (SCBA) shall be used when entering an atmosphere that may be IDLH. Full-face respirators shall not be used when there is a potential for an oxygen-deficient atmosphere. For other mask types, cartridge respirator filters shall be replaced whenever the wearer begins to smell, taste, or be irritated by a contaminant. N95 masks protect against particulate contaminants that are 0.3 microns or larger. N95 masks are not suitable in an oxygen-deficient atmosphere or where an unsafe level of carbon monoxide exists.</p>
-            <h3>Fit Testing and Medical Evaluations</h3>
-            <p>Each new department member required to use SCBAs shall be quantitatively fit tested before being permitted to use SCBAs in a hazardous atmosphere and annually thereafter. Fit testing is to be done only in a negative-pressure mode. All members who are required to use respiratory protection must complete a medical evaluation questionnaire upon initial fit testing and annually thereafter. The questionnaires will be reviewed by a Physician or Licensed Health Care Professional (PLHCP) selected by the Department.</p>
+            <p>Effective communication is fundamental to incident management and fireground safety. This module outlines the standard operational procedures for radio placement and structured progress reporting.</p>
+            <h3>Radio Placement</h3>
+            <p>All EFD portables must be secured in an assigned radio sling, properly adjusted to the member's body type. When donning PPE and wearing the Remote Speaker Microphone (RSM) beneath a turnout coat, it must be clipped just above the last snap hook. This specific placement affords the RSM cord maximum thermal protection during interior operations.</p>
+            <h3>CAN Reports</h3>
+            <p>The CAN report is the standard EFD methodology for providing the Incident Commander (IC) with concise progress updates. It is comprised of three distinct elements:</p>
+            <ul>
+              <li><strong>Conditions (C):</strong> Identify your current location and accurately describe the smoke, fire, and heat conditions, or the interior layout you are encountering.</li>
+              <li><strong>Actions (A):</strong> Detail your current operational progress, such as fire control efforts, checking for extension, or conducting a primary search.</li>
+              <li><strong>Needs (N):</strong> Request necessary resources, including reinforcements, specific tools, relief crews, or support work.</li>
+            </ul>
+            <p>Critical Parameter: Every CAN report must conclude with a Needs assessment. If a crew requires no additional resources or support, the reporting member must explicitly state "No Needs" to the IC to ensure clarity.</p>
         `,
         quickCheck: [
             { 
-                q: "When are N95 masks NOT suitable for use?", 
-                opts: ["Where fluid resistance is a priority", "In an oxygen-deficient atmosphere", "Against particulate contaminants 0.3 microns or larger", "During patient transport"], 
-                ans: 1,
-                coaching: "N95 masks are not suitable in an oxygen-deficient atmosphere or where an unsafe level of carbon monoxide exists."
+                q: "Where should the Remote Speaker Microphone (RSM) be placed when worn under a turnout coat?", 
+                opts: ["Outside the coat entirely", "Clipped to the collar", "Just above the last snap hook", "Inside a sealed pocket"], 
+                ans: 2,
+                coaching: "The RSM is placed just above the last snap hook. This provides the most thermal protection of the RSM cord."
             },
             { 
-                q: "How often must a department member required to use SCBAs be quantitatively fit tested?", 
-                opts: ["Before initial use and every 6 months thereafter", "Before initial use and annually thereafter", "Before initial use and every 5 years thereafter", "Only upon initial hire"], 
+                q: "What does the 'C' in CAN report stand for?", 
+                opts: ["Casualties", "Conditions", "Command", "Control"], 
                 ans: 1,
-                coaching: "Each new department member required to use SCBAs shall be quantitatively fit tested before use and annually thereafter."
+                coaching: "C - Conditions: Where you are, smoke/fire conditions, heat conditions, or interior layout."
             },
             { 
-                q: "In what mode must fit testing be done?", 
-                opts: ["Positive-pressure mode", "Negative-pressure mode", "Neutral-pressure mode", "Static-pressure mode"], 
-                ans: 1,
-                coaching: "Fit testing is to be done only in a negative-pressure mode."
+                q: "If your crew does not require additional resources at the end of a CAN report, what must you do?", 
+                opts: ["Explicitly state 'No Needs'", "Remain silent", "Say 'All Clear'", "Request a PAR"], 
+                ans: 0,
+                coaching: "Always end every CAN report with a Needs assessment. If nothing is required, explicitly state 'No Needs'."
             },
             { 
-                q: "When should cartridge respirator filters be replaced?", 
-                opts: ["After 30 minutes of use", "When the wearer begins to smell or taste a contaminant", "At the end of every shift", "Before initial fit testing"], 
-                ans: 1,
-                coaching: "Cartridge respirator filters shall be replaced whenever the wearer begins to smell, taste, or be irritated by a contaminant."
+                q: "What information falls under the 'A' (Actions) portion of a CAN report?", 
+                opts: ["Apparatus placement", "Air consumption", "Assignments given", "Progress on fire control or primary search"], 
+                ans: 3,
+                coaching: "A - Actions: Progress on fire control, checking for extension, or primary search."
             }
         ]
     },
     {
         id: 2,
-        title: "Module 2: SCBA Inspection, Maintenance, and Storage",
+        title: "Module 2: MAYDAY Procedures",
         text: `
-            <p>Your equipment must be ready to deploy. Prior to each shift, members are required to physically inspect and operate all SCBA and respirators which are on frontline fire apparatus. If the equipment is not in daily use, it should be inspected at least once a week and after each cleaning. The Captain assigned to Number 3 Fire Station shall be in charge of this department's SCBA program, inspection, inventory and repair.</p>
-            <h3>Cleaning and Servicing</h3>
-            <p>Members should thoroughly clean and sanitize all SCBA and respirators after each use. Every SCBA shall be inspected and serviced on an annual basis by individuals who have been trained and certified by the SCBA manufacturer to perform such annual servicing. The Department shall conduct annual flow testing on all SCBA. All annual flow testing must be performed by a certified SCBA technician.</p>
-            <h3>Storage Requirements</h3>
-            <p>Respirators in storage shall be protected against dust, sunlight, heat, extreme cold, excessive moisture, and damaging chemicals. Respirators shall not be stored in lockers or vehicles unless the respirators are stored in individual containers and are protected from damage.</p>
+            <p>Mayday procedures dictate the immediate actions required when an emergency exists involving an endangered firefighter. The unforgiving nature of Immediately Dangerous to Life or Health (IDLH) environments necessitates that a MAYDAY be declared at the very first indication of trouble, including becoming trapped, lost, disoriented, or experiencing an SCBA failure.</p>
+            <h3>Declaring a MAYDAY</h3>
+            <p>Any firefighter experiencing a life-threatening emergency shall declare a MAYDAY by depressing the orange emergency button, holding the microphone button, and transmitting "Mayday, Mayday, Mayday" three times to clear the airwaves. Information must then be relayed using the standard Who, Where, What format:</p>
+            <ul>
+              <li><strong>Who:</strong> Identify yourself (e.g., "Firefighter Smith").</li>
+              <li><strong>Where:</strong> State your exact location (e.g., "Second Floor, Alpha/Bravo corner").</li>
+              <li><strong>What:</strong> Describe the emergency and what resources are required (e.g., "Trapped under a ceiling collapse, out of air").</li>
+            </ul>
+            <h3>Tactical Recommendations</h3>
+            <p>Following a MAYDAY declaration, distressed firefighters must maintain crew integrity. Manually activate the PASS device, and utilize flashlights and tools to generate noise to assist the Rapid Intervention Team (RIT) in locating your position. If an opportunity for self-rescue or extrication presents itself, the MAYDAY must still be transmitted prior to initiating the rescue effort. Continuously update Command regarding any changes in conditions.</p>
+            <p>For crews actively engaged in fire control during a MAYDAY declaration: unless the MAYDAY specifically involves your company, strict operational discipline must be maintained. Do not abandon your hose line. Your primary objective remains fire control, as improving interior tenability is the most effective way to protect a downed firefighter.</p>
         `,
         quickCheck: [
             { 
-                q: "How frequently are members required to physically inspect SCBA on frontline fire apparatus?", 
-                opts: ["Prior to each shift", "Once a week", "Monthly", "Annually"], 
+                q: "How many times must a firefighter transmit the word 'Mayday' over the radio to declare an emergency?", 
+                opts: ["One time", "Two times", "Three times", "Four times"], 
+                ans: 2,
+                coaching: "Any firefighter that feels the need to request a Mayday shall do so by transmitting over the radio Mayday three (3) times."
+            },
+            { 
+                q: "What format is required to relay critical information after declaring a MAYDAY?", 
+                opts: ["What, Where, Who", "Who, Where, What", "Who, What, How", "Where, Who, Why"], 
+                ans: 1,
+                coaching: "Use the Who, Where, What format: Who are you, Where are you, and What do you need."
+            },
+            { 
+                q: "What must a distressed firefighter do before attempting self-rescue or extrication?", 
+                opts: ["Call a MAYDAY first", "Activate their PASS device", "Drop their tools", "Turn off their radio"], 
                 ans: 0,
-                coaching: "Prior to each shift, members are required to physically inspect and operate all SCBA and respirators on frontline fire apparatus."
+                coaching: "Make attempts to self-rescue/extricate, but make sure to call the MAYDAY first."
             },
             { 
-                q: "Who is in charge of the department's SCBA program, inspection, inventory, and repair?", 
-                opts: ["The Training Officer", "The Captain assigned to Number 3 Fire Station", "The Incident Commander", "The Fire Chief"], 
-                ans: 1,
-                coaching: "The Captain assigned to Number 3 Fire Station shall be in charge of this department's SCBA program, inspection, inventory and repair."
-            },
-            { 
-                q: "Who must perform all annual flow testing on SCBA?", 
-                opts: ["Any company officer", "A certified SCBA technician", "The Training Officer", "The apparatus operator"], 
-                ans: 1,
-                coaching: "All annual flow testing must be performed by a certified SCBA technician."
-            },
-            { 
-                q: "Under what condition can respirators be stored in lockers or vehicles?", 
-                opts: ["If they are wrapped in a towel", "If they are stored in individual containers and protected from damage", "If they are inspected weekly", "If they are frontline apparatus spares"], 
-                ans: 1,
-                coaching: "Respirators shall not be stored in lockers or vehicles unless the respirators are stored in individual containers and are protected from damage."
+                q: "Immediately after a MAYDAY is called, what should the distressed crew do?", 
+                opts: ["Leave their crew", "Remove their SCBA", "Switch channels", "Keep the crew intact and activate the PASS device"], 
+                ans: 3,
+                coaching: "Crews shall remain intact, activate P.A.S.S., and utilize flashlights and tools to indicate position."
             }
         ]
     },
@@ -110,24 +129,94 @@ const lessonData = [
 ];
 
 const examQuestions = [
-    { q: "What percentage of the SCBA air supply is designated for working and exiting?", opts: ["33%", "50%", "66%", "75%"], ans: 2, coaching: "The initial 66% of the air supply is for working and exiting.", topic: "Air Managment"},
-    { q: "What is the minimum cylinder pressure required to enter a hazardous atmosphere?", opts: ["4000 psi", "4500 psi", "5000 psi", "5500 psi"], ans: 2, coaching: "Members must have a minimum of 5000 psi in their cylinder in order to make entry into a hazardous atmosphere.", topic: "Air Managment" },
-    { q: "What HUD light activation prompts an officer to alert the Supervisor that the crew is at 50% air level?", opts: ["One solid green light", "Two flashing amber lights", "One flashing red light", "Three solid amber lights"], ans: 1, coaching: "When the first member gets a 50% HUD light activation (two flashing amber lights), the officer must alert the Supervisor." , topic: "Air Managment"},
-    { q: "At approximately what time interval will crews working in the Hazard Zone be notified by command or accountability?", opts: ["5 minutes", "10 minutes", "15 minutes", "20 minutes"], ans: 1, coaching: "Crews working in the Hazard Zone will be notified when they have reached approximately 10 minutes.", topic: "Air Managment" },
-    { q: "After how many cylinders must a firefighter go to rehab?", opts: ["One cylinder", "Two cylinders", "Three cylinders", "Four cylinders"], ans: 1, coaching: "This creates a two-cylinder rotation for firefighters, after which the firefighter MUST go to rehab.", topic: "Air Managment" },
-    { q: "How should an unaccompanied ringing low air alarm in the Hazard Zone be treated?", opts: ["With routine caution", "As a standard exit reminder", "With the same urgency as a Mayday", "As an equipment malfunction"], ans: 2, coaching: "That bell should be considered an emergency alarm and treated with the same urgency as a Mayday.", topic: "Air Managment" },
-    { q: "What is the rule regarding facial hair and respiratory protection?", opts: ["It must be trimmed to less than 1/4 inch", "No facial hair is allowed between the sealing surface and the face", "Mustaches are strictly prohibited", "Facial hair is acceptable if petroleum jelly is used"], ans: 1, coaching: "Members shall ensure that they have no facial hair between the sealing surface of the facepiece and the face.", topic: "Air Managment" },
-    { q: "When is the use of a full-face respirator prohibited?", opts: ["During wildland fires", "During vehicle extrication", "When there is a potential for an oxygen-deficient atmosphere", "When bloodborne pathogens are suspected"], ans: 2, coaching: "Full-face respirators shall not be used when there is a potential for an oxygen-deficient atmosphere.", topic: "Air Managment" },
-    { q: "When must cartridge respirator filters be replaced?", opts: ["When the wearer begins to smell, taste, or be irritated by a contaminant", "At the beginning of every operational period", "After 1 hour of continuous use", "When the humidity exceeds 80%"], ans: 0, coaching: "Cartridge respirator filters shall be replaced whenever the wearer begins to smell, taste, or be irritated by a contaminant.", topic: "Air Managment" },
-    { q: "What size particulate contaminants do N95 masks protect against?", opts: ["0.1 microns or larger", "0.3 microns or larger", "0.5 microns or larger", "1.0 microns or larger"], ans: 1, coaching: "N95 masks protect against particulate contaminants that are 0.3 microns or larger.", topic: "Air Managment" },
-    { q: "How often must SCBA fit testing be repeated after the initial test?", opts: ["Every 6 months", "Annually", "Every 2 years", "Every 3 years"], ans: 1, coaching: "SCBAs shall be quantitatively fit tested before use and annually thereafter.", topic: "Air Managment" },
-    { q: "In what pressure mode must fit testing be done?", opts: ["Positive-pressure mode", "Negative-pressure mode", "Neutral-pressure mode", "Variable-pressure mode"], ans: 1, coaching: "Fit testing is to be done only in a negative-pressure mode.", topic: "Air Managment" },
-    { q: "Who reviews the respirator medical evaluation questionnaires?", opts: ["The Training Officer", "The Fire Chief", "A Physician or Licensed Health Care Professional (PLHCP)", "The Company Officer"], ans: 2, coaching: "The questionnaires will be reviewed by a PLHCP selected by the Department.", topic: "Air Managment" },
-    { q: "How often must frontline SCBA be physically inspected?", opts: ["Prior to each shift", "Once a week", "Once a month", "After each alarm"], ans: 0, coaching: "Prior to each shift, members are required to physically inspect and operate all SCBA and respirators.", topic: "Air Managment" },
-    { q: "If SCBA equipment is not in daily use, how often should it be inspected?", opts: ["At least once a week", "Once every two weeks", "Monthly", "Annually"], ans: 0, coaching: "If the equipment is not in daily use, it should be inspected at least once a week and after each cleaning.", topic: "Air Managment" },
-    { q: "Who is in charge of the department's SCBA program?", opts: ["The Shift Commander", "The Captain assigned to Number 3 Fire Station", "The designated Safety Officer", "The Training Division"], ans: 1, coaching: "The Captain assigned to Number 3 Fire Station shall be in charge of this department's SCBA program.", topic: "Air Managment" },
-    { q: "When should members clean and sanitize SCBA and respirators?", opts: ["After each use", "Once a week", "During the annual service", "Only when visibly soiled"], ans: 0, coaching: "Members should thoroughly clean and sanitize all SCBA and respirators after each use.", topic: "Air Managment" },
-    { q: "Who must perform the annual SCBA service and inspection?", opts: ["Any company officer", "Individuals trained and certified by the SCBA manufacturer", "The apparatus operator", "The Training Officer"], ans: 1, coaching: "Every SCBA shall be inspected and serviced on an annual basis by individuals who have been trained and certified by the SCBA manufacturer.", topic: "Air Managment" },
-    { q: "Respirators must not be stored in lockers or vehicles unless what condition is met?", opts: ["They are inspected daily", "They are stored in individual containers and protected from damage", "They are kept in a temperature-controlled cab", "They are assigned to a chief officer"], ans: 1, coaching: "Respirators shall not be stored in lockers or vehicles unless the respirators are stored in individual containers and are protected from damage.", topic: "Air Managment" },
-    { q: "Who must perform the annual SCBA flow testing?", opts: ["A certified SCBA technician", "The station captain", "The safety officer", "A designated senior firefighter"], ans: 0, coaching: "All annual flow testing must be performed by a certified SCBA technician.", topic: "Air Managment"}
+    { 
+        q: "At what time must portable radio batteries be changed daily per EFD policy?", 
+        opts: ["0800 hours", "0700 hours", "1200 hours", "At the end of shift"], 
+        ans: 0, 
+        coaching: "It shall be EFD policy that portable batteries are changed daily at 0800 and whenever they are on for prolonged periods of time on calls." 
+    },
+    { 
+        q: "Which button provides a quick change to the EPD channel?", 
+        opts: ["Orange emergency button", "Yellow button above the Push-To-Talk (PTT)", "Black button below the PTT", "A/B/C/D switch"], 
+        ans: 1, 
+        coaching: "Press the yellow quick-select button located above the Push-To-Talk (PTT) button for EPD." 
+    },
+    { 
+        q: "Which button is utilized for a quick change to the Lifecare channel?", 
+        opts: ["Yellow button above the PTT", "Top channel knob", "Black button below the PTT", "Black button below the Lifecare button"], 
+        ans: 2, 
+        coaching: "Press the black quick-select button located below the PTT button for Lifecare." 
+    },
+    { 
+        q: "What is the approved solution for periodically cleaning the radio exterior?", 
+        opts: ["10% bleach solution", "Industrial degreaser", "Dry cloth only", "Warm water and 0.5% mild dish detergent"], 
+        ans: 3, 
+        coaching: "Clean using a damp clean cloth (warm water and mild dish detergent at 0.5% in water)." 
+    },
+    { 
+        q: "How do you navigate between the four different channel banks (Zones 1-4)?", 
+        opts: ["Using the A/B/C/D switch", "Using the top channel knob", "Using the PTT button", "Using the orange emergency button"], 
+        ans: 0, 
+        coaching: "Use the A/B/C/D switch to navigate between the four channel banks (Zones 1-4)." 
+    },
+    { 
+        q: "What does the acronym CAN stand for in a CAN report?", 
+        opts: ["Conditions, Actions, Notifications", "Conditions, Actions, Needs", "Casualties, Actions, Needs", "Conditions, Apparatus, Needs"], 
+        ans: 1, 
+        coaching: "CAN stands for Conditions, Actions, and Needs." 
+    },
+    { 
+        q: "What is the crucial rule when concluding a CAN report if no additional resources are required?", 
+        opts: ["Stay silent", "State 'All Clear'", "Explicitly state 'No Needs'", "Turn off the radio"], 
+        ans: 2, 
+        coaching: "Always end every CAN report with a Needs assessment. If nothing is required, explicitly state 'No Needs'." 
+    },
+    { 
+        q: "What is the proper radio transmission to declare an emergency for an endangered firefighter?", 
+        opts: ["Emergency Traffic", "Help Needed", "Code Red", "\"Mayday, Mayday, Mayday\""], 
+        ans: 3, 
+        coaching: "Any firefighter that feels the need to request a Mayday shall do so by transmitting over the radio 'Mayday, Mayday, Mayday'." 
+    },
+    { 
+        q: "What format must be used to relay information after declaring a MAYDAY?", 
+        opts: ["Who, Where, What", "What, Where, Why", "Who, How, When", "Where, What, How"], 
+        ans: 0, 
+        coaching: "Use the Who, Where, What format: Who are you, Where are you, and What do you need." 
+    },
+    { 
+        q: "Which button is used to initiate a MAYDAY on the portable radio?", 
+        opts: ["Yellow button", "Orange emergency button", "Black button below PTT", "Push-To-Talk button only"], 
+        ans: 1, 
+        coaching: "Depress the orange emergency button, wait for the acknowledgement tones, and state Mayday." 
+    },
+    { 
+        q: "When wearing the Remote Speaker Microphone (RSM) under a turnout coat, where should it be placed to provide maximum thermal protection for the cord?", 
+        opts: ["Clipped to the collar", "Outside the coat entirely", "Just above the last snap hook", "Inside a sealed pocket"], 
+        ans: 2, 
+        coaching: "The RSM is placed just above the last snap hook. This provides the most thermal protection of the RSM cord." 
+    },
+    { 
+        q: "If a firefighter needs to attempt self-rescue or extrication, what must they do first?", 
+        opts: ["Drop their tools", "Activate the PASS device", "Remove their SCBA", "Call a MAYDAY"], 
+        ans: 3, 
+        coaching: "Make attempts to self-rescue/extricate, but make sure to call the MAYDAY first." 
+    },
+    { 
+        q: "What is a tactical recommendation for a distressed firefighter immediately after calling a MAYDAY?", 
+        opts: ["Keep the crew intact and activate the PASS device", "Turn off the radio to save battery", "Leave the hazard zone without notifying command", "Abandon all equipment to move faster"], 
+        ans: 0, 
+        coaching: "Tactical recommendations include keeping the crew intact, utilizing flashlights/tools to indicate position, and activating P.A.S.S." 
+    },
+    { 
+        q: "Which button is used for a quick change to the EFD Repeater?", 
+        opts: ["Top channel knob", "Black button directly below the Lifecare button", "Yellow button above the PTT", "A/B/C/D switch"], 
+        ans: 1, 
+        coaching: "EFD Repeater: Press the black button located directly below the Lifecare button." 
+    },
+    { 
+        q: "If a MAYDAY occurs but does not involve your specific company, what should you do if your crew is actively addressing fire control?", 
+        opts: ["Drop tools and search for the firefighter", "Evacuate the building immediately", "Continue with fire control efforts (Put the fire out!)", "Initiate a PAR on your own channel"], 
+        ans: 2, 
+        coaching: "Other operating interior crews that are actively addressing fire control when a mayday occurs should continue with their fire control efforts. Put the fire out!" 
+    }
 ];
