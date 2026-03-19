@@ -2,7 +2,7 @@ const currentLessonName = "Radio Communications";
 const lessonData = [
     {
         id: 0,
-        title: "Module 0: Harris XL-200P Basic Functions & Maintenance",
+        title: "Harris XL-200P Basic Functions & Maintenance",
         text: `
             <p>Welcome to Module 0: Harris XL-200P Basic Functions and Maintenance. This module covers our primary communication lifeline on the fireground. The Harris XL-200P portable radio is engineered to withstand extreme conditions, meeting MIL-STD-810G standards, while maintaining connectivity across VHF, UHF, and 700/800 MHz frequencies.</p>
             <h3>Power and Navigation</h3>
@@ -41,7 +41,7 @@ const lessonData = [
     },
     {
         id: 1,
-        title: "Module 1: Radio Communications & CAN Reports",
+        title: "Radio Communications & CAN Reports",
         text: `
             <p>Effective communication is fundamental to incident management and fireground safety. This module outlines the standard operational procedures for radio placement and structured progress reporting.</p>
             <h3>Radio Placement</h3>
@@ -84,7 +84,7 @@ const lessonData = [
     },
     {
         id: 2,
-        title: "Module 2: MAYDAY Procedures",
+        title: "MAYDAY Procedures",
         text: `
             <p>Mayday procedures dictate the immediate actions required when an emergency exists involving an endangered firefighter. The unforgiving nature of Immediately Dangerous to Life or Health (IDLH) environments necessitates that a MAYDAY be declared at the very first indication of trouble, including becoming trapped, lost, disoriented, or experiencing an SCBA failure.</p>
             <h3>Declaring a MAYDAY</h3>
