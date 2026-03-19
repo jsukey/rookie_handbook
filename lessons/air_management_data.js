@@ -2,7 +2,7 @@ const currentLessonName = "Air Management";
 const lessonData = [
     {
         id: 0,
-        title: "Module 0: Air Management Policy & Standards",
+        title: "Air Management Policy & Standards",
         text: `
             <p>Welcome to the module on Air Management Policy and Standards. The Rule of Air Management (ROAM) involves three key issues: know how much air you have used, manage the amount of air you have left in your cylinder, and exit the Hazard Zone before your SCBA low air alarm and other alerts activate.</p>
             <h3>Air Supply Breakdown</h3>
@@ -11,6 +11,8 @@ const lessonData = [
             <p>When the first member of the company or crew gets a 50% HUD light activation (two flashing amber lights), the officer or team leader must alert their Supervisor via radio that the company or crew is at the 50% air level. If a firefighter works into their reserve air and their low air alarm begins to activate in the Hazard Zone, the officer must alert their Supervisor over the radio.</p>
             <h3>Time and Urgency</h3>
             <p>Crews working in the Hazard Zone will be notified when they have reached approximately 10 minutes by the incident commander, the Accountability Officer, or their Supervisor. This creates a two-cylinder rotation for firefighters, after which the firefighter MUST go to rehab. If members hear a low air alarm ringing in the Hazard Zone and there is no immediate radio report from the team whose bell is ringing, that bell should be considered an emergency alarm. This shall be treated with the same urgency as a Mayday.</p>
+            <img src="../images/air1.png" alt="Air Management" class="instructive-image">
+
         `,
         quickCheck: [
             { 
@@ -27,8 +29,8 @@ const lessonData = [
             },
             { 
                 q: "How should an immediate low air alarm ringing in the Hazard Zone with no radio report be treated?", 
-                opts: ["As a mechanical failure", "As a normal operational alert", "With the same urgency as a Mayday", "As a signal to change strategy"], 
-                ans: 2,
+                opts: ["With the same urgency as a Mayday", "As a mechanical failure", "As a normal operational alert", "As a signal to change strategy"], 
+                ans: 0,
                 coaching: "If members hear a low air alarm ringing with no immediate radio report, it shall be treated with the same urgency as a Mayday."
             },
             { 
@@ -41,7 +43,7 @@ const lessonData = [
     },
     {
         id: 1,
-        title: "Module 1: Respiratory Protection & Equipment Use",
+        title: "Respiratory Protection & Equipment Use",
         text: `
             <p>Let us cover respiratory protection and equipment use. Members using respiratory protection shall ensure that they have no facial hair between the sealing surface of the facepiece and the face that could interfere with the seal or the valve function. Members shall perform a user seal check each time they put on the respirators.</p>
             <h3>Equipment Limitations</h3>
@@ -58,14 +60,14 @@ const lessonData = [
             },
             { 
                 q: "How often must a department member required to use SCBAs be quantitatively fit tested?", 
-                opts: ["Before initial use and every 6 months thereafter", "Before initial use and annually thereafter", "Before initial use and every 5 years thereafter", "Only upon initial hire"], 
-                ans: 1,
+                opts: ["Before initial use and every 6 months thereafter", "Before initial use and every 5 years thereafter", "Only upon initial hire", "Before initial use and annually thereafter"], 
+                ans: 3,
                 coaching: "Each new department member required to use SCBAs shall be quantitatively fit tested before use and annually thereafter."
             },
             { 
                 q: "In what mode must fit testing be done?", 
-                opts: ["Positive-pressure mode", "Negative-pressure mode", "Neutral-pressure mode", "Static-pressure mode"], 
-                ans: 1,
+                opts: ["Positive-pressure mode", "Neutral-pressure mode", "Negative-pressure mode", "Static-pressure mode"], 
+                ans: 2,
                 coaching: "Fit testing is to be done only in a negative-pressure mode."
             },
             { 
@@ -78,7 +80,7 @@ const lessonData = [
     },
     {
         id: 2,
-        title: "Module 2: SCBA Inspection, Maintenance, and Storage",
+        title: "SCBA Inspection, Maintenance, and Storage",
         text: `
             <p>Your equipment must be ready to deploy. Prior to each shift, members are required to physically inspect and operate all SCBA and respirators which are on frontline fire apparatus. If the equipment is not in daily use, it should be inspected at least once a week and after each cleaning. The Captain assigned to Number 3 Fire Station shall be in charge of this department's SCBA program, inspection, inventory and repair.</p>
             <h3>Cleaning and Servicing</h3>
@@ -107,8 +109,8 @@ const lessonData = [
             },
             { 
                 q: "Under what condition can respirators be stored in lockers or vehicles?", 
-                opts: ["If they are wrapped in a towel", "If they are stored in individual containers and protected from damage", "If they are inspected weekly", "If they are frontline apparatus spares"], 
-                ans: 1,
+                opts: ["If they are wrapped in a towel",  "If they are inspected weekly", "If they are frontline apparatus spares", "If they are stored in individual containers and protected from damage"], 
+                ans: 3,
                 coaching: "Respirators shall not be stored in lockers or vehicles unless the respirators are stored in individual containers and are protected from damage."
             }
         ]
@@ -127,7 +129,7 @@ const examQuestions = [
     { q: "When is the use of a full-face respirator prohibited?", opts: ["During wildland fires", "During vehicle extrication", "When there is a potential for an oxygen-deficient atmosphere", "When bloodborne pathogens are suspected"], ans: 2, coaching: "Full-face respirators shall not be used when there is a potential for an oxygen-deficient atmosphere.", topic: "Air Managment" },
     { q: "When must cartridge respirator filters be replaced?", opts: ["When the wearer begins to smell, taste, or be irritated by a contaminant", "At the beginning of every operational period", "After 1 hour of continuous use", "When the humidity exceeds 80%"], ans: 0, coaching: "Cartridge respirator filters shall be replaced whenever the wearer begins to smell, taste, or be irritated by a contaminant.", topic: "Air Managment" },
     { q: "What size particulate contaminants do N95 masks protect against?", opts: ["0.1 microns or larger", "0.3 microns or larger", "0.5 microns or larger", "1.0 microns or larger"], ans: 1, coaching: "N95 masks protect against particulate contaminants that are 0.3 microns or larger.", topic: "Air Managment" },
-    { q: "How often must SCBA fit testing be repeated after the initial test?", opts: ["Every 6 months", "Annually", "Every 2 years", "Every 3 years"], ans: 1, coaching: "SCBAs shall be quantitatively fit tested before use and annually thereafter.", topic: "Air Managment" },
+    { q: "How often must SCBA fit testing be repeated after the initial test?", opts: ["Every 6 months", "Every 2 years", "Every 3 years", "Annually"], ans: 3, coaching: "SCBAs shall be quantitatively fit tested before use and annually thereafter.", topic: "Air Managment" },
     { q: "In what pressure mode must fit testing be done?", opts: ["Positive-pressure mode", "Negative-pressure mode", "Neutral-pressure mode", "Variable-pressure mode"], ans: 1, coaching: "Fit testing is to be done only in a negative-pressure mode.", topic: "Air Managment" },
     { q: "Who reviews the respirator medical evaluation questionnaires?", opts: ["The Training Officer", "The Fire Chief", "A Physician or Licensed Health Care Professional (PLHCP)", "The Company Officer"], ans: 2, coaching: "The questionnaires will be reviewed by a PLHCP selected by the Department.", topic: "Air Managment" },
     { q: "How often must frontline SCBA be physically inspected?", opts: ["Prior to each shift", "Once a week", "Once a month", "After each alarm"], ans: 0, coaching: "Prior to each shift, members are required to physically inspect and operate all SCBA and respirators.", topic: "Air Managment" },
@@ -136,5 +138,5 @@ const examQuestions = [
     { q: "When should members clean and sanitize SCBA and respirators?", opts: ["After each use", "Once a week", "During the annual service", "Only when visibly soiled"], ans: 0, coaching: "Members should thoroughly clean and sanitize all SCBA and respirators after each use.", topic: "Air Managment" },
     { q: "Who must perform the annual SCBA service and inspection?", opts: ["Any company officer", "Individuals trained and certified by the SCBA manufacturer", "The apparatus operator", "The Training Officer"], ans: 1, coaching: "Every SCBA shall be inspected and serviced on an annual basis by individuals who have been trained and certified by the SCBA manufacturer.", topic: "Air Managment" },
     { q: "Respirators must not be stored in lockers or vehicles unless what condition is met?", opts: ["They are inspected daily", "They are stored in individual containers and protected from damage", "They are kept in a temperature-controlled cab", "They are assigned to a chief officer"], ans: 1, coaching: "Respirators shall not be stored in lockers or vehicles unless the respirators are stored in individual containers and are protected from damage.", topic: "Air Managment" },
-    { q: "Who must perform the annual SCBA flow testing?", opts: ["A certified SCBA technician", "The station captain", "The safety officer", "A designated senior firefighter"], ans: 0, coaching: "All annual flow testing must be performed by a certified SCBA technician.", topic: "Air Managment"}
+    { q: "Who must perform the annual SCBA flow testing?", opts: ["The station captain", "The safety officer", "A designated senior firefighter", "A certified SCBA technician"], ans: 3, coaching: "All annual flow testing must be performed by a certified SCBA technician.", topic: "Air Managment"}
 ];
