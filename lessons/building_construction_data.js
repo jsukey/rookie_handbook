@@ -684,7 +684,7 @@ const lessonData = [
             
             <h3>The Danger of Water Weight</h3>
             <p>The continuous transmission of loads is strained by the fire, but it is often broken by the fire department. A 1000-gpm master stream isn't just putting out fire; it is adding <strong>over 8,000 pounds (4 tons) of water weight</strong> to the structure <em>every single minute</em>. That water pools on flat roofs and is absorbed by materials like paper and fabric, drastically increasing the live load on weakened connections.</p>
-            <img src="../images/rebar.jpg" alt="Steel and Concrete Connections" class="instructive-image">
+            <img src="../images/rigid_pinned.png" alt="Connections" class="instructive-image">
         `,
         quickCheck: [
             { 
