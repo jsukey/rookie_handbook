@@ -88,7 +88,8 @@ const lessonData = [
             <p>Members should thoroughly clean and sanitize all SCBA and respirators after each use. Every SCBA shall be inspected and serviced on an annual basis by individuals who have been trained and certified by the SCBA manufacturer to perform such annual servicing. The Department shall conduct annual flow testing on all SCBA. All annual flow testing must be performed by a certified SCBA technician.</p>
             <h3>Storage Requirements</h3>
             <p>Respirators in storage shall be protected against dust, sunlight, heat, extreme cold, excessive moisture, and damaging chemicals. Respirators shall not be stored in lockers or vehicles unless the respirators are stored in individual containers and are protected from damage.</p>
-        `,
+            <img src="../images/air3.png" alt="Air Management" class="instructive-image">
+            `,
         quickCheck: [
             { 
                 q: "How frequently are members required to physically inspect SCBA on frontline fire apparatus?", 
