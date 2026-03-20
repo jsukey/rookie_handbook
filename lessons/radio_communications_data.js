@@ -56,7 +56,8 @@ const lessonData = [
               <li><strong>Needs (N):</strong> Request necessary resources, including reinforcements, specific tools, relief crews, or support work.</li>
             </ul>
             <p>Critical Parameter: Every CAN report must conclude with a Needs assessment. If a crew requires no additional resources or support, the reporting member must explicitly state "No Needs" to the IC to ensure clarity.</p>
-        `,
+            <img src="../images/radio1.png" alt="CAN report" class="instructive-image">        
+            `,
         quickCheck: [
             { 
                 q: "Where should the Remote Speaker Microphone (RSM) be placed when worn under a turnout coat?", 
@@ -90,7 +91,7 @@ const lessonData = [
         text: `
             <p>Mayday procedures dictate the immediate actions required when an emergency exists involving an endangered firefighter. The unforgiving nature of Immediately Dangerous to Life or Health (IDLH) environments necessitates that a MAYDAY be declared at the very first indication of trouble, including becoming trapped, lost, disoriented, or experiencing an SCBA failure.</p>
             <h3>Declaring a MAYDAY</h3>
-            <p>Any firefighter experiencing a life-threatening emergency shall declare a MAYDAY by depressing the orange emergency button, holding the microphone button, and transmitting "Mayday, Mayday, Mayday" three times to clear the airwaves. Information must then be relayed using the standard Who, Where, What format:</p>
+            <p>Any firefighter experiencing a life-threatening emergency shall declare a MAYDAY by holding the microphone button, and transmitting "Mayday, Mayday, Mayday" three times to clear the airwaves. Information must then be relayed using the standard Who, Where, What format:</p>
             <ul>
               <li><strong>Who:</strong> Identify yourself (e.g., "Firefighter Smith").</li>
               <li><strong>Where:</strong> State your exact location (e.g., "Second Floor, Alpha/Bravo corner").</li>
@@ -99,7 +100,8 @@ const lessonData = [
             <h3>Tactical Recommendations</h3>
             <p>Following a MAYDAY declaration, distressed firefighters must maintain crew integrity. Manually activate the PASS device, and utilize flashlights and tools to generate noise to assist the Rapid Intervention Team (RIT) in locating your position. If an opportunity for self-rescue or extrication presents itself, the MAYDAY must still be transmitted prior to initiating the rescue effort. Continuously update Command regarding any changes in conditions.</p>
             <p>For crews actively engaged in fire control during a MAYDAY declaration: unless the MAYDAY specifically involves your company, strict operational discipline must be maintained. Do not abandon your hose line. Your primary objective remains fire control, as improving interior tenability is the most effective way to protect a downed firefighter.</p>
-        `,
+            <img src="../images/radio2.png" alt="Mayday calling" class="instructive-image">        
+            `,
         quickCheck: [
             { 
                 q: "How many times must a firefighter transmit the word 'Mayday' over the radio to declare an emergency?", 
