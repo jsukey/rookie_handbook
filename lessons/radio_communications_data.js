@@ -188,12 +188,6 @@ const examQuestions = [
         coaching: "Use the Who, Where, What format: Who are you, Where are you, and What do you need." 
     },
     { 
-        q: "Which button is used to initiate a MAYDAY on the portable radio?", 
-        opts: ["Yellow button", "Orange emergency button", "Black button below PTT", "Push-To-Talk button only"], 
-        ans: 1, 
-        coaching: "Depress the orange emergency button, wait for the acknowledgement tones, and state Mayday." 
-    },
-    { 
         q: "When wearing the Remote Speaker Microphone (RSM) under a turnout coat, where should it be placed to provide maximum thermal protection for the cord?", 
         opts: ["Clipped to the collar", "Outside the coat entirely", "Just above the last snap hook", "Inside a sealed pocket"], 
         ans: 2, 
