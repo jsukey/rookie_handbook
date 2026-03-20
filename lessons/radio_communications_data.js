@@ -11,7 +11,9 @@ const lessonData = [
             <p>During dynamic incidents, rapid channel switching is essential. The Harris radio features programmable quick-select buttons to facilitate this without requiring visual confirmation. Press the yellow button located above the Push-To-Talk (PTT) switch for an immediate transfer to EPD. For Lifecare, press the black button directly below the PTT. To access the EFD Repeater, press the secondary black button located directly below the Lifecare button.</p>
             <h3>Maintenance and Cleaning</h3>
             <p>Proper maintenance ensures operational readiness. In accordance with Policy 714, portable radio batteries must be replaced daily at 0800 hours and immediately following prolonged use at an incident. To clean the exterior of the radio, battery, and accessories, utilize a damp cloth with warm water and a 0.5% mild dish detergent solution. The use of chemical cleaners or sprays is strictly prohibited as they compromise the equipment's weather seals.</p>
-        `,
+            <img src="../images/radio0.png" alt="Radio Use" class="instructive-image">
+
+            `,
         quickCheck: [
             { 
                 q: "What time are portable radio batteries required to be changed daily?", 
