@@ -55,8 +55,8 @@ const lessonData = [
             <p>To enhance accountability and to improve tracking of firefighters in the hazard zone, the <strong>PASSPORT</strong> system will be used.</p>
             
             <h3>Accountability Equipment</h3>
-            <p>The PASSPORT system equipment involves a 2" x 4" plastic card with the apparatus unit’s ID etched on it and shall contain the name tags of all personnel assigned to that crew. A PASSPORT will be located in each apparatus, affixed to the dash and easily removed.</p>
-                        <ul>
+            <ul>
+                <li><strong>PASSPORT:</strong> A 2" x 4" plastic card with the apparatus unit’s ID etched on it and shall contain the name tags of all personnel assigned to that crew. A PASSPORT will be located in each apparatus, affixed to the dash and easily removed.</li>
                 <li><strong>Name Tags:</strong> Each firefighter will be issued three individual name tags, which shall be affixed on the underside of their helmet.</li>
                 <li><strong>Status Boards:</strong> Each engine, ladder, rescue and specialized equipment will be equipped with an 8"x12" status board. Each command vehicle shall be equipped with a 16"x12" status board to collect PASSPORTS.</li>
                 <li><strong>Partial Crews:</strong> When entering a hazard zone with a partial crew (e.g., operator remains at the engine), the Company Officer must remove name tags of those members not entering the hazard zone.</li>
