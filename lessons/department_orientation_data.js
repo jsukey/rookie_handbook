@@ -1,4 +1,4 @@
-const currentLessonName = "Department Orientation";
+var currentLessonName = "Department Orientation";
 const lessonData = [
     {
         id: 0,

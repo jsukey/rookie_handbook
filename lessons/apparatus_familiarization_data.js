@@ -1,4 +1,4 @@
-const currentLessonName = "Apparatus Familiarization";
+var currentLessonName = "Apparatus Familiarization";
 const lessonData = [
     {
         id: 0,

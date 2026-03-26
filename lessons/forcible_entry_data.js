@@ -1,4 +1,4 @@
-const currentLessonName = "Forcible Entry";
+var currentLessonName = "Forcible Entry";
 const lessonData = [
     {
         id: 0,

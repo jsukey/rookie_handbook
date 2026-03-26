@@ -1,4 +1,4 @@
-const currentLessonName = "Search";
+var currentLessonName = "Search";
 const lessonData = [
     {
         id: 0,

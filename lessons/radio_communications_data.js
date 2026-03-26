@@ -1,4 +1,4 @@
-const currentLessonName = "Radio Communications";
+var currentLessonName = "Radio Communications";
 const lessonData = [
     {
         id: 0,

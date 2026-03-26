@@ -1,4 +1,4 @@
-const currentLessonName = "Self Rescue";
+var currentLessonName = "Self Rescue";
 const lessonData = [
     {
         id: 0,

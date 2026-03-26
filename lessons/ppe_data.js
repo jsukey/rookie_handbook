@@ -1,4 +1,4 @@
-const currentLessonName = "Personal Protective Equipment";
+var currentLessonName = "Personal Protective Equipment";
 const lessonData = [
     {
         id: 0,
