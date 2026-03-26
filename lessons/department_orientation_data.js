@@ -1,5 +1,5 @@
 var currentLessonName = "Department Orientation";
-const lessonData = [
+var lessonData = [
     {
         id: 0,
         title: "Expectations and The Rookie Mentality",
@@ -275,3 +275,5 @@ const examQuestions = [
     { q: "When are personal cell phones explicitly prohibited from being used?", opts: ["During any hours between 0700 and 1700", "Only while driving the apparatus or returning from a call", "Only during formal training classes", "Driving apparatus, responding, returning, public relations, training, inspections, and FD duties"], ans: 3, coaching: "Use of personal cell phones... may not be used when: Driving apparatus, responding, returning, public relations, training, inspections, and FD duties.", topic: "Department Orientation" },
     { q: "What must members NOT do with advertising matter, posters, or for sale signs?", opts: ["Place them in the day room without the station captain's verbal consent", "Post them on the exterior bay doors", "Post or permit them on Fire Department property or apparatus without Fire Department approval", "Distribute them to the public while on duty"], ans: 2, coaching: "No advertising matter, posters, for sale signs, private notices, or other disfigurements shall be posted or permitted on Fire Department property or apparatus without Fire Department approval.", topic: "Department Orientation" }
 ];
+
+var departmentOrientationData = lessonData

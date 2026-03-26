@@ -1,5 +1,5 @@
 var currentLessonName = "Accountability System";
-const lessonData = [
+var lessonData = [
     {
         id: 0,
         title: "Purpose and Procedures",
@@ -186,3 +186,5 @@ const examQuestions = [
     { q: "When crews report an ALL CLEAR, what must company officers ensure they have?", opts: [ "A secondary hose line in place", "A new PASSPORT card", "A PAR for their members", "A confirmed water supply"], ans: 2 , topic: "Firefighter Accountability System"},
     { q: "Where are the three individual name tags affixed on a firefighter's gear?", opts: [ "On the left breast of their turnout coat", "On the underside of their helmet", "Inside their right glove", "On their radio strap"], ans: 1, topic: "Firefighter Accountability System" }
 ];
+
+var firefighterAccountabilitySystemData = lessonData

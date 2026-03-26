@@ -1,5 +1,5 @@
 var currentLessonName = "Air Management";
-const lessonData = [
+var lessonData = [
     {
         id: 0,
         title: "Air Management Policy & Standards",
@@ -142,3 +142,5 @@ const examQuestions = [
     { q: "Respirators must not be stored in lockers or vehicles unless what condition is met?", opts: ["They are inspected daily", "They are stored in individual containers and protected from damage", "They are kept in a temperature-controlled cab", "They are assigned to a chief officer"], ans: 1, coaching: "Respirators shall not be stored in lockers or vehicles unless the respirators are stored in individual containers and are protected from damage.", topic: "Air Managment" },
     { q: "Who must perform the annual SCBA flow testing?", opts: ["The station captain", "The safety officer", "A designated senior firefighter", "A certified SCBA technician"], ans: 3, coaching: "All annual flow testing must be performed by a certified SCBA technician.", topic: "Air Managment"}
 ];
+
+var airManagementData = lessonData

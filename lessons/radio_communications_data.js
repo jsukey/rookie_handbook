@@ -1,5 +1,5 @@
 var currentLessonName = "Radio Communications";
-const lessonData = [
+var lessonData = [
     {
         id: 0,
         title: "Harris XL-200P Basic Functions & Maintenance",
@@ -218,3 +218,5 @@ const examQuestions = [
         coaching: "Other operating interior crews that are actively addressing fire control when a mayday occurs should continue with their fire control efforts. Put the fire out!" 
     }
 ];
+
+var radioCommunicationsData = lessonData

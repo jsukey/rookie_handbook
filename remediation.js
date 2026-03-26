@@ -86,7 +86,7 @@ window.allModuleQuestions = [];
  */
 const MODULE_DATA_REGISTRY = {
   "Department Orientation": { arrayVariable: window.departmentOrientationData },
-  "Firefighter Accountability System": { arrayVariable: window.accountabilityData },
+  "Firefighter Accountability System": { arrayVariable: window.firefighterAccountabilitySystemData },
   "Building Construction": { arrayVariable: window.buildingConstructionData },
   "Fire Behavior": { arrayVariable: window.fireBehaviorData },
   "Air Management": { arrayVariable: window.airManagementData },
@@ -96,7 +96,11 @@ const MODULE_DATA_REGISTRY = {
   "RIT": { arrayVariable: window.ritData },
   "Radio Communications": { arrayVariable: window.radioCommunicationsData },
   "Self Rescue": { arrayVariable: window.selfRescueData },
-  "Apparatus Familiarization": { arrayVariable: window.apparatusData }
+  "Apparatus Familiarization": { arrayVariable: window.apparatusFamiliarizationData },
+  "Forcible Entry": {arrayVariable: window.forcibleEntryData },
+  "Tools and Equipment": {arrayVariable: window.toolsAndEquipmentData },
+  "Search": {arrayVariable: window.searchData},
+  "Engine Company Operations": {arrayVariable: window.engineCompanyOperationsData}
 };
 
 /**

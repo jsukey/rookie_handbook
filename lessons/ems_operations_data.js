@@ -1,5 +1,5 @@
 var currentLessonName = "ems operations";
-const lessonData = [
+var lessonData = [
     {
     id: 0,
     title: "Module 0: The Basics of Fire and Heat Transfer",
@@ -172,3 +172,5 @@ const examQuestions = [
     { q: "What contemporary material, commonly used as an electrical insulator, emits highly toxic gases when it burns?", opts: ["Polyvinyl chloride (PVC)", "Low-density fiberboard", "Combustible acoustical tile", "Glass fiber insulation"], ans: 0, coaching: "Polyvinyl chloride (PVC) is an effective electrical insulator... When it burns, however, it emits toxic gases.", topic: "Fire Behavior" },
     { q: "What toxic chemicals were historically used as nonflammable coolants in electrical transformers and pose a massive hazard if released during a fire?", opts: [ "Hydrogen Cyanide (HCN)", "Nitrous Oxide", "Carbon Dioxide (CO2)", "Polychlorinated biphenyls (PCBs)" ], ans: 3, coaching: "PCBs were used as nonflammable coolants in transformers. They release toxic by-products into the atmosphere when exposed to fire.", topic: "Fire Behavior" }
 ];
+
+var emsOperationsData = lessonData

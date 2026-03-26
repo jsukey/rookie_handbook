@@ -1,5 +1,5 @@
 var currentLessonName = "Building Construction";
-const lessonData = [
+var lessonData = [
     {
     id: 0,
     title: "The Gravity Resistance System",
@@ -749,3 +749,5 @@ const examQuestions = [
     { q: "Rigid frames create an enormous outward thrust at their base, which is usually resisted by what hidden component?", opts: ["Fire cut wall pockets", "Metal gusset plates", "Flying buttresses", "Steel tie-rods hidden inside the concrete floor"], ans: 3, topic: "Building Construction" },
     { q: "At what temperature does unprotected structural steel elongate 9.5 inches per 100 feet of length?", opts: ["800°F (427°C)", "1000°F (538°C)", "1200°F (649°C)", "1500°F (815°C)"], ans: 1, topic: "Building Construction"}
 ];
+
+var buildingConstructionData = lessonData
