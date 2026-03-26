@@ -21,6 +21,36 @@
         <button class="logout-btn" onclick="logoutUser()">Log Out</button>
     </div>
 
+    <div class="dashboard-widget">
+        <h3>Remediation Deck</h3>
+        <p id="deck-status">Calculating priority targets...</p>
+        <button id="btn-start-flashcards" class="flashcard-btn" onclick="startFlashcardSession()">Start 10-Card Drill</button>
+        </div>
+
+        <div id="flashcard-modal">
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="active-flashcard">
+            
+            <div class="card-face card-front">
+                <div class="card-topic" id="card-topic-display">Topic</div>
+                <div class="card-question" id="card-question-display">Loading question...</div>
+                <p style="margin-top:20px; font-size: 0.9rem; color: #999;">(Tap card to flip)</p>
+            </div>
+            
+            <div class="card-face card-back">
+                <div class="card-answer" id="card-answer-display">Answer</div>
+                <div class="card-coaching" id="card-coaching-display">Coaching note goes here.</div>
+            </div>
+
+            </div>
+        </div>
+        
+        <div class="flashcard-controls">
+            <button class="flashcard-btn" id="btn-next-card" onclick="nextCard()" disabled>Next Card</button>
+            <button class="flashcard-btn" style="background:#d9534f;" onclick="closeFlashcards()">Exit Drill</button>
+        </div>
+        </div>
+
     <div class="phase-container">
         <h2>Phase 1: Foundation</h2>
         <div class="card-grid">
@@ -295,5 +325,19 @@
             window.location.replace('login.html');
         }
     </script>
+    <script src="lessons/department_orientation_data.js"></script>
+    <script src="lessons/firefighter_accountability_system_data.js"></script>
+    <script src="lessons/building_construction_data.js"></script>
+    <script src="lessons/fire_behavior_data.js"></script>
+    <script src="lessons/air_management_data.js"></script>
+    <script src="lessons/ems_operations_data.js"></script>
+    <script src="lessons/ppe_data.js"></script>
+    <script src="lessons/scba_data.js"></script>
+    <script src="lessons/rit_data.js"></script>
+    <script src="lessons/radio_communications_data.js"></script>
+    <script src="lessons/self_rescue_data.js"></script>
+    <script src="lessons/tools_and_equipment_data.js"></script>
+
+    <script src="remediation.js"></script>
 </body>
 </html>

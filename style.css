@@ -795,3 +795,118 @@ body {
     letter-spacing: 0.5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+/* =========================================
+   REMEDIATION DECK - FLASHCARD UI
+   ========================================= */
+#flashcard-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flashcard-container {
+  width: 90%;
+  max-width: 600px;
+  height: 400px;
+  perspective: 1000px; /* Gives the 3D depth */
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.card-front {
+  border-top: 6px solid #d9534f; /* Fire engine red accent */
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  border-top: 6px solid #5cb85c; /* Success green accent */
+}
+
+.card-topic {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.card-question {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-answer {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.card-coaching {
+  font-size: 1rem;
+  color: #555;
+  background: #f9f9f9;
+  padding: 15px;
+  border-left: 4px solid #f0ad4e;
+  border-radius: 4px;
+}
+
+.flashcard-controls {
+  display: flex;
+  gap: 15px;
+}
+
+.flashcard-btn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #0056b3;
+  color: white;
+  transition: background 0.2s;
+}
+
+.flashcard-btn:hover {
+  background: #004494;
+}
+
+.flashcard-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
