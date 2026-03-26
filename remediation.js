@@ -185,7 +185,7 @@ function closeFlashcards() {
 
 function fetchExamHistory() {
   // 1. Paste your Google Apps Script Webhook URL here
-  const API_URL = "'https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzKvUH_i-Oi5ZBXnGmwLHOmjue9gwQk8CeGMxf85aFeNZXOXGpDig/exec'; "; 
+  const API_URL = "https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzKvUH_i-Oi5ZBXnGmwLHOmjue9gwQk8CeGMxf85aFeNZXOXGpDig/exec"; 
   
   const userString = localStorage.getItem('activeUser');
   if (!userString) return; // Not logged in
