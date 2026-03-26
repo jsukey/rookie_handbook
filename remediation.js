@@ -73,73 +73,58 @@ function generateFlashcardPool() {
   const pendingHighPriority = activePool.filter(q => q.priorityScore > 0.5).length;
   document.getElementById('deck-status').innerText = `You have ${pendingHighPriority} high-priority concepts requiring review.`;
 }
+
+
 // ==========================================
-// REMEDIATION DECK: DATA AGGREGATOR
+// REMEDIATION DECK: DYNAMIC DATA AGGREGATOR
 // ==========================================
 
-window.allModuleQuestions = [];
-
-/**
- * Maps the Database Module Names to the client-side array variables
- * Update the `arrayVariable` names to match exactly what you named 
- * the arrays inside your respective [module]_data.js files.
- */
 const MODULE_DATA_REGISTRY = {
-  "Department Orientation": { arrayVariable: window.departmentOrientationData },
-  "Firefighter Accountability System": { arrayVariable: window.firefighterAccountabilitySystemData },
-  "Building Construction": { arrayVariable: window.buildingConstructionData },
-  "Fire Behavior": { arrayVariable: window.fireBehaviorData },
-  "Air Management": { arrayVariable: window.airManagementData },
-  "EMS Operations": { arrayVariable: window.emsOperationsData },
-  "PPE": { arrayVariable: window.ppeData },
-  "SCBA": { arrayVariable: window.scbaData },
-  "RIT": { arrayVariable: window.ritData },
-  "Radio Communications": { arrayVariable: window.radioCommunicationsData },
-  "Self Rescue": { arrayVariable: window.selfRescueData },
-  "Apparatus Familiarization": { arrayVariable: window.apparatusFamiliarizationData },
-  "Forcible Entry": {arrayVariable: window.forcibleEntryData },
-  "Tools and Equipment": {arrayVariable: window.toolsAndEquipmentData },
-  "Search": {arrayVariable: window.searchData},
-  "Engine Company Operations": {arrayVariable: window.engineCompanyOperationsData}
+  "Department Orientation": "departmentOrientationData",
+  "Accountability System": "firefighterAccountabilitySystemData",
+  "Building Construction": "buildingConstructionData",
+  "Fire Behavior": "fireBehaviorData",
+  "Air Management": "airManagementData",
+  "ems operations": "emsOperationsData", // Matches your DB exactly
+  "PPE": "ppeData",
+  "SCBA": "scbaData",
+  "RIT": "ritData",
+  "Radio Communications": "radioCommunicationsData",
+  "Self Rescue": "selfRescueData",
+  "Apparatus Familiarization": "apparatusFamiliarizationData",
+  "Forcible Entry": "forcibleEntryData",
+  "Tools and Equipment": "toolsAndEquipmentData",
+  "Search": "searchData",
+  "Engine Company Operations": "engineCompanyOperationsData"
 };
 
-/**
- * Sweeps the user's progress and builds the master question pool.
- * Only includes questions from modules where completion == 100.
- */
 function buildMasterQuestionPool() {
-  // Clear the array to prevent duplication if called multiple times
   window.allModuleQuestions = [];
   
-  // 1. Get the current user's progress from localStorage or your global state
-  // (Adjust this variable to match how you currently store the logged-in user's progress)
-  const userProgress = JSON.parse(localStorage.getItem('userProgress')) || [];
+  const rawData = localStorage.getItem('userProgress');
+  const userProgress = JSON.parse(rawData) || [];
 
-  // 2. Loop through progress, find completed modules, and concatenate their data
   userProgress.forEach(record => {
-    // Only pull questions if they have fully completed the module
-    if (parseFloat(record.completion) >= 100) {
+    const score = parseFloat(record.completion);
+    
+    // If module is 100% complete
+    if (score >= 100 || score === 1 || record.completion === "100%") {
       
-      const moduleName = record.module; // e.g., "Fire Behavior"
-      const mappedModule = MODULE_DATA_REGISTRY[moduleName];
-
-      if (mappedModule && mappedModule.arrayVariable) {
-        // Tag each question with its parent module name for the UI, then push to the master pool
-        const taggedQuestions = mappedModule.arrayVariable.map(q => {
-          return {
-            ...q,
-            topic: moduleName // Injects the topic string so the flashcard knows what category it is
-          };
+      const varName = MODULE_DATA_REGISTRY[record.module];
+      
+      // DYNAMIC FETCH: Look for the variable name directly in the browser's window object
+      if (varName && window[varName] && Array.isArray(window[varName])) {
+        const taggedQuestions = window[varName].map(q => {
+          return { ...q, topic: record.module };
         });
-        
         window.allModuleQuestions = window.allModuleQuestions.concat(taggedQuestions);
       } else {
-        console.warn(`Could not find data array for completed module: ${moduleName}`);
+        console.warn(`Could not load array for: ${record.module}. Variable ${varName} missing or empty.`);
       }
     }
   });
 
-  console.log(`Master pool built. Total available questions: ${window.allModuleQuestions.length}`);
+  console.log(`Master pool dynamically built! Questions: ${window.allModuleQuestions.length}`);
 }
 
 // ==========================================
@@ -193,3 +178,39 @@ function nextCard() {
 function closeFlashcards() {
   document.getElementById('flashcard-modal').style.display = 'none';
 }
+
+// ==========================================
+// FETCH EXAM HISTORY FROM DATABASE
+// ==========================================
+
+function fetchExamHistory() {
+  // 1. Paste your Google Apps Script Webhook URL here
+  const API_URL = "'https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzKvUH_i-Oi5ZBXnGmwLHOmjue9gwQk8CeGMxf85aFeNZXOXGpDig/exec'; "; 
+  
+  const userString = localStorage.getItem('activeUser');
+  if (!userString) return; // Not logged in
+  
+  const activeUser = JSON.parse(userString);
+
+  // 2. Fetch the data from your Code.gs getDashboardData route
+  fetch(`${API_URL}?action=getDashboardData`)
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.testScores) {
+        // Filter the database so it only holds THIS recruit's test scores
+        window.currentStudentTestScores = data.testScores.filter(t => String(t.studentId) === String(activeUser.id));
+        
+        console.log(`Loaded ${window.currentStudentTestScores.length} past exams for priority routing.`);
+        
+        // Silently build the pool now that we have the data, updating the "0 High Priority" text
+        buildMasterQuestionPool();
+        generateFlashcardPool(); 
+      }
+    })
+    .catch(err => console.error("Error fetching exam history:", err));
+}
+
+// 3. Trigger this fetch silently in the background as soon as the dashboard loads
+document.addEventListener("DOMContentLoaded", () => {
+  fetchExamHistory();
+});
