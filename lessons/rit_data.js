@@ -109,7 +109,7 @@ var lessonData = [
     { id: 3, title: "Final Evaluation", isExam: true }
 ];
 
-const examQuestions = [
+var examQuestions = [
     { q: "What percentage of the SCBA air supply is designated for working and exiting?", opts: ["33%", "50%", "66%", "75%"], ans: 2, coaching: "The initial 66% of the air supply is for working and exiting.", topic: "Air Managment"},
     { q: "What is the minimum cylinder pressure required to enter a hazardous atmosphere?", opts: ["4000 psi", "4500 psi", "5000 psi", "5500 psi"], ans: 2, coaching: "Members must have a minimum of 5000 psi in their cylinder in order to make entry into a hazardous atmosphere.", topic: "Air Managment" },
     { q: "What HUD light activation prompts an officer to alert the Supervisor that the crew is at 50% air level?", opts: ["One solid green light", "Two flashing amber lights", "One flashing red light", "Three solid amber lights"], ans: 1, coaching: "When the first member gets a 50% HUD light activation (two flashing amber lights), the officer must alert the Supervisor." , topic: "Air Managment"},
@@ -132,4 +132,4 @@ const examQuestions = [
     { q: "Who must perform the annual SCBA flow testing?", opts: ["A certified SCBA technician", "The station captain", "The safety officer", "A designated senior firefighter"], ans: 0, coaching: "All annual flow testing must be performed by a certified SCBA technician.", topic: "Air Managment"}
 ];
 
-var ritData = lessonData
+var ritData = examQuestions

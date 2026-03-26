@@ -249,7 +249,7 @@ var lessonData = [
     { id: 5, title: "Final Evaluation", isExam: true }
 ];
 
-const examQuestions = [
+var examQuestions = [
     { q: "Besides the Elyria Fire Department, who else do you represent when in uniform?", opts: ["The entire state fire marshal office", "The IAFF local union", "Only yourself and your assigned station", "The City of Elyria"], ans: 3, coaching: "You don't just represent the Elyria Fire Department. You also represent the City of Elyria to your community!", topic: "Department Orientation" },
     { q: "What behaviors does the Fire Chief say are 'fast ways to not be a part of this organization any longer'?", opts: ["Being late for roll call twice in a month", "Failing a physical fitness assessment", "Sleeping past 0700 on a duty day", "Discrimination of any kind, sexual harassment, and violence in the workplace"], ans: 3, coaching: "Discrimination of any kind, sexual harassment, and violence in the workplace are fast ways to not be a part of this organization any longer.", topic: "Department Orientation"},
     { q: "According to the rookie mentality, what should you be doing regarding your downtime at the station?", opts: ["You get none; put your phone away and study in a book.", "Use the time to catch up on sleep.", "Spend time on social media to decompress.", "Wait in the dayroom for the next call."], ans: 0, coaching: "Down time. Guess what, you get none. Put your phone away and study. You should be in a book.", topic: "Department Orientation" },
@@ -276,4 +276,4 @@ const examQuestions = [
     { q: "What must members NOT do with advertising matter, posters, or for sale signs?", opts: ["Place them in the day room without the station captain's verbal consent", "Post them on the exterior bay doors", "Post or permit them on Fire Department property or apparatus without Fire Department approval", "Distribute them to the public while on duty"], ans: 2, coaching: "No advertising matter, posters, for sale signs, private notices, or other disfigurements shall be posted or permitted on Fire Department property or apparatus without Fire Department approval.", topic: "Department Orientation" }
 ];
 
-var departmentOrientationData = lessonData
+var departmentOrientationData = examQuestions

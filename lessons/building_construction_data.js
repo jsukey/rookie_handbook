@@ -717,7 +717,7 @@ var lessonData = [
     { id: 10, title: "Final Evaluation", isExam: true }
 ];
 
-const examQuestions = [
+var examQuestions = [
     { q: "What system forms a continuous path to transfer a building's weight safely to the ground?", opts: ["The composite transmission path", "The lateral stability matrix", "The gravity resistance system", "The dead load network"], ans: 2, topic: "Building Construction" },
     { q: "Which invisible force acts as a tearing or slicing force in opposite directions?", opts: ["Shear", "Compression", "Torsion", "Tension"], ans: 0, topic: "Building Construction" },
     { q: "What is the internal resistance of a material to an external force called?", opts: ["Strain", "Deflection", "Shear", "Stress"], ans: 3, topic: "Building Construction" },
@@ -750,4 +750,4 @@ const examQuestions = [
     { q: "At what temperature does unprotected structural steel elongate 9.5 inches per 100 feet of length?", opts: ["800°F (427°C)", "1000°F (538°C)", "1200°F (649°C)", "1500°F (815°C)"], ans: 1, topic: "Building Construction"}
 ];
 
-var buildingConstructionData = lessonData
+var buildingConstructionData = examQuestions

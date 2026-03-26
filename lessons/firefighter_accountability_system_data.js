@@ -160,7 +160,7 @@ var lessonData = [
     { id: 3, title: "Final Evaluation", isExam: true }
 ];
 
-const examQuestions = [
+var examQuestions = [
     { q: "What is the purpose of the PASSPORT system for an Incident Commander?", opts: ["A method for tracking water supply resources", "A system for logging apparatus maintenance","A fast and efficient means to account for all personnel working in the hazard zone",  "A tool for dispatching mutual aid"], ans: 2, topic: "Firefighter Accountability System" },
     { q: "Which of the following describes a hazard zone?", opts: ["The rehab sector established at an incident", "The staging area for incoming apparatus", "The command post location", "An area that requires an SCBA, a charged hoseline and protective clothing"], ans: 3, topic: "Firefighter Accountability System" },
     { q: "Who is responsible for complying with the personnel accountability guideline?", opts: ["All personnel", "Only command staff", "Only interior structural firefighters", "Only mutual aid responders"], ans: 0, topic: "Firefighter Accountability System" },
@@ -187,4 +187,4 @@ const examQuestions = [
     { q: "Where are the three individual name tags affixed on a firefighter's gear?", opts: [ "On the left breast of their turnout coat", "On the underside of their helmet", "Inside their right glove", "On their radio strap"], ans: 1, topic: "Firefighter Accountability System" }
 ];
 
-var firefighterAccountabilitySystemData = lessonData
+var firefighterAccountabilitySystemData = examQuestions

@@ -150,7 +150,7 @@ var lessonData = [
     { id: 3, title: "Final Evaluation", isExam: true }
 ];
 
-const examQuestions = [
+var examQuestions = [
     { q: "What defines a rapid oxidation chemical reaction that produces heat and visible light?", opts: [ "Convection", "Entrainment", "Radiation", "Fire"], ans: 3, coaching: "Fire can be defined simply as a rapid oxidation (chemical) reaction that produces heat and visible light.", topic: "Fire Behavior" },
     { q: "Which element of the fire tetrahedron is normally atmospheric oxygen?", opts: [ "Fuel", "Heat", "Oxidizing agent", "Uninhibited chemical chain reaction"], ans: 2, coaching: "The oxidizing agent is normally atmospheric oxygen, but may also be chemical compounds known as oxidizers.", topic: "Fire Behavior" },
     { q: "What method of heat transfer occurs through electromagnetic waves?", opts: [ "Conduction", "Radiation", "Convection", "Bi-directional flow"], ans: 1, coaching: "Radiation is the transfer of heat through electromagnetic waves.", topic: "Fire Behavior" },
@@ -173,4 +173,4 @@ const examQuestions = [
     { q: "What toxic chemicals were historically used as nonflammable coolants in electrical transformers and pose a massive hazard if released during a fire?", opts: [ "Hydrogen Cyanide (HCN)", "Nitrous Oxide", "Carbon Dioxide (CO2)", "Polychlorinated biphenyls (PCBs)" ], ans: 3, coaching: "PCBs were used as nonflammable coolants in transformers. They release toxic by-products into the atmosphere when exposed to fire.", topic: "Fire Behavior" }
 ];
 
-var emsOperationsData = lessonData
+var emsOperationsData = examQuestions

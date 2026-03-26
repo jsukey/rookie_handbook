@@ -132,7 +132,7 @@ var lessonData = [
     { id: 3, title: "Final Evaluation", isExam: true }
 ];
 
-const examQuestions = [
+var examQuestions = [
     { 
         q: "At what time must portable radio batteries be changed daily per EFD policy?", 
         opts: ["0800 hours", "0700 hours", "1200 hours", "At the end of shift"], 
@@ -219,4 +219,4 @@ const examQuestions = [
     }
 ];
 
-var radioCommunicationsData = lessonData
+var radioCommunicationsData = examQuestions
