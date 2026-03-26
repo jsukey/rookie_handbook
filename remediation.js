@@ -7,19 +7,23 @@ let currentCardIndex = 0;
 
 /**
  * Calculates priority based on total misses and 7-day time decay.
+ * Now matches based on exact Question Text instead of ID.
  */
-function calculateQuestionPriority(questionId, testScores) {
+function calculateQuestionPriority(questionText, testScores) {
   let baseScore = 0;
   let latestMissDate = null;
 
-  // 1. Calculate Base Score and find the most recent miss
   testScores.forEach(test => {
     try {
       const missedArray = JSON.parse(test.missedQuestionsData || "[]");
-      const missedItem = missedArray.find(q => String(q.id) === String(questionId));
+      
+      // Look for a string match between the database 'qText' and local 'q'
+      const missedItem = missedArray.find(missedQ => 
+        String(missedQ.qText).trim() === String(questionText).trim()
+      );
       
       if (missedItem) {
-        baseScore += 1; // Add a point for every time they missed it
+        baseScore += 1; 
         const testDate = new Date(test.dateAdministered);
         if (!latestMissDate || testDate > latestMissDate) {
           latestMissDate = testDate;
@@ -28,10 +32,9 @@ function calculateQuestionPriority(questionId, testScores) {
     } catch(e) { console.error("Error parsing missed questions", e); }
   });
 
-  // 2. If never missed, priority is 0
   if (baseScore === 0 || !latestMissDate) return 0;
 
-  // 3. Apply 7-Day Half-Life Formula
+  // Apply 7-Day Half-Life Formula
   const currentDate = new Date();
   const diffTime = Math.abs(currentDate - latestMissDate);
   const daysElapsed = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
@@ -46,20 +49,16 @@ function calculateQuestionPriority(questionId, testScores) {
  * Builds the deck, sorts by priority, and prepares the 10-card batch.
  */
 function generateFlashcardPool() {
-  // NOTE: Replace `window.allModuleQuestions` with how you currently 
-  // aggregate your [module]_data.js arrays in engine.js
   let activePool = [...window.allModuleQuestions]; 
-  
   const testScores = window.currentStudentTestScores || [];
 
-  // 1. Assign priority scores to all active questions
+  // 1. Assign priority scores by passing the question string (question.q)
   activePool.forEach(question => {
-    question.priorityScore = calculateQuestionPriority(question.id, testScores);
+    question.priorityScore = calculateQuestionPriority(question.q, testScores);
   });
 
   // 2. Sort the array (Highest priority first)
   activePool.sort((a, b) => {
-    // If scores are equal (e.g., both 0), randomize them
     if (a.priorityScore === b.priorityScore) {
        return 0.5 - Math.random(); 
     }
@@ -69,7 +68,7 @@ function generateFlashcardPool() {
   // 3. Slice the top 10 for the current drill
   currentFlashcardBatch = activePool.slice(0, 10);
   
-  // Update Dashboard UI
+  // Update Dashboard UI text
   const pendingHighPriority = activePool.filter(q => q.priorityScore > 0.5).length;
   document.getElementById('deck-status').innerText = `You have ${pendingHighPriority} high-priority concepts requiring review.`;
 }
@@ -150,11 +149,25 @@ function renderCurrentCard() {
   document.getElementById('active-flashcard').classList.remove('flipped');
   document.getElementById('btn-next-card').disabled = true;
 
-  // Populate Data
+  // 1. Extract Question Text
+  const questionText = card.q || "Error: Question text missing.";
+  
+  // 2. Extract Answer Text from the Options Array using the ans index
+  let answerText = "Error: Answer missing.";
+  if (card.opts && card.ans !== undefined) {
+      answerText = card.opts[card.ans];
+  }
+
+  // 3. Render to DOM
   document.getElementById('card-topic-display').innerText = card.topic || "General Review";
-  document.getElementById('card-question-display').innerText = card.question;
-  document.getElementById('card-answer-display').innerText = card.correctAnswer;
-  document.getElementById('card-coaching-display').innerText = card.coachingNote || "Review standard operating guidelines.";
+  document.getElementById('card-question-display').innerText = questionText;
+  document.getElementById('card-answer-display').innerText = answerText;
+  
+  // 4. Force hide the coaching element
+  const coachingElement = document.getElementById('card-coaching-display');
+  if (coachingElement) {
+      coachingElement.style.display = 'none'; 
+  }
 }
 
 function flipCard() {
