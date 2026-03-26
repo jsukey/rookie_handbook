@@ -171,10 +171,13 @@ function renderCurrentCard() {
 }
 
 function flipCard() {
-  document.getElementById('active-flashcard').classList.add('flipped');
-  // Unlock the Next button only after they read the back
+  // 1. Toggle allows it to flip back and forth on every click
+  document.getElementById('active-flashcard').classList.toggle('flipped');
+  
+  // 2. Unlock the Next button (it will stay unlocked even if they flip back to the front)
   document.getElementById('btn-next-card').disabled = false; 
 }
+
 
 function nextCard() {
   currentCardIndex++;
@@ -192,35 +195,48 @@ function closeFlashcards() {
   document.getElementById('flashcard-modal').style.display = 'none';
 }
 
+
 // ==========================================
 // FETCH EXAM HISTORY FROM DATABASE
 // ==========================================
 
 function fetchExamHistory() {
-  // 1. Paste your Google Apps Script Webhook URL here
   const API_URL = "https://script.google.com/macros/s/AKfycbwCAzBmW3amcvETJFzKvUH_i-Oi5ZBXnGmwLHOmjue9gwQk8CeGMxf85aFeNZXOXGpDig/exec"; 
   
+  const startBtn = document.getElementById('btn-start-flashcards');
+  
   const userString = localStorage.getItem('activeUser');
-  if (!userString) return; // Not logged in
+  if (!userString) {
+      if(startBtn) startBtn.innerText = "Error: Not Logged In";
+      return; 
+  }
   
   const activeUser = JSON.parse(userString);
 
-  // 2. Fetch the data from your Code.gs getDashboardData route
   fetch(`${API_URL}?action=getDashboardData`)
     .then(response => response.json())
     .then(data => {
       if (data && data.testScores) {
-        // Filter the database so it only holds THIS recruit's test scores
         window.currentStudentTestScores = data.testScores.filter(t => String(t.studentId) === String(activeUser.id));
-        
         console.log(`Loaded ${window.currentStudentTestScores.length} past exams for priority routing.`);
         
-        // Silently build the pool now that we have the data, updating the "0 High Priority" text
         buildMasterQuestionPool();
         generateFlashcardPool(); 
       }
     })
-    .catch(err => console.error("Error fetching exam history:", err));
+    .catch(err => {
+      console.error("Error fetching exam history:", err);
+      // Fallback: If offline, build the pool without history so they can still study
+      buildMasterQuestionPool();
+      generateFlashcardPool();
+    })
+    .finally(() => {
+      // UX MAGIC: Unlock the button and restore the text when finished loading
+      if (startBtn) {
+        startBtn.disabled = false;
+        startBtn.innerText = "Start 10-Card Drill";
+      }
+    });
 }
 
 // 3. Trigger this fetch silently in the background as soon as the dashboard loads
